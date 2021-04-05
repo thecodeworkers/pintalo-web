@@ -1,7 +1,7 @@
 import { FC, useEffect } from 'react'
 import { AppProps } from 'next/app'
 import { useStore } from 'react-redux'
-import { wrapper } from '@store'
+import wrapper from '@store'
 import Head from 'next/head'
 import '@styles/globals.scss'
 
