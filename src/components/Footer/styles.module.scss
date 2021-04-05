@@ -1,0 +1,18 @@
+@import '../../../public//styles/index.scss';
+
+._footerContainer{
+  background-color: $charade;
+  width: 100%;
+  padding: 4rem 0rem;
+  box-sizing: border-box;
+}
+
+._footer{
+  width: 85%;
+  margin: auto;
+}
+
+._logo{
+  width: 50px;
+}
+
