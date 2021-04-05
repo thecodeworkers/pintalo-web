@@ -28,3 +28,34 @@ ul {
   width: 85%;
   margin:0 auto;
 }
+
+@font-face {
+  font-family: 'Helvetica';
+  src: url('./fonts/HELVETICA.TTF');
+}
+
+@font-face {
+  font-family: 'Helvetica-light';
+  src: url('./fonts/HELVETICA-LIGHT-587EBE5A59211.TTF');
+}
+
+@font-face {
+  font-family: 'Helvetica-bold';
+  src: url('./fonts/HELVETICA-BOLD.TTF');
+}
+
+@font-face {
+  font-family: 'Helvetica-oblique';
+  src: url('./fonts/HELVETICA-OBLIQUE.TTF');
+}
+
+@font-face {
+  font-family: 'Helvetica-bold-oblique';
+  src: url('./fonts/HELVETICA-BOLDOBLIQUE.TTF');
+}
+
+@font-face {
+  font-family: 'Techead-free-light';
+  src: url('./fonts/TECHEADFREE-LIGHT.OTF');
+}
+
