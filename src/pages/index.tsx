@@ -1,11 +1,11 @@
-import Head from 'next/head'
-import styles from '@styles/Home.module.scss'
-import { Footer, Navbar, Menu } from '../components'
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Home } from '@components'
 
-export default function Home() {
+const HomePage = () => {
   return (
-    <div >
-      {/* <Footer /> */}
-    </div>
+  <Home content={'home'} />
   )
 }
+
+export default HomePage
