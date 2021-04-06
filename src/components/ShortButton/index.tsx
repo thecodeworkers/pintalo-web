@@ -16,8 +16,8 @@ const ShorButton: FC<Button> = ({ text, backgroundColor, textColor, method, bold
       cursor: pointer;
       font-size: ${helvetica20}rem;
       border-radius: 30px;
-      font-family: ${ !bold ? 'Helvetica': 'Helvetica-bold'};
-      font-weight: ${ !bold ? 500 : 800};
+      font-family: ${!bold ? 'Helvetica' : 'Helvetica-bold'};
+      font-weight: ${!bold ? 500 : 800};
     }
   `}</style>
   </>

@@ -1,14 +1,11 @@
-import { useState, useEffect } from "react";
 import styles from './styles.module.scss'
-import ShortButton from '../ShortButton'
+import { ShortButton } from '@components'
 
 const Modal = ({ show, onClose }) => {
-
 
   const handleCloseClick = () => {
     onClose(true)
   };
-
 
   return (
     <>
