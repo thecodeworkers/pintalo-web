@@ -23,7 +23,7 @@ const Modal = ({ show, onClose }) => {
             <div className={styles._body}>
               <form className={styles._formContainer}>
                 <div className={styles._inputContainerRow}>
-                  <input placeholder='Nombre' className={styles._input} />
+                  <input placeholder='Nombre' className={styles._inputRow} />
                   <input placeholder='Cargo' className={styles._input} />
                 </div>
 
