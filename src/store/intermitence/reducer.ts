@@ -2,7 +2,7 @@ import { MENU_SHOW } from './action-types';
 import { AnyAction } from 'redux';
 
 const initialState = {
-	showMenu: false
+	showMenu: 0
 }
 
  const setIntermitenceReducer = (state = initialState, { type, payload }: AnyAction) => {
