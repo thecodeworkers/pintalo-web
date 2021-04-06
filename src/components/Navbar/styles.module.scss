@@ -1,0 +1,84 @@
+@import '../../../public/styles/index.scss';
+
+@mixin navStyles {
+  width: 100%;
+  position: relative;
+  box-shadow: 0px 3px 10px $navShadow;
+  position: fixed;
+  top: 0px;
+  z-index: 999;
+}
+
+._parent {
+  @include navStyles;
+  animation: expand linear 0.6s forwards;
+}
+
+._parentPush {
+  @include navStyles;
+  animation: retract linear 0.6s forwards;
+}
+
+._nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 4rem;
+}
+
+._logoParent {
+  width: 4.375rem;
+  cursor: pointer;
+}
+
+._linksParent {
+  display: flex;
+  align-items: center;
+
+  & img {
+    margin-left: 1.5rem;
+    cursor: pointer;
+  }
+
+  & a {
+    font-family: $helvetica;
+    font-size: 0.9rem;
+    margin-left: 2rem;
+    cursor: pointer;
+    margin-right: 2rem;
+  }
+}
+
+._toggleParent {
+  background-color: $brightSun;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  right: 0px;
+  top: 0px;
+  height: 100%;
+  padding: 1.25rem;
+  border-radius: 50% 0px 0px 50%;
+  cursor: pointer;
+}
+
+@keyframes retract {
+  0% {
+    width: 100%;
+  }
+
+  100% {
+    width: 50%;
+  }
+}
+
+@keyframes expand {
+  0% {
+    width: 50%;
+  }
+
+  100% {
+    width: 100%;
+  }
+}

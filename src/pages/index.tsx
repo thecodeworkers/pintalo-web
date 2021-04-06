@@ -1,11 +1,13 @@
 import Head from 'next/head'
 import styles from '@styles/Home.module.scss'
-import { Footer } from '../components'
+import { Footer, Navbar, Menu } from '../components'
 
 export default function Home() {
   return (
-    <div className={styles.container}>
-      <Footer />
+    <div >
+      <Navbar />
+      <Menu />
+      {/* <Footer /> */}
     </div>
   )
 }
