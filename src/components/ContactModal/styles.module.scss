@@ -15,8 +15,8 @@
 ._container{
   background: $white;
   width: 60%;
-  height: 55vh;
   border-radius: 10px;
+  padding: 0 0 2rem 0;
 }
 
 ._header{
@@ -80,7 +80,7 @@
 }
 
 ._buttonContainer{
-  margin-top: 4rem;
+  margin-top: 2rem;
   float: right;
   width: 180px;
 }
