@@ -1,6 +1,8 @@
+import { Navbar } from '@components'
+
 const Layout = ({ children }) => (
   <>
-    <div>navbar</div>
+    <Navbar />
     {children}
     <div>footer</div>
   </>

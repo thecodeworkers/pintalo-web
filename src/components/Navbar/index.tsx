@@ -3,6 +3,7 @@ import { Logo } from '../../../public/images/logos'
 import { useSelector, useDispatch } from 'react-redux'
 import { setMenuShow } from '@store/actions'
 import { useRouter } from 'next/router'
+import { Menu } from '@components'
 
 const Navbar = () => {
 
@@ -27,6 +28,7 @@ const Navbar = () => {
   }
 
   return (
+    <>
     <nav className={returnStyles()}>
       <div className={`${styles._nav} _main`}>
         <div className={styles._logoParent} onClick={() => navigation('/')}>
@@ -45,6 +47,9 @@ const Navbar = () => {
         <img src='images/icons/toggle.svg' alt='toggle' width='16px'></img>
       </div>
     </nav>
+
+    <Menu showMenu={showMenu}/>
+    </>
   )
 }
 

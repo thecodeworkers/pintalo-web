@@ -4,11 +4,10 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { setMenuShow } from '../../store/actions'
 
-const Menu = () => {
+const Menu = ({ showMenu }) => {
 
   const dispatch = useDispatch()
   const router = useRouter()
-  const { showMenu } = useSelector((state: any) => state.intermitence)
 
   const returnStyles = () => {
     if (showMenu === 0) return styles._staticMenu
@@ -17,7 +16,7 @@ const Menu = () => {
   }
 
   const navigation = (route) => {
-    if (router.pathname != route)  {
+    if (router.pathname != route) {
       router.push(route)
       dispatch(setMenuShow({ showMenu: 0 }))
     }
@@ -30,7 +29,7 @@ const Menu = () => {
       <div className={styles._container}>
         <div className={styles._topLinks}>
           <ul className={styles._list}>
-            <li> Menu </li>
+            <li> Menú </li>
             <li onClick={() => navigation('/')}> Home </li>
             <li onClick={() => navigation('/about-us')}> Pintalo </li>
             <li onClick={() => navigation('/shop')}> Shop </li>
