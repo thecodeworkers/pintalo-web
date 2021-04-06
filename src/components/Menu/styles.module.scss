@@ -66,7 +66,7 @@ $items: (
     & li:nth-child(#{$item}) {
       margin-bottom: 2rem;
       margin-left: $size;
-      font-size: 0.9rem;
+      font-size: $helvetica19;
       cursor: pointer;
     }
   }
@@ -99,7 +99,7 @@ $items: (
   & p {
     color: $wildSand;
     font-family: $helvetica;
-    font-size: 0.9rem;
+    font-size: $helvetica15;
   }
 }
 

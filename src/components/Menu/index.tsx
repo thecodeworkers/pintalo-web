@@ -45,15 +45,15 @@ const Menu = ({ showMenu }) => {
         <div className={styles._bottomLinks}>
           <div>
             <a href='https://www.instagram.com/' target='_blank' rel='noopener noreferrer'>
-              <img src='images/icons/instagram.svg' alt='instagram' ></img>
+              <img src='images/logos/instagram.svg' alt='instagram' ></img>
             </a>
 
             <a href='https://www.facebook.com/' target='_blank' rel='noopener noreferrer'>
-              <img src='images/icons/facebook.svg' alt='facebook'></img>
+              <img src='images/logos/facebook.svg' alt='facebook'></img>
             </a>
 
-            <a href='https://www.facebook.com/' target='_blank' rel='noopener noreferrer'>
-              <img src='images/icons/twitter.svg' alt='twitter'></img>
+            <a href='https://www.twitter.com/' target='_blank' rel='noopener noreferrer'>
+              <img src='images/logos/twitter.svg' alt='twitter'></img>
             </a>
           </div>
 
