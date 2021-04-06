@@ -1,8 +1,11 @@
+import Footer from '../Footer'
+
+
 const Layout = ({ children }) => (
   <>
     <div>navbar</div>
     {children}
-    <div>footer</div>
+    <Footer/>
   </>
 )
 

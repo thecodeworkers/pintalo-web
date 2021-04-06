@@ -40,3 +40,16 @@
   }
 }
 
+@mixin input ($textColor, $borderColor, $placeHolder ){
+  font-size: $helvetica15;
+  font-family: $helvetica;
+  background: transparent;
+  color: $textColor;
+  border: 1px solid $borderColor;
+  border-radius:30px;
+  padding: 0.8rem;
+  &::placeholder {
+    color:$placeHolder
+  }
+}
+

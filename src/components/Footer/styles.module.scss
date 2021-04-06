@@ -1,0 +1,97 @@
+@import '../../../public//styles/index.scss';
+
+._footerContainer{
+  background-color: $charade;
+  width: 100%;
+  padding: 4rem 0rem 2.5rem 0rem;
+  box-sizing: border-box;
+}
+
+._footer{
+  width: 90%;
+  margin: auto;
+}
+
+._logoMain{
+  width: 70px;
+}
+
+._content{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+._leftContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  width: 40%;
+}
+
+._linksContainer {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-top: 1rem;
+}
+
+._link{
+  font-family: $helvetica;
+  font-size: $helvetica17;
+  color: $wildSand;
+  cursor: pointer;
+}
+
+._socialMedia{
+  margin-top: 2rem;
+  display: flex;
+  justify-content: space-between;
+  width: 20%;
+}
+
+._buttonContainer{
+  width: 160px;
+  margin-top: 1rem;
+}
+
+._rightContainer{
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+._speechTitle{
+  font-family: $helvetica;
+  font-size: $helvetica14;
+  color: $wildSand;
+  margin-bottom: 0.7rem;
+}
+
+._speechText{
+  font-family: $helvetica;
+  font-size: $helvetica12;
+  color: $wildSand;
+  margin-bottom: 0.7rem;
+}
+
+._logos {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+._logo {
+  margin-right: 1rem;
+  width: 25px;
+}
+
+._copyrightContainer{
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-top: 0.3rem;
+}
