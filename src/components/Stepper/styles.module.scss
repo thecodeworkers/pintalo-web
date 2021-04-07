@@ -1,0 +1,25 @@
+@import '../../../public/styles/index.scss';
+
+$size: 0.875rem;
+
+@mixin stepStyle($background) {
+  width: $size;
+  height: $size;
+  background-color: $background;
+  border-radius: 50%;
+}
+
+._stepper {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+._step {
+  @include stepStyle($mercury);
+}
+
+._currentStep {
+  @include stepStyle($silver);
+}
+
