@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/router'
 import { Logo } from '../../../public/images/logos'
-import { ShortButton, GeneralModal } from '@components'
+import { GeneralButton, GeneralModal } from '@components'
 import styles from './styles.module.scss'
 
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)}/>
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)} large={false}/>
             </div>
 
             <GeneralModal onClose={() => setShowModal(false)} show={showModal} width={'60%'} title={'Enviar'}>
@@ -51,7 +51,7 @@ const Footer = () => {
                   <textarea placeholder='Descripción' className={styles._textArea} />
 
                   <div className={styles._buttonContainer}>
-                    <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Enviar'} method={() => setShowModal(false)}/>
+                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Enviar'} method={() => setShowModal(false)}/>
                   </div>
                 </form>
               </div>

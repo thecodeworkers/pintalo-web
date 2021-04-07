@@ -2,14 +2,16 @@ import { FC } from 'react'
 import { Button } from './type'
 
 const helvetica20 = '1'
+const shortButton = '2rem'
+const largeButton = '1.5rem'
 
-const ShorButton: FC<Button> = ({ text, backgroundColor, textColor, method, bold }) => (
+const ShorButton: FC<Button> = ({ text, backgroundColor, textColor, method, bold, large }) => (
   <>
     <button className='_button' onClick={method ? method : null}> {text} </button>
     <style jsx>{`
     ._button{
       width: 100%;
-      height: 2rem;
+      height: ${large ? largeButton : shortButton};
       background-color: ${backgroundColor};
       color: ${textColor};
       border: none;
