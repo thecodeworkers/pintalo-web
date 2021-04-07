@@ -18,7 +18,7 @@ const Menu = ({ showMenu }) => {
   const navigation = (route) => {
     if (router.pathname != route) {
       router.push(route)
-      dispatch(setMenuShow({ showMenu: 0 }))
+      dispatch(setMenuShow({ showMenu: 2 }))
     }
   }
 
