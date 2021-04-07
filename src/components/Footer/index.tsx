@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useRouter } from 'next/router'
 import { Logo } from '../../../public/images/logos'
-import { ShortButton, ContactModal } from '@components'
+import { GeneralButton, ContactModal } from '@components'
 import styles from './styles.module.scss'
 
 const Footer = () => {
@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)} />
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)} large={false}/>
             </div>
 
             <ContactModal onClose={() => setShowModal(false)} show={showModal} />

@@ -1,4 +1,4 @@
-@import '../../../public//styles/index.scss';
+@import '@styles/index.scss';
 
 ._modalContainer{
   position: absolute;
@@ -56,7 +56,6 @@
   flex-direction: column;
   width: 40%;
 }
-
 
 ._input{
   @include input ($silverChalice, $doveGray, $silverChalice);

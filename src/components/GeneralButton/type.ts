@@ -3,5 +3,6 @@ export type Button = {
   backgroundColor: string,
   textColor: string,
   method?: any,
-  bold?: boolean
+  bold?: boolean,
+  large?: boolean
 }

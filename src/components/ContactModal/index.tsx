@@ -1,5 +1,5 @@
 import styles from './styles.module.scss'
-import { ShortButton } from '@components'
+import { GeneralButton } from '@components'
 
 const Modal = ({ show, onClose }) => {
 
@@ -32,7 +32,7 @@ const Modal = ({ show, onClose }) => {
                 <textarea placeholder='Descripción' className={styles._textArea} />
 
                 <div className={styles._buttonContainer}>
-                  <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Enviar'} method={() => handleCloseClick()} />
+                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Enviar'} method={() => handleCloseClick()} />
                 </div>
               </form>
             </div>
