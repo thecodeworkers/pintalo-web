@@ -43,7 +43,8 @@ const makeStore: any = ({ isServer }) => {
 
   const persistConfig = {
     key: 'pintaloRoot',
-    storage
+    storage,
+    blacklist: ['intermitence']
   }
 
   const persistedReducer = persistReducer(persistConfig, reducer)
