@@ -1,12 +1,12 @@
 import { useState } from "react";
 import { useRouter } from 'next/router'
 import { Logo } from '../../../public/images/logos'
-import { ShortButton, ContactModal } from '@components'
+import { ShortButton, GeneralModal } from '@components'
 import styles from './styles.module.scss'
 
 const Footer = () => {
 
-  const [showModal, setShowModal] = useState(false);
+  const [showModal, setShowModal] = useState(false)
   const router = useRouter()
 
   const navigation = (route) => {
@@ -15,7 +15,7 @@ const Footer = () => {
 
   return (
     <footer className={styles._footerContainer}>
-      <div className={styles._footer}>
+      <div className={'_main'}>
 
         <div className={styles._logoMain} >
           <Logo color='#fff' />
@@ -32,10 +32,30 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)} />
+              <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)}/>
             </div>
 
-            <ContactModal onClose={() => setShowModal(false)} show={showModal} />
+            <GeneralModal onClose={() => setShowModal(false)} show={showModal} width={'60%'} title={'Enviar'}>
+              <div className={styles._body}>
+                <form className={styles._formContainer}>
+                  <div className={styles._inputContainerRow}>
+                    <input placeholder='Nombre' className={styles._inputRow} />
+                    <input placeholder='Cargo' className={styles._input} />
+                  </div>
+
+                  <div className={styles._inputContainerColumn}>
+                    <input placeholder='Apellido' className={styles._input} />
+                    <input placeholder='Correo' className={styles._input} />
+                  </div>
+
+                  <textarea placeholder='Descripción' className={styles._textArea} />
+
+                  <div className={styles._buttonContainer}>
+                    <ShortButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Enviar'} method={() => setShowModal(false)}/>
+                  </div>
+                </form>
+              </div>
+            </GeneralModal>
 
             <div className={styles._socialMedia}>
               <img src='images/logos/instagram.svg' width={15} />

@@ -1,0 +1,32 @@
+@import '../../../public//styles/index.scss';
+
+._modalContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+
+._header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: $charade;
+  padding: 0.5rem;
+  border-radius: 5px;
+}
+
+._closeIcon{
+  cursor: pointer;
+}
+
+._title{
+  font-size: $helvetica20;
+  font-family: $helvetica;
+  color: $wildSand;
+}
