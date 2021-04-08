@@ -29,6 +29,17 @@
   margin-left: auto;
 }
 
+._inputError {
+  @include input($cello, red, $alto);
+  width: 85%;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  display: block;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
 ._formParent {
   background-color: $wildSand;
   width: 45%;
@@ -78,6 +89,20 @@
   margin-right: auto;
   margin-left: auto;
   width: 70%;
-  margin-top: 6.5rem;
   margin-bottom: 0.5rem;
+}
+
+._joinUsParent {
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+  margin-bottom: 0.5rem;
+}
+
+._joinUs {
+  margin-top: 3.5rem;
+  font-family: $helvetica;
+  font-size: $helvetica14;
+  text-align: center;
 }
