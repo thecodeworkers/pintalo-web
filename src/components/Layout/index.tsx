@@ -5,7 +5,6 @@ const Layout = ({ children }) => {
 
   const { showFooter } = useSelector((state: any) => state.intermitence)
 
-  console.log(showFooter)
   return (
     <>
       <Navbar />
