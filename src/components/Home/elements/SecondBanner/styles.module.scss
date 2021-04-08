@@ -1,0 +1,17 @@
+@import '@styles/index.scss';
+
+._container{
+  width: 100%;
+  background: cornflowerblue;
+  margin-left: 1rem;
+}
+
+._titleContainer{
+  width: 40%;
+}
+
+._title{
+  color: $charade;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+}

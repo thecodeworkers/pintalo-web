@@ -1,5 +1,6 @@
 
 import Head from 'next/head'
+import { Hero, SecondBanner } from './elements'
 
 const Home = ({ content }) => {
   return (
@@ -7,6 +8,8 @@ const Home = ({ content }) => {
       <Head>
         <title>CryptoBuyer</title>
       </Head>
+      <Hero/>
+      <SecondBanner />
     </div>
   )
 }
