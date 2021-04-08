@@ -4,5 +4,6 @@ export type Button = {
   textColor: string,
   method?: any,
   bold?: boolean,
-  large?: boolean
+  large?: boolean,
+  type?: any
 }
