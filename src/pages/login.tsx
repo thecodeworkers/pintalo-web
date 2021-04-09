@@ -1,9 +1,11 @@
-function Login() {
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Login } from '@components'
+
+const LoginPage = () => {
   return (
-    <div>
-      Login
-    </div>
+    <Login content='login' />
   )
 }
 
-export default Login
+export default LoginPage
