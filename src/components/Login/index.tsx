@@ -1,15 +1,15 @@
 import Head from 'next/head'
 import { LoginView } from './elements'
 
-const Home = ({ content }) => {
+const Login = ({ content }) => {
   return (
     <div>
       <Head>
-        <title>Login</title>
+        <title>Inicio de sesión</title>
       </Head>
       <LoginView />
     </div>
   )
 }
 
-export default Home
+export default Login

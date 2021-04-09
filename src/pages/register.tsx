@@ -1,9 +1,10 @@
-function Register() {
+import React from 'react'
+import { Register } from '@components'
+
+const HomePage = () => {
   return (
-    <div>
-      Register
-    </div>
+  <Register content={'home'} />
   )
 }
 
-export default Register
+export default HomePage

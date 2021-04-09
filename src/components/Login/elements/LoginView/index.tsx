@@ -1,15 +1,17 @@
 import { useEffect } from 'react'
 import styles from './styles.module.scss'
-import { GeneralButton } from '@components'
-import { passwordRegex, emailRegex } from '@utils/constants'
+import { GeneralButton, HalfBanner } from '@components'
+import { passwordRegex, emailRegex } from '@utils/regex'
 import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
+import { useRouter } from 'next/router'
 import * as Yup from 'yup'
 
 const LoginView = () => {
 
   const dispatch = useDispatch()
+  const router = useRouter()
 
   useEffect(() => {
     dispatch(setFooterShow({showFooter: false}))
@@ -38,11 +40,11 @@ const LoginView = () => {
     }
   })
 
+  const navigation = () => router.push('/register')
+
   return (
     <section className={styles._main}>
-      <div className={styles._leftSection}>
-        <img src='images/banner/banner-withoutborder.png' alt='login-banner' width='100%' height='100%'></img>
-      </div>
+      <HalfBanner url='images/banner/banner-withoutborder.png' />
 
       <div className={styles._rightSection}>
         <div className={styles._formParent}>
@@ -82,7 +84,7 @@ const LoginView = () => {
                 <GeneralButton backgroundColor='#FDCA40' textColor='#262833' text='Ingresar' large bold type='submit' />
               </div>
 
-              <p className={styles._forgot}>¿No estás registrado? <a> Registrate </a></p>
+              <p className={styles._forgot}>¿No estás registrado? <a onClick={navigation}> Registrate </a></p>
             </form>
           </div>
         </div>
