@@ -10,7 +10,6 @@ const Home = ({ content }) => {
       </Head>
       <Hero/>
       <PromoSlide/>
-
     </div>
   )
 }

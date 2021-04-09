@@ -2,10 +2,10 @@
 
 $size: 0.875rem;
 
-@mixin stepStyle($background) {
+@mixin stepStyle($background, $number) {
   width: $size;
   height: $size;
-  background-color: $background;
+  background-color: rgba($color: $background , $alpha: $number);
   border-radius: 50%;
 }
 
@@ -16,10 +16,10 @@ $size: 0.875rem;
 }
 
 ._step {
-  @include stepStyle($mercury);
+  @include stepStyle($black, 0.16);
 }
 
 ._currentStep {
-  @include stepStyle($silver);
+  @include stepStyle($doveGray, 1);
 }
 

@@ -1,68 +1,59 @@
-import { useState } from "react";
-import { useRouter } from 'next/router'
-import { GeneralButton, Stepper } from '@components'
+import { useState, useEffect } from "react";
+import { Stepper } from '@components'
 import { SecondBanner, FirstBanner, ThirdBanner } from './elements'
 import styles from './styles.module.scss'
 
+const items = [
+  { className: styles._show, id: '1', component: <FirstBanner /> },
+  { className: styles._hidden, id: '2', component: <SecondBanner /> },
+  { className: styles._hidden, id: '3', component: <ThirdBanner /> }
+]
+
 const PromoSlide = () => {
 
-  const router = useRouter()
-  const slideBox = [
-    {
-      className: styles._slides,
-      id: '1'
-    },
-    {
-      className: styles._slidestwo,
-      id: '2'
-    },
-    {
-      className:  styles._slidesthree,
-      id: '3'
-    }
-  ]
+  const [currentIndex, setcurrentIndex] = useState(0);
+  const [stepperIndex, setStepperIndex] = useState(0);
+  let interval;
 
-  const slideBanner = (element, stylin) => {
-    let showedSlide = element+1
-    const pepitocomeback = document.getElementById(slideBox[element].id)
+  useEffect(() => {
+    changeImage(currentIndex, styles._show);
 
-    slideBox.map((item, index) => {
+    return () => { clearTimeout(interval) }
+  }, [currentIndex])
 
-      if(showedSlide == Number(item.id)){
-        pepitocomeback.className = stylin
-        return
-      }
-       if(showedSlide != Number(item.id)){
-        slideBox[1].className = styles._slides
-      }
+  const changeImage = (index, stylus) => {
 
-      slideBox[index].className = styles._slides
-      console.log(slideBox);
-    });
+    items.forEach((res, mapIndex) => { items[mapIndex].className = styles._hidden })
+    items[index].className = stylus
 
+   const stepperIndex = setStepperIndex(currentIndex+1)
+
+    interval = setTimeout(() => {
+      if (currentIndex < items.length - 1) return setcurrentIndex(currentIndex + 1)
+      else setcurrentIndex(0)
+    }, 4000);
   }
 
   return (
-    <>
+    <div className={styles._content}>
+      <div className={styles._main}>
+        {
+          items.map((res, index) => {
+            return (
+              <div className={res.className} id={res.id} key={index}>
+                {res.component}
+              </div>
+            )
+          })
+        }
+      </div>
+      <div className={styles._stepperContainer}>
+        <div className={styles._stepper}>
+        <Stepper currentStep={stepperIndex} length={items.length} />
+        </div>
 
-      <ThirdBanner />
-     {/*    <div className={styles._slideContainer}>
-          {
-            slideBox.map(res => {
-              console.log(res.className);
-
-              return (
-                <div id={res.id} className={res.className}>
-
-                </div>)
-            })
-          }
-          <p onClick={() => slideBanner(0, styles._showslidetwo)} >izquierda</p>
-          <p onClick={() => slideBanner(2, styles._showslide)}> derecha</p>
-        </div> */}
-
-
-    </>
+      </div>
+    </div>
   )
 }
 
