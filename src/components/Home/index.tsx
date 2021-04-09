@@ -2,7 +2,10 @@
 import Head from 'next/head'
 import { Hero, PromoSlide} from './elements'
 
+
 const Home = ({ content }) => {
+  console.log(content);
+
   return (
     <div>
       <Head>
