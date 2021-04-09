@@ -1,0 +1,75 @@
+
+
+._slideContainer{
+  max-width: 1000px;
+  height: 100vh;
+  position: relative;
+  margin: auto;
+}
+
+._slides{
+  display: none;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  background: red;
+  height: 100vh;
+  width: 100%;
+}
+._slidestwo{
+  display: none;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  background: green;
+  height: 100vh;
+  width: 100%;
+}
+._slidesthree{
+  display: none;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  background: yellow;
+  height: 100vh;
+  width: 100%;
+}
+
+/* Fading animation */
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+._showslide{
+  display: block;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  background: yellow;
+  height: 100vh;
+  width: 100%;
+}
+
+._showslidetwo{
+  display: block;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+  background: red;
+  height: 100vh;
+  width: 100%;
+}
+
+

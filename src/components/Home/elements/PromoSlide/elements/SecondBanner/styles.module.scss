@@ -1,0 +1,45 @@
+@import '@styles/index.scss';
+
+._container{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  height: 50vh;
+}
+
+._titleContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+  width: 90%;
+  text-align: center;
+}
+
+._subtitleContainer{
+  margin-bottom: 2rem;
+  margin-top: 2rem;
+}
+
+._subtitle{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica32;
+}
+
+._title{
+  color: $charade;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+}
+
+._buttonContainer{
+  width: 160px;
+  margin-bottom: 2rem;
+  margin-top: 3rem;
+}
+

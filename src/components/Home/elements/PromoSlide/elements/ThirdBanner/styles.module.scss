@@ -1,0 +1,38 @@
+@import '@styles/index.scss';
+
+._container{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 100%;
+  height: 100vh;
+}
+
+._titleContainer{
+  margin-bottom: 1rem;
+  width: 40%;
+}
+
+._subtitleContainer{
+  margin-bottom: 1rem;
+  width: 15%;
+}
+
+._subtitle{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica16;
+}
+
+._title{
+  color: $charade;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+}
+
+._buttonContainer{
+  width: 160px;
+  margin-top: 1rem;
+}
+
