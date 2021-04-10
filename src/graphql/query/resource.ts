@@ -6,7 +6,6 @@ const resource = async (resource: any) => {
 
   const resources = {
     'homePage': homePageQuery,
-
   }
 
   const query = `
