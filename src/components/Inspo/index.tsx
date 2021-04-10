@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import { Hero } from './elements'
+import { Hero, Blog } from './elements'
 
 const Inspo = ({ content }) => {
   return (
@@ -8,6 +8,7 @@ const Inspo = ({ content }) => {
         <title>Inspiración</title>
       </Head>
       <Hero />
+      <Blog />
     </div>
   )
 }

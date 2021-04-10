@@ -10,7 +10,7 @@ const Hero = () => {
         </div>
       </section>
 
-      <style>{`
+      <style jsx>{`
       ._image {
         background-image: url('images/banner/inspo-banner.png');
         background-size: 100% 100%;
