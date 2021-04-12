@@ -6,7 +6,7 @@ import { useDispatch } from 'react-redux'
 import { formikConfig } from './formik'
 import { useRouter } from 'next/router'
 
-const RegisterView = () => {
+const RegisterView = ({ data }) => {
 
   const formik = formikConfig()
   const dispatch = useDispatch()
@@ -22,7 +22,7 @@ const RegisterView = () => {
 
   return (
     <section className={styles._main}>
-      <HalfBanner url='images/banner/banner-signup.png' />
+      <HalfBanner url={data?.image?.mediaItemUrl} />
       <div className={styles._rightSection}>
         <div className={styles._formParent}>
           <div className={styles._header}>
