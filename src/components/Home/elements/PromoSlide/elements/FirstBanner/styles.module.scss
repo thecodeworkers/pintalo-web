@@ -1,0 +1,62 @@
+@import '@styles/index.scss';
+
+._container{
+  width: 100%;
+  margin-left: 1rem;
+  display: flex;
+  justify-content: flex-start;
+  flex-direction: column;
+
+}
+
+._titleContainer{
+  width: 50%;
+  height: 32vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+._title{
+  color: $charade;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+  margin-bottom: 1rem;
+}
+
+._emptyContainer{
+  height: 36vh;
+}
+
+._lastContainer{
+  height: 32vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+._subtitleContainer{
+  width: 50%;
+}
+
+._subtitle{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica32;
+}
+
+._textContainer{
+  margin-top: 1rem;
+}
+
+._text{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica16;
+  width: 30%;
+}
+
+._buttonContainer{
+  width: 160px;
+  margin-top: 1rem;
+}
