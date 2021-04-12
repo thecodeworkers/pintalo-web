@@ -6,7 +6,6 @@ import { getPages } from '@store/actions'
 
 const HomePage = () => {
   const { page: { homePage: { home } } } = useSelector((state: any) => state)
-  console.log(home);
 
   return <Home content={home} />
 }

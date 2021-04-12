@@ -1,13 +1,138 @@
 @import '@styles/index.scss';
 
+._main{
+  width: 100%;
+  margin:0 auto;
+}
 ._container{
-  width: 50%;
+  width: 100%;
   height: 40vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._alliesContainer{
+  width: 50%;
+  height: 100%;
+  background-color: $wildSand;
+  display: flex;
 }
 
 ._allies{
-  width: 150px;
-  height: 150px;
+  width: 140px;
+  height: 90px;
   border: 1px solid $doveGray;
+  margin: 1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
+._allie{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica20;
+}
+
+._aboutContainer{
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  flex-direction: column;
+}
+
+._content{
+  width: 85%;
+  margin: 0 auto;
+}
+
+._contentAllies{
+  width: 85%;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 4rem 0 4rem;
+}
+
+._titleContainer{
+  color: $wildSand;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+}
+
+._buttonContainer{
+  margin-top: 1rem;
+  width: 180px;
+}
+
+._endContainer{
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $wildSand;
+}
+._leftContainer{
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+._rigthContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+._leftDownContainer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._leftTitle{
+  font-family: $helveticaBold;
+  font-size: $helveticaBold28;
+  color: $white;
+}
+
+._leftDownContent{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 15vh;
+  background-color:$charade;
+  justify-content: center;
+}
+
+._leftDownTextContainer{
+  width: 60%;
+  margin: 0 auto;
+}
+
+._leftSubtitle{
+  font-family: $helvetica;
+  font-size: $helvetica22;
+  color: $white;
+}
+._rightDownContainer{
+  background-color: $grayNurse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 15vh;
+}
+
+
 

@@ -1,10 +1,13 @@
 import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
+import { useSelector } from 'react-redux'
 
 const ThirdBanner = () => {
 
   const router = useRouter()
+  const { page: { homePage: { home } } } = useSelector((state: any) => state)
+  const thirdBanner = home?.secondBanner?.thirdBanner
 
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
@@ -17,16 +20,15 @@ const ThirdBanner = () => {
           <div className={styles._container}>
 
             <div className={styles._titleContainer}>
-              <p className={styles._title}>Consigue todo lo necesario para pintar tus espacios.</p>
+              <p className={styles._title}>{thirdBanner?.title}</p>
             </div>
             <div className={styles._subtitleContainer}>
-              <p className={styles._subtitle}>Reviste, recubre y remodela con las mejores
-                herramientas y los precios más bajos.</p>
+              <p className={styles._subtitle}>{thirdBanner?.subtitle}</p>
             </div>
 
             <div className={styles._buttonContainer}>
               <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
-                bold={false} text={'Ir a shop'}
+                bold={false} text={thirdBanner?.button?.text}
                 method={() => navigation('/shop')} large={true} />
             </div>
           </div>
@@ -35,7 +37,7 @@ const ThirdBanner = () => {
       </div>
       <style jsx>{`
         ._sliderBackground{
-           background-image: url(./images/slider3.png);
+          background-image: url(${thirdBanner?.background?.mediaItemUrl});
            background-repeat: no-repeat;
            background-size: 100% 100%;
            width:100%;

@@ -1,18 +1,21 @@
 
 import Head from 'next/head'
-import { Hero, PromoSlide} from './elements'
+import { Hero, PromoSlide, ThirdBanner} from './elements'
 
 
 const Home = ({ content }) => {
-  console.log(content);
+
 
   return (
     <div>
-      <Head>
-        <title>CryptoBuyer</title>
+       <Head>
+        <title>Pintalo</title>
       </Head>
-      <Hero/>
-      <PromoSlide/>
+      {content ? (<>
+      <Hero data={content?.mainBanner}/>
+      <PromoSlide />
+      <ThirdBanner data={content?.thirdBanner}/>
+      </>) : null}
     </div>
   )
 }

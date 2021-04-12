@@ -4,7 +4,7 @@ import { SecondBanner, FirstBanner, ThirdBanner } from './elements'
 import styles from './styles.module.scss'
 
 const items = [
-  { className: styles._show, id: '1', component: <FirstBanner /> },
+  { className: styles._show, id: '1', component: <FirstBanner  /> },
   { className: styles._hidden, id: '2', component: <SecondBanner /> },
   { className: styles._hidden, id: '3', component: <ThirdBanner /> }
 ]
