@@ -7,7 +7,7 @@ const Register = ({ content }) => {
       <Head>
         <title>Registro</title>
       </Head>
-      <RegisterView />
+      <RegisterView data={content}/>
     </div>
   )
 }
