@@ -1,9 +1,11 @@
-function Inspo() {
+import React from 'react'
+import { useSelector } from 'react-redux'
+import { Inspo } from '@components'
+
+const InspoPage = () => {
   return (
-    <div>
-      Inspo
-    </div>
+    <Inspo content={'home'} />
   )
 }
 
-export default Inspo
+export default InspoPage
