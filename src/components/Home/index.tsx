@@ -5,7 +5,6 @@ import { Hero, PromoSlide, ThirdBanner} from './elements'
 
 const Home = ({ content }) => {
 
-
   return (
     <div>
        <Head>

@@ -6,16 +6,22 @@ import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
 import * as Yup from 'yup'
 
-const LoginView = () => {
+const LoginView = ({ data }) => {
+
+  const { showFooter } = useSelector((state: any) => state.intermitence)
 
   const dispatch = useDispatch()
   const router = useRouter()
 
   useEffect(() => {
-    dispatch(setFooterShow({showFooter: false}))
-    return () => { dispatch(setFooterShow({showFooter: true})) }
+    if(showFooter) dispatch(setFooterShow({ showFooter: false }))
+  }, [showFooter])
+
+  useEffect(() => {
+    return () => { dispatch(setFooterShow({ showFooter: true })) }
   }, [])
 
   const formik = useFormik({
@@ -40,11 +46,14 @@ const LoginView = () => {
     }
   })
 
-  const navigation = () => router.push('/register')
+  const navigation = () => {
+    // dispatch(setFooterShow({ showFooter: false }))
+    router.push('/register')
+  }
 
   return (
     <section className={styles._main}>
-      <HalfBanner url='images/banner/banner-withoutborder.png' />
+      <HalfBanner url={data?.image?.mediaItemUrl} />
 
       <div className={styles._rightSection}>
         <div className={styles._formParent}>

@@ -7,7 +7,11 @@ const Register = ({ content }) => {
       <Head>
         <title>Registro</title>
       </Head>
-      <RegisterView data={content}/>
+      {
+        content && (
+          <RegisterView data={content}/>
+        )
+      }
     </div>
   )
 }
