@@ -4,7 +4,8 @@ import { GET_PAGES } from './action-types'
 const initialState = {
   homePage: {},
   loginPage: {},
-  registerPage: {}
+  registerPage: {},
+  aboutPage: {}
 }
 
 const pageReducer = (state = initialState, { type, payload }: AnyAction) => {
