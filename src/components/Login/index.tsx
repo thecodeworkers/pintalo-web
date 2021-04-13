@@ -7,7 +7,11 @@ const Login = ({ content }) => {
       <Head>
         <title>Inicio de sesión</title>
       </Head>
-      <LoginView />
+      {
+        content && (
+          <LoginView data={content}/>
+        )
+      }
     </div>
   )
 }
