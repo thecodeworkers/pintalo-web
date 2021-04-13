@@ -1,10 +1,9 @@
 
 import Head from 'next/head'
-import { Hero, PromoSlide, ThirdBanner} from './elements'
+import { Hero, PromoSlide, ThirdBanner, FourthBanner} from './elements'
 
 
 const Home = ({ content }) => {
-
 
   return (
     <div>
@@ -15,6 +14,8 @@ const Home = ({ content }) => {
       <Hero data={content?.mainBanner}/>
       <PromoSlide />
       <ThirdBanner data={content?.thirdBanner}/>
+      <FourthBanner data={content?.fourthBanner}
+      />
       </>) : null}
     </div>
   )
