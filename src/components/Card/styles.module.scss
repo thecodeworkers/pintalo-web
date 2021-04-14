@@ -1,0 +1,88 @@
+@import '../../../public/styles/index.scss';
+
+
+._header {
+  background-color: $charade;
+  padding: 0.5rem;
+  border-radius: 3px;
+}
+
+._dotsParent {
+  display: flex;
+}
+
+._dot {
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: $white;
+  margin-left: 0.4rem;
+
+  &:nth-child(1) {
+    margin-left: 0;
+  }
+}
+
+._info {
+  background-color: $grayNurse;
+  border-radius: 0 0 5px 5px;
+}
+
+._infoParent {
+  padding: 1.5rem;
+}
+
+._title {
+  font-family: $helvetica;
+  font-size: $helvetica26;
+}
+
+._personalInfo {
+  margin-top: 1.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+
+  & p {
+    align-items: flex-end;
+    font-family: $helvetica;
+    font-size: $helvetica15;
+    color: $doveGray;
+  }
+}
+
+._list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  font-family: $helvetica;
+
+  & li {
+    font-size: $helvetica15;
+    margin-bottom: 0.4rem;
+    color: $doveGray;
+  }
+
+  & li:last-child {
+    margin-bottom: 0;
+  }
+}
+
+._imgParent {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $wildSand;
+  padding: 3rem 0;
+  border-radius: 0 0 5px 5px;
+}
+
+._parragraph {
+  font-family: $helvetica;
+  font-size: $helvetica15;
+  margin: 0.5rem 0;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
