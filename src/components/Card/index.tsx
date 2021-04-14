@@ -1,6 +1,7 @@
 import styles from './styles.module.scss';
+import { createMarkup } from '@utils'
 
-const Card = ({ list = true }) => (
+const Card = ({ list = true, title = '', description = '', image = 'images/banner/portrait.png'}) => (
   <div className={styles._card}>
     <div className={styles._info}>
 
@@ -28,16 +29,15 @@ const Card = ({ list = true }) => (
             </>)
             : (
               <>
-                <p className={styles._title}>Pineco Prestige</p>
-                <p className={styles._parragraph}> Descripción</p>
-                <p className={styles._parragraph}> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse aut labore nihil eligendi voluptate. Laborum, vero consequatur. Cupiditate architecto iste natus obcaecati cum rerum illum, sapiente saepe exercitationem suscipit molestiae?</p>
+                <p className={styles._title}>{title}</p>
+                <div className={styles._parragraph} dangerouslySetInnerHTML={createMarkup(description)}></div>
               </>
             )
         }
 
       </div>
       <div className={styles._imgParent}>
-        <img src='images/banner/portrait.png' alt='portrait' width='50%'></img>
+        <img src={image} alt='portrait' width='50%'></img>
       </div>
     </div>
   </div>

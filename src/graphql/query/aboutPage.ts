@@ -16,7 +16,7 @@ const about = `
         rightTitle
         rightDescription
       }
-      content {
+      brands {
         title
         description
         logo {

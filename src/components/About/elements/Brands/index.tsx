@@ -7,10 +7,10 @@ const Brands = ({ data }) => {
     <>
       <section className={styles._main}>
         {
-          data.map((item, index) => {
+          data?.map((item, index) => {
             return (
               <div key={index} className={styles._cards}>
-                <Card />
+                <Card list={false} title={item.title} description={item.description} image={item.logo.mediaItemUrl} />
               </div>
             )
           })

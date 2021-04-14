@@ -7,7 +7,6 @@ import { About } from '@components'
 const AboutUs = () => {
 
   const { page: { aboutPage: { about } } } = useSelector((state: any) => state)
-  console.log(about)
 
   return (
     <About content={about} />
