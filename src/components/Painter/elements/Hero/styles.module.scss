@@ -1,0 +1,17 @@
+@import '../../../../../public/styles/index.scss';
+
+._main {
+  margin-top: 3rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  & h1 {
+    color: $white;
+    font-size: $teached88;
+    font-family: $techeadFreeLight;
+    font-weight: 400;
+  }
+}
+
+
