@@ -1,26 +1,27 @@
 import { useEffect} from 'react'
 import { useRouter } from 'next/router'
-import { GeneralButton } from '@components'
-import styles from './styles.module.scss'
 import { useDispatch,  useSelector } from 'react-redux'
 import { setColor } from '../../../../store/actions'
-
+import { FirstStep, SecondStep } from './elements'
 
 const Hero = ({ data }) => {
 
   const router = useRouter()
   const dispatch = useDispatch()
   const slide = useSelector((state: any) => state)
+  const currentStep= slide.setColor.step
+
+
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
   }
 
   const setState =() =>{
-   dispatch(setColor({ category: 'aceite', step:2}))
+   dispatch(setColor({ category: 'aceite', step:currentStep+1}))
   }
 
   useEffect(() => {
-    console.log(slide);
+    console.log(currentStep);
 
   }, [slide])
 
@@ -28,17 +29,12 @@ const Hero = ({ data }) => {
     switch (param) {
       case 1:
         return (
-          <div style={{height:'30vh'}}>
-        <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}
-          bold={false} text={data?.secondButton?.button?.text}
-          method={() => setState()} large={true} />
-          </div>
-
+          <FirstStep data={data}/>
         )
         break
       case 2:
         return (
-          <p>hola2</p>
+         <SecondStep data={data}/>
         )
         break
       case 3:
@@ -57,7 +53,7 @@ const Hero = ({ data }) => {
   return (
     <>
       <div className={'_main'}>
-        {slider(1)}
+        {slider(currentStep)}
       </div>
       <div className={'_rollerBackground'}></div>
       <style jsx>{`
@@ -99,5 +95,7 @@ const HeroImage  => () {
 </div>
 )
 }*/
+
+
 
 export default Hero
