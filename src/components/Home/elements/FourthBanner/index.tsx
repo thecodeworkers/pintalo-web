@@ -3,13 +3,6 @@ import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 
 const FourthBanner = ({ data }) => {
-  console.log(data);
-
-  const router = useRouter()
-
-  const navigation = (route) => {
-    if (router.pathname != route) router.push(route)
-  }
 
   return (
     <>
