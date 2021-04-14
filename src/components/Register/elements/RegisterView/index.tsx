@@ -5,20 +5,28 @@ import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { formikConfig } from './formik'
 import { useRouter } from 'next/router'
+import { useSelector } from 'react-redux'
+
 
 const RegisterView = ({ data }) => {
 
+  const { showFooter } = useSelector((state: any) => state.intermitence)
   const formik = formikConfig()
   const dispatch = useDispatch()
   const router = useRouter()
   const { errors, touched } = formik
 
   useEffect(() => {
-    dispatch(setFooterShow({ showFooter: false }))
+    if(showFooter) dispatch(setFooterShow({ showFooter: false }))
+  }, [showFooter])
+
+  useEffect(() => {
     return () => { dispatch(setFooterShow({ showFooter: true })) }
   }, [])
 
-  const navigation = () => router.push('/login')
+  const navigation = () => {
+    router.push('/login')
+  }
 
   return (
     <section className={styles._main}>

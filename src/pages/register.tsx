@@ -4,7 +4,7 @@ import wrapper from '@store'
 import { getPages } from '@store/actions'
 import { useSelector } from 'react-redux'
 
-const HomePage = () => {
+const RegisterPage = () => {
 
   const { page: { registerPage: { back } } } = useSelector((state: any) => state)
 
@@ -17,4 +17,4 @@ export const getServerSideProps = wrapper.getServerSideProps(
   ({ store }) => store.dispatch(getPages('registerPage'))
 )
 
-export default HomePage
+export default RegisterPage
