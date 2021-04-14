@@ -7,9 +7,11 @@ const About = ({ content }) => {
       <Head>
         <title>Sobre Nosotros</title>
       </Head>
-      <Hero data={content.mainBanner} />
-      <Information data={content.information} />
-      <Brands data={content.brands} />
+      { content ? (<>
+        <Hero data={content.mainBanner} />
+        <Information data={content.information} />
+        <Brands data={content.brands} />
+      </>) : null}
     </div>
   )
 }

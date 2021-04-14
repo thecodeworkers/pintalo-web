@@ -7,12 +7,14 @@
         background-color: $grayNurse;
         color: $charade;
         line-height: 1.5rem;
+        padding: 5% 7.5%;
     }
 
     ._rightContainer {
         background-color: $charade;
         color: $wildSand;
         line-height: 1.5rem;
+        padding: 5% 7.5%;
     }
 }
 
@@ -26,8 +28,4 @@ h2._title {
 div._description {
     $font-family: $helvetica;
     font-size: $helvetica18;
-}
-
-._textContainer {
-    padding: 4rem 6rem;
 }
