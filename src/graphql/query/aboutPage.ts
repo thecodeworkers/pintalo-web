@@ -10,13 +10,11 @@ const about = `
           slug
         }
       }
-      missionVision {
-        title
-        description
-      }
-      whoWeAre {
-        title
-        description
+      information {
+        leftTitle
+        leftDescription
+        rightTitle
+        rightDescription
       }
       content {
         title

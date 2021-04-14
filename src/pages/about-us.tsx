@@ -2,6 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import wrapper from '@store'
 import { getPages } from '@store/actions'
+import { About } from '@components'
 
 const AboutUs = () => {
 
@@ -9,9 +10,7 @@ const AboutUs = () => {
   console.log(about)
 
   return (
-    <div>
-      AboutUs
-    </div>
+    <About content={about} />
   )
 }
 

@@ -1,0 +1,27 @@
+@import '../../../../../public/styles/index.scss';
+
+._infoContainer {
+    display: flex;
+
+    ._leftContainer {
+        background-color: $grayNurse;
+        padding: 5%;
+        color: $charade;
+        line-height: 25px;
+
+        h2 {
+            margin-bottom: 5%;
+        }
+    }
+
+    ._rightContainer {
+        background-color: $charade;
+        padding: 5%;
+        color: $wildSand;
+        line-height: 25px;
+
+        h2 {
+            margin-bottom: 5%;
+        }
+    }
+}
