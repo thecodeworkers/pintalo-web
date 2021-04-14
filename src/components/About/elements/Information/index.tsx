@@ -6,12 +6,16 @@ const Information = ({ data }) => {
     <>
       <section className={styles._infoContainer}>
           <div className={styles._leftContainer}>
-              <h2 className={styles._title}>{data.leftTitle}</h2>
-              <div className={styles._description} dangerouslySetInnerHTML={createMarkup(data?.leftDescription)}></div>
+              <div className={styles._textContainer}>
+                <h2 className={styles._title}>{data.leftTitle}</h2>
+                <div className={styles._description} dangerouslySetInnerHTML={createMarkup(data?.leftDescription)}></div>
+              </div>
           </div>
           <div className={styles._rightContainer}>
-              <h2 className={styles._title}>{data.rightTitle}</h2>
-              <div className={styles._description} dangerouslySetInnerHTML={createMarkup(data?.rightDescription)}></div>
+              <div className={styles._textContainer}>
+                <h2 className={styles._title}>{data.rightTitle}</h2>
+                <div className={styles._description} dangerouslySetInnerHTML={createMarkup(data?.rightDescription)}></div>
+              </div>
           </div>
       </section>
     </>
