@@ -1,8 +1,7 @@
 import Head from 'next/head'
-import { Hero, Information } from './elements'
+import { Hero, Information, Brands } from './elements'
 
 const About = ({ content }) => {
-  console.log(content)
   return (
     <div>
       <Head>
@@ -10,7 +9,7 @@ const About = ({ content }) => {
       </Head>
       <Hero data={content.mainBanner} />
       <Information data={content.information} />
-
+      <Brands data={content.content} />
     </div>
   )
 }

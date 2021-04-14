@@ -2,7 +2,6 @@ import styles from './styles.module.scss'
 import { createMarkup } from '@utils'
 
 const Information = ({ data }) => {
-    console.log(data)
     return (
     <>
       <section className={styles._infoContainer}>

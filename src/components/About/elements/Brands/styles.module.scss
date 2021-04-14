@@ -1,0 +1,16 @@
+@import '../../../../../public/styles/index.scss';
+
+._main {
+    display: flex;
+    flex-wrap: wrap;
+    width: 85%;
+    margin: auto;
+    justify-content: space-between;
+    padding-top: 5%;
+    padding-bottom: 3%;
+
+    ._cards {
+        width: 30%;
+        margin-bottom: 3%;
+    }
+}
