@@ -8,8 +8,12 @@ const List = () => {
         <h2>Conoce a los profesionales de confianza que harán de tus espacios una obra de arte.</h2>
         <div className={styles._grid}>
           {
-            Array.from(Array(9).keys()).map(item => {
-              return <Card />
+            Array.from(Array(9).keys()).map((item, index) => {
+              return (
+                <div key={index}>
+                  <Card />
+                </div>
+              )
             })
           }
         </div>
