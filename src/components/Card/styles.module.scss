@@ -51,14 +51,16 @@
   }
 }
 
-._list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  font-family: $helvetica;
+._listParent {
+  & ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-family: $helvetica;
+  }
 
   & li {
-    font-size: $helvetica15;
+    font-size: $helvetica16;
     margin-bottom: 0.4rem;
     color: $doveGray;
   }
@@ -81,6 +83,7 @@
   font-family: $helvetica;
   font-size: $helvetica15;
   margin: 0.5rem 0;
+  line-height: 1.2rem;
 
   &:last-child {
     margin-bottom: 0;

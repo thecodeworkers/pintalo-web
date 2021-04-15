@@ -5,15 +5,16 @@ import wrapper from '@store'
 import { getPages } from '@store/actions'
 
 const PaintersPage = () => {
-  // const { page: { loginPage: { back } } } = useSelector((state: any) => state)
+
+  const { page: { painterPage: { painters } } } = useSelector((state: any) => state)
 
   return (
-    <Painter content={'content'} />
+    <Painter content={painters} />
   )
 }
 
-// export const getServerSideProps = wrapper.getServerSideProps(
-//   ({ store }) => store.dispatch(getPages('paintersPage'))
-// )
+export const getServerSideProps = wrapper.getServerSideProps(
+  ({ store }) => store.dispatch(getPages('painterPage'))
+)
 
 export default PaintersPage

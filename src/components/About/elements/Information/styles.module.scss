@@ -1,0 +1,31 @@
+@import '../../../../../public/styles/index.scss';
+
+._infoContainer {
+    display: flex;
+
+    ._leftContainer {
+        background-color: $grayNurse;
+        color: $charade;
+        line-height: 1.5rem;
+        padding: 5% 7.5%;
+    }
+
+    ._rightContainer {
+        background-color: $charade;
+        color: $wildSand;
+        line-height: 1.5rem;
+        padding: 5% 7.5%;
+    }
+}
+
+h2._title {
+    $font-family: $helvetica;
+    font-size: $helvetica45;
+    margin-bottom: 5%;
+    font-weight: 200;
+}
+
+div._description {
+    $font-family: $helvetica;
+    font-size: $helvetica18;
+}

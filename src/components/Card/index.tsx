@@ -1,6 +1,7 @@
 import styles from './styles.module.scss';
+import { createMarkup } from '@utils'
 
-const Card = ({ list = true }) => (
+const Card = ({ list = true, title = '', description = '', image = 'images/banner/portrait.png', painter = null }) => (
   <div className={styles._card}>
     <div className={styles._info}>
 
@@ -16,28 +17,24 @@ const Card = ({ list = true }) => (
         {
           list ?
             (<>
-              <p className={styles._title}>José Farias</p>
+              <p className={styles._title}>{ painter?.name }</p>
               <div className={styles._personalInfo}>
-                <ul className={styles._list}>
-                  <li> Pintor </li>
-                  <li> C.I 26.690.801 </li>
-                  <li> Desde 2006 </li>
-                </ul>
+                <div dangerouslySetInnerHTML={createMarkup(painter?.personalInformation)} className={styles._listParent}>
+                </div>
                 <p> Contáctalo </p>
               </div>
             </>)
             : (
               <>
-                <p className={styles._title}>Pineco Prestige</p>
-                <p className={styles._parragraph}> Descripción</p>
-                <p className={styles._parragraph}> Lorem ipsum, dolor sit amet consectetur adipisicing elit. Esse aut labore nihil eligendi voluptate. Laborum, vero consequatur. Cupiditate architecto iste natus obcaecati cum rerum illum, sapiente saepe exercitationem suscipit molestiae?</p>
+                <p className={styles._title}>{title}</p>
+                <div className={styles._parragraph} dangerouslySetInnerHTML={createMarkup(description)}></div>
               </>
             )
         }
 
       </div>
       <div className={styles._imgParent}>
-        <img src='images/banner/portrait.png' alt='portrait' width='50%'></img>
+        <img src={image} alt='portrait' width='50%'></img>
       </div>
     </div>
   </div>

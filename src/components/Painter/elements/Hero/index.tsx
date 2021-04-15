@@ -1,15 +1,15 @@
 import styles from './styles.module.scss'
 
-const FirstBanner = () => {
+const FirstBanner = ({ data }) => {
   return (
     <>
       <div className={`${styles._main} _image`}>
-        <h1>Pintores</h1>
+        <h1>{data?.title}</h1>
       </div>
 
       <style jsx>{`
       ._image {
-        background-image: url('images/banner/painters-banner.png');
+        background-image: url(${data?.background?.mediaItemUrl});
         background-size: 100% 100%;
         background-repeat: no-repeat;
         width:100%;

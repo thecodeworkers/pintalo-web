@@ -2,13 +2,17 @@ import { GraphQlClient, normalized } from '@utils'
 import homePageQuery from './homePage'
 import registerPageQuery from './registerPage'
 import loginPage from './loginPage'
+import aboutPage from './aboutPage'
+import painterPage from './painterPage'
 
 const resource = async (resource: any) => {
 
   const resources = {
     'homePage': homePageQuery,
     'registerPage': registerPageQuery,
-    'loginPage': loginPage
+    'loginPage': loginPage,
+    'aboutPage': aboutPage,
+    'painterPage': painterPage
   }
 
   const query = `
