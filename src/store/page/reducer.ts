@@ -5,7 +5,8 @@ const initialState = {
   homePage: {},
   loginPage: {},
   registerPage: {},
-  aboutPage: {}
+  aboutPage: {},
+  painterPage: {}
 }
 
 const pageReducer = (state = initialState, { type, payload }: AnyAction) => {
