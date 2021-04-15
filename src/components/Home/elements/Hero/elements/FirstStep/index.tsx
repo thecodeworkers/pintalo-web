@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 import { useDispatch,  useSelector } from 'react-redux'
-import { setColor } from '../../../../../../store/actions'
+import { setColor } from '@store/actions'
 
 const FirstStep = ({ data }) => {
 

@@ -2,14 +2,25 @@
 import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
+import { useDispatch,  useSelector } from 'react-redux'
+import { setColor } from '../../../../../../store/actions'
+import { useState } from 'react'
 
 const SecondStep = ({ data }) => {
 
   const router = useRouter()
 
-  const navigation = (route) => {
-    if (router.pathname != route) router.push(route)
-  }
+  const [active, setActive] = useState(false)
+  const dispatch = useDispatch()
+  const slide = useSelector((state: any) => state)
+  const currentStep= slide.setColor.step
+
+
+  const setState =(category) =>{
+    setActive(true)
+    dispatch(setColor({ category: category, step:currentStep+1}))
+   }
+
 
   const category = [
     { name: 'Arquitectónico' },
@@ -32,17 +43,16 @@ const SecondStep = ({ data }) => {
             {
               category.map((res, index) => {
                 return (
-                  <div className={styles._content}>
-                  <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
-                    bold={false} text={res.name}
-                    method={() => navigation('/colors')} large={true} />
+                  <div className={styles._content} key={index}>
+                  <GeneralButton backgroundColor={active ? '#FDCA40' :'#262833'} textColor={'#fff'}
+                    bold={true} text={res.name}
+                    method={() => setState(res.name)} large={true} />
                   </div>
                 )
               })
             }
-
-
         </div>
+
       </div>
     </div>
   )

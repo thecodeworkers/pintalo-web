@@ -1,31 +1,35 @@
-
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
-import { useDispatch,  useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { setColor } from '../../../../../../store/actions'
+import { useRouter } from 'next/router'
 
-const ThirdStep = ({ data }) => {
+const FourthStep = ({ data }) => {
 
   const dispatch = useDispatch()
-  const slide = useSelector((state: any) => state)
-  const currentStep= slide.setColor.step
+
+  const router = useRouter()
+
+  const navigation = (route) => {
+    if (router.pathname != route) router.push(route)
+  }
+
+  const setState =(type) =>{
+    dispatch(setColor({ type: type, }))
+    navigation('/shop')}
 
 
-  const setState =(base) =>{
-    dispatch(setColor({ base: base, step:currentStep+1}))
-   }
-
-
-  const base = [
-    { name: 'Caucho' },
-    { name: 'Esmalte' },
-    { name: 'Fondo' },
-    { name: 'Barniz' },
-    { name: 'Sistema acrilico' },
-    { name: 'Sistema nitro' },
-    { name: 'Sistema 2k' },
-    { name: 'Autopartes' },
-    { name: 'Autopartes' },
+  const type = [
+    { name: 'Mate' },
+    { name: 'Satinado' },
+    { name: 'Brilliante' },
+    { name: 'Masillas' },
+    { name: 'Imperbealizantes' },
+    { name: 'Aditivo' },
+    { name: 'Texturizado' },
+    { name: 'Grafeado' },
+    { name: 'Tratamiento superficie' },
+    { name: 'Otro' },
   ]
 
 
@@ -36,7 +40,7 @@ const ThirdStep = ({ data }) => {
         <div className={styles._buttonContainer}>
 
             {
-              base.map((res, index) => {
+              type.map((res, index) => {
                 return (
                   <div className={styles._content} key={index}>
                   <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
@@ -53,4 +57,4 @@ const ThirdStep = ({ data }) => {
   )
 }
 
-export default ThirdStep
+export default FourthStep
