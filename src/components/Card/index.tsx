@@ -1,7 +1,7 @@
 import styles from './styles.module.scss';
 import { createMarkup } from '@utils'
 
-const Card = ({ list = true, title = '', description = '', image = 'images/banner/portrait.png'}) => (
+const Card = ({ list = true, title = '', description = '', image = 'images/banner/portrait.png', painter = null }) => (
   <div className={styles._card}>
     <div className={styles._info}>
 
@@ -17,13 +17,10 @@ const Card = ({ list = true, title = '', description = '', image = 'images/banne
         {
           list ?
             (<>
-              <p className={styles._title}>José Farias</p>
+              <p className={styles._title}>{ painter?.name }</p>
               <div className={styles._personalInfo}>
-                <ul className={styles._list}>
-                  <li> Pintor </li>
-                  <li> C.I 26.690.801 </li>
-                  <li> Desde 2006 </li>
-                </ul>
+                <div dangerouslySetInnerHTML={createMarkup(painter?.personalInformation)} className={styles._listParent}>
+                </div>
                 <p> Contáctalo </p>
               </div>
             </>)

@@ -3,6 +3,7 @@ import homePageQuery from './homePage'
 import registerPageQuery from './registerPage'
 import loginPage from './loginPage'
 import aboutPage from './aboutPage'
+import painterPage from './painterPage'
 
 const resource = async (resource: any) => {
 
@@ -10,7 +11,8 @@ const resource = async (resource: any) => {
     'homePage': homePageQuery,
     'registerPage': registerPageQuery,
     'loginPage': loginPage,
-    'aboutPage': aboutPage
+    'aboutPage': aboutPage,
+    'painterPage': painterPage
   }
 
   const query = `
