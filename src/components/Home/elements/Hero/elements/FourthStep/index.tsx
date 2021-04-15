@@ -1,7 +1,7 @@
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 import { useDispatch } from 'react-redux'
-import { setColor } from '../../../../../../store/actions'
+import { setColor } from '@store/actions'
 import { useRouter } from 'next/router'
 
 const FourthStep = ({ data }) => {
@@ -14,9 +14,10 @@ const FourthStep = ({ data }) => {
     if (router.pathname != route) router.push(route)
   }
 
-  const setState =(type) =>{
+  const setState = (type) => {
     dispatch(setColor({ type: type, }))
-    navigation('/shop')}
+    navigation('/shop')
+  }
 
 
   const type = [
@@ -39,17 +40,17 @@ const FourthStep = ({ data }) => {
         <p className={styles._title}>Por base</p>
         <div className={styles._buttonContainer}>
 
-            {
-              type.map((res, index) => {
-                return (
-                  <div className={styles._content} key={index}>
+          {
+            type.map((res, index) => {
+              return (
+                <div className={styles._content} key={index}>
                   <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
                     bold={false} text={res.name}
                     method={() => setState(res.name)} large={true} />
-                  </div>
-                )
-              })
-            }
+                </div>
+              )
+            })
+          }
         </div>
 
       </div>

@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
-import { useDispatch,  useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setColor } from '@store/actions'
 
 const FirstStep = ({ data }) => {
@@ -9,11 +9,11 @@ const FirstStep = ({ data }) => {
   const router = useRouter()
   const dispatch = useDispatch()
   const slide = useSelector((state: any) => state)
-  const currentStep= slide.setColor.step
+  const currentStep = slide.setColor.step
 
-  const setState =() =>{
-    dispatch(setColor({ category: 'aceite', step:currentStep+1}))
-   }
+  const setState = () => {
+    dispatch(setColor({ category: 'aceite', step: currentStep + 1 }))
+  }
 
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)

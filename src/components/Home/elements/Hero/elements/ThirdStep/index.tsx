@@ -1,19 +1,19 @@
 
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
-import { useDispatch,  useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setColor } from '../../../../../../store/actions'
 
 const ThirdStep = ({ data }) => {
 
   const dispatch = useDispatch()
   const slide = useSelector((state: any) => state)
-  const currentStep= slide.setColor.step
+  const currentStep = slide.setColor.step
 
 
-  const setState =(base) =>{
-    dispatch(setColor({ base: base, step:currentStep+1}))
-   }
+  const setState = (base) => {
+    dispatch(setColor({ base: base, step: currentStep + 1 }))
+  }
 
 
   const base = [
@@ -35,17 +35,17 @@ const ThirdStep = ({ data }) => {
         <p className={styles._title}>Por base</p>
         <div className={styles._buttonContainer}>
 
-            {
-              base.map((res, index) => {
-                return (
-                  <div className={styles._content} key={index}>
+          {
+            base.map((res, index) => {
+              return (
+                <div className={styles._content} key={index}>
                   <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
                     bold={false} text={res.name}
                     method={() => setState(res.name)} large={true} />
-                  </div>
-                )
-              })
-            }
+                </div>
+              )
+            })
+          }
         </div>
 
       </div>
