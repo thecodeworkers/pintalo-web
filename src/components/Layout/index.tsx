@@ -1,4 +1,3 @@
-import { useEffect } from 'react'
 import { Navbar, Footer } from '@components'
 import { useSelector } from 'react-redux';
 

@@ -10,7 +10,7 @@ const GraphQlClient = async (query, variables = {}) => {
     return response.data.data
 
   } catch(err) {
-    return {}
+    return null
   }
 }
 

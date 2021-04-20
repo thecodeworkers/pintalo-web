@@ -9,7 +9,7 @@ const RegisterPage = () => {
   const { page: { registerPage: { back } } } = useSelector((state: any) => state)
 
   return (
-  <Register content={back} />
+    <Register content={back} />
   )
 }
 
