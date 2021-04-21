@@ -1,4 +1,5 @@
 import { MENU_SHOW, FOOTER_SHOW } from './action-types'
+import { actionObject } from '@utils'
 
 export const setMenuShow = (show: any) => {
   return {
@@ -7,9 +8,4 @@ export const setMenuShow = (show: any) => {
   }
 }
 
-export const setFooterShow = (showFooter: any) => {
-  return {
-    type: FOOTER_SHOW,
-    payload: showFooter
-  }
-}
+export const setFooterShow = (showFooter: any) => actionObject(FOOTER_SHOW, { showFooter })
