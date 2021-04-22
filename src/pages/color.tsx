@@ -1,17 +1,10 @@
 import { setFooterShow } from '@store/actions'
-import { ColorBackground } from '@components'
+import { Color } from '@components'
 import wrapper from '@store'
 
-function Color() {
+function ColorPage() {
   return (
-    <div style={{ height: '100vh', display: 'flex' }}>
-      <div style={{ width: '50%' }}>
-        <ColorBackground color="#3772ff" />
-      </div>
-      <div style={{ width: '50%' }}>
-
-      </div>
-    </div>
+    <Color />
   )
 }
 
@@ -21,4 +14,4 @@ export const getServerSideProps = wrapper.getServerSideProps(
   }
 )
 
-export default Color
+export default ColorPage

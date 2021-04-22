@@ -5,8 +5,8 @@ const ColorBackground: FC<ColorBackgroundProps> = ({ color }) => {
   return (
     <svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
       <rect id="Rectangle_1940" data-name="Rectangle 1940" width="100%" height="100%" transform="translate(0 -0.129)" fill={color}/>
-      <svg x="80%" overflow="visible">
-        <g id="Group_1318" data-name="Group 1318" transform="translate(-1780 -1200)">
+      <svg x="80%" y="100%" overflow="visible">
+        <g id="Group_1318" data-name="Group 1318" transform="translate(-1780 -2200)">
           <g id="Group_241"  data-name="Group 241" transform="translate(1541.554 1589.972)">
             <g id="Group_240" data-name="Group 240">
               <g id="Group_238" data-name="Group 238">

@@ -1,0 +1,27 @@
+._container {
+  height: 100vh;
+  display: flex;
+}
+
+._imageContainer {
+  width: 50%;
+}
+
+._contentContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  padding: 0 6% 0 6%;
+}
+
+._buttonContainer {
+  height: 20%;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+._buttonBox {
+  width: 170px;
+  margin-bottom: 7%;
+}
