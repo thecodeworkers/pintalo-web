@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { setLoader } from '../store/actions'
+// import { setLoader } from '@store/actions'
 import { useDispatch } from 'react-redux'
 
 export const normalizedArray = response => response ? response : []
@@ -21,12 +21,12 @@ export const scrolling = (reference) => {
 
 export const createMarkup = (text) => { return {__html: text}; }
 
-export const navigation = (route, loader = false) => {
-  // const router = useRouter()
-  // const dispatch = useDispatch()
+// export const navigation = (route, loader = false) => {
+//   // const router = useRouter()
+//   // const dispatch = useDispatch()
 
-  if(useRouter().pathname != route) {
-    if(loader) useDispatch()(setLoader(true))
-    useRouter().push(route)
-  }
-}
+//   if(useRouter().pathname != route) {
+//     if(loader) useDispatch()(setLoader(true))
+//     useRouter().push(route)
+//   }
+// }
