@@ -1,10 +1,16 @@
 import { setFooterShow } from '@store/actions'
 import { Color } from '@components'
 import wrapper from '@store'
+import Head from 'next/head'
 
 function ColorPage() {
   return (
-    <Color />
+    <>
+      <Head>
+        <title>Color</title>
+      </Head>
+      <Color />
+    </>
   )
 }
 
