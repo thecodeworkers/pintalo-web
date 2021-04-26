@@ -1,0 +1,31 @@
+@import '@styles/index.scss';
+
+._container{
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+._titleContainer{
+  width: 30%;
+  margin-bottom: 1rem;
+}
+
+._subtitleContainer{
+ width: 30%;
+  margin-bottom: 1rem;
+}
+
+._subtitle{
+  color: $charade;
+  font-family: $helvetica;
+  font-size: $helvetica22;
+}
+
+._title{
+  color: $white;
+  font-family: $helveticaBold;
+  font-size: $helveticaBold82;
+}
+

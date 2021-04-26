@@ -4,31 +4,29 @@ import registerPageQuery from './registerPage'
 import loginPage from './loginPage'
 import aboutPage from './aboutPage'
 import painterPage from './painterPage'
+import shopPage from './shopPage'
+import inspoPage from './inspoPage'
 
-const resource = async (resource: any) => {
+const pages = async (resource: any) => {
 
   const resources = {
     'homePage': homePageQuery,
     'registerPage': registerPageQuery,
     'loginPage': loginPage,
     'aboutPage': aboutPage,
-    'painterPage': painterPage
+    'painterPage': painterPage,
+    'shopPage': shopPage,
+    'inspoPage': inspoPage
   }
 
   const query = `
-    query Resources {
+    query Page {
       ${resources[resource]}
     }
   `
   const result: any = await GraphQlClient(query)
 
-  if (result) {
-    return 'nodes' in result[resource]
-      ? normalized(result[resource].nodes)
-      : normalized(result[resource])
-  }
-
-  return {}
+  return (result) ? 'nodes' in result[resource] ? normalized(result[resource].nodes) : normalized(result[resource]) : {}
 }
 
-export default resource
+export default pages

@@ -4,7 +4,7 @@ import { SecondBanner, FirstBanner, ThirdBanner } from './elements'
 import styles from './styles.module.scss'
 
 const items = [
-  { className: styles._show, id: '1', component: <FirstBanner  /> },
+  { className: styles._show, id: '1', component: <FirstBanner /> },
   { className: styles._hidden, id: '2', component: <SecondBanner /> },
   { className: styles._hidden, id: '3', component: <ThirdBanner /> }
 ]
@@ -26,7 +26,7 @@ const PromoSlide = () => {
     items.forEach((res, mapIndex) => { items[mapIndex].className = styles._hidden })
     items[index].className = stylus
 
-   const stepperIndex = setStepperIndex(currentIndex+1)
+    const stepperIndex = setStepperIndex(currentIndex + 1)
 
     interval = setTimeout(() => {
       if (currentIndex < items.length - 1) return setcurrentIndex(currentIndex + 1)
@@ -49,7 +49,7 @@ const PromoSlide = () => {
       </div>
       <div className={styles._stepperContainer}>
         <div className={styles._stepper}>
-        <Stepper currentStep={stepperIndex} length={items.length} />
+          <Stepper currentStep={stepperIndex} length={items.length} />
         </div>
 
       </div>
