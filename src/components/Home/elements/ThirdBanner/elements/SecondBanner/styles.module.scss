@@ -1,0 +1,120 @@
+@import '@styles/index.scss';
+
+._main{
+  width: 100%;
+  margin:0 auto;
+}
+
+._endContainer{
+  width: 100%;
+  height: 50vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $wildSand;
+}
+._leftContainer{
+  position: relative;
+  height: 100%;
+  width: 50%;
+}
+
+._leftDownContainer{
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 10vh;
+}
+
+._leftTitle{
+  font-family: $helveticaBold;
+  font-size: $helveticaBold28;
+  color: $white;
+}
+
+._leftDownContent{
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  height: 100%;
+  background-color:$charade;
+  justify-content: center;
+}
+
+._leftDownTextContainer{
+  width: 60%;
+  margin: 0 auto;
+}
+
+._leftSubtitle{
+  font-family: $helvetica;
+  font-size: $helvetica22;
+  color: $white;
+}
+._rightDownContainer{
+  background-color: $grayNurse;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+  height: 100%;
+}
+
+._rigthContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 50%;
+}
+
+._modalHeader{
+  width: 100%;
+  height: 2rem;
+  background: $charade;
+  padding: 0.5rem;
+  border-radius: 5px;
+  align-self: flex-start;
+}
+
+._modal{
+  background: $white;
+  border-radius: 10px;
+  width: 60%;
+  height: 20vh;
+  display: flex;
+  flex-direction: column;
+}
+
+._modalTitle{
+  color: $charade;
+  font-family: $techeadFreeLight;
+  font-size: $techead62;
+  margin-bottom: 0.5rem;
+}
+
+._modalSubtitle{
+  color: $brightSun;
+  font-family: $helvetica;
+  font-size: $helvetica22;
+  margin-bottom: 0.5rem;
+}
+._modalBody{
+  width: 85%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+._buttonContainer{
+  width: 160px;
+  margin-top: 1rem;
+}
+

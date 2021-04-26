@@ -41,7 +41,7 @@
 ._buttonContainer{
   display: flex;
   justify-content: space-between;
-  width: 60vw;
+  width: 50vw;
   margin-top: 1rem;
 }
 
@@ -58,16 +58,4 @@
   font-family: $helvetica;
   font-size: $helvetica16;
   margin: 1rem 0 1rem 0;
-}
-
-._stepperContainer{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1.5rem;
-}
-
-._stepper{
-  width: 80px;
 }

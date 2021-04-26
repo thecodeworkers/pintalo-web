@@ -2,12 +2,12 @@ import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
-
 const FirstBanner = () => {
 
   const router = useRouter()
   const { page: { homePage: { home } } } = useSelector((state: any) => state)
   const firstBanner = home?.secondBanner?.firstBanner
+
 
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
