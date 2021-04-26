@@ -5,6 +5,7 @@ import loginPage from './loginPage'
 import aboutPage from './aboutPage'
 import painterPage from './painterPage'
 import shopPage from './shopPage'
+import inspoPage from './inspoPage'
 
 const pages = async (resource: any) => {
 
@@ -14,7 +15,8 @@ const pages = async (resource: any) => {
     'loginPage': loginPage,
     'aboutPage': aboutPage,
     'painterPage': painterPage,
-    'shopPage': shopPage
+    'shopPage': shopPage,
+    'inspoPage': inspoPage
   }
 
   const query = `
