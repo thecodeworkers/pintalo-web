@@ -27,9 +27,9 @@ const SecondBanner = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}
-                bold={false} text={secondBanner?.button?.text}
-                method={() => navigation('/shop')} large={true} />
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => navigation('/shop')} large={true}>
+                {secondBanner?.button?.text}
+              </GeneralButton>
             </div>
           </div>
 

@@ -26,8 +26,9 @@ const ThirdBanner = ({ data }) => {
               </div>
               <div className={styles._rightDownContainer}>
                 <div className={styles._buttonContainer}>
-                  <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
-                  bold={true} text={data?.lowButton?.text} method={() => navigation('/painters')} />
+                  <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={true} method={() => navigation('/painters')}>
+                    {data?.lowButton?.text}
+                  </GeneralButton>
                 </div>
               </div>
 
@@ -41,9 +42,9 @@ const ThirdBanner = ({ data }) => {
                   <p className={styles._modalTitle}>{data?.title}</p>
                   <p className={styles._modalSubtitle}>{data?.subtitle}</p>
                   <div className={styles._buttonContainer}>
-                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}
-                      bold={false} text={data?.button.text}
-                      method={() => navigation('/inspo')} large={false} />
+                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => navigation('/inspo')} large={false}>
+                      {data?.button.text}
+                    </GeneralButton>
                   </div>
                 </div>
               </div>

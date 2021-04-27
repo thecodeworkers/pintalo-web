@@ -5,9 +5,12 @@ const helvetica20 = '1'
 const shortButton = '2.5rem'
 const largeButton = '2.2rem'
 
-const ShorButton: FC<Button> = ({ text, backgroundColor, textColor, method, bold, large, type = 'button' }) => (
+const ShorButton: FC<Button> = ({ children, backgroundColor, textColor, method, bold, large, type = 'button' }) => (
   <>
-    <button className='_button' onClick={method ? method : null} type={type}> {text} </button>
+    <button className='_button' onClick={method ? method : null} type={type}>
+      {children}
+    </button>
+
     <style jsx>{`
     ._button{
       width: 100%;

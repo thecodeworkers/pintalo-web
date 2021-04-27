@@ -44,9 +44,9 @@ const SecondStep = ({ data }) => {
             category.map((res, index) => {
               return (
                 <div className={styles._content} key={index}>
-                  <GeneralButton backgroundColor={active ? '#FDCA40' : '#262833'} textColor={'#fff'}
-                    bold={true} text={res.name}
-                    method={() => setState(res.name)} large={true} />
+                  <GeneralButton backgroundColor={active ? '#FDCA40' : '#262833'} textColor={'#fff'} bold={true} method={() => setState(res.name)} large={true}>
+                    {res.name}
+                  </GeneralButton>
                 </div>
               )
             })

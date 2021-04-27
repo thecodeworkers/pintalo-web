@@ -32,7 +32,9 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} text={'Contácto'} method={() => setShowModal(true)} large={false}/>
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => setShowModal(true)} large={false}>
+                Contácto
+              </GeneralButton>
             </div>
 
             <GeneralModal onClose={() => setShowModal(false)} show={showModal} width={'60%'} title={'Contacto'}>
@@ -51,7 +53,9 @@ const Footer = () => {
                   <textarea placeholder='Descripción' className={styles._textArea} />
 
                   <div className={styles._buttonContainer}>
-                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}  bold={true} text={'Enviar'} method={() => setShowModal(false)}/>
+                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}  bold={true} method={() => setShowModal(false)}>
+                      Enviar
+                    </GeneralButton>
                   </div>
                 </form>
               </div>

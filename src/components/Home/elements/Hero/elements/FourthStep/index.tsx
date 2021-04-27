@@ -44,9 +44,9 @@ const FourthStep = ({ data }) => {
             type.map((res, index) => {
               return (
                 <div className={styles._content} key={index}>
-                  <GeneralButton backgroundColor={'#262833'} textColor={'#fff'}
-                    bold={false} text={res.name}
-                    method={() => setState(res.name)} large={true} />
+                  <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => setState(res.name)} large={true}>
+                    {res.name}
+                  </GeneralButton>
                 </div>
               )
             })

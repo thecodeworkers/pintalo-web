@@ -37,9 +37,9 @@ const FirstBanner = ({ data }) => {
                 </div>
 
                 <div className={styles._buttonContainer}>
-                  <GeneralButton backgroundColor={'#FDCA40'}
-                   textColor={'#262833'} bold={true}
-                    text={data?.button?.text} method={() => navigation('/about-us')} />
+                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => navigation('/about-us')}>
+                    {data?.button?.text}
+                  </GeneralButton>
                 </div>
               </div>
             </div>

@@ -19,15 +19,23 @@ function Color() {
             <div style={{ display: 'flex', marginBottom: 30, backgroundColor: 'green' }}>
               <div style={{ backgroundColor: 'blue', marginRight: 30, width: '60%' }}>
                 <div style={{ marginBottom: 12 }}>
-                  <GeneralButton text="Añadir al carrito" backgroundColor="#262833" textColor="#FFFFFF" />
+                  <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                    Añadir al carrito
+                  </GeneralButton>
                 </div>
-                <GeneralButton text="Añadir al carrito" backgroundColor="#262833" textColor="#FFFFFF" />
+                <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                  Añadir al carrito
+                </GeneralButton>
               </div>
               <div style={{ width: '30%' }}>
                 <div style={{ marginBottom: 12 }}>
-                  <GeneralButton text="......." backgroundColor="#262833" textColor="#FFFFFF" />
+                  <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                    <img src="images/icons/calculator.svg" alt="search" width="16px" />
+                  </GeneralButton>
                 </div>
-                <GeneralButton text="......." backgroundColor="#262833" textColor="#FFFFFF" />
+                <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                  .......
+                </GeneralButton>
               </div>
             </div>
             <div className={styles._descriptionContainer}>
@@ -37,7 +45,9 @@ function Color() {
         </div>
         <div className={styles._buttonContainer}>
           <div className={styles._buttonBox}>
-            <GeneralButton text="Añadir al carrito" backgroundColor="#262833" textColor="#FFFFFF" />
+            <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+              Añadir al carrito
+            </GeneralButton>
           </div>
         </div>
       </div>
