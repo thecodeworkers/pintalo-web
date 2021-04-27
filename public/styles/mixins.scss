@@ -1,3 +1,5 @@
+@use 'sass:map';
+
 @mixin responsive($size) {
   @if $size == xxxl {
     @media (max-width: 1600px)   {
@@ -53,3 +55,17 @@
   }
 }
 
+@mixin font($font-name, $font-size) {
+  font-family: map.get($fonts, $font-name);
+  font-size: map.get($font-sizes, $font-size);
+
+  @media
+  only screen and (-webkit-min-device-pixel-ratio: 2),
+  only screen and (   min--moz-device-pixel-ratio: 2),
+  only screen and (     -o-min-device-pixel-ratio: 2/1),
+  only screen and (        min-device-pixel-ratio: 2),
+  only screen and (                min-resolution: 192dpi),
+  only screen and (                min-resolution: 2dppx) {
+    font-size: map.get($font-sizes-retina, $font-size);
+  }
+}

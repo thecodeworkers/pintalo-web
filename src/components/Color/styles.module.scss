@@ -36,13 +36,11 @@
 }
 
 ._colorTitle {
-  font-family: $techeadFreeLight;
-  font-size: $techead111;
+  @include font('techeadFreeLight', 'techead111');
 }
 
 ._description {
-  font-family: $helvetica;
-  font-size: $helvetica14;
+  @include font('helvetica', 'helvetica14');
   color: $doveGray;
 }
 
