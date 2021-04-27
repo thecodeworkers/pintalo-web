@@ -13,11 +13,11 @@
   width: 50%;
   display: flex;
   flex-direction: column;
-  padding: 0 6% 0 6%;
+  padding: 0 13% 0 6%;
 }
 
 ._buttonContainer {
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: flex-end;
   align-items: flex-end;
@@ -31,23 +31,62 @@
 ._descriptionMobileContainer {
   display: none;
   background-color: #F5F5F5;
-  height: 200px;
-  padding: 0 6% 0 6%;
+  padding: 0 8% 0 8%;
+  height: 25%;
+}
+
+._colorTitle {
+  font-family: $techeadFreeLight;
+  font-size: $techead111;
+}
+
+._description {
+  font-family: $helvetica;
+  font-size: $helvetica14;
+  color: $doveGray;
+}
+
+._optionsContainer {
+  height: 90%;
+  background-color: purple;
+  display: flex;
+  align-items: center;
+}
+
+._optionsContainer_children {
+  height: 45%;
+  background-color: red;
+  width: 100%;
 }
 
 @include responsive(md) {
   ._container {
-    height: 100%;
+    height: 100vh;
     flex-direction: column;
   }
 
   ._imageContainer {
-    height: 300px;
     width: 100%;
+    height: 30%;
   }
 
   ._contentContainer {
+    height: 45%;
     width: 100%;
+    padding: 0 8% 0 8%;
+  }
+
+  ._optionsContainer {
+    height: 80%;
+    align-items: flex-start;
+  }
+
+  ._optionsContainer_children {
+    height: 100%;
+  }
+
+  ._buttonContainer {
+    height: 20%;
   }
 
   ._buttonBox {
@@ -59,6 +98,7 @@
   }
 
   ._descriptionMobileContainer {
-    display: block;
+    display: flex;
+    align-items: center;
   }
 }
