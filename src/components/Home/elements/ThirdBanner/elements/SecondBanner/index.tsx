@@ -42,7 +42,7 @@ const ThirdBanner = ({ data }) => {
                   <p className={styles._modalTitle}>{data?.title}</p>
                   <p className={styles._modalSubtitle}>{data?.subtitle}</p>
                   <div className={styles._buttonContainer}>
-                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => navigation('/inspo')} large={false}>
+                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => navigation('/inspo')}>
                       {data?.button.text}
                     </GeneralButton>
                   </div>

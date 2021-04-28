@@ -32,7 +32,7 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => setShowModal(true)} large={false}>
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => setShowModal(true)}>
                 Contácto
               </GeneralButton>
             </div>

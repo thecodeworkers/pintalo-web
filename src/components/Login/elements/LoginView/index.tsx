@@ -90,7 +90,7 @@ const LoginView = ({ data }) => {
               <p className={styles._forgot}>¿Olvidaste tu contraseña? <a> Recuperar Contraseña </a></p>
 
               <div className={styles._parentBtn} >
-                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large bold type='submit'>
+                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit'>
                   Ingresar
                 </GeneralButton>
               </div>

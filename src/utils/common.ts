@@ -30,3 +30,14 @@ export const createMarkup = (text) => { return {__html: text}; }
 //     useRouter().push(route)
 //   }
 // }
+
+export const isRetina = () => {
+  const query = '(-webkit-min-device-pixel-ratio: 2), n\
+    (min--moz-device-pixel-ratio: 2), n\
+    (-o-min-device-pixel-ratio: 2/1), n\
+    (min-device-pixel-ratio: 2), n\
+    (min-resolution: 192dpi), n\
+    (min-resolution: 2dppx)';
+
+    return !!window?.matchMedia(query).matches
+}

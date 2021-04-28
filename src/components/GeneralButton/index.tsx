@@ -2,10 +2,8 @@ import { FC } from 'react'
 import { Button } from './type'
 
 const helvetica20 = '1'
-const shortButton = '2.5rem'
-const largeButton = '2.2rem'
 
-const ShorButton: FC<Button> = ({ children, backgroundColor, textColor, method, bold, large, type = 'button' }) => (
+const GeneralButton: FC<Button> = ({ children, backgroundColor, textColor, method, bold, large = '2.5rem', type = 'button' }) => (
   <>
     <button className='_button' onClick={method ? method : null} type={type}>
       {children}
@@ -14,7 +12,7 @@ const ShorButton: FC<Button> = ({ children, backgroundColor, textColor, method, 
     <style jsx>{`
     ._button{
       width: 100%;
-      height: ${large ? largeButton : shortButton};
+      height: ${large};
       background-color: ${backgroundColor};
       color: ${textColor};
       border: none;
@@ -28,4 +26,4 @@ const ShorButton: FC<Button> = ({ children, backgroundColor, textColor, method, 
   </>
 )
 
-export default ShorButton
+export default GeneralButton

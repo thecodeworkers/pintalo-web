@@ -101,7 +101,7 @@ const RegisterView = ({ data }) => {
               </div>
 
               <div className={styles._parentBtn} >
-                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large bold type='submit'>
+                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit'>
                   Registrarse
                 </GeneralButton>
               </div>
