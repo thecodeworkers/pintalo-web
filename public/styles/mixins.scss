@@ -42,16 +42,15 @@
   }
 }
 
-@mixin input ($textColor, $borderColor, $placeHolder ){
-  font-size: $helvetica15;
-  font-family: $helvetica;
+@mixin input($textColor, $borderColor, $placeHolder) {
+  @include font('helvetica', 'helvetica15');
   background: transparent;
   color: $textColor;
   border: 1px solid $borderColor;
-  border-radius:30px;
+  border-radius: 30px;
   padding: 0.8rem;
   &::placeholder {
-    color:$placeHolder
+    color: $placeHolder
   }
 }
 

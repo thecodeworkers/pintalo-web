@@ -41,6 +41,7 @@ $fonts: (
 );
 
 $font-sizes: (
+  'helvetica11': 0.25rem,
   'helvetica12': 0.5rem,
   'helvetica14': 0.625rem,
   'helvetica15': 0.688rem,
@@ -60,17 +61,19 @@ $font-sizes: (
   'helveticaBold28': 1.5rem,
   'helveticaBold32': 1.75rem,
   'helveticaBold82': 4rem,
-  'teached36': 2rem,
-  'teached43': 1.813rem,
+  'techead25': 1.3rem,
+  'techead36': 2rem,
+  'techead43': 1.813rem,
   'techead62': 3.5rem,
-  'teached88': 2.625rem,
-  'teached97': 3.75rem,
+  'techead88': 2.625rem,
+  'techead97': 3.75rem,
   'techead111': 4rem
 );
 
 $font-sizes-retina: (
+  'helvetica11': 0.75rem,
   'helvetica12': 0.5rem,
-  'helvetica14': 0.625rem,
+  'helvetica14': 1rem,
   'helvetica15': 0.688rem,
   'helvetica16': 0.75rem,
   'helvetica17': 0.813rem,
@@ -88,10 +91,11 @@ $font-sizes-retina: (
   'helveticaBold28': 1.5rem,
   'helveticaBold32': 1.75rem,
   'helveticaBold82': 4rem,
-  'teached36': 2rem,
-  'teached43': 1.813rem,
+  'techead25': 2rem,
+  'techead36': 2rem,
+  'techead43': 1.813rem,
   'techead62': 3.5rem,
-  'teached88': 2.625rem,
-  'teached97': 3.75rem,
+  'techead88': 2.625rem,
+  'techead97': 3.75rem,
   'techead111': 5.5rem
 );

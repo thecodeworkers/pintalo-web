@@ -37,6 +37,7 @@
 
 ._colorTitle {
   @include font('techeadFreeLight', 'techead111');
+  height: 25%;
 }
 
 ._description {
@@ -46,15 +47,50 @@
 
 ._optionsContainer {
   height: 90%;
-  background-color: purple;
   display: flex;
   align-items: center;
 }
 
 ._optionsContainer_children {
   height: 45%;
-  background-color: red;
   width: 100%;
+}
+
+._inputQuantity {
+  @include input($silverChalice, $doveGray, $silverChalice);
+}
+
+._colorOptions {
+  display: flex;
+  height: 50%;
+  flex-direction: column;
+}
+
+._colorOptions_row {
+  height: 50%;
+  display: flex;
+}
+
+._lengthArea {
+  width: 70%;
+  display: flex;
+  align-items: center;
+}
+
+._calculatorArea {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+
+._quantityArea {
+  width: 70%;
+  display: flex;
+}
+
+._emptyArea {
+  width: 30%;
 }
 
 @include responsive(md) {
@@ -83,6 +119,10 @@
     height: 100%;
   }
 
+  ._colorOptions {
+    height: 75%;
+  }
+
   ._buttonContainer {
     height: 20%;
   }
@@ -98,5 +138,32 @@
   ._descriptionMobileContainer {
     display: flex;
     align-items: center;
+  }
+
+  ._colorTitle {
+    @include font('techeadFreeLight', 'techead25');
+    display: flex;
+    align-items: flex-end;
+  }
+
+  ._description {
+    @include font('helvetica', 'helvetica11');
+  }
+
+  ._lengthArea {
+    width: 50%;
+  }
+
+  ._calculatorArea {
+    width: 50%;
+  }
+
+  ._quantityArea {
+    width: 50%;
+    flex-direction: column;
+  }
+
+  ._emptyArea {
+    width: 50%;
   }
 }

@@ -29,6 +29,23 @@ ul {
   margin:0 auto;
 }
 
+._arrow {
+  border: solid black;
+  border-width: 0 4px 4px 0;
+  display: inline-block;
+  padding: 5px;
+}
+
+._right {
+  transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+}
+
+._left {
+  transform: rotate(135deg);
+  -webkit-transform: rotate(135deg);
+}
+
 @font-face {
   font-family: 'Helvetica';
   src: url('./fonts/HELVETICA.TTF');
@@ -58,4 +75,3 @@ ul {
   font-family: 'Techead-free-light';
   src: url('./fonts/TECHEADFREE-LIGHT.OTF');
 }
-
