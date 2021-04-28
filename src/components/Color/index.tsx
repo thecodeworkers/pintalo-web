@@ -1,8 +1,17 @@
+import { useEffect, useState } from 'react'
+import { isRetina } from '@utils'
+import { CounterButton } from './elements'
 import ColorBackground from '../ColorBackground'
 import GeneralButton from '../GeneralButton'
 import styles from './styles.module.scss'
 
-function Color() {
+const Color = () => {
+  const [retina, setRetina] = useState(false)
+
+  useEffect(() => {
+    if (isRetina()) setRetina(true)
+  }, [])
+
   return (
     <div className={styles._container}>
       <div className={styles._imageContainer}>
@@ -21,20 +30,20 @@ function Color() {
               <div className={styles._colorOptions_row}>
                 <div className={styles._lengthArea}>
                   <div className={styles._lengthSelect}>
-                    <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                    <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
                       Tamaño
                     </GeneralButton>
                   </div>
                 </div>
                 <div className={styles._calculatorArea}>
                   <div className={styles._calculatorButton}>
-                    <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                    <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
                       <img src="images/icons/calculator.svg" alt="search" width="16px" />
                     </GeneralButton>
                   </div>
                 </div>
               </div>
-              <p>Cantidad</p>
+              <p className={styles._quantityTitle}>Cantidad</p>
               <div className={styles._colorOptions_row}>
                 <div className={styles._quantityArea}>
                   <div className={styles._quantityInputContainer}>
@@ -42,21 +51,17 @@ function Color() {
                   </div>
                   <div className={styles._arrowContainer}>
                     <div className={styles._arrowContainer_left}>
-                      <div style={{ backgroundColor: '#FDCA40', width: 50, height: 50, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <i className="_arrow _left"></i>
-                      </div>
+                      <CounterButton direction="_left" />
                     </div>
                     <div className={styles._arrowContainer_right}>
-                      <div style={{ backgroundColor: '#FDCA40', width: 50, height: 50, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                        <i className="_arrow _right"></i>
-                      </div>
+                      <CounterButton direction="_right" />
                     </div>
                   </div>
                 </div>
                 <div className={styles._emptyArea}>
-                  <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+                  {/* <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
                     .......
-                  </GeneralButton>
+                  </GeneralButton> */}
                 </div>
               </div>
             </div>
