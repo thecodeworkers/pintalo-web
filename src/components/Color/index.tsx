@@ -1,4 +1,5 @@
-import { ColorBackground, GeneralButton } from '@components'
+import ColorBackground from '../ColorBackground'
+import GeneralButton from '../GeneralButton'
 import styles from './styles.module.scss'
 
 function Color() {
@@ -19,14 +20,14 @@ function Color() {
             <div className={styles._colorOptions}>
               <div className={styles._colorOptions_row}>
                 <div className={styles._lengthArea}>
-                  <div style={{ width: '85%' }}>
+                  <div className={styles._lengthSelect}>
                     <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
                       Tamaño
                     </GeneralButton>
                   </div>
                 </div>
                 <div className={styles._calculatorArea}>
-                  <div style={{ width: '100%' }}>
+                  <div className={styles._calculatorButton}>
                     <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
                       <img src="images/icons/calculator.svg" alt="search" width="16px" />
                     </GeneralButton>
@@ -36,16 +37,16 @@ function Color() {
               <p>Cantidad</p>
               <div className={styles._colorOptions_row}>
                 <div className={styles._quantityArea}>
-                  <div style={{ width: '40%', height: '100%' }}>
-                    <input type="text" className={styles._inputQuantity} style={{ height: '50%', width: '100%' }} />
+                  <div className={styles._quantityInputContainer}>
+                    <input type="text" className={styles._inputQuantity} />
                   </div>
-                  <div style={{ width: '60%', display: 'flex' }}>
-                    <div style={{ width: '50%', height: '100%', display: 'flex', justifyContent: 'center' }}>
+                  <div className={styles._arrowContainer}>
+                    <div className={styles._arrowContainer_left}>
                       <div style={{ backgroundColor: '#FDCA40', width: 50, height: 50, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <i className="_arrow _left"></i>
                       </div>
                     </div>
-                    <div style={{ width: '50%', height: '100%' }}>
+                    <div className={styles._arrowContainer_right}>
                       <div style={{ backgroundColor: '#FDCA40', width: 50, height: 50, borderRadius: 50, display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                         <i className="_arrow _right"></i>
                       </div>

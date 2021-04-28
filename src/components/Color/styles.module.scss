@@ -38,6 +38,12 @@
 ._colorTitle {
   @include font('techeadFreeLight', 'techead111');
   height: 25%;
+  display: flex;
+  align-items: flex-end;
+}
+
+._descriptionContainer {
+  height: 25%
 }
 
 ._description {
@@ -52,12 +58,14 @@
 }
 
 ._optionsContainer_children {
-  height: 45%;
+  height: 50%;
   width: 100%;
 }
 
 ._inputQuantity {
   @include input($silverChalice, $doveGray, $silverChalice);
+  height: 50%;
+  width: 100%;
 }
 
 ._colorOptions {
@@ -77,6 +85,10 @@
   align-items: center;
 }
 
+._lengthSelect {
+  width: 85%;
+}
+
 ._calculatorArea {
   width: 30%;
   height: 100%;
@@ -84,9 +96,35 @@
   align-items: center;
 }
 
+._calculatorButton {
+  width: 100%;
+}
+
 ._quantityArea {
   width: 70%;
   display: flex;
+}
+
+._quantityInputContainer {
+  width: 40%;
+  height: 100%;
+}
+
+._arrowContainer {
+  width: 60%;
+  display: flex;
+}
+
+._arrowContainer_left {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+._arrowContainer_right {
+  width: 50%;
+  height: 100%;
 }
 
 ._emptyArea {
@@ -154,8 +192,17 @@
     width: 50%;
   }
 
+  ._lengthSelect {
+    width: 90%;
+  }
+
   ._calculatorArea {
     width: 50%;
+    justify-content: flex-end;
+  }
+
+  ._calculatorButton {
+    width: 90%;
   }
 
   ._quantityArea {
@@ -163,7 +210,22 @@
     flex-direction: column;
   }
 
+  ._quantityInputContainer {
+    width: 100%;
+  }
+
+  ._inputQuantity {
+    height: 100%;
+    width: 90%;
+  }
+
+  ._arrowContainer {
+    align-items: center;
+    width: 100%;
+  }
+
   ._emptyArea {
     width: 50%;
+    justify-content: flex-end;
   }
 }
