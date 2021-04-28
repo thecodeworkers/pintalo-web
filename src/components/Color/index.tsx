@@ -35,7 +35,7 @@ const Color = () => {
                     </GeneralButton>
                   </div>
                 </div>
-                <div className={styles._calculatorArea}>
+                <div className={styles._calculatorMobileArea}>
                   <div className={styles._calculatorButton}>
                     <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
                       <img src="images/icons/calculator.svg" alt="search" width="16px" />
@@ -47,21 +47,23 @@ const Color = () => {
               <div className={styles._colorOptions_row}>
                 <div className={styles._quantityArea}>
                   <div className={styles._quantityInputContainer}>
-                    <input type="text" className={styles._inputQuantity} />
+                    <input type="text" className={styles._inputQuantity} style={{ height: retina ? '3.3rem' : '2.5rem' }} />
                   </div>
                   <div className={styles._arrowContainer}>
                     <div className={styles._arrowContainer_left}>
-                      <CounterButton direction="_left" />
+                      <CounterButton direction="_left" size={retina ? '3.3rem' : '2.5rem'} />
                     </div>
                     <div className={styles._arrowContainer_right}>
-                      <CounterButton direction="_right" />
+                      <CounterButton direction="_right" size={retina ? '3.3rem' : '2.5rem'} />
                     </div>
                   </div>
                 </div>
-                <div className={styles._emptyArea}>
-                  {/* <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
-                    .......
-                  </GeneralButton> */}
+                <div className={styles._calculatorArea}>
+                  <div className={styles._calculatorButton}>
+                    <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
+                      <img src="images/icons/calculator.svg" alt="search" width="16px" />
+                    </GeneralButton>
+                  </div>
                 </div>
               </div>
             </div>
@@ -72,7 +74,7 @@ const Color = () => {
         </div>
         <div className={styles._buttonContainer}>
           <div className={styles._buttonBox}>
-            <GeneralButton backgroundColor="#262833" textColor="#FFFFFF">
+            <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
               Añadir al carrito
             </GeneralButton>
           </div>

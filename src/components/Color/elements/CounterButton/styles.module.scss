@@ -1,27 +1,5 @@
 @import '@styles/index.scss';
 
-._container {
-  background-color: $brightSun;
-  width: 3rem;
-  height: 3rem;
-  border-radius: 50%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 ._arrow {
   @include arrow($charade, 5px);
-}
-
-@include responsive(md) {
-  ._container {
-    width: 1.5rem;
-    height: 1.5rem;
-  }
-
-  ._arrow {
-    padding: 3px;
-    border-width: 0 3px 3px 0;
-  }
 }
