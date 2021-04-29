@@ -1,5 +1,10 @@
 @import '@styles/index.scss';
 
+@mixin dimensions($width, $height) {
+  width: $width;
+  height: $height;
+}
+
 ._container {
   height: 100vh;
   display: flex;
@@ -58,8 +63,7 @@
 }
 
 ._optionsContainer_children {
-  height: 50%;
-  width: 100%;
+  @include dimensions(100%, 50%);
 }
 
 ._inputQuantity {
@@ -89,8 +93,7 @@
 }
 
 ._calculatorMobileArea {
-  width: 30%;
-  height: 100%;
+  @include dimensions(30%, 100%);
   align-items: center;
   display: none;
 }
@@ -113,8 +116,7 @@
 }
 
 ._quantityInputContainer {
-  width: 40%;
-  height: 100%;
+  @include dimensions(40%, 100%);
 }
 
 ._arrowContainer {
@@ -123,15 +125,13 @@
 }
 
 ._arrowContainer_left {
-  width: 50%;
-  height: 100%;
+  @include dimensions(50%, 100%);
   display: flex;
   justify-content: center;
 }
 
 ._arrowContainer_right {
-  width: 50%;
-  height: 100%;
+  @include dimensions(50%, 100%);
 }
 
 ._calculatorArea {
@@ -145,13 +145,11 @@
   }
 
   ._imageContainer {
-    width: 100%;
-    height: 30%;
+    @include dimensions(100%, 30%);
   }
 
   ._contentContainer {
-    height: 45%;
-    width: 100%;
+    @include dimensions(100%, 45%);
     padding: 0 8% 0 8%;
   }
 
@@ -172,11 +170,11 @@
     height: 20%;
   }
 
-  ._buttonBox {
+  ._buttonBox, ._quantityInputContainer {
     width: 100%;
   }
 
-  ._descriptionContainer {
+  ._descriptionContainer, ._calculatorArea {
     display: none;
   }
 
@@ -199,7 +197,7 @@
     width: 50%;
   }
 
-  ._lengthSelect {
+  ._lengthSelect, ._calculatorButton {
     width: 90%;
   }
 
@@ -209,20 +207,12 @@
     justify-content: flex-end;
   }
 
-  ._calculatorButton {
-    width: 90%;
-  }
-
   ._quantityArea {
-    width: 100%;
-    height: 100%;
-  }
-
-  ._quantityInputContainer {
-    width: 100%;
+    @include dimensions(100%, 100%);
   }
 
   ._quantityTitle {
+    @include font('helvetica', 'helvetica11');
     width: 45%;
   }
 
@@ -244,10 +234,5 @@
     display: flex;
     justify-content: flex-end;
     width: 45%;
-  }
-
-  ._calculatorArea {
-    width: 50%;
-    display: none;
   }
 }
