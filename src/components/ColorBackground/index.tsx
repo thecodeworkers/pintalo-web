@@ -1,4 +1,4 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { ColorBackgroundProps } from './types'
 
 const ColorBackground: FC<ColorBackgroundProps> = ({ color }) => {
@@ -57,4 +57,4 @@ const ColorBackground: FC<ColorBackgroundProps> = ({ color }) => {
   )
 }
 
-export default ColorBackground
+export default memo(ColorBackground)

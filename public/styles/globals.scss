@@ -39,6 +39,11 @@ ul {
   -webkit-transform: rotate(135deg);
 }
 
+._down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
 @font-face {
   font-family: 'Helvetica';
   src: url('./fonts/HELVETICA.TTF');

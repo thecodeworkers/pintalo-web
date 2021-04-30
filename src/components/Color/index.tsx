@@ -3,6 +3,7 @@ import { isRetina } from '@utils'
 import { CounterButton } from './elements'
 import ColorBackground from '../ColorBackground'
 import GeneralButton from '../GeneralButton'
+import BlackDropDown from '../BlackDropdown'
 import styles from './styles.module.scss'
 
 const Color = () => {
@@ -31,9 +32,7 @@ const Color = () => {
                 <div className={styles._colorOptions_row}>
                   <div className={styles._lengthArea}>
                     <div className={styles._lengthSelect}>
-                      <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
-                        Tamaño
-                      </GeneralButton>
+                      <BlackDropDown height={retina ? '3.3rem' : '2.5rem'} />
                     </div>
                   </div>
                   <div className={styles._calculatorMobileArea}>
