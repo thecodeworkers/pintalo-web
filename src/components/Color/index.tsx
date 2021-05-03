@@ -1,16 +1,24 @@
 import { useEffect, useState } from 'react'
+import { useDispatch } from 'react-redux'
+import { modalClose } from '@store/actions'
 import { isRetina } from '@utils'
-import { CounterButton } from './elements'
+import { CounterButton, Calculator } from './elements'
 import ColorBackground from '../ColorBackground'
 import GeneralButton from '../GeneralButton'
 import BlackDropDown from '../BlackDropdown'
+import GeneralModal from '../GeneralModal'
 import styles from './styles.module.scss'
 
 const Color = () => {
   const [retina, setRetina] = useState(false)
+  const dispatch = useDispatch()
 
   useEffect(() => {
     if (isRetina()) setRetina(true)
+
+    return () => {
+      setRetina(false)
+    }
   }, [])
 
   return (
@@ -60,7 +68,12 @@ const Color = () => {
                   </div>
                   <div className={styles._calculatorArea}>
                     <div className={styles._calculatorButton}>
-                      <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
+                      <GeneralButton
+                        backgroundColor="#262833"
+                        textColor="#FFFFFF"
+                        large={retina ? '3.3rem' : '2.5rem'}
+                        method={() => dispatch(modalClose(true))}
+                      >
                         <img src="images/icons/calculator.svg" alt="search" width="16px" />
                       </GeneralButton>
                     </div>
@@ -81,6 +94,10 @@ const Color = () => {
           </div>
         </div>
       </div>
+
+      <GeneralModal width="40%" title="Calculadora">
+        <Calculator />
+      </GeneralModal>
 
       <style jsx>{`
         ._inputSize {

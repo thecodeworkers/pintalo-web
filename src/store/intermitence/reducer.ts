@@ -1,9 +1,10 @@
-import { MENU_SHOW, FOOTER_SHOW} from './action-types';
-import { AnyAction } from 'redux';
+import { MENU_SHOW, FOOTER_SHOW, MODAL_CLOSE} from './action-types'
+import { AnyAction } from 'redux'
 
 const initialState = {
 	showMenu: 0,
-  showFooter: true
+  showFooter: true,
+  showModal: false
 }
 
  const setIntermitenceReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -14,8 +15,11 @@ const initialState = {
     case FOOTER_SHOW:
     return { ...state, ...payload }
 
+    case MODAL_CLOSE:
+    return { ...state, ...payload }
+
     default:
-    return state;
+    return state
   }
 }
 

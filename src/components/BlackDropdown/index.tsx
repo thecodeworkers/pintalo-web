@@ -7,7 +7,7 @@ const BlackDropDown = ({ height }) => {
   return (
     <>
       <div className={styles._dropdown}>
-        <button className={styles._dropbtn} onClick={() => setShow(!show)}>
+        <button className={styles._dropbtn} onClick={() => setShow(show => !show)}>
           Tamaño<i className={`${styles._arrow} _down`}></i>
         </button>
         <div className={styles._dropdown_content}>
