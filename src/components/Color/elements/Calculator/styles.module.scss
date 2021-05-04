@@ -22,9 +22,11 @@
 
 ._sizeContainer_options {
   display: flex;
-  background-color: $brightSun;
   border-radius: 30px;
   width: 100%;
+  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
 }
 
 ._metersButton {
@@ -32,16 +34,28 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
 }
 
 ._centimeterButton {
-  background-color: $grayNurse;
   width: 50%;
   border-radius: 30px;
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor: pointer;
+  transition: all .5s ease;
+  -webkit-transition: all .5s ease;
+  -moz-transition: all .5s ease;
+}
+
+._disabledColor {
+  background-color: $grayNurse;
   color: $zambezi;
+}
+
+._activeColor {
+  background-color: $brightSun;
 }
 
 ._areaContainer {
@@ -74,9 +88,10 @@
 }
 
 ._unitBox {
-  width: 10%;
+  width: 15%;
   text-align: right;
   color: $alto;
+  @include font('helvetica', 'helvetica15');
 }
 
 ._buttonContainer {
@@ -126,6 +141,5 @@
 
   ._buttonSubContainer {
     width: 100%;
-    margin-right: 5%;
   }
 }
