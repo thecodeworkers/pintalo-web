@@ -73,16 +73,21 @@
   align-items: center;
 }
 
+._unitBox {
+  width: 10%;
+  text-align: right;
+  color: $alto;
+}
+
 ._buttonContainer {
   height: 20%;
   display: flex;
   justify-content: flex-end;
 }
 
-._unitBox {
-  width: 10%;
-  text-align: right;
-  color: $alto;
+._buttonSubContainer {
+  width: 40%;
+  margin-right: 5%;
 }
 
 ._title {
@@ -108,4 +113,19 @@
 
 ._moveBox {
   justify-content: flex-end;
+}
+
+@include responsive(md) {
+  ._title {
+    @include font('helveticaBold', 'helvetica20');
+  }
+
+  ._subTitle {
+    @include font('helvetica', 'helvetica11');
+  }
+
+  ._buttonSubContainer {
+    width: 100%;
+    margin-right: 5%;
+  }
 }

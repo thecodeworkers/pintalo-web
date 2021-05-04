@@ -33,13 +33,10 @@ const Calculator: FC<CalculatorProps> = ({ buttonHeight }) => (
         </div>
       </div>
       <div className={styles._buttonContainer}>
-        <div style={{ width: '40%' }}>
+        <div className={styles._buttonSubContainer}>
           <GeneralButton backgroundColor="#FDCA40" textColor="#262833" large={buttonHeight}>
             Calcular el resultado
           </GeneralButton>
-        </div>
-        <div style={{ width: '5%' }}>
-
         </div>
       </div>
     </div>
