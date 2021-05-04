@@ -13,8 +13,8 @@ const GeneralModal: FC<GeneralModalProps> = ({ children, width, title }) => {
   return (
     <>
       {showModal ? (
-        <div className={styles._modalContainer}>
-          <div className={'_container'}>
+        <div className={styles._modalContainer} onClick={() => dispatch(modalClose(false))}>
+          <div className={'_container'} onClick={e => e.stopPropagation()}>
             <div className={styles._header}>
               <p className={styles._title}>{title}</p>
               <img src='images/icons/close.svg' className={styles._closeIcon} onClick={() => dispatch(modalClose(false))} />

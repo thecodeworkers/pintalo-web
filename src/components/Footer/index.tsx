@@ -1,13 +1,13 @@
-import { useState } from "react";
 import { useRouter } from 'next/router'
+import { useDispatch } from 'react-redux'
 import { Logo } from '../../../public/images/logos'
 import { GeneralButton, GeneralModal } from '@components'
+import { modalClose } from "@store/actions";
 import styles from './styles.module.scss'
 
 const Footer = () => {
-
-  const [showModal, setShowModal] = useState(false)
   const router = useRouter()
+  const dispatch = useDispatch()
 
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
@@ -32,12 +32,12 @@ const Footer = () => {
             </div>
 
             <div className={styles._buttonContainer}>
-              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => setShowModal(true)}>
+              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => dispatch(modalClose(true))}>
                 Contácto
               </GeneralButton>
             </div>
 
-            <GeneralModal onClose={() => setShowModal(false)} show={showModal} width={'60%'} title={'Contacto'}>
+            <GeneralModal width={'60%'} title={'Contacto'}>
               <div className={styles._body}>
                 <form className={styles._formContainer}>
                   <div className={styles._inputContainerRow}>
@@ -53,7 +53,7 @@ const Footer = () => {
                   <textarea placeholder='Descripción' className={styles._textArea} />
 
                   <div className={styles._buttonContainer}>
-                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}  bold={true} method={() => setShowModal(false)}>
+                    <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}  bold={true} method={() => dispatch(modalClose(true))}>
                       Enviar
                     </GeneralButton>
                   </div>

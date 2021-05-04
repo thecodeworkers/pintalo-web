@@ -1,0 +1,111 @@
+@import '@styles/index.scss';
+
+._container {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
+  padding: 7%;
+}
+
+._titleContainer {
+  height: 15%;
+}
+
+._sizeContainer {
+  height: 25%;
+}
+
+._sizeContainer_title {
+  height: 30%;
+}
+
+._sizeContainer_options {
+  display: flex;
+  background-color: $brightSun;
+  border-radius: 30px;
+  width: 100%;
+}
+
+._metersButton {
+  width: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._centimeterButton {
+  background-color: $grayNurse;
+  width: 50%;
+  border-radius: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $zambezi;
+}
+
+._areaContainer {
+  height: 40%;
+  display: flex;
+  flex-direction: column;
+}
+
+._areaContainer_title {
+  height: 30%;
+}
+
+._areaContainer_options {
+  height: 70%;
+  display: flex;
+}
+
+._inputContainer {
+  width: 50%;
+  display: flex;
+}
+
+._inputSubContainer {
+  width: 90%;
+}
+
+._inputBox {
+  display: flex;
+  align-items: center;
+}
+
+._buttonContainer {
+  height: 20%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+._unitBox {
+  width: 10%;
+  text-align: right;
+  color: $alto;
+}
+
+._title {
+  @include font('helveticaBold', 'helvetica32');
+}
+
+._subTitle {
+  @include font('helvetica', 'helvetica16');
+}
+
+._sizeTitle {
+  @include font('helveticaBold', 'helvetica16');
+}
+
+._input {
+  @include input($silverChalice, $doveGray, $silverChalice);
+  width: 90%;
+}
+
+._labelSeparation {
+  margin-bottom: 3%;
+}
+
+._moveBox {
+  justify-content: flex-end;
+}
