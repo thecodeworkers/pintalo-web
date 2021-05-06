@@ -9,7 +9,7 @@ import BlackDropDown from '../BlackDropdown'
 import GeneralModal from '../GeneralModal'
 import styles from './styles.module.scss'
 
-const Color = () => {
+const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
   const dispatch = useDispatch()
 
@@ -25,7 +25,7 @@ const Color = () => {
     <>
       <div className={styles._container}>
         <div className={styles._imageContainer}>
-          <ColorBackground color="#3772ff" />
+          <ColorBackground color={`#${detail.slug}`} />
         </div>
         <div className={styles._descriptionMobileContainer}>
           <p className={styles._description}>Este tono, amable y nada agresivo a la vista, es “un potenciador de armonía, serenidad y creatividad” según los psicólogos, y que muy pronto podremos ver presente en todo tipo de disciplinas, desde moda, arte y diseño, hasta hogar y tecnología.</p>
@@ -34,7 +34,7 @@ const Color = () => {
           <div className={styles._optionsContainer}>
             <div className={styles._optionsContainer_children}>
               <div className={styles._colorTitle}>
-                Blue
+                {detail.name}
               </div>
               <div className={styles._colorOptions}>
                 <div className={styles._colorOptions_row}>
