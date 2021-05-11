@@ -17,7 +17,7 @@ const GeneralModal: FC<GeneralModalProps> = ({ children, width, title }) => {
           <div className={'_container'} onClick={e => e.stopPropagation()}>
             <div className={styles._header}>
               <p className={styles._title}>{title}</p>
-              <img src='images/icons/close.svg' className={styles._closeIcon} onClick={() => dispatch(modalClose(false))} />
+              <img src='/images/icons/close.svg' className={styles._closeIcon} onClick={() => dispatch(modalClose(false))} />
             </div>
             <div className={styles._body}>
               {children}

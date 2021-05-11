@@ -36,15 +36,15 @@ const Navbar = () => {
         </div>
 
         <div className={styles._linksParent}>
-          <img src='images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
-          <img src='images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
-          <img src='images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />
+          <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
+          <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
+          <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />
           <a onClick={() => navigation('/register')} > Registrar </a>
         </div>
       </div>
 
       <div className={styles._toggleParent} onClick={deployMenu}>
-        <img src='images/icons/toggle.svg' alt='toggle' width='16px'></img>
+        <img src='/images/icons/toggle.svg' alt='toggle' width='16px'></img>
       </div>
     </nav>
 

@@ -46,7 +46,7 @@ const Color = ({ detail }) => {
                   <div className={styles._calculatorMobileArea}>
                     <div className={styles._calculatorButton}>
                       <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
-                        <img src="images/icons/calculator.svg" alt="search" width="16px" />
+                        <img src="/images/icons/calculator.svg" alt="calculator" width="16px" />
                       </GeneralButton>
                     </div>
                   </div>
@@ -55,7 +55,7 @@ const Color = ({ detail }) => {
                 <div className={styles._colorOptions_row}>
                   <div className={styles._quantityArea}>
                     <div className={styles._quantityInputContainer}>
-                      <input type="text" className={`${styles._inputQuantity} _inputSize`} />
+                      <input type="text" className={`${styles._inputQuantity} _inputSize`} value="1" disabled />
                     </div>
                     <div className={styles._arrowContainer}>
                       <div className={styles._arrowContainer_left}>
@@ -74,7 +74,7 @@ const Color = ({ detail }) => {
                         large={retina ? '3.3rem' : '2.5rem'}
                         method={() => dispatch(modalClose(true))}
                       >
-                        <img src="images/icons/calculator.svg" alt="search" width="16px" />
+                        <img src="/images/icons/calculator.svg" alt="calculator" width="16px" />
                       </GeneralButton>
                     </div>
                   </div>
@@ -104,6 +104,7 @@ const Color = ({ detail }) => {
       <style jsx>{`
         ._inputSize {
           height: ${retina ? '3.3rem' : '2.5rem'};
+          text-align: center;
         }
       `}</style>
     </>

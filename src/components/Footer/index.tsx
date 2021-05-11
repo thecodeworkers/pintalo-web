@@ -62,9 +62,9 @@ const Footer = () => {
             </GeneralModal>
 
             <div className={styles._socialMedia}>
-              <img src='images/logos/instagram.svg' width={15} />
-              <img src='images/logos/facebook.svg' width={15} />
-              <img src='images/logos/twitter.svg' width={15} />
+              <img src='/images/logos/instagram.svg' width={15} />
+              <img src='/images/logos/facebook.svg' width={15} />
+              <img src='/images/logos/twitter.svg' width={15} />
             </div>
           </div>
           <div className={styles._rightContainer}>
@@ -81,11 +81,11 @@ const Footer = () => {
               <div className={styles._logos}>
                 <div className={styles._logo}>
                   <a href='https://www.thecodeworkers.com' >
-                    <img src='images/logos/tcw-logo.svg' />
+                    <img src='/images/logos/tcw-logo.svg' />
                   </a>
                 </div>
                 <div className={styles._logo}>
-                  <img src='images/logos/banana-logo.svg' />
+                  <img src='/images/logos/banana-logo.svg' />
                 </div>
               </div>
               <p className={styles._speechTitle}>©CopyrightPintalo.C.A</p>
