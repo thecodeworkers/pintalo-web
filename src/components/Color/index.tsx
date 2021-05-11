@@ -11,6 +11,7 @@ import styles from './styles.module.scss'
 
 const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
+  const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
 
   useEffect(() => {
@@ -55,14 +56,24 @@ const Color = ({ detail }) => {
                 <div className={styles._colorOptions_row}>
                   <div className={styles._quantityArea}>
                     <div className={styles._quantityInputContainer}>
-                      <input type="text" className={`${styles._inputQuantity} _inputSize`} value="1" disabled />
+                      <input type="text" className={`${styles._inputQuantity} _inputSize`} value={quantity} disabled />
                     </div>
                     <div className={styles._arrowContainer}>
                       <div className={styles._arrowContainer_left}>
-                        <CounterButton direction="_left" size={retina ? '3.3rem' : '2.5rem'} />
+                        <CounterButton direction="_left" size={retina ? '3.3rem' : '2.5rem'} onPress={(minus: number) => {
+                          setQuantity(quantity => {
+                            if (quantity > 1) return quantity + minus
+                            return quantity
+                          })
+                        }} />
                       </div>
                       <div className={styles._arrowContainer_right}>
-                        <CounterButton direction="_right" size={retina ? '3.3rem' : '2.5rem'} />
+                        <CounterButton direction="_right" size={retina ? '3.3rem' : '2.5rem'} onPress={(plus: number) => {
+                          setQuantity(quantity => {
+                            if (quantity < detail.stockQuantity) return quantity + plus
+                            return quantity
+                          })
+                        }} />
                       </div>
                     </div>
                   </div>

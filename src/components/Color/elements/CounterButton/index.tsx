@@ -1,9 +1,11 @@
+import { FC } from 'react'
 import styles from './styles.module.scss'
+import { CounterButtonProps } from './types'
 
-const CounterButton = ({ direction, size }) => {
+const CounterButton: FC<CounterButtonProps> = ({ direction, size, onPress }) => {
   return (
     <>
-      <div className="_container">
+      <div className="_container" onClick={() => onPress(direction == '_left' ? -1 : 1)}>
         <i className={`${styles._arrow} ${direction}`}></i>
       </div>
 
