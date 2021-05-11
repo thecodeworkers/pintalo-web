@@ -3,7 +3,6 @@ import { FirstStep, SecondStep, ThirdStep, FourthStep } from './elements'
 import { Stepper } from '@components'
 import styles from './styles.module.scss'
 
-
 const Hero = ({ data }) => {
 
   const slide = useSelector((state: any) => state)
