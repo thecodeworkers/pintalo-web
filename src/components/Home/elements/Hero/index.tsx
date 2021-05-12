@@ -48,17 +48,13 @@ const Hero = ({ data }) => {
           </div>
         ) : null
       }
-      <div className={'_rollerBackground'}></div>
+      <div className={styles._rollerBackground}></div>
 
       <style jsx>{`
-        ._rollerBackground{
+        .${styles._rollerBackground} {
           background-image: url(${data?.background?.mediaItemUrl});
-          background-repeat: no-repeat;
-          background-size: cover;
-          width:100%;
-          height: 50vh;
         }
-    `}</style>
+      `}</style>
     </>
   )
 }

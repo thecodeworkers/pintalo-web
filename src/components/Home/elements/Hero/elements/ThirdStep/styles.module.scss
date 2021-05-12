@@ -42,3 +42,32 @@
   font-size: $techead62;
 }
 
+@include responsive(md) {
+  ._heroContainer {
+    height: 63vh;
+    padding-bottom: 0;
+  }
+
+  ._container {
+    height: 100%;
+  }
+
+  ._title {
+    @include font('helvetica', 'helvetica32');
+  }
+
+  ._buttonContainer {
+    width: 100%;
+  }
+
+  ._content {
+    width: 50%;
+    margin: 0;
+  }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
+  }
+}
+
+

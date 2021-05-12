@@ -72,6 +72,15 @@
   width: 80px;
 }
 
-@include responsive(md) {
+._rollerBackground {
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  height: 50vh;
+}
 
+@include responsive(md) {
+  ._rollerBackground {
+    height: 13vh;
+  }
 }

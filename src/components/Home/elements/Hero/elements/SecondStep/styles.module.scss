@@ -1,6 +1,6 @@
 @import '@styles/index.scss';
 
-._heroContainer{
+._heroContainer {
   height: 50vh;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@
   padding-bottom: 3rem;
 }
 
-._container{
+._container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -19,7 +19,7 @@
   height: 50%;
 }
 
-._buttonContainer{
+._buttonContainer {
   display: flex;
   justify-content: center;
   width: 70vw;
@@ -28,7 +28,7 @@
   flex-wrap: wrap;
 }
 
-._content{
+._content {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,9 +36,36 @@
   margin: 1rem 1rem 1rem 1rem;
 }
 
-._title{
+._title {
   color: $charade;
   font-family: $techeadFreeLight;
   font-size: $techead62;
 }
 
+@include responsive(md) {
+  ._heroContainer {
+    height: 63vh;
+    padding-bottom: 0;
+  }
+
+  ._container {
+    height: 100%;
+  }
+
+  ._title {
+    @include font('helvetica', 'helvetica32');
+  }
+
+  ._buttonContainer {
+    width: 100%;
+  }
+
+  ._content {
+    width: 50%;
+    margin: 0;
+  }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
+  }
+}
