@@ -3,12 +3,11 @@ import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 
 const ThirdBanner = ({ data }) => {
-
   const router = useRouter()
+
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
   }
-
 
   return (
     <>
@@ -22,7 +21,6 @@ const ThirdBanner = ({ data }) => {
                   <p className={styles._leftTitle}>{data?.lowTitle}</p>
                   <p className={styles._leftSubtitle}>{data?.lowSubtitle}</p>
                 </div>
-
               </div>
               <div className={styles._rightDownContainer}>
                 <div className={styles._buttonContainer}>
@@ -54,7 +52,7 @@ const ThirdBanner = ({ data }) => {
       </div>
 
       <style jsx>{`
-        ._inspoBackground{
+        ._inspoBackground {
           background-image: url(${data?.background?.mediaItemUrl});
           background-repeat: no-repeat;
           background-size: 100% 100%;
@@ -64,15 +62,15 @@ const ThirdBanner = ({ data }) => {
           flex-direction: column;
           justify-content: center;
           align-items: center;
-       }
-       ._avatarBackground{
-        background-image: url(${data?.portrait?.mediaItemUrl});
-        background-repeat: no-repeat;
-        background-size: 100% 100%;
-        width:30%;
-        height: 30vh;
-        margin: 0 auto
-     }
+        }
+        ._avatarBackground{
+          background-image: url(${data?.portrait?.mediaItemUrl});
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+          width:30%;
+          height: 30vh;
+          margin: 0 auto
+        }
       `}</style>
     </>
   )
