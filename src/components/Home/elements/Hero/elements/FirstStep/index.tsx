@@ -1,14 +1,14 @@
 import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
-import styles from './styles.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { setColor } from '@store/actions'
+import styles from './styles.module.scss'
 
 const FirstStep = ({ data }) => {
-
   const router = useRouter()
-  const dispatch = useDispatch()
   const slide = useSelector((state: any) => state)
+  const dispatch = useDispatch()
+
   const currentStep = slide.setColor.step
 
   const setState = () => {
