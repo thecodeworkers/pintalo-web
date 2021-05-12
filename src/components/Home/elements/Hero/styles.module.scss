@@ -60,7 +60,7 @@
   margin: 1rem 0 1rem 0;
 }
 
-._stepperContainer{
+._stepperContainer {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -82,5 +82,9 @@
 @include responsive(md) {
   ._rollerBackground {
     height: 13vh;
+  }
+
+  ._stepperContainer {
+    background-color: red;
   }
 }

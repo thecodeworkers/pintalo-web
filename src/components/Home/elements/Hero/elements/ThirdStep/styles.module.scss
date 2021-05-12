@@ -44,30 +44,32 @@
 
 @include responsive(md) {
   ._heroContainer {
-    height: 63vh;
+    height: 100%;
     padding-bottom: 0;
   }
 
   ._container {
     height: 100%;
+    margin-top: 30%;
   }
 
   ._title {
     @include font('helvetica', 'helvetica32');
+    margin-bottom: 10px;
   }
 
   ._buttonContainer {
+    justify-content: space-between;
     width: 100%;
+    margin: 0 0 20px 0;
   }
 
   ._content {
-    width: 50%;
-    margin: 0;
+    width: 47%;
+    margin: 0 0 10px 0;
   }
 
   ._buttonText {
     @include font('helvetica', 'helvetica12');
   }
 }
-
-
