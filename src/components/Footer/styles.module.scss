@@ -1,28 +1,28 @@
 @import '@styles/index.scss';
 
-._footerContainer{
+._footerContainer {
   background-color: $charade;
   width: 100%;
   padding: 4rem 0rem 2.5rem 0rem;
   box-sizing: border-box;
 }
 
-._footer{
+._footer {
   width: 85%;
   margin: auto;
 }
 
-._logoMain{
+._logoMain {
   width: 70px;
 }
 
-._content{
+._content {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
 }
 
-._leftContainer{
+._leftContainer {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -38,40 +38,40 @@
   margin-top: 1rem;
 }
 
-._link{
+._link {
   font-family: $helvetica;
   font-size: $helvetica17;
   color: $wildSand;
   cursor: pointer;
 }
 
-._socialMedia{
+._socialMedia {
   margin-top: 2rem;
   display: flex;
   justify-content: space-between;
   width: 20%;
 }
 
-._buttonContainer{
+._buttonContainer {
   width: 160px;
   margin-top: 1rem;
 }
 
-._rightContainer{
+._rightContainer {
   width: 20%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-._speechTitle{
+._speechTitle {
   font-family: $helvetica;
   font-size: $helvetica14;
   color: $wildSand;
   margin-bottom: 0.7rem;
 }
 
-._speechText{
+._speechText {
   font-family: $helvetica;
   font-size: $helvetica12;
   color: $wildSand;
@@ -96,34 +96,34 @@
   margin-top: 0.3rem;
 }
 
-._body{
+._body {
   margin-top: 2rem;
 }
-._formContainer{
+
+._formContainer {
   width: 90%;
   margin: auto;
 }
 
-._inputContainerRow{
+._inputContainerRow {
   display: flex;
   width: 70%;
 }
 
-._inputContainerColumn{
+._inputContainerColumn {
   display: flex;
   flex-direction: column;
   width: 40%;
 }
 
-
-._input{
+._input {
   @include input ($silverChalice, $doveGray, $silverChalice);
   height:1.8rem;
   width: 180px;
   margin-bottom: 2rem;
 }
 
-._inputRow{
+._inputRow {
   @include input ($silverChalice, $doveGray, $silverChalice);
   height:1.8rem;
   width: 180px;
@@ -131,7 +131,7 @@
   margin-right: 2rem;
 }
 
-._textArea{
+._textArea {
   background: transparent;
   color: $silverChalice;
   border: 1px solid $doveGray;
@@ -144,8 +144,85 @@
   }
 }
 
-._buttonContainer{
+._buttonContainer {
   margin-top: 2rem;
   float: right;
   width: 180px;
+}
+
+._mobileLogos {
+  display: none;
+}
+
+._socialMediaContainer {
+  width: 100%;
+}
+
+._titleContainer {
+  display: none;
+}
+
+@include responsive(md) {
+  ._footerContainer {
+    padding: 1rem 0;
+  }
+
+  ._rightContainer {
+    display: none;
+  }
+
+  ._logoMain {
+    width: 100px;
+  }
+
+  ._buttonContainer {
+    display: none;
+  }
+
+  ._logoContainer {
+    display: flex;
+    margin-top: 1rem;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  ._leftContainer {
+    width: 100%;
+  }
+
+  ._socialMedia {
+    margin-top: 0;
+  }
+
+  ._mobileLogos {
+    display: flex;
+    width: 50%;
+    height: 100%;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  ._logo {
+    margin: 0;
+    width: 30px;
+  }
+
+  ._separation {
+    margin-left: 1rem;
+  }
+
+  ._socialMediaContainer {
+    margin-top: 2rem;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ._titleContainer {
+    display: block;
+  }
+
+  ._speechTitle {
+    margin: 0;
+    font-size: $helvetica14;
+  }
 }
