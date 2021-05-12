@@ -68,7 +68,7 @@
   margin-bottom: 1.5rem;
 }
 
-._stepper{
+._stepper {
   width: 80px;
 }
 
@@ -85,6 +85,10 @@
   }
 
   ._stepperContainer {
-    background-color: red;
+    margin-bottom: 1rem;
+  }
+
+  ._stepper {
+    width: 130px;
   }
 }
