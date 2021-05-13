@@ -1,6 +1,13 @@
 @import '@styles/index.scss';
 
-._container{
+._sliderBackground {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width:100%;
+  height: 100vh;
+}
+
+._container {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -9,30 +16,71 @@
   height: 100vh;
 }
 
-._titleContainer{
+._titleContainer {
   margin-bottom: 1rem;
   width: 40%;
 }
 
-._subtitleContainer{
+._subtitleContainer {
   margin-bottom: 1rem;
   width: 15%;
 }
 
-._subtitle{
+._subtitle {
   color: $charade;
   font-family: $helvetica;
   font-size: $helvetica16;
 }
 
-._title{
+._title {
   color: $charade;
   font-family: $techeadFreeLight;
   font-size: $techead62;
 }
 
-._buttonContainer{
+._buttonContainer {
   width: 160px;
   margin-top: 1rem;
 }
 
+@include responsive(md) {
+  ._sliderBackground {
+    height: 30vh;
+    display: flex;
+  }
+
+  ._container {
+    height: 100%;
+    justify-content: flex-start;
+    align-items: center;
+  }
+
+  ._title {
+    @include font('techeadFreeLight', 'techead13');
+    text-align: center;
+  }
+
+  ._subtitle {
+    @include font('helvetica', 'helvetica11');
+    text-align: center;
+  }
+
+  ._titleContainer {
+    height: 20%;
+    width: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  ._subtitleContainer {
+    width: 100%;
+    margin: 0;
+    height: 40%;
+  }
+
+  ._buttonContainer {
+    margin: 0;
+  }
+}

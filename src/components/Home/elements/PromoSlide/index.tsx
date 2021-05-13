@@ -10,7 +10,7 @@ const items = [
 ]
 
 const PromoSlide = () => {
-  const [currentIndex, setcurrentIndex] = useState(1);
+  const [currentIndex, setcurrentIndex] = useState(0);
   const [stepperIndex, setStepperIndex] = useState(0);
 
   let interval;

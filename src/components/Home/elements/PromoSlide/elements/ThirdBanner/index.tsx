@@ -4,7 +4,6 @@ import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
 
 const ThirdBanner = () => {
-
   const router = useRouter()
   const { page: { homePage: { home } } } = useSelector((state: any) => state)
   const thirdBanner = home?.secondBanner?.thirdBanner
@@ -15,10 +14,9 @@ const ThirdBanner = () => {
 
   return (
     <>
-      <div className={'_sliderBackground'}>
+      <div className={styles._sliderBackground}>
         <div className={'_main'}>
           <div className={styles._container}>
-
             <div className={styles._titleContainer}>
               <p className={styles._title}>{thirdBanner?.title}</p>
             </div>
@@ -36,12 +34,8 @@ const ThirdBanner = () => {
         </div>
       </div>
       <style jsx>{`
-        ._sliderBackground{
+        .${styles._sliderBackground} {
           background-image: url(${thirdBanner?.background?.mediaItemUrl});
-           background-repeat: no-repeat;
-           background-size: 100% 100%;
-           width:100%;
-           height: 100vh;
         }
       `}</style>
     </>
