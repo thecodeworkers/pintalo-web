@@ -11,7 +11,7 @@ const Stepper: FC<StepperProps> = ({ length = 3, currentStep, onPress }) => (
           <div
             key={index}
             className={current == currentStep ? styles._currentStep : styles._step}
-            onClick={() => onPress(index)}
+            onClick={() => onPress ? onPress(index) : null}
           ></div>
         )
       })
