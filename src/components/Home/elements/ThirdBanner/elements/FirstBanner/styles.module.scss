@@ -1,10 +1,11 @@
 @import '@styles/index.scss';
 
-._main{
+._main {
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
 }
-._container{
+
+._container {
   width: 100%;
   height: 40vh;
   display: flex;
@@ -12,29 +13,30 @@
   align-items: center;
 }
 
-._alliesContainer{
+._alliesContainer {
   width: 50%;
   height: 100%;
   background-color: $wildSand;
   display: flex;
 }
 
-._allies{
+._allies {
   width: 140px;
   height: 90px;
   margin: 1rem;
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: gray;
 }
 
-._allie{
+._allie {
   color: $charade;
   font-family: $helvetica;
   font-size: $helvetica20;
 }
 
-._aboutContainer{
+._aboutContainer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -42,12 +44,12 @@
   flex-direction: column;
 }
 
-._content{
+._content {
   width: 85%;
   margin: 0 auto;
 }
 
-._contentAllies{
+._contentAllies {
   width: 85%;
   margin: 0 auto;
   flex-wrap: wrap;
@@ -57,18 +59,18 @@
   padding: 0 4rem 0 4rem;
 }
 
-._titleContainer{
+._titleContainer {
   color: $wildSand;
   font-family: $techeadFreeLight;
   font-size: $techead62;
 }
 
-._buttonContainer{
+._buttonContainer {
   margin-top: 1rem;
   width: 180px;
 }
 
-._endContainer{
+._endContainer {
   width: 100%;
   height: 60vh;
   display: flex;
@@ -76,15 +78,14 @@
   align-items: center;
   background-color: $wildSand;
 }
-._leftContainer{
+
+._leftContainer {
   position: relative;
   height: 100%;
   width: 50%;
 }
 
-
-
-._leftDownContainer{
+._leftDownContainer {
   width: 100%;
   position: absolute;
   bottom: 0;
@@ -93,13 +94,13 @@
   align-items: center;
 }
 
-._leftTitle{
+._leftTitle {
   font-family: $helveticaBold;
   font-size: $helveticaBold28;
   color: $white;
 }
 
-._leftDownContent{
+._leftDownContent {
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -108,17 +109,18 @@
   justify-content: center;
 }
 
-._leftDownTextContainer{
+._leftDownTextContainer {
   width: 60%;
   margin: 0 auto;
 }
 
-._leftSubtitle{
+._leftSubtitle {
   font-family: $helvetica;
   font-size: $helvetica22;
   color: $white;
 }
-._rightDownContainer{
+
+._rightDownContainer {
   background-color: $grayNurse;
   display: flex;
   justify-content: center;
@@ -127,7 +129,7 @@
   height: 15vh;
 }
 
-._rigthContainer{
+._rigthContainer {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -136,7 +138,7 @@
   width: 50%;
 }
 
-._modalHeader{
+._modalHeader {
   width: 100%;
   height: 2rem;
   background: $charade;
@@ -145,7 +147,7 @@
   align-self: flex-start;
 }
 
-._modal{
+._modal {
   background: $white;
   border-radius: 10px;
   padding: 0 0 2rem 0;
@@ -155,20 +157,20 @@
   flex-direction: column;
 }
 
-._modalTitle{
+._modalTitle {
   color: $charade;
   font-family: $techeadFreeLight;
   font-size: $techead62;
   margin-bottom: 0.5rem;
 }
 
-._modalSubtitle{
+._modalSubtitle {
   color: $brightSun;
   font-family: $helvetica;
   font-size: $helvetica22;
   margin-bottom: 0.5rem;
 }
-._modalBody{
+._modalBody {
   width: 85%;
   height: 100%;
   display: flex;
@@ -178,8 +180,41 @@
   margin: 0 auto;
 }
 
-._buttonContainer{
+._buttonContainer {
   width: 160px;
   margin-top: 1rem;
 }
 
+._aboutBackground {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 50%;
+  height: 100%;
+}
+
+@include responsive(md) {
+  ._container {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  ._alliesContainer {
+    width: 100%;
+    height: 20vh;
+  }
+
+  ._allies {
+    margin: 0;
+    width: 100px;
+    height: 60px;
+  }
+
+  ._contentAllies {
+    padding: 0;
+    width: 85%;
+  }
+
+  ._aboutBackground {
+    width: 100%;
+  }
+}

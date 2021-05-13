@@ -26,12 +26,12 @@ const PromoSlide = () => {
     items.forEach((res, mapIndex) => { items[mapIndex].className = styles._hidden })
     items[index].className = stylus
 
-    // const stepperIndex = setStepperIndex(currentIndex + 1)
+    setStepperIndex(currentIndex + 1)
 
-    // interval = setTimeout(() => {
-    //   if (currentIndex < items.length - 1) return setcurrentIndex(currentIndex + 1)
-    //   else setcurrentIndex(0)
-    // }, 4000);
+    interval = setTimeout(() => {
+      if (currentIndex < items.length - 1) return setcurrentIndex(currentIndex + 1)
+      else setcurrentIndex(0)
+    }, 4000);
   }
 
   return (

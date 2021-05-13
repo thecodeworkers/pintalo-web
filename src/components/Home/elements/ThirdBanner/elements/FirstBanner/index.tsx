@@ -3,7 +3,6 @@ import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 
 const FirstBanner = ({ data }) => {
-
   const router = useRouter()
 
   const navigation = (route) => {
@@ -29,7 +28,7 @@ const FirstBanner = ({ data }) => {
               }
             </div>
           </div>
-          <div className={'_aboutBackground'}>
+          <div className={styles._aboutBackground}>
             <div className={styles._aboutContainer}>
               <div className={styles._content}>
                 <div className={styles._titleContainer}>
@@ -48,12 +47,8 @@ const FirstBanner = ({ data }) => {
       </div>
 
       <style jsx>{`
-        ._aboutBackground{
-           background-image: url(${data?.background?.mediaItemUrl});
-           background-repeat: no-repeat;
-           background-size: 100% 100%;
-           width:50%;
-           height: 100%;
+        .${styles._aboutBackground} {
+          background-image: url(${data?.background?.mediaItemUrl});
         }
       `}</style>
     </>

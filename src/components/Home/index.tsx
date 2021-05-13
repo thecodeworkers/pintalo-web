@@ -10,7 +10,7 @@ const Home = ({ content }) => (
       <>
         <Hero data={content?.mainBanner} />
         <PromoSlide />
-        {/* <ThirdBanner data={content?.thirdBanner} /> */}
+        <ThirdBanner data={content?.thirdBanner} />
         {/* <FourthBanner data={content?.fourthBanner} /> */}
       </>
     ) : null}
