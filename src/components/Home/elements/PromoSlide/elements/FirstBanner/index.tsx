@@ -33,7 +33,7 @@ const FirstBanner = () => {
               </div>
               <div className={styles._buttonContainer}>
                 <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/shop')}>
-                  {firstBanner?.button.text}
+                  <p className={styles._buttonText}>{firstBanner?.button.text}</p>
                 </GeneralButton>
               </div>
             </div>

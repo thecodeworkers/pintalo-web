@@ -65,11 +65,6 @@
   font-size: $techead62;
 }
 
-._buttonContainer {
-  margin-top: 1rem;
-  width: 180px;
-}
-
 ._endContainer {
   width: 100%;
   height: 60vh;
@@ -216,5 +211,28 @@
 
   ._aboutBackground {
     width: 100%;
+    height: 27vh;
+  }
+
+  ._content {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+
+  ._titleContainer {
+    @include font('techeadFreeLight', 'techead25');
+    margin: 2.4rem 0 2rem 0;
+    text-align: center;
+  }
+
+  ._buttonContainer {
+    margin: 0;
+  }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
   }
 }

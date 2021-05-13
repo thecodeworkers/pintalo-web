@@ -114,4 +114,8 @@
   ._subtitleContainer {
     width: 100%;
   }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
+  }
 }

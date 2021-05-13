@@ -26,7 +26,7 @@ const ThirdBanner = () => {
 
             <div className={styles._buttonContainer}>
               <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/shop')} large="2.2rem">
-                {thirdBanner?.button?.text}
+                <p className={styles._buttonText}>{thirdBanner?.button?.text}</p>
               </GeneralButton>
             </div>
           </div>

@@ -2,7 +2,7 @@
 
 ._main {
   width: 100%;
-  margin:0 auto;
+  margin: 0 auto;
 }
 
 ._endContainer {
@@ -118,4 +118,74 @@
 ._buttonContainer {
   width: 160px;
   margin-top: 1rem;
+}
+
+._avatarBackground {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 30%;
+  height: 30vh;
+  margin: 0 auto
+}
+
+._inspoBackground {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width:100%;
+  height: 100%;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+._leftDownContainerMobile {
+  display: none;
+}
+
+@include responsive(md) {
+  ._endContainer {
+    flex-direction: column;
+    height: 100%;
+  }
+
+  ._leftContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 23vh;
+    justify-content: center;
+  }
+
+  ._avatarBackground {
+    margin: 0;
+    height: 80%;
+  }
+
+  ._leftDownContainer {
+    display: none;
+  }
+
+  ._leftDownContainerMobile {
+    display: flex;
+    flex-direction: column;
+    height: 80%;
+    justify-content: flex-end;
+    align-items: center;
+    width: 40%
+  }
+
+  ._leftTitle {
+    @include font('helveticaBold', 'helveticaBold16');
+    color: $charade;
+  }
+
+  ._buttonContainer {
+    width: 130px;
+    margin-bottom: 7%
+  }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
+  }
 }

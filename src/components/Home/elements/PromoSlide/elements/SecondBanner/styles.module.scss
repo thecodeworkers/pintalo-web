@@ -87,4 +87,8 @@
   ._buttonContainer {
     margin: 0;
   }
+
+  ._buttonText {
+    @include font('helvetica', 'helvetica12');
+  }
 }
