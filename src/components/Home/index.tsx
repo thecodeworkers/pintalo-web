@@ -9,7 +9,7 @@ const Home = ({ content }) => (
     {content ? (
       <>
         <Hero data={content?.mainBanner} />
-        {/* <PromoSlide /> */}
+        <PromoSlide />
         {/* <ThirdBanner data={content?.thirdBanner} /> */}
         {/* <FourthBanner data={content?.fourthBanner} /> */}
       </>

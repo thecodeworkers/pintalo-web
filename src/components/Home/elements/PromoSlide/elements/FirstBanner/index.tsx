@@ -15,7 +15,7 @@ const FirstBanner = () => {
 
   return (
     <>
-      <div className={'_rollerBackground'}>
+      <div className={styles._rollerBackground}>
         <div className={'_main'}>
           <div className={styles._container}>
             <div className={styles._titleContainer}>
@@ -30,7 +30,6 @@ const FirstBanner = () => {
               </div>
               <div className={styles._textContainer}>
                 <p className={styles._text}>{firstBanner?.text}</p>
-
               </div>
               <div className={styles._buttonContainer}>
                 <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/shop')}>
@@ -38,17 +37,12 @@ const FirstBanner = () => {
                 </GeneralButton>
               </div>
             </div>
-
           </div>
         </div>
       </div>
       <style jsx>{`
-        ._rollerBackground{
+        .${styles._rollerBackground} {
            background-image: url(${firstBanner?.background?.mediaItemUrl});
-           background-repeat: no-repeat;
-           background-size: 100% 100%;
-           width:100%;
-           height: 100vh;
         }
       `}</style>
     </>

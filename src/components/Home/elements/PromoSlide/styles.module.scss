@@ -1,4 +1,6 @@
-._content{
+@import '@styles/index.scss';
+
+._content {
   position: relative;
 }
 
@@ -19,6 +21,18 @@
   animation: fadeIn 2s ease;
 }
 
+._stepperContainer {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 50px;
+}
+
+._stepper {
+  width: 80px;
+}
 
 @keyframes fadeIn {
   0% {
@@ -30,15 +44,16 @@
   }
 }
 
-._stepperContainer{
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  bottom: 50px;
-}
+@include responsive(md) {
+  ._main {
+    height: 100%;
+  }
 
-._stepper{
-  width: 80px;
+  ._show {
+    height: 100%;
+  }
+
+  ._stepperContainer {
+    bottom: 10px;
+  }
 }
