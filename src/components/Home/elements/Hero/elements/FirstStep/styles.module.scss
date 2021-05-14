@@ -60,6 +60,12 @@
   margin: 1rem 0 1rem 0;
 }
 
+@include responsive(xl) {
+  ._buttonContainer {
+    width: 80%;
+  }
+}
+
 @include responsive(md) {
   ._heroContainer {
     height: 37vh;

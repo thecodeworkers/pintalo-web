@@ -39,6 +39,20 @@
   align-items: center;
 }
 
+@include responsive(xl) {
+  ._titleContainer {
+    width: 40%;
+  }
+
+  ._title {
+    @include font('helveticaBold', 'helveticaBold75');
+  }
+
+  ._subtitleContainer {
+    width: 40%
+  }
+}
+
 @include responsive(md) {
   ._background {
     height: 20vh;

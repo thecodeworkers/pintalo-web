@@ -143,6 +143,17 @@
   display: none;
 }
 
+@include responsive(lg) {
+  ._leftDownTextContainer {
+    width: 90%;
+  }
+
+  ._leftSubtitle {
+    @include font('helvetica', 'helvetica19');
+    margin-top: .5rem;
+  }
+}
+
 @include responsive(md) {
   ._endContainer {
     flex-direction: column;
