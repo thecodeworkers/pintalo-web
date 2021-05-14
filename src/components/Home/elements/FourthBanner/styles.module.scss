@@ -1,31 +1,58 @@
 @import '@styles/index.scss';
 
-._container{
-
+._container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: flex-start;
 }
-._titleContainer{
+
+._titleContainer {
   width: 30%;
   margin-bottom: 1rem;
 }
 
-._subtitleContainer{
- width: 30%;
+._subtitleContainer {
+  width: 30%;
   margin-bottom: 1rem;
 }
 
-._subtitle{
+._subtitle {
   color: $charade;
   font-family: $helvetica;
   font-size: $helvetica22;
 }
 
-._title{
+._title {
   color: $white;
   font-family: $helveticaBold;
   font-size: $helveticaBold82;
 }
 
+._background {
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  width: 100%;
+  height: 35vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@include responsive(md) {
+  ._background {
+    height: 20vh;
+  }
+
+  ._title {
+    @include font('helveticaBold', 'helveticaBold16');
+  }
+
+  ._subtitleContainer {
+    width: 100%
+  }
+
+  ._subtitle {
+    @include font('helvetica', 'helvetica11');
+  }
+}
