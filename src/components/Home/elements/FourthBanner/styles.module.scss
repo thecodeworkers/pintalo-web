@@ -58,6 +58,10 @@
     height: 20vh;
   }
 
+  ._titleContainer {
+    width: 30%;
+  }
+
   ._title {
     @include font('helveticaBold', 'helveticaBold16');
   }
