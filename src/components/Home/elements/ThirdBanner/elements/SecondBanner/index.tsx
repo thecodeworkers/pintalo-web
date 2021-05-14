@@ -40,7 +40,7 @@ const ThirdBanner = ({ data }) => {
             </div>
           </div>
           <div className={styles._rigthContainer}>
-            {/* <div className={styles._inspoBackground} >
+            <div className={styles._inspoBackground} >
               <div className={styles._modal}>
                 <div className={styles._modalHeader} />
                 <div className={styles._modalBody}>
@@ -48,12 +48,12 @@ const ThirdBanner = ({ data }) => {
                   <p className={styles._modalSubtitle}>{data?.subtitle}</p>
                   <div className={styles._buttonContainer}>
                     <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => navigation('/inspo')}>
-                      {data?.button.text}
+                      <p className={styles._buttonText}>{data?.button.text}</p>
                     </GeneralButton>
                   </div>
                 </div>
               </div>
-            </div> */}
+            </div>
           </div>
         </div>
       </div>
