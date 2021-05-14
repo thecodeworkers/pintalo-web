@@ -181,8 +181,8 @@
   }
 
   ._buttonContainer {
-    width: 130px;
-    margin-bottom: 7%
+    margin-bottom: 7%;
+    @include buttonSizeMobile;
   }
 
   ._buttonText {

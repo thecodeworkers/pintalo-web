@@ -84,7 +84,7 @@
   }
 
   ._content {
-    width: 47%;
+    @include buttonSizeMobile;
   }
 
   ._buttonTitle {

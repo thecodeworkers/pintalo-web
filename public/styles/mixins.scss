@@ -75,3 +75,7 @@
   display: inline-block;
   padding: $padding;
 }
+
+@mixin buttonSizeMobile {
+  width: 8.125rem;
+}

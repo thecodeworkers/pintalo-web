@@ -115,6 +115,10 @@
     width: 100%;
   }
 
+  ._buttonContainer {
+    @include buttonSizeMobile;
+  }
+
   ._buttonText {
     @include font('helvetica', 'helvetica12');
   }
