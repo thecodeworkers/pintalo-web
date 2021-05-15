@@ -2,7 +2,6 @@
 
 @mixin navStyles {
   width: 100%;
-  position: relative;
   box-shadow: 0px 3px 10px $navShadow;
   position: fixed;
   top: 0px;
@@ -85,5 +84,21 @@
 
   100% {
     width: 100%;
+  }
+}
+
+@include responsive(md) {
+  ._nav {
+    height: 3.5rem;
+  }
+
+  ._linksParent {
+    & a {
+      display: none;
+    }
+
+    & img:nth-child(3) {
+      margin-right: 2.5rem;
+    }
   }
 }

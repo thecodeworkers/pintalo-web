@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux'
 import { setMenuShow } from '../../store/actions'
 
 const Menu = ({ showMenu }) => {
-
   const dispatch = useDispatch()
   const router = useRouter()
 

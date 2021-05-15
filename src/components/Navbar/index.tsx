@@ -29,26 +29,26 @@ const Navbar = () => {
 
   return (
     <>
-    <nav className={returnStyles()}>
-      <div className={`${styles._nav} _main`}>
-        <div className={styles._logoParent} onClick={() => navigation('/')}>
-          <Logo color='#000000' />
+      <nav className={returnStyles()}>
+        <div className={`${styles._nav} _main`}>
+          <div className={styles._logoParent} onClick={() => navigation('/')}>
+            <Logo color='#000000' />
+          </div>
+
+          <div className={styles._linksParent}>
+            <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
+            <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
+            <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />
+            <a onClick={() => navigation('/register')} > Registrar </a>
+          </div>
         </div>
 
-        <div className={styles._linksParent}>
-          <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
-          <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
-          <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />
-          <a onClick={() => navigation('/register')} > Registrar </a>
+        <div className={styles._toggleParent} onClick={deployMenu}>
+          <img src='/images/icons/toggle.svg' alt='toggle' width='16px'></img>
         </div>
-      </div>
+      </nav>
 
-      <div className={styles._toggleParent} onClick={deployMenu}>
-        <img src='/images/icons/toggle.svg' alt='toggle' width='16px'></img>
-      </div>
-    </nav>
-
-    <Menu showMenu={showMenu}/>
+      <Menu showMenu={showMenu}/>
     </>
   )
 }
