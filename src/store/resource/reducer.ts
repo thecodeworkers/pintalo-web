@@ -7,7 +7,9 @@ const initialState = {
   products: [],
   bases: [],
   brands: [],
-  inspo: []
+  inspo: [],
+  painterEntry: [],
+  brandEntry: []
 }
 
 const resourceReducer = (state = initialState, { type, payload }: AnyAction) => {
