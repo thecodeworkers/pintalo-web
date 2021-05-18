@@ -1,27 +1,22 @@
 import { useEffect } from 'react'
-import styles from './styles.module.scss'
 import { HalfBanner, GeneralButton } from '@components'
 import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
-import { formikConfig } from './formik'
-import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-
+import { useRouter } from 'next/router'
+import { formikConfig } from './formik'
+import styles from './styles.module.scss'
 
 const RegisterView = ({ data }) => {
-
   const { showFooter } = useSelector((state: any) => state.intermitence)
-  const formik = formikConfig()
   const dispatch = useDispatch()
   const router = useRouter()
+
+  const formik = formikConfig()
   const { errors, touched } = formik
 
   useEffect(() => {
-    if(showFooter) dispatch(setFooterShow({ showFooter: false }))
-  }, [showFooter])
-
-  useEffect(() => {
-    return () => { dispatch(setFooterShow({ showFooter: true })) }
+    if(showFooter) dispatch(setFooterShow(false))
   }, [])
 
   const navigation = () => {
@@ -101,7 +96,7 @@ const RegisterView = ({ data }) => {
               </div>
 
               <div className={styles._parentBtn} >
-                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit'>
+                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' bold type='submit'>
                   Registrarse
                 </GeneralButton>
               </div>

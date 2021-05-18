@@ -1,3 +1,11 @@
+@import '@styles/index.scss';
+
 ._leftSection {
   width: 50%;
+}
+
+@include responsive(md) {
+  ._leftSection {
+    display: none;
+  }
 }

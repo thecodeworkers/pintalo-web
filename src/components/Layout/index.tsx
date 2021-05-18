@@ -1,8 +1,8 @@
 import { Navbar, Footer } from '@components'
-import { useSelector } from 'react-redux';
+import { memo } from 'react'
+import { useSelector } from 'react-redux'
 
 const Layout = ({ children }) => {
-
   const { showFooter } = useSelector((state: any) => state.intermitence)
 
   return (
@@ -14,4 +14,4 @@ const Layout = ({ children }) => {
   )
 }
 
-export default Layout
+export default memo(Layout)

@@ -1,14 +1,10 @@
-@import '../../../../../public/styles/index.scss';
+@import '@styles/index.scss';
 
 ._main {
   width: 100%;
   height: 100vh;
   display: flex;
   flex-direction: row;
-}
-
-._leftSection {
-  width: 50%;
 }
 
 ._rightSection {
@@ -105,4 +101,10 @@
   font-family: $helvetica;
   font-size: $helvetica14;
   text-align: center;
+}
+
+@include responsive(md) {
+  ._rightSection {
+    width: 100%;
+  }
 }
