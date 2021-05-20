@@ -41,8 +41,14 @@ const Navbar = () => {
           <div className={styles._linksParent}>
             <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
             <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
-            { !!isAuth || <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} /> }
-            { !!isAuth || <a onClick={() => navigation('/register')} > Registrar </a> }
+            { !isAuth && <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} /> }
+            {
+              !isAuth ? (
+                <a onClick={() => navigation('/register')} > Registrar </a>
+              ) : (
+                <a onClick={() => navigation('/register')} > Salir </a>
+              )
+            }
           </div>
         </div>
 
