@@ -6,10 +6,13 @@ import { useRouter } from 'next/router'
 import { Menu } from '@components'
 
 const Navbar = () => {
+  const {
+    intermitence: { showMenu },
+    user: { isAuth }
+  }  = useSelector((state: any) => state)
 
   const router = useRouter()
   const dispatch = useDispatch()
-  const { showMenu }  = useSelector((state: any) => state.intermitence)
 
   const deployMenu = () => {
     if(showMenu === 1) return dispatch(setMenuShow({ showMenu: 2 }))
@@ -38,8 +41,8 @@ const Navbar = () => {
           <div className={styles._linksParent}>
             <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
             <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
-            <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />
-            <a onClick={() => navigation('/register')} > Registrar </a>
+            { !!isAuth || <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} /> }
+            { !!isAuth || <a onClick={() => navigation('/register')} > Registrar </a> }
           </div>
         </div>
 
