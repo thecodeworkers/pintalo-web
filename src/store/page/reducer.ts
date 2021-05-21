@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { GET_PAGES } from './action-types'
+import { GET_PAGES_ASYNC } from './action-types'
 
 const initialState = {
   homePage: {},
@@ -13,7 +13,7 @@ const initialState = {
 
 const pageReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
-    case GET_PAGES:
+    case GET_PAGES_ASYNC:
       return { ...state, ...payload }
     default:
       return state

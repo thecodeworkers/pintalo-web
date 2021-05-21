@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { SET_RESOURCES } from './action-types'
+import { GET_RESOURCES_ASYNC } from './action-types'
 
 const initialState = {
   categories: [],
@@ -14,7 +14,7 @@ const initialState = {
 
 const resourceReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
-    case SET_RESOURCES:
+    case GET_RESOURCES_ASYNC:
       return { ...state, ...payload }
     default:
       return state

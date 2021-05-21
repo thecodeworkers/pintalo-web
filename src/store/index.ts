@@ -1,8 +1,10 @@
 import { createStore, applyMiddleware } from 'redux'
 import { HYDRATE, createWrapper } from 'next-redux-wrapper'
+import createSagaMiddleware from 'redux-saga'
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 import thunkMiddleware from 'redux-thunk'
 import reducers from './reducers'
+import sagas from './sagas'
 import reconcile from './reconcile'
 
 const createNoopStorage = () => {
@@ -38,7 +40,8 @@ const reducer = (state, action) => {
 }
 
 const makeStore: any = ({ isServer }) => {
-  const createStoreHook = currentReducer => createStore(currentReducer, bindMiddleware([thunkMiddleware]))
+  const sagaMiddleware = createSagaMiddleware()
+  const createStoreHook = currentReducer => createStore(currentReducer, bindMiddleware([thunkMiddleware, sagaMiddleware]))
   if (isServer) return createStoreHook(reducer)
 
   const { persistStore, persistReducer } = require('redux-persist')
@@ -52,6 +55,8 @@ const makeStore: any = ({ isServer }) => {
 
   const persistedReducer = persistReducer(persistConfig, reducer)
   const store = createStoreHook(persistedReducer)
+
+  store['sagaTask'] = sagaMiddleware.run(sagas)
   store['__persistor'] = persistStore(store, { manualPersist: true })
 
   return store

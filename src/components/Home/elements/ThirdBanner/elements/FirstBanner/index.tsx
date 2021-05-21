@@ -9,7 +9,7 @@ const FirstBanner = ({ data }) => {
     if (router.pathname != route) router.push(route)
   }
 
-  const allies = data?.patners
+  const allies = data?.patners || []
 
   return (
     <>

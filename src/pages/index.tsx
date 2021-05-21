@@ -1,8 +1,9 @@
 import React from 'react'
+import wrapper from '@store'
 import { useSelector } from 'react-redux'
 import { getResources } from '@store/actions'
+import { END } from '@redux-saga/core'
 import { Home } from '@components'
-import wrapper from '@store'
 
 const HomePage = () => {
   const { page: { homePage: { home } } } = useSelector((state: any) => state)
@@ -10,7 +11,11 @@ const HomePage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getResources())
+  async ({ store }: any) => {
+    store.dispatch(getResources())
+    store.dispatch(END);
+    await store.sagaTask.toPromise();
+  }
 )
 
 export default HomePage
