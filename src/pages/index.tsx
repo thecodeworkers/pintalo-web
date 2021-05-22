@@ -13,7 +13,7 @@ const HomePage = () => {
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }: any) => {
     store.dispatch(getPage('homePage'))
-    store.dispatch(END);
+    store.dispatch(END)
     await store.sagaTask.toPromise();
   }
 )

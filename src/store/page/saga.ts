@@ -17,7 +17,7 @@ import {
 const getPageByName = (name) => {
   const pages = {
     homePage: homePageQuery,
-    'registerPage': registerPageQuery,
+    registerPage: registerPageQuery,
     'loginPage': loginPageQuery,
     'aboutPage': aboutPageQuery,
     'painterPage': painterPageQuery,
