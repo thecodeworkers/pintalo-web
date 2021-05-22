@@ -1,10 +1,13 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { actionObject, GraphQlClient, validateFetch } from '@utils';
-import { SIGN_UP, SIGN_UP_ASYNC } from './action-types';
-import { registerUser } from '@graphql/mutation';
+import { actionObject, GraphQlClient, validateFetch } from '@utils'
+import { registerUser } from '@graphql/mutation'
+import { SHOW_LOADER } from '../intermitence/action-types'
+import { SIGN_UP, SIGN_UP_ASYNC } from './action-types'
 
 function* signUpAsync({ payload }: any) {
   try {
+    yield put(actionObject(SHOW_LOADER, true))
+
     let response = yield call(GraphQlClient, registerUser(payload))
     response = validateFetch(response)
 
@@ -13,7 +16,10 @@ function* signUpAsync({ payload }: any) {
       isAuth: true
     }));
 
+    yield put(actionObject(SHOW_LOADER, false))
+
   } catch (err) {
+    yield put(actionObject(SHOW_LOADER, false))
     console.log(err)
   }
 }

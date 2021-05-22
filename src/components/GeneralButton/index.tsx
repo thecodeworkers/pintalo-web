@@ -1,22 +1,36 @@
-import { FC } from 'react'
+import { FC, memo } from 'react'
 import { Button } from './type'
+import ActivityIndicator from '../ActivityIndicator'
 
 const helvetica20 = '1'
 
-const GeneralButton: FC<Button> = ({ children, backgroundColor, textColor, method, bold, large = '2.5rem', type = 'button' }) => (
+const GeneralButton: FC<Button> = ({
+  children,
+  backgroundColor,
+  textColor,
+  method,
+  bold,
+  large = '2.5rem',
+  type = 'button',
+  showLoader = false
+}) => (
   <>
-    <button className='_button' onClick={method ? method : null} type={type}>
-      {children}
+    <button className="_button" onClick={method ? method : null} type={type} disabled={showLoader ? true : false}>
+      {
+        showLoader ? (
+          <ActivityIndicator/>
+        ) : children
+      }
     </button>
 
     <style jsx>{`
-    ._button{
+    ._button {
       width: 100%;
       height: ${large};
       background-color: ${backgroundColor};
       color: ${textColor};
       border: none;
-      cursor: pointer;
+      cursor: ${showLoader ? 'none' : 'pointer'};
       font-size: ${helvetica20}rem;
       border-radius: 30px;
       font-family: ${!bold ? 'Helvetica' : 'Helvetica-bold'};
@@ -26,4 +40,4 @@ const GeneralButton: FC<Button> = ({ children, backgroundColor, textColor, metho
   </>
 )
 
-export default GeneralButton
+export default memo(GeneralButton)

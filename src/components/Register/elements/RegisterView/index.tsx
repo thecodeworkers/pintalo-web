@@ -10,7 +10,7 @@ import styles from './styles.module.scss'
 
 const RegisterView = ({ data }) => {
   const {
-    intermitence: { showFooter },
+    intermitence: { showFooter, showLoader },
     user: { isAuth }
   } = useSelector((state: any) => state)
 
@@ -110,7 +110,7 @@ const RegisterView = ({ data }) => {
                     </div>
 
                     <div className={styles._parentBtn} >
-                      <GeneralButton backgroundColor='#FDCA40' textColor='#262833' bold type='submit'>
+                      <GeneralButton backgroundColor='#FDCA40' textColor='#262833' bold type='submit' showLoader={showLoader}>
                         Registrarse
                       </GeneralButton>
                     </div>
