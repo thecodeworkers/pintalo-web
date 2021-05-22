@@ -39,5 +39,12 @@ export const isRetina = () => {
     (min-resolution: 192dpi), n\
     (min-resolution: 2dppx)';
 
-    return !!window?.matchMedia(query).matches
+  return !!window?.matchMedia(query).matches
+}
+
+export const validateFetch = ({ errors, data }) => {
+  if (errors) throw errors[0].message
+  if (typeof(data) == 'undefined') throw 'Cannot connect'
+
+  return data
 }

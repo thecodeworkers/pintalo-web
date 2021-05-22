@@ -1,18 +1,24 @@
 import React from 'react'
 import wrapper from '@store'
 import { useSelector } from 'react-redux'
-import { getResources } from '@store/actions'
+import { getPages, getHomePage } from '@store/actions'
 import { END } from '@redux-saga/core'
 import { Home } from '@components'
 
 const HomePage = () => {
-  const { page: { homePage: { home } } } = useSelector((state: any) => state)
-  return <Home content={home} />
+  const { page: { homePage } } = useSelector((state: any) => state)
+
+  return (
+    <div style={{ height: '100vh', backgroundImage: `url(${homePage.img})` }}>
+
+    </div>
+  )
+  // return <Home content={homePage} />
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }: any) => {
-    store.dispatch(getResources())
+    store.dispatch(getHomePage())
     store.dispatch(END);
     await store.sagaTask.toPromise();
   }

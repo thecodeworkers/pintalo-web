@@ -7,5 +7,4 @@ const bases = `
     }
   }
 `
-
 export default bases
