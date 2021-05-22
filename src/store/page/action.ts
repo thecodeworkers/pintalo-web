@@ -1,11 +1,10 @@
-// import { pages } from '@graphql/query'
 import { actionObject } from '@utils'
-import { GET_HOME_PAGE, GET_PAGES } from './action-types'
+import { GET_PAGE } from './action-types'
 
-const setResources = (data, page, resources) => {
-  data[resources] = page
-  return data;
-}
+// const setResources = (data, page, resources) => {
+//   data[resources] = page
+//   return data;
+// }
 
 // export const getPages: any = (resources) => async (dispatch, getState) => {
 
@@ -16,6 +15,4 @@ const setResources = (data, page, resources) => {
 //   dispatch(actionObject(GET_PAGES, data))
 // }
 
-export const getHomePage = () => actionObject(GET_HOME_PAGE)
-
-export const getPages = pageName => actionObject(GET_PAGES, pageName)
+export const getPage = pageName => actionObject(GET_PAGE, pageName)

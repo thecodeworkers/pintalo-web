@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { GeneralButton } from '@components'
-import styles from './styles.module.scss'
 import { useSelector } from 'react-redux'
+import styles from './styles.module.scss'
 
 const SecondBanner = () => {
   const router = useRouter()

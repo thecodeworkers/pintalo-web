@@ -1,7 +1,7 @@
 import { homeId } from '@utils/pageIds'
 
 const home = `
-  homePage:page(id: "${homeId}") {
+  page(id: "${homeId}") {
     home {
       mainBanner {
         slogan

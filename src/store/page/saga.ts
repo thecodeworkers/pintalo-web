@@ -1,47 +1,51 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { homePageQuery } from '@graphql/query'
 import { actionObject, GraphQlClient, validateFetch } from '@utils';
 import {
-  GET_HOME_PAGE,
-  GET_HOME_PAGE_ASYNC,
-  GET_PAGES,
-  GET_PAGES_ASYNC
+  homePageQuery,
+  registerPageQuery,
+  loginPageQuery,
+  aboutPageQuery,
+  painterPageQuery,
+  shopPageQuery,
+  inspoPageQuery
+} from '@graphql/query'
+import {
+  GET_PAGE,
+  GET_PAGE_ASYNC
 } from './action-types'
 
-function* getHomePageAsync() {
+const getPageByName = (name) => {
+  const pages = {
+    homePage: homePageQuery,
+    'registerPage': registerPageQuery,
+    'loginPage': loginPageQuery,
+    'aboutPage': aboutPageQuery,
+    'painterPage': painterPageQuery,
+    'shopPage': shopPageQuery,
+    'inspoPage': inspoPageQuery
+  }
+
+  const query = `
+    query Page {
+      ${pages[name]}
+    }
+  `
+
+  return query
+}
+
+function* getPageAsync({ payload }: any) {
   try {
-    const query = `
-      query Home {
-        ${homePageQuery}
-      }
-    `
+    const response = yield call(GraphQlClient, getPageByName(payload))
+    const { page } = validateFetch(response)
 
-    const response = yield call(GraphQlClient, query)
-    const { homePage: { home } } = validateFetch(response)
-
-    yield put(actionObject(GET_HOME_PAGE_ASYNC, { homePage: home }));
+    yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }));
 
   } catch (err) {
-    yield put(actionObject(GET_HOME_PAGE_ASYNC, { homePage: {
-      img: 'https://cryptobuyer-dev-admin.thecodeworkers.com/wp-content/uploads/2021/03/banner-home.png'
-     } }));
+    console.log(err)
   }
-}
-
-function* getPageAsync() {
-  try {
-    // const { home } = yield call(pages, 'homePage')
-    // yield put(actionObject(GET_PAGES_ASYNC, { homePage: home }));
-
-  } catch {
-
-  }
-}
-
-export function* watchGetHomePage() {
-  yield takeLatest(GET_HOME_PAGE, getHomePageAsync)
 }
 
 export function* watchGetPages() {
-  yield takeLatest(GET_PAGES, getPageAsync)
+  yield takeLatest(GET_PAGE, getPageAsync)
 }
