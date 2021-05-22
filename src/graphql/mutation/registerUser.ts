@@ -1,8 +1,8 @@
-const mutation = (args) => {
+const registerUser = (args) => {
   const { email, password, name, lastname } = args
 
   return (`
-    mutation registerUser {
+    mutation register {
       registerUser(input: {
         username: "${email}",
         email: "${email}",
@@ -18,4 +18,4 @@ const mutation = (args) => {
   `)
 }
 
-export default mutation
+export default registerUser
