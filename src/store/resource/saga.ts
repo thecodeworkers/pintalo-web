@@ -1,6 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
 // import { pages, resources } from '@graphql'
-import { GET_PAGES_ASYNC } from '../page/action-types'
+// import { GET_PAGES_ASYNC } from '../page/action-types'
 import { GET_RESOURCES, GET_RESOURCES_ASYNC } from './action-types'
 import { actionObject } from '@utils';
 

@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Login } from '@components'
 import wrapper from '@store'
-import { getPages } from '@store/actions'
+import { getPage } from '@store/actions'
 
 const LoginPage = () => {
 
@@ -14,7 +14,7 @@ const LoginPage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPages('loginPage'))
+  ({ store }) => store.dispatch(getPage('loginPage'))
 )
 
 export default LoginPage

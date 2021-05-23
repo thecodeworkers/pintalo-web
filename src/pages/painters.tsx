@@ -2,7 +2,7 @@ import React from 'react'
 import { useSelector } from 'react-redux'
 import { Painter } from '@components'
 import wrapper from '@store'
-import { getPages } from '@store/actions'
+import { getPage } from '@store/actions'
 
 const PaintersPage = () => {
 
@@ -14,7 +14,7 @@ const PaintersPage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPages('painterPage'))
+  ({ store }) => store.dispatch(getPage('painterPage'))
 )
 
 export default PaintersPage

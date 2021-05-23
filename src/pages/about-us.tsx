@@ -1,7 +1,7 @@
 import React from 'react'
 import { useSelector } from 'react-redux'
 import wrapper from '@store'
-import { getPages } from '@store/actions'
+import { getPage } from '@store/actions'
 import { About } from '@components'
 
 const AboutUs = () => {
@@ -14,7 +14,7 @@ const AboutUs = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPages('aboutPage'))
+  ({ store }) => store.dispatch(getPage('aboutPage'))
 )
 
 export default AboutUs
