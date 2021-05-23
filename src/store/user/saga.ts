@@ -1,7 +1,7 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { actionObject, GraphQlClient, validateFetch } from '@utils'
+import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
 import { registerUser } from '@graphql/mutation'
-import { SHOW_LOADER } from '../intermitence/action-types'
+import { SHOW_LOADER, SHOW_TOAST } from '../intermitence/action-types'
 import { SIGN_UP, SIGN_UP_ASYNC } from './action-types'
 
 function* signUpAsync({ payload }: any) {
@@ -19,8 +19,7 @@ function* signUpAsync({ payload }: any) {
     yield put(actionObject(SHOW_LOADER, false))
 
   } catch (err) {
-    yield put(actionObject(SHOW_LOADER, false))
-    console.log(err)
+    yield call(manageError, err, SHOW_LOADER, SHOW_TOAST)
   }
 }
 

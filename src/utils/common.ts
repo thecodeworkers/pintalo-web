@@ -1,3 +1,4 @@
+import { delay, put } from '@redux-saga/core/effects'
 import { useRouter } from 'next/router'
 // import { setLoader } from '@store/actions'
 import { useDispatch } from 'react-redux'
@@ -47,4 +48,19 @@ export const validateFetch = ({ errors, data }) => {
   if (typeof(data) == 'undefined') throw 'Cannot connect'
 
   return data
+}
+
+export function* manageError(error, loader, toast) {
+  yield put(actionObject(loader, false))
+
+  yield put(actionObject(toast, {
+    status: 1,
+    message: error
+  }))
+
+  yield delay(3000)
+
+  yield put(actionObject(toast, {
+    status: 2
+  }))
 }

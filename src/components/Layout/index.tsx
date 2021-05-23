@@ -1,6 +1,8 @@
-import { Navbar, Footer } from '@components'
 import { memo } from 'react'
 import { useSelector } from 'react-redux'
+import Navbar from '../Navbar'
+import Footer from '../Footer'
+import Toast from '../Toast'
 
 const Layout = ({ children }) => {
   const { showFooter } = useSelector((state: any) => state.intermitence)
@@ -10,6 +12,7 @@ const Layout = ({ children }) => {
       <Navbar />
       {children}
       { showFooter && <Footer /> }
+      <Toast />
     </>
   )
 }
