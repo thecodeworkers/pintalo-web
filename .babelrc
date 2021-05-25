@@ -10,7 +10,8 @@
           "@components": "./src/components",
           "@graphql": "./src/graphql",
           "@utils": "./src/utils",
-          "@styles": "./public/styles"
+          "@styles": "./public/styles",
+          "@images": "./public/images"
         }
       }
     ]

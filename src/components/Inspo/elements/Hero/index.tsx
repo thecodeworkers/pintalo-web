@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 const Hero = () => {
   return (
     <>
-      <section className={`${styles._main} _image`}>
+      <section className={`${styles._main} ${styles._image}`}>
         <div>
           <h1>Inspírate</h1>
           <p>tipos de estilo de decoracion y colores que van bien con cada uno</p>
@@ -11,12 +11,8 @@ const Hero = () => {
       </section>
 
       <style jsx>{`
-      ._image {
+      .${styles._image} {
         background-image: url('images/banner/inspo-banner.png');
-        background-size: 100% 100%;
-        background-repeat: no-repeat;
-        width:100%;
-        height: 30vw;
       }
     `}</style>
     </>
