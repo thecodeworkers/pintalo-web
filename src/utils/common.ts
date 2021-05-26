@@ -1,4 +1,5 @@
 import { delay, put } from '@redux-saga/core/effects'
+import { END } from '@redux-saga/core'
 import { useRouter } from 'next/router'
 // import { setLoader } from '@store/actions'
 import { useDispatch } from 'react-redux'
@@ -63,4 +64,10 @@ export function* manageError(error, loader, toast) {
   yield put(actionObject(toast, {
     status: 2
   }))
+}
+
+export const mapProps = async (store, action) => {
+  store.dispatch(action)
+  store.dispatch(END)
+  await store.sagaTask.toPromise();
 }

@@ -1,0 +1,39 @@
+@import '@styles/index.scss';
+
+._container {
+  display: flex;
+  align-items: center;
+  width: 40%;
+  justify-content: space-between
+}
+
+._numberContainer {
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+._number {
+  @include font('helvetica', 'helvetica15');
+  font-weight: 200;
+  color: $wildSand
+}
+
+._arrowContainer {
+  display: flex;
+  cursor: pointer;
+}
+
+._arrow {
+  @include arrow($charade, 6px);
+}
+
+@include responsive(md) {
+  ._container {
+    width: 100%;
+  }
+}

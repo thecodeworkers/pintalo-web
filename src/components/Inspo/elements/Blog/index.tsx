@@ -1,14 +1,22 @@
+import { useState } from 'react'
 import styles from './styles.module.scss'
+import Pagination from '../../../Pagination'
 
-const Blog = () => {
+const perPage = 1
+
+const Blog = ({ title }) => {
+  const [page, setPage] = useState(1)
+
+  const elements = Array.from(Array(9).keys())
+
   return (
     <section className='_main'>
       <div className={styles._content} >
-        <h2>Inspirate y comienza a recubrir, revestir y remodelar</h2>
+        <h2>{title}</h2>
 
         <div className={styles._blogParent}>
           {
-            Array.from(Array(9).keys()).map((item, index) => {
+            elements.map((item, index) => {
               return (
                 <div className={styles._card} key={index}>
                   <div className={styles._header}>
@@ -39,6 +47,10 @@ const Blog = () => {
               )
             })
           }
+        </div>
+
+        <div className={styles._paginationContainer}>
+          <Pagination currentPage={page} items={elements} perPage={perPage} changePage={setPage}/>
         </div>
       </div>
     </section>

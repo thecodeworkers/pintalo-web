@@ -107,6 +107,11 @@
   }
 }
 
+._paginationContainer {
+  display: flex;
+  justify-content: center;
+}
+
 @include responsive(md) {
   ._content {
     margin-top: 2rem;

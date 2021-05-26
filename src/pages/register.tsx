@@ -3,18 +3,16 @@ import wrapper from '@store'
 import { useSelector } from 'react-redux'
 import { Register } from '@components'
 import { getPage } from '@store/actions'
-import { END } from '@redux-saga/core'
+import { mapProps } from '@utils'
 
 const RegisterPage = () => {
-  const { page: { registerPage: { back } } } = useSelector((state: any) => state)
+  const back = useSelector((state: any) => state?.page?.registerPage?.back)
   return <Register content={back} />
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }: any) => {
-    store.dispatch(getPage('registerPage'))
-    store.dispatch(END)
-    await store.sagaTask.toPromise();
+    await mapProps(store, getPage('registerPage'))
   }
 )
 

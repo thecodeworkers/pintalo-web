@@ -18,11 +18,11 @@ const getPageByName = (name) => {
   const pages = {
     homePage: homePageQuery,
     registerPage: registerPageQuery,
+    inspoPage: inspoPageQuery,
     'loginPage': loginPageQuery,
     'aboutPage': aboutPageQuery,
     'painterPage': painterPageQuery,
     'shopPage': shopPageQuery,
-    'inspoPage': inspoPageQuery
   }
 
   const query = `

@@ -1,18 +1,18 @@
 import styles from './styles.module.scss'
 
-const Hero = () => {
+const Hero = ({ title, subtitle, bannerImage }) => {
   return (
     <>
       <section className={`${styles._main} ${styles._image}`}>
         <div>
-          <h1>Inspírate</h1>
-          <p>tipos de estilo de decoracion y colores que van bien con cada uno</p>
+          <h1>{title}</h1>
+          <p>{subtitle}</p>
         </div>
       </section>
 
       <style jsx>{`
       .${styles._image} {
-        background-image: url('images/banner/inspo-banner.png');
+        background-image: url(${bannerImage});
       }
     `}</style>
     </>

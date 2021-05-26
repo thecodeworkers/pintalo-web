@@ -1,17 +1,18 @@
 import { inspoId } from '@utils/pageIds'
+
 const inspo = `
-inspoPage: page(id: "${inspoId}") {
-  id
-  title
-  shop {
+  page(id: "${inspoId}") {
     title
-    banner {
-      id
-      slug
-      mediaItemUrl
+    inspo {
+      fieldGroupName
+      postTitle
+      subtitle
+      title
+      banner {
+        mediaItemUrl
+      }
     }
   }
-}
 `
 
 export default inspo
