@@ -13,6 +13,17 @@ const inspo = `
       }
     }
   }
+  posts(first: 9999) {
+    nodes {
+      inspo_entry {
+        content
+        fieldGroupName
+        link
+        subtitle
+        title
+      }
+    }
+  }
 `
 
 export default inspo

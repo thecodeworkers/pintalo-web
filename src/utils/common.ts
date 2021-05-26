@@ -1,8 +1,5 @@
 import { delay, put } from '@redux-saga/core/effects'
 import { END } from '@redux-saga/core'
-import { useRouter } from 'next/router'
-// import { setLoader } from '@store/actions'
-import { useDispatch } from 'react-redux'
 
 export const normalizedArray = response => response ? response : []
 
@@ -23,16 +20,6 @@ export const scrolling = (reference) => {
 
 export const createMarkup = (text) => { return {__html: text}; }
 
-// export const navigation = (route, loader = false) => {
-//   // const router = useRouter()
-//   // const dispatch = useDispatch()
-
-//   if(useRouter().pathname != route) {
-//     if(loader) useDispatch()(setLoader(true))
-//     useRouter().push(route)
-//   }
-// }
-
 export const isRetina = () => {
   const query = '(-webkit-min-device-pixel-ratio: 2), n\
     (min--moz-device-pixel-ratio: 2), n\
@@ -51,7 +38,7 @@ export const validateFetch = ({ errors, data }) => {
   return data
 }
 
-export function* manageError(error, loader, toast) {
+export function* manageError(error, toast = 'SHOW_TOAST', loader = 'SHOW_LOADER') {
   yield put(actionObject(loader, false))
 
   yield put(actionObject(toast, {

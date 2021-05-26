@@ -2,20 +2,20 @@ import React from 'react'
 import wrapper from '@store'
 import { useSelector } from 'react-redux'
 import { Inspo } from '@components'
-import { getPage } from '@store/actions'
+import { getInspoPage } from '@store/actions'
 import { mapProps } from '@utils'
 
 const InspoPage = () => {
-  const inspo = useSelector((state: any) => state?.page?.inspoPage?.inspo)
+  const content = useSelector((state: any) => state?.page?.inspoPage)
 
   return (
-    <Inspo content={inspo} />
+    <Inspo content={content} />
   )
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }: any) => {
-    await mapProps(store, getPage('inspoPage'))
+    await mapProps(store, getInspoPage())
   }
 )
 

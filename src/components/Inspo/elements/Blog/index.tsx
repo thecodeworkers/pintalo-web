@@ -4,7 +4,7 @@ import Pagination from '../../../Pagination'
 
 const perPage = 1
 
-const Blog = ({ title }) => {
+const Blog = ({ title, posts }) => {
   const [page, setPage] = useState(1)
 
   const elements = Array.from(Array(9).keys())

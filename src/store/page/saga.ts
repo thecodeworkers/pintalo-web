@@ -1,5 +1,6 @@
 import { takeLatest, call, put } from 'redux-saga/effects'
-import { actionObject, GraphQlClient, validateFetch } from '@utils';
+import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
+import { SHOW_TOAST } from '../intermitence/action-types'
 import {
   homePageQuery,
   registerPageQuery,
@@ -10,6 +11,7 @@ import {
   inspoPageQuery
 } from '@graphql/query'
 import {
+  GET_INSPO_PAGE,
   GET_PAGE,
   GET_PAGE_ASYNC
 } from './action-types'
@@ -18,7 +20,6 @@ const getPageByName = (name) => {
   const pages = {
     homePage: homePageQuery,
     registerPage: registerPageQuery,
-    inspoPage: inspoPageQuery,
     'loginPage': loginPageQuery,
     'aboutPage': aboutPageQuery,
     'painterPage': painterPageQuery,
@@ -42,10 +43,31 @@ function* getPageAsync({ payload }: any) {
     yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }));
 
   } catch (err) {
-    console.log(err)
+    yield call(manageError, err)
+  }
+}
+
+function* getInspoPageAsync() {
+  try {
+    const query = `
+      query Page {
+        ${inspoPageQuery}
+      }
+    `
+
+    const { data } = yield call(GraphQlClient, query)
+
+    yield put(actionObject(GET_PAGE_ASYNC, { inspoPage: data }))
+
+  } catch (err) {
+    yield call(manageError, err, SHOW_TOAST)
   }
 }
 
 export function* watchGetPages() {
   yield takeLatest(GET_PAGE, getPageAsync)
+}
+
+export function* watchGetInspoPage() {
+  yield takeLatest(GET_INSPO_PAGE, getInspoPageAsync)
 }
