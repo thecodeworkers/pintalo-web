@@ -2,9 +2,9 @@ import Head from 'next/head'
 import { Hero, Blog } from './elements'
 
 const Inspo = ({ content }) => {
-  const { page: { inspo }, posts } = content
+  const { page, posts } = content
 
-  let mediaItemUrl = inspo?.banner?.mediaItemUrl
+  let mediaItemUrl = page?.inspo?.banner?.mediaItemUrl
   mediaItemUrl = mediaItemUrl ? mediaItemUrl : ''
 
   let entries = posts?.nodes
@@ -15,8 +15,8 @@ const Inspo = ({ content }) => {
       <Head>
         <title>Inspiración</title>
       </Head>
-      <Hero title={inspo?.title} subtitle={inspo?.subtitle} bannerImage={mediaItemUrl} />
-      <Blog title={inspo?.postTitle} posts={entries} />
+      <Hero title={page?.inspo?.title} subtitle={page?.inspo?.subtitle} bannerImage={mediaItemUrl} />
+      <Blog title={page?.inspo?.postTitle} posts={entries} />
     </div>
   )
 }

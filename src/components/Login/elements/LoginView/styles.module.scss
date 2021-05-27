@@ -1,4 +1,4 @@
-@import '../../../../../public/styles/index.scss';
+@import '@styles/index.scss';
 
 ._main {
   width: 100%;
@@ -80,4 +80,10 @@
   width: 70%;
   margin-top: 6.5rem;
   margin-bottom: 0.5rem;
+}
+
+@include responsive(md) {
+  ._rightSection {
+    width: 100%;
+  }
 }

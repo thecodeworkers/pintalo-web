@@ -17,11 +17,7 @@ const LoginView = ({ data }) => {
   const router = useRouter()
 
   useEffect(() => {
-    if(showFooter) dispatch(setFooterShow({ showFooter: false }))
-  }, [showFooter])
-
-  useEffect(() => {
-    return () => { dispatch(setFooterShow({ showFooter: true })) }
+    if(showFooter) dispatch(setFooterShow(false))
   }, [])
 
   const formik = useFormik({
@@ -105,5 +101,3 @@ const LoginView = ({ data }) => {
 }
 
 export default LoginView
-
-

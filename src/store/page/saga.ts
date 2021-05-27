@@ -20,7 +20,7 @@ const getPageByName = (name) => {
   const pages = {
     homePage: homePageQuery,
     registerPage: registerPageQuery,
-    'loginPage': loginPageQuery,
+    loginPage: loginPageQuery,
     'aboutPage': aboutPageQuery,
     'painterPage': painterPageQuery,
     'shopPage': shopPageQuery,

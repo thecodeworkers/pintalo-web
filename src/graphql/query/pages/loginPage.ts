@@ -1,7 +1,7 @@
 import { loginId } from '@utils/pageIds'
 
 const login = `
-  loginPage:page(id: "${loginId}") {
+  page(id: "${loginId}") {
     back {
       image {
         mediaItemUrl

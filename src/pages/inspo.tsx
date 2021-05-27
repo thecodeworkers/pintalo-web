@@ -1,8 +1,8 @@
 import React from 'react'
 import wrapper from '@store'
 import { useSelector } from 'react-redux'
-import { Inspo } from '@components'
 import { getInspoPage } from '@store/actions'
+import { Inspo } from '@components'
 import { mapProps } from '@utils'
 
 const InspoPage = () => {

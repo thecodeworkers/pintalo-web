@@ -1,12 +1,12 @@
 import React from 'react'
+import wrapper from '@store'
 import { useSelector } from 'react-redux'
 import { Login } from '@components'
-import wrapper from '@store'
 import { getPage } from '@store/actions'
+import { mapProps } from '@utils'
 
 const LoginPage = () => {
-
-  const { page: { loginPage: { back } } } = useSelector((state: any) => state)
+  const back = useSelector((state: any) => state?.page?.loginPage?.back)
 
   return (
     <Login content={back} />
@@ -14,7 +14,9 @@ const LoginPage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPage('loginPage'))
+  async ({ store }: any) => {
+    await mapProps(store, getPage('loginPage'))
+  }
 )
 
 export default LoginPage
