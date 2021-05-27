@@ -1,10 +1,10 @@
 @import '@styles/index.scss';
 
 ._container {
+  width: 40%;
   display: flex;
   align-items: center;
-  width: 40%;
-  justify-content: space-between
+  justify-content: space-around;
 }
 
 ._numberContainer {

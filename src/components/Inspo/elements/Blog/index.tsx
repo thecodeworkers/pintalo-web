@@ -1,13 +1,12 @@
 import { useState } from 'react'
+import { paginate } from '@utils'
 import styles from './styles.module.scss'
 import Pagination from '../../../Pagination'
 
-const perPage = 1
+const perPage = 9
 
 const Blog = ({ title, posts }) => {
   const [page, setPage] = useState(1)
-
-  const elements = Array.from(Array(9).keys())
 
   return (
     <section className='_main'>
@@ -16,7 +15,10 @@ const Blog = ({ title, posts }) => {
 
         <div className={styles._blogParent}>
           {
-            elements.map((item, index) => {
+            paginate(posts, page, perPage).map((post, index) => {
+              let mediaItemUrl = post?.inspo_entry?.image?.mediaItemUrl
+              mediaItemUrl = mediaItemUrl ? mediaItemUrl : ''
+
               return (
                 <div className={styles._card} key={index}>
                   <div className={styles._header}>
@@ -30,17 +32,22 @@ const Blog = ({ title, posts }) => {
                   <div className={styles._miniHero}>
                     <div className={styles._textParent}>
                       <div className={styles._textChild} >
-                        <p> Como elegir los colores de tus paredes</p>
+                        <p>{post?.inspo_entry?.title}</p>
                       </div>
                     </div>
                     <div className={styles._opacity}></div>
                   </div>
+                  <style jsx>{`
+                    .${styles._miniHero} {
+                      background-image: url(${mediaItemUrl});
+                    }
+                  `}</style>
 
                   <div className={styles._article}>
                     <div className={styles._articleChild}>
-                      <h3>¿Adentro o afuera?</h3>
-                      <p>Las pinturas en exterior se ven más luminosas de lo que parecen en las paletas de colores. Elige un color ligeramente más oscuro al que te gusta.</p>
-                      <p>Fuente: <a> link </a></p>
+                      <h3>{post?.inspo_entry?.subtitle}</h3>
+                      <p>{post?.inspo_entry?.content}</p>
+                      <p>Fuente: <a rel="noopener" target="_blank" href={post?.inspo_entry?.link}> link </a></p>
                     </div>
                   </div>
                 </div>
@@ -50,7 +57,11 @@ const Blog = ({ title, posts }) => {
         </div>
 
         <div className={styles._paginationContainer}>
-          <Pagination currentPage={page} items={elements} perPage={perPage} changePage={setPage}/>
+          {
+            posts.length ? (
+              <Pagination currentPage={page} items={posts} perPage={perPage} changePage={setPage}/>
+            ) : null
+          }
         </div>
       </div>
     </section>

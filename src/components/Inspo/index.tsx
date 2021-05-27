@@ -7,13 +7,16 @@ const Inspo = ({ content }) => {
   let mediaItemUrl = inspo?.banner?.mediaItemUrl
   mediaItemUrl = mediaItemUrl ? mediaItemUrl : ''
 
+  let entries = posts?.nodes
+  entries = entries ? entries : []
+
   return (
     <div>
       <Head>
         <title>Inspiración</title>
       </Head>
       <Hero title={inspo?.title} subtitle={inspo?.subtitle} bannerImage={mediaItemUrl} />
-      <Blog title={inspo?.postTitle} posts={posts} />
+      <Blog title={inspo?.postTitle} posts={entries} />
     </div>
   )
 }

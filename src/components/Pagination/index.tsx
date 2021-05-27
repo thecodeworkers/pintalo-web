@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from 'react'
+import { memo, useState } from 'react'
 import styles from './styles.module.scss'
 
 const PAG_NUMBERS = 4
@@ -8,10 +8,6 @@ const Pagination = ({ items, perPage, changePage, currentPage }) => {
 
   const totalItems = items.length
   const totalPages = Math.ceil(totalItems / perPage)
-
-  useEffect(() => {
-    setLastPage(totalPages > PAG_NUMBERS ? PAG_NUMBERS : totalPages)
-  }, [items])
 
   const [lastPage, setLastPage] = useState(totalPages > PAG_NUMBERS ? PAG_NUMBERS : totalPages)
 
@@ -37,7 +33,7 @@ const Pagination = ({ items, perPage, changePage, currentPage }) => {
       return changePage(page)
     }
 
-    setFirstPage(totalPages > PAG_NUMBERS ? (totalPages - 4) : 1)
+    setFirstPage(totalPages > PAG_NUMBERS ? (totalPages - (PAG_NUMBERS - 1)) : 1)
     setLastPage(page)
     changePage(page)
   }
@@ -47,6 +43,9 @@ const Pagination = ({ items, perPage, changePage, currentPage }) => {
       <div className={styles._container}>
         <div
           className={styles._arrowContainer}
+          style={{
+            visibility: (currentPage == PAG_NUMBERS || lastPage > PAG_NUMBERS) ? 'visible' : 'hidden'
+          }}
           onClick={() => firstOrLastPage(1)}
         >
           <i className={`${styles._arrow} _left`}></i>
@@ -72,6 +71,7 @@ const Pagination = ({ items, perPage, changePage, currentPage }) => {
         }
         <div
           className={styles._arrowContainer}
+          style={{ visibility: (totalPages == lastPage) ? 'hidden' : 'visible' }}
           onClick={() => firstOrLastPage(totalPages)}
         >
           <i className={`${styles._arrow} _right`}></i>

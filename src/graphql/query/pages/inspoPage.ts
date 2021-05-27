@@ -21,6 +21,9 @@ const inspo = `
         link
         subtitle
         title
+        image {
+          mediaItemUrl
+        }
       }
     }
   }
