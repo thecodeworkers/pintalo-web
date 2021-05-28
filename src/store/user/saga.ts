@@ -2,7 +2,7 @@ import { takeLatest, call, put } from 'redux-saga/effects'
 import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
 import { registerUser } from '@graphql/mutation'
 import { SHOW_LOADER, SHOW_TOAST } from '../intermitence/action-types'
-import { SIGN_UP, SIGN_UP_ASYNC } from './action-types'
+import { SIGN_IN, SIGN_UP, SIGN_UP_ASYNC } from './action-types'
 
 function* signUpAsync({ payload }: any) {
   try {
@@ -23,6 +23,23 @@ function* signUpAsync({ payload }: any) {
   }
 }
 
+function* signInAsync({ payload }: any) {
+  try {
+    yield put(actionObject(SHOW_LOADER, true))
+
+
+
+    yield put(actionObject(SHOW_LOADER, false))
+
+  } catch (err) {
+    yield call(manageError, err, SHOW_LOADER, SHOW_TOAST)
+  }
+}
+
 export function* watchSignUp() {
   yield takeLatest(SIGN_UP, signUpAsync)
+}
+
+export function* watchSignIn() {
+  yield takeLatest(SIGN_IN, signInAsync)
 }

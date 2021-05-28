@@ -1,17 +1,17 @@
 import { useEffect } from 'react'
-import styles from './styles.module.scss'
 import { GeneralButton, HalfBanner } from '@components'
-import { passwordRegex, emailRegex } from '@utils/regex'
 import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
-import { useFormik } from 'formik'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
-import * as Yup from 'yup'
+import styles from './styles.module.scss'
+import formikConfig from './formik'
 
 const LoginView = ({ data }) => {
-
-  const { showFooter } = useSelector((state: any) => state.intermitence)
+  const {
+    intermitence: { showFooter, showLoader },
+    user: { isAuth }
+  } = useSelector((state: any) => state)
 
   const dispatch = useDispatch()
   const router = useRouter()
@@ -20,32 +20,10 @@ const LoginView = ({ data }) => {
     if(showFooter) dispatch(setFooterShow(false))
   }, [])
 
-  const formik = useFormik({
-    initialValues: {
-      email: '',
-      password: ''
-    },
+  const formik = formikConfig()
+  const { errors, touched } = formik
 
-    validationSchema: Yup.object({
-      email: Yup.string()
-        .required(),
-        // .matches(emailRegex),
-
-      password: Yup.string()
-        .min(8)
-        .required()
-        // .matches(passwordRegex),
-    }),
-
-    onSubmit: values => {
-      alert(JSON.stringify(values, null, 2));
-    }
-  })
-
-  const navigation = () => {
-    // dispatch(setFooterShow({ showFooter: false }))
-    router.push('/register')
-  }
+  const navigation = () => router.push('/register')
 
   return (
     <section className={styles._main}>
@@ -66,7 +44,7 @@ const LoginView = ({ data }) => {
                 name="email"
                 type="text"
                 placeholder='Correo'
-                className={styles._input}
+                className={errors.email && touched.email ? styles._inputError : styles._input}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.email}
@@ -77,7 +55,7 @@ const LoginView = ({ data }) => {
                 name="password"
                 type="password"
                 placeholder='Contraseña'
-                className={styles._input}
+                className={errors.password && touched.password ? styles._inputError : styles._input}
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.password}
@@ -86,7 +64,7 @@ const LoginView = ({ data }) => {
               <p className={styles._forgot}>¿Olvidaste tu contraseña? <a> Recuperar Contraseña </a></p>
 
               <div className={styles._parentBtn} >
-                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit'>
+                <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
                   Ingresar
                 </GeneralButton>
               </div>
