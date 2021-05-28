@@ -1,7 +1,7 @@
 import { aboutId } from '@utils/pageIds'
 
 const about = `
-  aboutPage:page(id: "${aboutId}") {
+  page(id: "${aboutId}") {
     about {
       mainBanner {
         background {

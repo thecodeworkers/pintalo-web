@@ -1,11 +1,11 @@
 import React from 'react'
-import { useSelector } from 'react-redux'
 import wrapper from '@store'
+import { useSelector } from 'react-redux'
 import { getPage } from '@store/actions'
 import { About } from '@components'
+import { mapProps } from '@utils'
 
 const AboutUs = () => {
-
   const { page: { aboutPage: { about } } } = useSelector((state: any) => state)
 
   return (
@@ -14,7 +14,9 @@ const AboutUs = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPage('aboutPage'))
+  async ({ store }) => {
+    await mapProps(store, getPage('aboutPage'))
+  }
 )
 
 export default AboutUs

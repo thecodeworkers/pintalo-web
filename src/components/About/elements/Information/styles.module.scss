@@ -1,31 +1,46 @@
-@import '../../../../../public/styles/index.scss';
+@import '@styles/index.scss';
 
 ._infoContainer {
-    display: flex;
-
-    ._leftContainer {
-        background-color: $grayNurse;
-        color: $charade;
-        line-height: 1.5rem;
-        padding: 5% 7.5%;
-    }
-
-    ._rightContainer {
-        background-color: $charade;
-        color: $wildSand;
-        line-height: 1.5rem;
-        padding: 5% 7.5%;
-    }
+  display: flex;
 }
 
-h2._title {
-    $font-family: $helvetica;
-    font-size: $helvetica45;
-    margin-bottom: 5%;
-    font-weight: 200;
+._leftContainer {
+  background-color: $grayNurse;
+  color: $charade;
+  line-height: 1.5rem;
+  padding: 5% 7.5%;
 }
 
-div._description {
-    $font-family: $helvetica;
-    font-size: $helvetica18;
+._rightContainer {
+  background-color: $charade;
+  color: $wildSand;
+  line-height: 1.5rem;
+  padding: 5% 7.5%;
+}
+
+._title {
+  $font-family: $helvetica;
+  font-size: $helvetica45;
+  margin-bottom: 5%;
+  font-weight: 200;
+}
+
+._description {
+  $font-family: $helvetica;
+  font-size: $helvetica18;
+}
+
+@include responsive(md) {
+  ._infoContainer {
+    flex-direction: column;
+  }
+
+  ._title {
+    @include font('helveticaBold', 'helvetica16');
+    margin-bottom: 2%;
+  }
+
+  ._description {
+    @include font('helvetica', 'helvetica11');
+  }
 }

@@ -1,16 +1,24 @@
-@import '../../../../../public/styles/index.scss';
+@import '@styles/index.scss';
 
-._main {
-    display: flex;
-    flex-wrap: wrap;
-    width: 85%;
-    margin: auto;
-    justify-content: space-between;
-    padding-top: 5%;
-    padding-bottom: 3%;
+._content {
+  margin: 5rem 0;
+}
 
-    ._cards {
-        width: 30%;
-        margin-bottom: 3%;
-    }
+._grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-auto-rows: auto;
+  gap: 2rem;
+  margin: 5rem 0;
+}
+
+@include responsive(md) {
+  ._grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 3rem;
+  }
+
+  ._content {
+    margin-top: 2rem;
+  }
 }
