@@ -1,4 +1,4 @@
-@import '../../../../../public/styles/index.scss';
+@import '@styles/index.scss';
 
 ._content {
   margin: 5rem 0;
@@ -19,5 +19,17 @@
   margin: 5rem 0;
 }
 
+@include responsive(md) {
+  ._content {
+    margin-top: 2rem;
 
+    & h2 {
+      @include font('helvetica', 'helvetica16');
+    }
+  }
 
+  ._grid {
+    grid-template-columns: repeat(1, 1fr);
+    margin-top: 3rem;
+  }
+}

@@ -1,11 +1,11 @@
 import React from 'react'
+import wrapper from '@store'
 import { useSelector } from 'react-redux'
 import { Painter } from '@components'
-import wrapper from '@store'
 import { getPage } from '@store/actions'
+import { mapProps } from '@utils'
 
 const PaintersPage = () => {
-
   const { page: { painterPage: { painters } } } = useSelector((state: any) => state)
 
   return (
@@ -14,7 +14,9 @@ const PaintersPage = () => {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store }) => store.dispatch(getPage('painterPage'))
+  async ({ store }) => {
+    await mapProps(store, getPage('painterPage'))
+  }
 )
 
 export default PaintersPage

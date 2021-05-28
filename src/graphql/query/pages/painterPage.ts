@@ -1,7 +1,7 @@
 import { painterdId } from '@utils/pageIds'
 
 const painter = `
-  painterPage:page(id: "${painterdId}") {
+  page(id: "${painterdId}") {
     painters {
       mainBanner {
         background {

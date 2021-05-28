@@ -56,7 +56,7 @@ const Blog = ({ title, posts }) => {
           }
         </div>
 
-        <div className={styles._paginationContainer}>
+        <div className="_paginationContainer">
           {
             posts.length ? (
               <Pagination currentPage={page} items={posts} perPage={perPage} changePage={setPage}/>

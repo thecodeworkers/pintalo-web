@@ -44,6 +44,11 @@ ul {
   -webkit-transform: rotate(45deg);
 }
 
+._paginationContainer {
+  display: flex;
+  justify-content: center;
+}
+
 @font-face {
   font-family: 'Helvetica';
   src: url('./fonts/HELVETICA.TTF');
