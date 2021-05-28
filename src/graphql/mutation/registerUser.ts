@@ -1,16 +1,20 @@
-const registerUser = (args) => {
-  const { email, password, name, lastname } = args
+import { authId } from '@utils/pageIds'
 
+const registerUser = ({ email, password, name, lastname }) => {
   return (`
-    mutation register {
-      registerUser(input: {
-        username: "${email}",
-        email: "${email}",
-        password: "${password}",
-        firstName: "${name}",
-        lastName: "${lastname}"
-      }) {
+    mutation RegisterUser {
+      registerUser(
+        input: {
+          clientMutationId: "${authId}",
+          username: "${email}",
+          email: "${email}",
+          password: "${password}",
+          firstName: "${name}",
+          lastName: "${lastname}"
+        }) {
         user {
+          jwtAuthToken
+          jwtRefreshToken
           email
         }
       }

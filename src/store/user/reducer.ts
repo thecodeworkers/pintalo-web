@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { SIGN_UP_ASYNC, SIGN_IN_ASYNC } from './action-types'
+import { SIGN_UP_ASYNC, SIGN_IN_ASYNC, LOGOUT } from './action-types'
 
 const initialState = {
   isAuth: false,
@@ -13,6 +13,9 @@ const userReducer = (state = initialState, { type, payload }: AnyAction) => {
 
     case SIGN_IN_ASYNC:
       return { ...state, ...payload }
+
+    case LOGOUT:
+      return initialState
 
     default:
       return state

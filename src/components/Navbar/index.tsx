@@ -1,7 +1,7 @@
 import styles from './styles.module.scss'
 import { Logo } from '../../../public/images/logos'
 import { useSelector, useDispatch } from 'react-redux'
-import { setMenuShow } from '@store/actions'
+import { logout, setMenuShow } from '@store/actions'
 import { useRouter } from 'next/router'
 import { Menu } from '@components'
 
@@ -30,6 +30,10 @@ const Navbar = () => {
     dispatch(setMenuShow({ showMenu: 0 }))
   }
 
+  const exitSession = () => {
+    dispatch(logout())
+  }
+
   return (
     <>
       <nav className={returnStyles()}>
@@ -46,7 +50,7 @@ const Navbar = () => {
               !isAuth ? (
                 <a onClick={() => navigation('/register')} > Registrar </a>
               ) : (
-                <a onClick={() => navigation('/register')} > Salir </a>
+                <a onClick={() => exitSession()} > Salir </a>
               )
             }
           </div>
