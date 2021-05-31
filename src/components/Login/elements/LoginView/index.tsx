@@ -3,6 +3,7 @@ import { modalClose, setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import { formikForLogin, formikForPasswordReset } from './formik'
 import {
   GeneralButton,
   HalfBanner,
@@ -10,7 +11,6 @@ import {
   GeneralModal
 } from '@components'
 import styles from './styles.module.scss'
-import formikConfig from './formik'
 
 const LoginView = ({ data }) => {
   const {
@@ -21,8 +21,8 @@ const LoginView = ({ data }) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const formik = formikConfig(dispatch)
-  const { errors, touched } = formik
+  const formik = formikForLogin(dispatch)
+  const formik2 = formikForPasswordReset(dispatch)
 
   useEffect(() => {
     if(showFooter) dispatch(setFooterShow(false))
@@ -60,7 +60,7 @@ const LoginView = ({ data }) => {
                         name="email"
                         type="text"
                         placeholder='Correo'
-                        className={errors.email && touched.email ? styles._inputError : styles._input}
+                        className={formik.errors.email && formik.touched.email ? styles._inputError : styles._input}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.email}
@@ -71,7 +71,7 @@ const LoginView = ({ data }) => {
                         name="password"
                         type="password"
                         placeholder='Contraseña'
-                        className={errors.password && touched.password ? styles._inputError : styles._input}
+                        className={formik.errors.password && formik.touched.password ? styles._inputError : styles._input}
                         onChange={formik.handleChange}
                         onBlur={formik.handleBlur}
                         value={formik.values.password}
@@ -92,8 +92,44 @@ const LoginView = ({ data }) => {
               </div>
             </section>
 
-            <GeneralModal title={'Contacto'} className={styles._modalBody}>
-              <div></div>
+            <GeneralModal title={'Recuperar contraseña'} className={styles._modalBody}>
+              <div className={styles._content}>
+                <form className={styles._form} onSubmit={formik2.handleSubmit}>
+                  <label htmlFor="password">Nueva contraseña</label>
+                  <input
+                    id="r-password"
+                    name="password"
+                    type="password"
+                    className={formik2.errors.password && formik2.touched.password ? styles._inputError : styles._input}
+                    onChange={formik2.handleChange}
+                    onBlur={formik2.handleBlur}
+                    value={formik2.values.password}
+                  />
+
+                  <label htmlFor="confirmPassword">Repetir nueva contraseña</label>
+                  <input
+                    id="confirmPassword"
+                    name="confirmPassword"
+                    type="password"
+                    className={formik2.errors.confirmPassword && formik2.touched.confirmPassword ? styles._inputError : styles._input}
+                    onChange={formik2.handleChange}
+                    onBlur={formik2.handleBlur}
+                    value={formik2.values.confirmPassword}
+                  />
+
+                  <div className={styles._info}>
+                    <p>Importante</p>
+                    <p>Debe contener min 8 caracteres</p>
+                    <p>Debe tener símbolos y numeros</p>
+                  </div>
+
+                  <div className={styles._parentBtn} >
+                    <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
+                      Recuperar
+                    </GeneralButton>
+                  </div>
+                </form>
+              </div>
             </GeneralModal>
           </>
         )
