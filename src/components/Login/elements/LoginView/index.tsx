@@ -26,6 +26,7 @@ const LoginView = ({ data }) => {
 
   useEffect(() => {
     if(showFooter) dispatch(setFooterShow(false))
+    return () => { dispatch(setFooterShow(true)) }
   }, [])
 
   useEffect(() => {
@@ -123,7 +124,7 @@ const LoginView = ({ data }) => {
                     <p>Debe tener símbolos y numeros</p>
                   </div>
 
-                  <div className={styles._parentBtn} >
+                  <div className={styles._parentBtn}>
                     <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
                       Recuperar
                     </GeneralButton>

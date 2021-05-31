@@ -6,21 +6,21 @@ const reconcile = (state, payload) => {
     switch (key) {
       case 'page':
         let currentPages = state[key]
-        const allPages = {}
+        const rewritePages = {}
 
         for (let currentPage in currentPages) {
-          const page = currentPages[currentPage]
-          const exist = Object.keys(page).length
+          const prevPage = currentPages[currentPage]
+          const existPrevPage = Object.keys(prevPage).length
 
-          if (exist) {
-            allPages[currentPage] = page
+          if (existPrevPage) {
+            rewritePages[currentPage] = prevPage
 
             trueState = {
               ...trueState,
               page: {
                 ...currentPages,
                 ...payload[key],
-                ...allPages
+                ...rewritePages
               }
             }
           }
@@ -31,6 +31,11 @@ const reconcile = (state, payload) => {
       case 'user':
         const currentUser = state[key]
         trueState = { ...trueState, user: currentUser }
+        break
+
+      case 'intermitence':
+        const currentIntermitence = state[key]
+        trueState = { ...trueState, intermitence: currentIntermitence }
         break
 
       default:

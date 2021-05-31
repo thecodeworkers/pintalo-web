@@ -22,6 +22,7 @@ const RegisterView = ({ data }) => {
 
   useEffect(() => {
     if(showFooter) dispatch(setFooterShow(false))
+    return () => { dispatch(setFooterShow(true)) }
   }, [])
 
   useEffect(() => {

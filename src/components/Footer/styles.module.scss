@@ -160,6 +160,11 @@
   display: none;
 }
 
+._modalBody {
+  width: 60%;
+  background-color: $white;
+}
+
 @include responsive(md) {
   ._footerContainer {
     padding: 1rem 0;

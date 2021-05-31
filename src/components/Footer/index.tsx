@@ -91,7 +91,7 @@ const Footer = () => {
         </div>
       </footer>
 
-      <GeneralModal width={'60%'} title={'Contacto'}>
+      <GeneralModal title={'Contacto'} className={styles._modalBody}>
         <div className={styles._body}>
           <form className={styles._formContainer}>
             <div className={styles._inputContainerRow}>
