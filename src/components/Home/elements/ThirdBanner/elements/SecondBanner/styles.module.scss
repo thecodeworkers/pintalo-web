@@ -116,7 +116,6 @@
 }
 
 ._buttonContainer {
-  width: 160px;
   margin-top: 1rem;
 }
 
@@ -193,7 +192,6 @@
 
   ._buttonContainer {
     margin-bottom: 7%;
-    @include buttonSizeMobile;
   }
 
   ._buttonText {

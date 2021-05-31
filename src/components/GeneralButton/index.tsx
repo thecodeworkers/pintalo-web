@@ -3,6 +3,7 @@ import { Button } from './type'
 import ActivityIndicator from '../ActivityIndicator'
 
 const helvetica20 = '1'
+const width = '9.5rem'
 
 const GeneralButton: FC<Button> = ({
   children,
@@ -12,7 +13,8 @@ const GeneralButton: FC<Button> = ({
   bold,
   large = '2.5rem',
   type = 'button',
-  showLoader = false
+  showLoader = false,
+  adjustWidth = false
 }) => (
   <>
     <button className="_button" onClick={method ? method : null} type={type} disabled={showLoader ? true : false}>
@@ -25,7 +27,7 @@ const GeneralButton: FC<Button> = ({
 
     <style jsx>{`
     ._button {
-      width: 100%;
+      width: ${adjustWidth ? '100%' : width};
       height: ${large};
       background-color: ${backgroundColor};
       color: ${textColor};

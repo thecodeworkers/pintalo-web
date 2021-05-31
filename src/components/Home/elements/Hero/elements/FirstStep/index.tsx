@@ -29,13 +29,13 @@ const FirstStep = ({ data }) => {
         <div className={styles._buttonContainer}>
           <div className={styles._content}>
             <p className={styles._buttonTitle}>{data?.firstButton?.title}</p>
-            <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/colors')} large="2.2rem">
+            <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/colors')} large="2.2rem" adjustWidth>
               <p className={styles._buttonText}>{data?.firstButton?.button?.text}</p>
             </GeneralButton>
           </div>
           <div className={styles._content}>
             <p className={styles._buttonTitle}>{data?.secondButton?.title}</p>
-            <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => setState()} large="2.2rem">
+            <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={false} method={() => setState()} large="2.2rem" adjustWidth>
               <p className={styles._buttonText}>{data?.secondButton?.button?.text}</p>
             </GeneralButton>
           </div>
