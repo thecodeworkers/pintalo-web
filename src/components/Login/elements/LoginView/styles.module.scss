@@ -92,6 +92,10 @@
   justify-content: center;
 }
 
+._modalBody {
+  width: 40%;
+}
+
 @include responsive(md) {
   ._rightSection {
     width: 100%;

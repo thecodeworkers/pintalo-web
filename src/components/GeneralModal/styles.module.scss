@@ -1,4 +1,4 @@
-@import '../../../public//styles/index.scss';
+@import '@styles/index.scss';
 
 ._modalContainer{
   position: fixed;
@@ -10,6 +10,12 @@
   justify-content: center;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.5);
+}
+
+._container {
+  background: $white;
+  border-radius: 10px;
+  padding: 0 0 2rem 0;
 }
 
 ._header{
