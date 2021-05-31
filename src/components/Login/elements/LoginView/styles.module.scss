@@ -83,12 +83,13 @@
 }
 
 ._parentBtn {
-  display: block;
+  display: flex;
   margin-right: auto;
   margin-left: auto;
   width: 70%;
   margin-top: 6.5rem;
   margin-bottom: 0.5rem;
+  justify-content: center;
 }
 
 @include responsive(md) {
