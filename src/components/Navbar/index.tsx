@@ -61,7 +61,7 @@ const Navbar = () => {
         </div>
       </nav>
 
-      <Menu showMenu={showMenu}/>
+      <Menu showMenu={showMenu} />
     </>
   )
 }

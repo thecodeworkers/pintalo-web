@@ -92,6 +92,10 @@
     height: 3.5rem;
   }
 
+  ._parentPush {
+    animation: none;
+  }
+
   ._linksParent {
     & a {
       display: none;

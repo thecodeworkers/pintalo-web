@@ -22,6 +22,16 @@ $items: (
   padding: 2rem 4rem 2rem 2rem;
 }
 
+@mixin responsiveMenuStyles {
+  width: 100%;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  bottom: 0px;
+  z-index: 1000;
+  max-height: 100vh;
+}
+
 ._mainMenu {
   @include menuStyles;
   animation: menu-in linear 0.6s forwards;
@@ -125,6 +135,10 @@ $items: (
   position: absolute;
 }
 
+._mobileMenu {
+  display: none;
+}
+
 @keyframes menu-in {
   0% {
     right: -50%;
@@ -145,4 +159,108 @@ $items: (
   }
 }
 
+@include responsive(md) {
+  // ._desktopMenu {
+  //   display: none;
+  // }
 
+  ._mobileMenu {
+    display: block;
+  }
+
+  ._responsiveMainMenu {
+    @include responsiveMenuStyles;
+  }
+
+  ._menuContainer {
+    height: 100%;
+    padding: 2rem;
+    background-color: $charade;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+  }
+
+  ._header {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 10%;
+  }
+
+  ._listContainer {
+    height: 60%;
+  }
+
+  ._logoParent {
+    width: 4.375rem;
+    cursor: pointer;
+  }
+
+  ._logoContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    width: 20%;
+  }
+
+  ._logo {
+    width: 25px;
+  }
+
+  ._socialMedia {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  ._registerTitle {
+    color: $charade
+  }
+
+  ._buttonContainer {
+    height: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+
+    & p {
+      @include font('helvetica', 'helvetica12');
+    }
+  }
+
+  ._responsiveList {
+    list-style: none;
+    padding: 0;
+
+    & li {
+      @include font('helvetica', 'helvetica11');
+      color: $white;
+      padding: 5% 0
+    }
+  }
+
+  ._separator {
+    border: none;
+    height: 1px;
+    background-color: $white;
+  }
+
+  ._socialMediaContainer {
+    text-align: center;
+    width: 30%;
+  }
+
+  ._footer {
+    height: 10%;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    & p {
+      color: $wildSand;
+      margin-bottom: .1rem;
+      @include font('helvetica', 'helvetica14');
+    }
+  }
+}
