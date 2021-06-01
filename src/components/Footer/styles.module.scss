@@ -88,7 +88,7 @@
   width: 25px;
 }
 
-._copyrightContainer{
+._copyrightContainer {
   display: flex;
   justify-content: space-between;
   align-items: baseline;
@@ -106,27 +106,27 @@
 
 ._inputContainerRow {
   display: flex;
-  width: 70%;
 }
 
 ._inputContainerColumn {
   display: flex;
   flex-direction: column;
-  width: 40%;
+  margin-bottom: 2rem;
 }
 
 ._input {
   @include input ($silverChalice, $doveGray, $silverChalice);
-  height:1.8rem;
-  width: 180px;
   margin-bottom: 2rem;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  width: 14rem;
 }
 
 ._inputRow {
   @include input ($silverChalice, $doveGray, $silverChalice);
-  height:1.8rem;
-  width: 180px;
-  margin-bottom: 2rem;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  width: 14rem;
   margin-right: 2rem;
 }
 
@@ -139,7 +139,8 @@
   width: 100%;
   height: 8rem;
   &::placeholder {
-    color:$silverChalice
+    color: $silverChalice;
+    @include font('helvetica', 'helvetica15');
   }
 }
 
@@ -227,5 +228,27 @@
   ._speechTitle {
     margin: 0;
     font-size: $helvetica14;
+  }
+
+  ._modalBody {
+    width: 90%;
+  }
+
+  ._inputContainerRow {
+    flex-direction: column;
+  }
+
+  ._input {
+    width: 100%;
+  }
+
+  ._inputRow {
+    width: 100%;
+  }
+
+  ._body {
+    & ._buttonContainer {
+      display: block;
+    }
   }
 }
