@@ -2,7 +2,7 @@ import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Logo } from '../../../public/images/logos'
 import { GeneralButton, GeneralModal } from '@components'
-import { modalClose } from "@store/actions";
+import { modalClose } from '@store/actions'
 import styles from './styles.module.scss'
 
 const Footer = () => {

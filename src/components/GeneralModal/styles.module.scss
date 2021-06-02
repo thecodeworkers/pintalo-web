@@ -1,6 +1,6 @@
 @import '@styles/index.scss';
 
-._modalContainer{
+._modalContainer {
   position: fixed;
   top: 0;
   left: 0;
@@ -17,7 +17,7 @@
   padding: 0 0 2rem 0;
 }
 
-._header{
+._header {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,11 +26,11 @@
   border-radius: 5px;
 }
 
-._closeIcon{
+._closeIcon {
   cursor: pointer;
 }
 
-._title{
+._title {
   font-size: $helvetica20;
   font-family: $helvetica;
   color: $wildSand;
