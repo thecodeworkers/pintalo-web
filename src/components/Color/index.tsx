@@ -106,7 +106,7 @@ const Color = ({ detail }) => {
         </div>
       </div>
 
-      <GeneralModal width="40%" title="Calculadora">
+      <GeneralModal title="Calculadora">
         <div style={{ height: 550 }}>
           <Calculator buttonHeight={retina ? '2.8rem' : '2rem'} />
         </div>
