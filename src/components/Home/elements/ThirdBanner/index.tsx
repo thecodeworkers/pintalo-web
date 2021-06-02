@@ -5,7 +5,7 @@ const ThirdBanner = ({ data }) => {
   return (
     <>
       <FirstBanner data={data?.firstBanner} />
-      <SecondBanner data={data?.secondBanner} />
+      {/* <SecondBanner data={data?.secondBanner} /> */}
     </>
   )
 }

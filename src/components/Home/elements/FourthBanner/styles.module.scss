@@ -39,7 +39,11 @@
   align-items: center;
 }
 
-@include responsive(xl) {
+@include responsive(xxl) {
+  ._background {
+    height: 40vh;
+  }
+
   ._titleContainer {
     width: 40%;
   }
