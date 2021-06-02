@@ -1,13 +1,14 @@
+import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { setMenuShow } from '../../store/actions'
 import { Logo } from '../../../public/images/logos'
-import styles from './styles.module.scss'
-import ToogleIcon from './ToogleIcon'
+import { ToggleIcon } from './elements'
 import { GeneralButton } from '@components'
+import styles from './styles.module.scss'
 
-const DesktopMenu = ({ returnStyles, navigation, closeMenu }) => (
-  <div className={returnStyles()}>
+const DesktopMenu = ({ navigation, closeMenu }) => (
+  <>
     <div className={styles._container}>
       <div className={styles._topLinks}>
         <ul className={styles._list}>
@@ -46,64 +47,64 @@ const DesktopMenu = ({ returnStyles, navigation, closeMenu }) => (
     <div className={styles._line}></div>
     <div className={styles._bubbleOne}></div>
     <div className={styles._bubbleTwo}></div>
-  </div>
+  </>
 )
 
-const MobileMenu = ({ navigation }) => (
-  <div className={styles._responsiveMainMenu}>
-    <div className={styles._menuContainer}>
-      <div className={styles._header}>
-        <ToogleIcon />
-        <div className={styles._logoParent} onClick={() => navigation('/')}>
-          <Logo color='#FFFFFF' />
+const MobileMenu = ({ navigation, closeMenu }) => (
+  <div className={styles._menuContainer}>
+    <div className={styles._header}>
+      <div onClick={closeMenu}>
+        <ToggleIcon />
+      </div>
+      <div className={styles._logoParent} onClick={() => navigation('/')}>
+        <Logo color='#FFFFFF' />
+      </div>
+    </div>
+    <div className={styles._listContainer}>
+      <ul className={styles._responsiveList}>
+        <li>Home</li>
+        <hr className={styles._separator}></hr>
+
+        <li>Pintalo</li>
+        <hr className={styles._separator}></hr>
+
+        <li>Shop</li>
+        <hr className={styles._separator}></hr>
+
+        <li>Inspirate</li>
+        <hr className={styles._separator}></hr>
+
+        <li>Pintores</li>
+      </ul>
+    </div>
+    <div className={styles._buttonContainer}>
+      <GeneralButton backgroundColor="#FFFFFF" textColor={'#fff'} bold={false} method={() => navigation('/register')} large="2.2rem" adjustWidth>
+        <p className={styles._registerTitle}>Registrate</p>
+      </GeneralButton>
+
+      <GeneralButton backgroundColor="#FDCA40" textColor={'#fff'} bold={false} method={() => navigation('/register')} large="2.2rem" adjustWidth>
+        <p>Contacto</p>
+      </GeneralButton>
+
+      <div className={styles._socialMediaContainer}>
+        <div className={styles._socialMedia}>
+          <img src='/images/logos/instagram.svg' width={15} />
+          <img src='/images/logos/facebook.svg' width={15} />
+          <img src='/images/logos/twitter.svg' width={15} />
         </div>
       </div>
-      <div className={styles._listContainer}>
-        <ul className={styles._responsiveList}>
-          <li>Home</li>
-          <hr className={styles._separator}></hr>
+    </div>
 
-          <li>Pintalo</li>
-          <hr className={styles._separator}></hr>
-
-          <li>Shop</li>
-          <hr className={styles._separator}></hr>
-
-          <li>Inspirate</li>
-          <hr className={styles._separator}></hr>
-
-          <li>Pintores</li>
-        </ul>
-      </div>
-      <div className={styles._buttonContainer}>
-        <GeneralButton backgroundColor="#FFFFFF" textColor={'#fff'} bold={false} method={() => navigation('/register')} large="2.2rem" adjustWidth>
-          <p className={styles._registerTitle}>Registrate</p>
-        </GeneralButton>
-
-        <GeneralButton backgroundColor="#FDCA40" textColor={'#fff'} bold={false} method={() => navigation('/register')} large="2.2rem" adjustWidth>
-          <p>Contacto</p>
-        </GeneralButton>
-
-        <div className={styles._socialMediaContainer}>
-          <div className={styles._socialMedia}>
-            <img src='/images/logos/instagram.svg' width={15} />
-            <img src='/images/logos/facebook.svg' width={15} />
-            <img src='/images/logos/twitter.svg' width={15} />
-          </div>
+    <div className={styles._footer}>
+      <p>©CopyrightPintalo.C.A</p>
+      <div className={styles._logoContainer}>
+        <div className={styles._logo}>
+          <a href='https://www.thecodeworkers.com' >
+            <img src='/images/logos/tcw-logo.svg' />
+          </a>
         </div>
-      </div>
-
-      <div className={styles._footer}>
-        <p>©CopyrightPintalo.C.A</p>
-        <div className={styles._logoContainer}>
-          <div className={styles._logo}>
-            <a href='https://www.thecodeworkers.com' >
-              <img src='/images/logos/tcw-logo.svg' />
-            </a>
-          </div>
-          <div className={styles._logo}>
-            <img src='/images/logos/banana-logo.svg' />
-          </div>
+        <div className={styles._logo}>
+          <img src='/images/logos/banana-logo.svg' />
         </div>
       </div>
     </div>
@@ -113,6 +114,12 @@ const MobileMenu = ({ navigation }) => (
 const Menu = ({ showMenu }) => {
   const dispatch = useDispatch()
   const router = useRouter()
+
+  useEffect(() => {
+    const element = document.querySelector('#menu');
+    element.addEventListener('touchmove', (e) => { e.preventDefault() });
+    return () => { element.removeEventListener('touchmove', () => { }) }
+  }, []);
 
   const returnStyles = () => {
     if (showMenu === 0) return styles._staticMenu
@@ -130,21 +137,21 @@ const Menu = ({ showMenu }) => {
   const closeMenu = () => dispatch(setMenuShow({ showMenu: 2 }))
 
   return (
-    <>
+    <div className={returnStyles()}>
       <div className={styles._desktopMenu}>
         <DesktopMenu
-          returnStyles={returnStyles}
           navigation={navigation}
           closeMenu={closeMenu}
         />
       </div>
 
-      {/* <div className={styles._mobileMenu}>
+      <div className={styles._mobileMenu} id="menu">
         <MobileMenu
           navigation={navigation}
+          closeMenu={closeMenu}
         />
-      </div> */}
-    </>
+      </div>
+    </div>
   )
 }
 

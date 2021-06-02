@@ -13,23 +13,20 @@ $items: (
   position: fixed;
   background-color: $charade;
   width: 50%;
-  height: 100vh;
   top: 0;
   z-index: 1030;
   right: -50%;
   overflow: hidden;
   display: flex;
   padding: 2rem 4rem 2rem 2rem;
+  max-height: 100vh;
+  height: 100%;
 }
 
 @mixin responsiveMenuStyles {
+  right: -100%;
   width: 100%;
-  position: fixed;
-  top: 0px;
-  left: 0px;
-  bottom: 0px;
-  z-index: 1000;
-  max-height: 100vh;
+  padding: 2rem;
 }
 
 ._mainMenu {
@@ -135,6 +132,11 @@ $items: (
   position: absolute;
 }
 
+._desktopMenu {
+  display: flex;
+  width: 100%;
+}
+
 ._mobileMenu {
   display: none;
 }
@@ -160,25 +162,8 @@ $items: (
 }
 
 @include responsive(md) {
-  // ._desktopMenu {
-  //   display: none;
-  // }
-
-  ._mobileMenu {
-    display: block;
-  }
-
-  ._responsiveMainMenu {
-    @include responsiveMenuStyles;
-  }
-
-  ._menuContainer {
-    height: 100%;
-    padding: 2rem;
-    background-color: $charade;
-    box-sizing: border-box;
-    display: flex;
-    flex-direction: column;
+  ._desktopMenu {
+    display: none;
   }
 
   ._header {
@@ -261,6 +246,47 @@ $items: (
       color: $wildSand;
       margin-bottom: .1rem;
       @include font('helvetica', 'helvetica14');
+    }
+  }
+
+  ._mobileMenu {
+    display: flex;
+    width: 100%;
+  }
+
+  ._menuContainer {
+    width: 100%;
+  }
+
+  ._mainMenu {
+    @include responsiveMenuStyles;
+  }
+
+  ._reduceMenu {
+    @include responsiveMenuStyles;
+  }
+
+  ._staticMenu {
+    @include responsiveMenuStyles;
+  }
+
+  @keyframes menu-in {
+    0% {
+      right: -100%;
+    }
+
+    100% {
+      right: 0%;
+    }
+  }
+
+  @keyframes menu-out {
+    0% {
+      right: 0%;
+    }
+
+    100% {
+      right: -100%;
     }
   }
 }
