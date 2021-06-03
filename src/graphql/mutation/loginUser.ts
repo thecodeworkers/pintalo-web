@@ -1,10 +1,10 @@
-import { authId } from '@utils/pageIds'
+import { v4 as uuidv4 } from 'uuid'
 
 const loginUser = ({ email, password }) => {
   return (`
     mutation LoginUser {
       login( input: {
-        clientMutationId: "${authId}",
+        clientMutationId: "${uuidv4()}",
         username: "${email}",
         password: "${password}"
       } ) {
