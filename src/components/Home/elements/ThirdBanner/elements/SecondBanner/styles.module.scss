@@ -188,7 +188,8 @@
     height: 80%;
     justify-content: flex-end;
     align-items: center;
-    width: 40%
+    width: 40%;
+    margin-left: .6rem
   }
 
   ._leftTitle {
@@ -221,6 +222,7 @@
 
   ._modal {
     width: 70%;
+    height: 70%;
   }
 
   ._modalBody {
