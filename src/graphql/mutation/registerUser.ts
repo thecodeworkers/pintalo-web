@@ -1,11 +1,11 @@
-import { authId } from '@utils/pageIds'
+import { v4 as uuidv4 } from 'uuid'
 
 const registerUser = ({ email, password, name, lastname }) => {
   return (`
     mutation RegisterUser {
       registerUser(
         input: {
-          clientMutationId: "${authId}",
+          clientMutationId: "${uuidv4()}",
           username: "${email}",
           email: "${email}",
           password: "${password}",
