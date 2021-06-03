@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setColor } from '@store/actions'
 import styles from './styles.module.scss'
 
-const SecondStep: FC<any> = () => {
+const SecondStep = ({ data }) => {
   const [active, setActive] = useState(false)
 
   const slide = useSelector((state: any) => state)

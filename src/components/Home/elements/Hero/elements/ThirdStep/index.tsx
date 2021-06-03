@@ -1,20 +1,17 @@
 
 import { GeneralButton } from '@components'
-import styles from './styles.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { setColor } from '../../../../../../store/actions'
+import { setColor } from '@store/actions'
+import styles from './styles.module.scss'
 
 const ThirdStep = ({ data }) => {
-
   const dispatch = useDispatch()
   const slide = useSelector((state: any) => state)
   const currentStep = slide.setColor.step
 
-
   const setState = (base) => {
     dispatch(setColor({ base: base, step: currentStep + 1 }))
   }
-
 
   const base = [
     { name: 'Caucho' },
@@ -27,7 +24,6 @@ const ThirdStep = ({ data }) => {
     { name: 'Autopartes' },
     { name: 'Autopartes' },
   ]
-
 
   return (
     <div className={styles._heroContainer}>

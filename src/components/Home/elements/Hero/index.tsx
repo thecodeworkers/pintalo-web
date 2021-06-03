@@ -35,8 +35,10 @@ const Hero = ({ data }) => {
 
   return (
     <>
-      <div className={'_main'}>
-        {slider(currentStep)}
+      <div className="_main">
+        <div className={styles._heroContainer}>
+          {slider(currentStep)}
+        </div>
       </div>
       {
         currentStep != 1 ?

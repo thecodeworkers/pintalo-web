@@ -5,9 +5,7 @@ import { setColor } from '@store/actions'
 import { useRouter } from 'next/router'
 
 const FourthStep = ({ data }) => {
-
   const dispatch = useDispatch()
-
   const router = useRouter()
 
   const navigation = (route) => {
@@ -18,7 +16,6 @@ const FourthStep = ({ data }) => {
     dispatch(setColor({ type: type, }))
     navigation('/shop')
   }
-
 
   const type = [
     { name: 'Mate' },
@@ -37,7 +34,7 @@ const FourthStep = ({ data }) => {
   return (
     <div className={styles._heroContainer}>
       <div className={styles._container}>
-        <p className={styles._title}>Por base</p>
+        <p className={styles._title}>Por tipo</p>
         <div className={styles._buttonContainer}>
 
           {

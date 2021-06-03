@@ -1,63 +1,7 @@
 @import '@styles/index.scss';
 
-._heroContainer{
-  height: 50vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-end;
-  align-items: center;
-  background-color: $white;
-  padding-bottom: 3rem;
-}
-
-._container{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  width: 100%;
-  height: 50%;
-}
-
-._subtitleContainer{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-._subtitle{
-  color: $charade;
-  font-family: $helvetica;
-  font-size: $helvetica32;
-}
-
-._title{
-  color: $charade;
-  font-family: $techeadFreeLight;
-  font-size: $techead62;
-}
-
-._buttonContainer{
-  display: flex;
-  justify-content: space-between;
-  width: 60vw;
-  margin-top: 1rem;
-}
-
-._content{
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-direction: column;
-  width: 320px;
-}
-
-._buttonTitle{
-  color: $charade;
-  font-family: $helvetica;
-  font-size: $helvetica16;
-  margin: 1rem 0 1rem 0;
+._heroContainer {
+  height: 100%;
 }
 
 ._stepperContainer {
@@ -80,6 +24,10 @@
 }
 
 @include responsive(md) {
+  ._heroContainer {
+    height: 100%;
+  }
+
   ._rollerBackground {
     height: 13vh;
   }
