@@ -51,36 +51,35 @@
   ._container {
     height: 100%;
     justify-content: flex-start;
-    align-items: center;
   }
 
   ._title {
     @include font('techeadFreeLight', 'techead13');
-    text-align: center;
   }
 
   ._subtitle {
     @include font('helvetica', 'helvetica11');
-    text-align: center;
   }
 
   ._titleContainer {
-    height: 20%;
-    width: 100%;
+    height: 30%;
+    width: 60%;
     margin: 0;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    align-items: flex-end;
   }
 
   ._subtitleContainer {
-    width: 100%;
+    width: 60%;
     margin: 0;
-    height: 40%;
+    height: 30%;
+    padding-top: .5rem;
   }
 
   ._buttonContainer {
     margin: 0;
+    align-self: center
   }
 
   ._buttonText {
