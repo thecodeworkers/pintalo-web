@@ -1,14 +1,23 @@
-import { MENU_SHOW, FOOTER_SHOW, MODAL_CLOSE, SHOW_LOADER, SHOW_TOAST} from './action-types'
 import { AnyAction } from 'redux'
+import {
+  MENU_SHOW,
+  FOOTER_SHOW,
+  SHOW_MODAL,
+  SHOW_LOADER,
+  SHOW_TOAST
+} from './action-types'
 
 const initialState = {
 	showMenu: 0,
   showFooter: true,
-  showModal: false,
   showLoader: false,
   toast: {
     status: 0,
     message: ''
+  },
+  modal: {
+    contact: false,
+    sendEmail: false
   }
 }
 
@@ -32,7 +41,7 @@ const initialState = {
     case FOOTER_SHOW:
       return { ...state, ...payload }
 
-    case MODAL_CLOSE:
+    case SHOW_MODAL:
       return { ...state, ...payload }
 
     default:

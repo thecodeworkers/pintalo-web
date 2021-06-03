@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
-import { modalClose } from '@store/actions'
+import { showModal } from '@store/actions'
 import { isRetina } from '@utils'
 import { CounterButton, Calculator } from './elements'
 import ColorBackground from '../ColorBackground'
@@ -83,7 +83,7 @@ const Color = ({ detail }) => {
                         backgroundColor="#262833"
                         textColor="#FFFFFF"
                         large={retina ? '3.3rem' : '2.5rem'}
-                        method={() => dispatch(modalClose(true))}
+                        method={() => dispatch(showModal('', true))}
                       >
                         <img src="/images/icons/calculator.svg" alt="calculator" width="16px" />
                       </GeneralButton>

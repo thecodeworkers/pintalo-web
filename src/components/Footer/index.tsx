@@ -1,8 +1,8 @@
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
 import { Logo } from '../../../public/images/logos'
-import { GeneralButton, GeneralModal } from '@components'
-import { modalClose } from '@store/actions'
+import { GeneralButton } from '@components'
+import { showModal } from '@store/actions'
 import styles from './styles.module.scss'
 
 const Footer = () => {
@@ -47,7 +47,7 @@ const Footer = () => {
               </div>
 
               <div className={styles._buttonContainer}>
-                <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => dispatch(modalClose(true))}>
+                <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => dispatch(showModal('contact', true))}>
                   Contácto
                 </GeneralButton>
               </div>
@@ -90,30 +90,6 @@ const Footer = () => {
           </div>
         </div>
       </footer>
-
-      <GeneralModal title={'Contacto'} className={styles._modalBody}>
-        <div className={styles._body}>
-          <form className={styles._formContainer}>
-            <div className={styles._inputContainerRow}>
-              <input placeholder='Nombre' className={styles._inputRow} />
-              <input placeholder='Cargo' className={styles._input} />
-            </div>
-
-            <div className={styles._inputContainerColumn}>
-              <input placeholder='Apellido' className={styles._input} />
-              <input placeholder='Correo' className={styles._input} />
-            </div>
-
-            <textarea placeholder='Descripción' className={styles._textArea} />
-
-            <div className={styles._buttonContainer}>
-              <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'}  bold={true} method={() => dispatch(modalClose(true))}>
-                Enviar
-              </GeneralButton>
-            </div>
-          </form>
-        </div>
-      </GeneralModal>
     </>
   )
 }

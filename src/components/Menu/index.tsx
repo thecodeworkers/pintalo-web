@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import { useRouter } from 'next/router'
 import { useDispatch } from 'react-redux'
-import { setMenuShow, modalClose } from '@store/actions'
+import { setMenuShow, showModal } from '@store/actions'
 import { GeneralButton } from '@components'
 import { ToggleIcon } from './elements'
 import { Logo } from '../../../public/images/logos'
@@ -89,7 +89,10 @@ const MobileMenu = ({ navigation, closeMenu }) => {
           backgroundColor="#FDCA40"
           textColor={'#fff'}
           bold={false}
-          method={() => dispatch(modalClose(true))}
+          method={() => {
+            dispatch(setMenuShow({ showMenu: 2 }))
+            dispatch(showModal('contact', true))
+          }}
           large="2.2rem"
           adjustWidth
         >
@@ -139,10 +142,8 @@ const Menu = ({ showMenu }) => {
   }
 
   const navigation = (route) => {
-    if (router.pathname != route) {
-      router.push(route)
-      dispatch(setMenuShow({ showMenu: 2 }))
-    }
+    if (router.pathname != route) router.push(route)
+    dispatch(setMenuShow({ showMenu: 2 }))
   }
 
   const closeMenu = () => dispatch(setMenuShow({ showMenu: 2 }))
