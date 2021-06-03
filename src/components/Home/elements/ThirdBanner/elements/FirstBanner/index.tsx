@@ -20,8 +20,10 @@ const FirstBanner = ({ data }) => {
               {
                 allies.map((res, index) => {
                   return (
-                    <div className={styles._allies} key={index} >
-                      <img className={styles._allie} src={res?.image?.mediaItemUrl}></img>
+                    <div className={styles._alliesImageContainer} key={index}>
+                      <div className={styles._allies}>
+                        <img className={styles._allie} src={res?.image?.mediaItemUrl}></img>
+                      </div>
                     </div>
                   )
                 })
