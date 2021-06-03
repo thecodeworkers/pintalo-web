@@ -96,18 +96,19 @@ const LoginView = ({ data }) => {
             <GeneralModal title={'Recuperar contraseña'} className={styles._modalBody}>
               <div className={styles._content}>
                 <form className={styles._form} onSubmit={formik2.handleSubmit}>
-                  <label htmlFor="password">Nueva contraseña</label>
+                  <label htmlFor="password">Correo electrónico</label>
                   <input
-                    id="r-password"
-                    name="password"
-                    type="password"
-                    className={formik2.errors.password && formik2.touched.password ? styles._inputError : styles._input}
+                    id="r-email"
+                    name="email"
+                    type="text"
+                    className={formik2.errors.email && formik2.touched.email ? styles._inputError : styles._input}
                     onChange={formik2.handleChange}
                     onBlur={formik2.handleBlur}
-                    value={formik2.values.password}
+                    value={formik2.values.email}
+                    placeholder="Correo"
                   />
 
-                  <label htmlFor="confirmPassword">Repetir nueva contraseña</label>
+                  {/* <label htmlFor="confirmPassword">Repetir nueva contraseña</label>
                   <input
                     id="confirmPassword"
                     name="confirmPassword"
@@ -122,7 +123,7 @@ const LoginView = ({ data }) => {
                     <p>Importante</p>
                     <p>Debe contener min 8 caracteres</p>
                     <p>Debe tener símbolos y numeros</p>
-                  </div>
+                  </div> */}
 
                   <div className={styles._parentBtn}>
                     <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>

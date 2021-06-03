@@ -27,20 +27,19 @@ export const formikForLogin = dispatch => (useFormik({
 
 export const formikForPasswordReset = dispatch => (useFormik({
   initialValues: {
-    password: '',
-    confirmPassword: ''
+    email: '',
+    // confirmPassword: ''
   },
 
   validationSchema: Yup.object({
-    password: Yup.string()
-      .min(8)
+    email: Yup.string()
       .required()
-      .matches(passwordRegex),
-    confirmPassword: Yup.string()
-      .min(8)
-      .required()
-      .oneOf([Yup.ref('password'), null])
-      .matches(passwordRegex)
+      .matches(emailRegex),
+    // confirmPassword: Yup.string()
+    //   .min(8)
+    //   .required()
+    //   .oneOf([Yup.ref('password'), null])
+    //   .matches(passwordRegex)
   }),
 
   onSubmit: values => {
