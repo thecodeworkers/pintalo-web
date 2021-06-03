@@ -1,5 +1,4 @@
-@import '../../../public/styles/index.scss';
-
+@import '@styles/index.scss';
 
 ._header {
   background-color: $charade;
@@ -87,5 +86,11 @@
 
   &:last-child {
     margin-bottom: 0;
+  }
+}
+
+@include responsive(md) {
+  ._dotsParent {
+    visibility: hidden;
   }
 }
