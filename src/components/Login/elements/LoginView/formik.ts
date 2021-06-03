@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { emailRegex, passwordRegex } from '@utils/regex'
-import { signIn } from '@store/actions'
+import { signIn, forgotPassword } from '@store/actions'
 import * as Yup from 'yup'
 
 export const formikForLogin = dispatch => (useFormik({
@@ -37,7 +37,6 @@ export const formikForPasswordReset = dispatch => (useFormik({
   }),
 
   onSubmit: values => {
-    console.log(values);
-    // dispatch(signIn(values))
+    dispatch(forgotPassword(values.email))
   }
 }))

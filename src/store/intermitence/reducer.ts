@@ -13,7 +13,8 @@ const initialState = {
   showLoader: false,
   toast: {
     status: 0,
-    message: ''
+    message: '',
+    type: ''
   },
   modal: {
     contact: false,

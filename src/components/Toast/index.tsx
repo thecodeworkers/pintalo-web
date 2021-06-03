@@ -1,3 +1,4 @@
+import { memo } from 'react'
 import { useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
@@ -16,16 +17,16 @@ const htmlDecode = (input) => {
 }
 
 const Toast = () => {
-  const { toast: { message, status } } = useSelector((state: any) => state.intermitence)
+  const { toast: { message, status, type } } = useSelector((state: any) => state.intermitence)
 
   return (
     <div className={currentClass(status)}>
       <div className={styles._content}>
-        <img src="images/icons/cross.svg" width="20px" height="20px" alt="check"></img>
+        <img src={`images/icons/${type == 'success' ? 'check' : 'cross'}.svg`} width="20px" height="20px" alt="check"></img>
         <div dangerouslySetInnerHTML={{ __html: htmlDecode(message) }}></div>
       </div>
     </div>
   )
 }
 
-export default Toast
+export default memo(Toast)

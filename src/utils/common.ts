@@ -1,4 +1,4 @@
-import { delay, put } from '@redux-saga/core/effects'
+import { call, delay, put } from '@redux-saga/core/effects'
 import { END } from '@redux-saga/core'
 
 export const normalizedArray = response => response ? response : []
@@ -38,12 +38,11 @@ export const validateFetch = ({ errors, data }) => {
   return data
 }
 
-export function* manageError(error, toast = 'SHOW_TOAST', loader = 'SHOW_LOADER') {
-  yield put(actionObject(loader, false))
-
+export function* showDialog(message, type = 'success', toast = 'SHOW_TOAST') {
   yield put(actionObject(toast, {
     status: 1,
-    message: error
+    message,
+    type
   }))
 
   yield delay(3000)
@@ -51,6 +50,12 @@ export function* manageError(error, toast = 'SHOW_TOAST', loader = 'SHOW_LOADER'
   yield put(actionObject(toast, {
     status: 2
   }))
+}
+
+
+export function* manageError(error, toast = 'SHOW_TOAST', loader = 'SHOW_LOADER') {
+  yield put(actionObject(loader, false))
+  yield call(showDialog, error, 'error', toast)
 }
 
 export const mapProps = async (store, action) => {

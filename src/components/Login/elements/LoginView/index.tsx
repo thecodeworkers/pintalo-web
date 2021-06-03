@@ -1,8 +1,8 @@
 import { useEffect } from 'react'
-import { showModal, setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { useSelector } from 'react-redux'
+import { showModal, setFooterShow } from '@store/actions'
 import { formikForLogin, formikForPasswordReset } from './formik'
 import {
   GeneralButton,
@@ -37,7 +37,9 @@ const LoginView = ({ data }) => {
 
   useEffect(() => {
     if (isAuth) router.push('/')
-  }, [isAuth])
+    if (!sendEmail) formik2.resetForm()
+
+  }, [isAuth, sendEmail])
 
   const navigation = () => router.push('/register')
 
@@ -87,7 +89,7 @@ const LoginView = ({ data }) => {
                       <p className={styles._forgot} onClick={() => dispatch(showModal('sendEmail', true))}>¿Olvidaste tu contraseña? <a> Recuperar Contraseña </a></p>
 
                       <div className={styles._parentBtn} >
-                        <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
+                        <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={!sendEmail ? showLoader : false}>
                           Ingresar
                         </GeneralButton>
                       </div>
@@ -115,6 +117,13 @@ const LoginView = ({ data }) => {
                         value={formik2.values.email}
                         placeholder="Correo"
                       />
+
+                      <div className={styles._info}>
+                        <p>Importante</p>
+                        <p>Enviaremos un correo electrónico</p>
+                        <p>con las intrucciones para recuperar su contraseña</p>
+                      </div>
+
                       <div className={styles._parentBtn}>
                         <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
                           Recuperar
