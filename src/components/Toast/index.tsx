@@ -22,7 +22,7 @@ const Toast = () => {
   return (
     <div className={currentClass(status)}>
       <div className={styles._content}>
-        <img src={`images/icons/${type == 'success' ? 'check' : 'cross'}.svg`} width="20px" height="20px" alt="check"></img>
+        <img src={`/images/icons/${type == 'success' ? 'check' : 'cross'}.svg`} width="20px" height="20px" alt="check"></img>
         <div dangerouslySetInnerHTML={{ __html: htmlDecode(message) }}></div>
       </div>
     </div>

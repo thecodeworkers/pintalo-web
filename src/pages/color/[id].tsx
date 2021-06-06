@@ -1,9 +1,10 @@
 import { setFooterShow, getProduct } from '@store/actions'
 import { Color } from '@components'
-import wrapper from '@store'
-import Head from 'next/head'
 import { useDispatch, useSelector } from 'react-redux'
 import { useEffect } from 'react'
+import { mapProps } from '@utils'
+import wrapper from '@store'
+import Head from 'next/head'
 
 function ColorPage() {
   const { detail } = useSelector((state: any) => state.product)
@@ -24,7 +25,9 @@ function ColorPage() {
 }
 
 export const getServerSideProps = wrapper.getServerSideProps(
-  ({ store, params }) => store.dispatch(getProduct(params.id))
+  async ({ store, params }: any) => {
+    await mapProps(store, getProduct(params.id))
+  }
 )
 
 export default ColorPage

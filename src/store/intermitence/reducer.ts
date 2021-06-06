@@ -18,7 +18,8 @@ const initialState = {
   },
   modal: {
     contact: false,
-    sendEmail: false
+    sendEmail: false,
+    calculator: false
   }
 }
 

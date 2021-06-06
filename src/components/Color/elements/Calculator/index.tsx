@@ -49,7 +49,7 @@ const Calculator: FC<CalculatorProps> = ({ buttonHeight }) => {
         </div>
         <div className={styles._buttonContainer}>
           <div className={styles._buttonSubContainer}>
-            <GeneralButton backgroundColor="#FDCA40" textColor="#262833" large={buttonHeight}>
+            <GeneralButton backgroundColor="#FDCA40" textColor="#262833" large={buttonHeight} adjustWidth>
               Calcular el resultado
             </GeneralButton>
           </div>

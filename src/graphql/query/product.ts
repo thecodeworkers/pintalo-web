@@ -1,4 +1,5 @@
 const product = (id: string) => (`
+query Page {
   product(id: "${id}") {
     id
     name
@@ -9,6 +10,7 @@ const product = (id: string) => (`
       stockStatus
     }
   }
+}
 `)
 
 export default product

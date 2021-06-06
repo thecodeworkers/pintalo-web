@@ -5,7 +5,7 @@
   flex-direction: column;
   width: 100%;
   height: 100%;
-  padding: 7%;
+  padding: 7% 7% 0;
 }
 
 ._titleContainer {
@@ -59,7 +59,7 @@
 }
 
 ._areaContainer {
-  height: 40%;
+  height: 50%;
   display: flex;
   flex-direction: column;
 }
@@ -95,7 +95,7 @@
 }
 
 ._buttonContainer {
-  height: 20%;
+  height: 10%;
   display: flex;
   justify-content: flex-end;
 }

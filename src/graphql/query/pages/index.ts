@@ -1,6 +1,5 @@
 export { default as homePageQuery } from './homePage'
 export { default as aboutPageQuery } from './aboutPage'
-export { default as colorPageQuery } from './colorPage'
 export { default as inspoPageQuery } from './inspoPage'
 export { default as loginPageQuery } from './loginPage'
 export { default as painterPageQuery } from './painterPage'

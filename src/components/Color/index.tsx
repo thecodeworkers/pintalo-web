@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { showModal } from '@store/actions'
 import { isRetina } from '@utils'
 import { CounterButton, Calculator } from './elements'
@@ -14,13 +14,17 @@ const Color = ({ detail }) => {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    if (isRetina()) setRetina(true)
+  const {
+    modal: { calculator }
+  } = useSelector((state: any) => state.intermitence)
 
-    return () => {
-      setRetina(false)
-    }
-  }, [])
+  // useEffect(() => {
+  //   if (isRetina()) setRetina(true)
+
+  //   return () => {
+  //     setRetina(false)
+  //   }
+  // }, [])
 
   return (
     <>
@@ -46,7 +50,13 @@ const Color = ({ detail }) => {
                   </div>
                   <div className={styles._calculatorMobileArea}>
                     <div className={styles._calculatorButton}>
-                      <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
+                      <GeneralButton
+                        backgroundColor="#262833"
+                        textColor="#FFFFFF"
+                        large={retina ? '3.3rem' : '2.5rem'}
+                        method={() => dispatch(showModal('calculator', true))}
+                        adjustWidth
+                      >
                         <img src="/images/icons/calculator.svg" alt="calculator" width="16px" />
                       </GeneralButton>
                     </div>
@@ -83,7 +93,8 @@ const Color = ({ detail }) => {
                         backgroundColor="#262833"
                         textColor="#FFFFFF"
                         large={retina ? '3.3rem' : '2.5rem'}
-                        method={() => dispatch(showModal('', true))}
+                        adjustWidth
+                        method={() => dispatch(showModal('calculator', true))}
                       >
                         <img src="/images/icons/calculator.svg" alt="calculator" width="16px" />
                       </GeneralButton>
@@ -98,7 +109,7 @@ const Color = ({ detail }) => {
           </div>
           <div className={styles._buttonContainer}>
             <div className={styles._buttonBox}>
-              <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" large={retina ? '3.3rem' : '2.5rem'}>
+              <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" adjustWidth large={retina ? '3.3rem' : '2.5rem'}>
                 Añadir al carrito
               </GeneralButton>
             </div>
@@ -106,11 +117,15 @@ const Color = ({ detail }) => {
         </div>
       </div>
 
-      <GeneralModal title="Calculadora">
-        <div style={{ height: 550 }}>
-          <Calculator buttonHeight={retina ? '2.8rem' : '2rem'} />
-        </div>
-      </GeneralModal>
+      {
+        calculator ? (
+          <GeneralModal title="Calculadora" className={styles._modalBody}>
+            <div className={styles._modalHeight}>
+              <Calculator buttonHeight={retina ? '2.8rem' : '2rem'} />
+            </div>
+          </GeneralModal>
+        ) : null
+      }
 
       <style jsx>{`
         ._inputSize {
