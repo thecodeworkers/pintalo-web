@@ -1,9 +1,15 @@
-function Colors() {
+import Head from 'next/head'
+import { Colors } from '@components'
+
+function ColorsPage() {
   return (
-    <div>
-      Colors
-    </div>
+    <>
+      <Head>
+        <title>Colors</title>
+      </Head>
+      <Colors />
+    </>
   )
 }
 
-export default Colors
+export default ColorsPage

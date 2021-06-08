@@ -1,0 +1,82 @@
+@import '@styles/index.scss';
+
+._container {
+  height: 100%
+}
+
+._firstSection {
+  height: 50vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+._title {
+  @include font('helvetica', 'helveticaBold82');
+  color: $charade;
+  margin-bottom: 3rem;
+}
+
+._paleteContainer {
+  background-color: $grayNurse;
+  width: 70%;
+  height: 15%;
+  display: flex;
+  justify-content: center;
+  border-radius: 100px
+}
+
+._palete {
+  transform: skew(-20deg);
+  transition: all .2s ease-in-out;
+}
+
+._paleteTransition:hover {
+  z-index: 20;
+  transform: skew(-20deg) scale(1.1);
+  cursor: pointer;
+}
+
+._secondSection {
+  background-color: $wildSand;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  min-height: 50vh;
+}
+
+._subTitle {
+  @include font('helvetica', 'helvetica32');
+  color: $charade;
+  margin: 3rem 0;
+}
+
+._bigButtonContainer {
+  display: flex;
+  width: 70%;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+}
+
+._bigButton {
+  width: 400px;
+}
+
+._buttonsContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+  width: 65%;
+}
+
+._button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 220px;
+  margin: 1rem 1rem 1rem 1rem;
+}
