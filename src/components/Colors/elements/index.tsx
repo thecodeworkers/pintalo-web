@@ -1,1 +1,1 @@
-export { default as Palete } from './Palete'
+export { default as Palette } from './Palette'

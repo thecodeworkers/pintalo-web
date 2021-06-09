@@ -1,5 +1,5 @@
 import { GeneralButton } from '@components'
-import { Palete } from './elements'
+import { Palette } from './elements'
 import styles from './styles.module.scss'
 
 const colors: any = [
@@ -29,12 +29,12 @@ const Colors = () => (
   <div className={styles._container}>
     <div className={styles._firstSection}>
       <p className={styles._title}>Imagina un color y encuéntralo aquí</p>
-      <div className={styles._paleteContainer}>
+      <div className={styles._paletteContainer}>
         {
           colors.map((color, index) => (
-            <div className={`${styles._palete} ${styles._paleteTransition}`} key={index}>
+            <div className={`${styles._palette} ${styles._paletteTransition}`} key={index}>
               <style jsx>{`
-                .${styles._palete} {
+                .${styles._palette} {
                   background-color: ${color.background};
                   width: calc(100% / ${colors.length + 2});
                 }
@@ -71,7 +71,7 @@ const Colors = () => (
           })
         }
       </div>
-      <Palete />
+      <Palette />
     </div>
   </div>
 )

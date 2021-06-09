@@ -18,7 +18,7 @@
   margin-bottom: 3rem;
 }
 
-._paleteContainer {
+._paletteContainer {
   background-color: $grayNurse;
   width: 70%;
   height: 15%;
@@ -27,12 +27,12 @@
   border-radius: 100px
 }
 
-._palete {
+._palette {
   transform: skew(-20deg);
   transition: all .2s ease-in-out;
 }
 
-._paleteTransition:hover {
+._paletteTransition:hover {
   z-index: 20;
   transform: skew(-20deg) scale(1.1);
   cursor: pointer;

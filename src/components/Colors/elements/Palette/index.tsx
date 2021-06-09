@@ -24,7 +24,7 @@ const paletes = [
 
 const perPage = 16
 
-const Palete = () => {
+const Palette = () => {
   const [page, setPage] = useState(1)
 
   return (
@@ -39,7 +39,7 @@ const Palete = () => {
                 <div className={styles._cartContainer}>
                   <img src="/images/icons/bx-cart.svg" alt={palete.name} />
                 </div>
-                <p className={styles._paleteName}>{palete.name}</p>
+                <p className={styles._paletteName}>{palete.name}</p>
 
                 <style jsx>{`
                   .${styles._card} {
@@ -91,4 +91,4 @@ const Palete = () => {
   )
 }
 
-export default Palete
+export default Palette
