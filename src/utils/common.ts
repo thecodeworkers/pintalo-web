@@ -20,17 +20,6 @@ export const scrolling = (reference) => {
 
 export const createMarkup = (text) => { return {__html: text}; }
 
-export const isRetina = () => {
-  const query = '(-webkit-min-device-pixel-ratio: 2), n\
-    (min--moz-device-pixel-ratio: 2), n\
-    (-o-min-device-pixel-ratio: 2/1), n\
-    (min-device-pixel-ratio: 2), n\
-    (min-resolution: 192dpi), n\
-    (min-resolution: 2dppx)';
-
-  return !!window?.matchMedia(query).matches
-}
-
 export const validateFetch = ({ errors, data }) => {
   if (errors) throw errors[0].message
   if (typeof(data) == 'undefined') throw 'Cannot connect'

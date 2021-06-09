@@ -1,4 +1,5 @@
 import { GeneralButton } from '@components'
+import { Palete } from './elements'
 import styles from './styles.module.scss'
 
 const colors: any = [
@@ -15,16 +16,13 @@ const colors: any = [
 ]
 
 const type = [
-  { name: 'Mate' },
-  { name: 'Satinado' },
-  { name: 'Brilliante' },
-  { name: 'Masillas' },
-  { name: 'Imperbealizantes' },
-  { name: 'Aditivo' },
-  { name: 'Texturizado' },
-  { name: 'Grafeado' },
-  { name: 'Tratamiento superficie' },
-  { name: 'Otro' },
+  { name: 'Pineco' },
+  { name: 'VP' },
+  { name: 'Manpica' },
+  { name: 'Butler tools' },
+  { name: 'Alpha' },
+  { name: 'Reinco' },
+  { name: 'Cebra' }
 ]
 
 const Colors = () => (
@@ -34,15 +32,14 @@ const Colors = () => (
       <div className={styles._paleteContainer}>
         {
           colors.map((color, index) => (
-            <>
-              <div className={`${styles._palete} ${styles._paleteTransition}`} key={index}></div>
+            <div className={`${styles._palete} ${styles._paleteTransition}`} key={index}>
               <style jsx>{`
                 .${styles._palete} {
                   background-color: ${color.background};
                   width: calc(100% / ${colors.length + 2});
                 }
               `}</style>
-            </>
+            </div>
           ))
         }
       </div>
@@ -74,6 +71,7 @@ const Colors = () => (
           })
         }
       </div>
+      <Palete />
     </div>
   </div>
 )

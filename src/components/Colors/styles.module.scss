@@ -13,7 +13,7 @@
 }
 
 ._title {
-  @include font('helvetica', 'helveticaBold82');
+  @include font('helveticaLight', 'helveticaBold82');
   color: $charade;
   margin-bottom: 3rem;
 }

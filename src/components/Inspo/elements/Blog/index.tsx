@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { paginate } from '@utils'
+import { Pagination } from '@components'
 import styles from './styles.module.scss'
-import Pagination from '../../../Pagination'
 
 const perPage = 9
 
