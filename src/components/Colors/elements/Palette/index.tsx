@@ -33,6 +33,7 @@ const Palette = () => {
                 <div key={index} className={styles._card} onClick={() => {
                   if (currentType == 'palettes') {
                     changePalette('colors', element.colors)
+                    setPage(1)
                   }
                 }}>
                   <div className={styles._cartContainer}>

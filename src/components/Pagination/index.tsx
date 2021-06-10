@@ -1,15 +1,21 @@
-import { memo, useState } from 'react'
+import { memo, useEffect, useState } from 'react'
 import styles from './styles.module.scss'
 
 const PAG_NUMBERS = 4
 
 const Pagination = ({ items, perPage, changePage, currentPage }) => {
   const [firstPage, setFirstPage] = useState(1)
+  const [lastPage, setLastPage] = useState(1)
+  const [totalPages, setTotalPages] = useState(0)
 
   const totalItems = items.length
-  const totalPages = Math.ceil(totalItems / perPage)
 
-  const [lastPage, setLastPage] = useState(totalPages > PAG_NUMBERS ? PAG_NUMBERS : totalPages)
+  useEffect(() => {
+    const totalPages = Math.ceil(totalItems / perPage)
+    setTotalPages(totalPages)
+    setLastPage(totalPages > PAG_NUMBERS ? PAG_NUMBERS : totalPages)
+
+  }, [totalItems])
 
   const pageNumbers = []
   for (let i = firstPage; i <= lastPage; i++) pageNumbers.push(i)
