@@ -1,0 +1,1 @@
+export const SELECT_PALETTE = 'SELECT_PALETTE'

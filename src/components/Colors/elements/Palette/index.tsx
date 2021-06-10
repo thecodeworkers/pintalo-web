@@ -1,64 +1,46 @@
 import { useState } from 'react'
-import { hexToRgb, determinateTextColor } from '@utils'
+import { useDispatch, useSelector } from 'react-redux'
 import { Pagination, GeneralButton } from '@components'
+import { selectPalette } from '@store/actions'
+import { paintBackground } from './functions'
+import { palettes } from '@utils/tmpPalettes'
 import styles from './styles.module.scss'
-
-const paletes = [
-  { color: '#7B8ECE', name: 'Blue' },
-  { color: '#7BA5CE', name: 'Blue' },
-  { color: '#7BBDCE', name: 'Blue' },
-  { color: '#7BCBCE', name: 'Blue' },
-  { color: '#7081BB', name: 'Blue' },
-  { color: '#7299BF', name: 'Blue' },
-  { color: '#73B1C1', name: 'Blue' },
-  { color: '#70BBBE', name: 'Blue' },
-  { color: '#5E6C9D', name: 'Blue' },
-  { color: '#6485A5', name: 'Blue' },
-  { color: '#5F919E', name: 'Blue' },
-  { color: '#68A7AA', name: 'Blue' },
-  { color: '#4F5B84', name: 'Blue' },
-  { color: '#5B7894', name: 'Blue' },
-  { color: '#56848F', name: 'Blue' },
-  { color: '#568E91', name: 'Blue' },
-]
 
 const perPage = 16
 
 const Palette = () => {
   const [page, setPage] = useState(1)
 
+  const {
+    currentElements,
+    currentType
+  } = useSelector((state: any) => state.palette)
+
+  const dispatch = useDispatch()
+
+  const changePalette = (type, elements) => {
+    dispatch(selectPalette(type, elements))
+  }
+
   return (
     <div className={styles._cardsContainer}>
       <div className={styles._cardsArea}>
         {
-          paletes.map((palete, index) => {
-            const color = palete.color
-
+          currentElements.map((element, index) => {
             return (
-              <div key={index} className={styles._card}>
+              <div key={index} className={styles._card} onClick={() => {
+                if (currentType == 'palettes') {
+                  changePalette('colors', element.colors)
+                }
+              }}>
                 <div className={styles._cartContainer}>
-                  <img src="/images/icons/bx-cart.svg" alt={palete.name} />
+                  <img src="/images/icons/bx-cart.svg" alt={element.name} />
                 </div>
-                <p className={styles._paletteName}>{palete.name}</p>
+                <p className={styles._paletteName}>{element.name}</p>
 
                 <style jsx>{`
                   .${styles._card} {
-                    ${
-                      true ? (`
-                        background: linear-gradient(0deg,
-                          #E2D6E0  25%,
-                          #CDCBD6  25%,
-                          #CDCBD6  50%,
-                          #D1D9E4  50%,
-                          #D1D9E4  75%,
-                          #E2E5F4  75%,
-                          #E2E5F4  100%
-                        );
-                      `) : (
-                        `background-color: ${color};`
-                      )
-                    }
-                    color: ${determinateTextColor(hexToRgb(color))}
+                    ${paintBackground(currentType, element, element?.color)}
                   }
                 `}</style>
               </div>
@@ -71,12 +53,17 @@ const Palette = () => {
           backgroundColor={'#262833'}
           textColor={'#fff'}
           bold={false}
+          method={() => {
+            if (currentType == 'colors') {
+              changePalette('palettes', palettes)
+            }
+          }}
         >
           Regresar
         </GeneralButton>
         {
-          paletes.length ? (
-            <Pagination currentPage={page} items={paletes} perPage={perPage} changePage={setPage}/>
+          currentElements.length ? (
+            <Pagination currentPage={page} items={currentElements} perPage={perPage} changePage={setPage}/>
           ) : null
         }
         <GeneralButton
