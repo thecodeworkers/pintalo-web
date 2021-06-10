@@ -46,3 +46,28 @@
   display: flex;
   justify-content: space-between;
 }
+
+@include responsive(md) {
+  ._cardsContainer {
+    width: 85%;
+  }
+
+  ._cardsArea {
+    min-height: 100%;
+    gap: .3rem;
+  }
+
+  ._card {
+    height: 4rem;
+    padding: 6px;
+    justify-content: flex-end;
+  }
+
+  ._cartContainer {
+    display: none;
+  }
+
+  ._paletteName {
+    @include font('helvetica', 'helvetica11');
+  }
+}

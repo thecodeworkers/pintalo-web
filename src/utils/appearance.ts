@@ -16,7 +16,7 @@ export const determinateTextColor = rgb => {
                       (parseInt(rgb[1]) * 587) +
                       (parseInt(rgb[2]) * 114)) / 1000)
 
-  const textColour = (brightness > 125) ? 'black' : 'white'
+  const textColour = (brightness > 125) ? '#262833' : 'white'
 
   return textColour
 }
