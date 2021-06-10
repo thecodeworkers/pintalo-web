@@ -28,7 +28,9 @@ const type = [
 const Colors = () => (
   <div className={styles._container}>
     <div className={styles._firstSection}>
-      <p className={styles._title}>Imagina un color y encuéntralo aquí</p>
+      <div className={styles._titleContainer}>
+        <p className={styles._title}>Imagina un color y encuéntralo aquí</p>
+      </div>
       <div className={styles._paletteContainer}>
         {
           colors.map((color, index) => (
@@ -37,6 +39,12 @@ const Colors = () => (
                 .${styles._palette} {
                   background-color: ${color.background};
                   width: calc(100% / ${colors.length + 2});
+                }
+
+                @media (max-width: 768px) {
+                  .${styles._palette} {
+                    width: 100%;
+                  }
                 }
               `}</style>
             </div>
