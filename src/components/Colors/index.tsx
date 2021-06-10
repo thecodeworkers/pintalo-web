@@ -56,13 +56,13 @@ const Colors = () => (
       <p className={styles._subTitle}>¿Ya sabes con cuál color y marca vas a pintar? Búscalo aquí.</p>
       <div className={styles._bigButtonContainer}>
         <div className={styles._bigButton}>
-          <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} large="2.2rem" adjustWidth>
-            Colores por marcas
+          <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} adjustWidth>
+            <p>Colores por marcas</p>
           </GeneralButton>
         </div>
         <div className={styles._bigButton}>
-          <GeneralButton backgroundColor={'#E6E8E6'} textColor={'#262833'} bold={false} large="2.2rem" adjustWidth>
-            Crea tus colores
+          <GeneralButton backgroundColor={'#E6E8E6'} textColor={'#262833'} bold={false} adjustWidth>
+            <p>Crea tus colores</p>
           </GeneralButton>
         </div>
       </div>

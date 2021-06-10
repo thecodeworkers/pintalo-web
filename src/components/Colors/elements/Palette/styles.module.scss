@@ -47,13 +47,17 @@
   justify-content: space-between;
 }
 
+._bigButtonContainer {
+  display: none;
+}
+
 @include responsive(md) {
   ._cardsContainer {
     width: 85%;
   }
 
   ._cardsArea {
-    min-height: 100%;
+    min-height: 17rem;
     gap: .3rem;
   }
 
@@ -69,5 +73,26 @@
 
   ._paletteName {
     @include font('helvetica', 'helvetica11');
+  }
+
+  ._paginationContainer {
+    margin: 3.5rem 0 3rem 0;
+    & button {
+      display: none;
+    }
+  }
+
+  ._bigButtonContainer {
+    display: flex;
+    width: 90%;
+    justify-content: space-between;
+    margin-bottom: 2rem;
+  }
+
+  ._bigButton {
+    width: 48%;
+    & p {
+      @include font('helvetica', 'helvetica12');
+    }
   }
 }

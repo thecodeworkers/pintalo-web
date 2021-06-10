@@ -125,5 +125,21 @@
   ._button {
     width: 47%;
     margin: 0 0 10px 0;
+
+    & p {
+      @include font('helvetica', 'helvetica12');
+    }
+  }
+
+  ._bigButtonContainer {
+    width: 90%;
+  }
+
+  ._bigButton {
+    width: 48%;
+
+    & p {
+      @include font('helvetica', 'helvetica12');
+    }
   }
 }
