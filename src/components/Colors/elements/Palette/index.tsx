@@ -1,4 +1,5 @@
 import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { useDispatch, useSelector } from 'react-redux'
 import { Pagination, GeneralButton } from '@components'
 import { selectPalette } from '@store/actions'
@@ -18,6 +19,7 @@ const Palette = () => {
   } = useSelector((state: any) => state.palette)
 
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const changePalette = (type, elements) => {
     dispatch(selectPalette(type, elements))
@@ -35,6 +37,8 @@ const Palette = () => {
                     changePalette('colors', element.colors)
                     setPage(1)
                   }
+
+                  if (currentType == 'colors') router.push('/color/cHJvZHVjdDoxOTc=')
                 }}>
                   <div className={styles._cartContainer}>
                     <img src="/images/icons/bx-cart.svg" alt={element.name} />
