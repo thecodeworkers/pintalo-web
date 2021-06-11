@@ -94,8 +94,7 @@
 
 ._modalTitle {
   color: $charade;
-  font-family: $techeadFreeLight;
-  font-size: $techead62;
+  @include font('helveticaLight', 'helvetica62');
   margin-bottom: 0.5rem;
 }
 
@@ -211,7 +210,7 @@
   }
 
   ._modalTitle {
-    @include font('techeadFreeLight', 'techead24');
+    @include font('helveticaLight', 'helvetica25');
     margin-top: 1rem;
   }
 

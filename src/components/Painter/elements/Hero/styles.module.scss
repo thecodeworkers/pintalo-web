@@ -8,8 +8,7 @@
 
   & h1 {
     color: $white;
-    font-size: $teached88;
-    font-family: $techeadFreeLight;
+    @include font('helveticaLight', 'helvetica88');
     font-weight: 400;
   }
 }

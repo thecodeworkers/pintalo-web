@@ -15,8 +15,7 @@
 
   & h1 {
     color: $white;
-    font-family: $techeadFreeLight;
-    font-size: $teached97;
+    @include font('helveticaLight', 'helvetica97');
     text-align: center;
     margin-bottom: 0.4rem;
     font-weight: 400;
@@ -36,7 +35,7 @@
 
   ._main {
     & h1 {
-      @include font('techeadFreeLight', 'techead88');
+      @include font('helveticaLight', 'helvetica88');
     }
 
     & p {

@@ -33,8 +33,7 @@
 
 ._title {
   color: $charade;
-  font-family: $techeadFreeLight;
-  font-size: $techead62;
+  @include font('helveticaLight', 'helvetica62');
 }
 
 @include responsive(md) {

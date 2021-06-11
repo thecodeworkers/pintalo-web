@@ -41,7 +41,7 @@
 }
 
 ._colorTitle {
-  @include font('techeadFreeLight', 'techead111');
+  @include font('helveticaLight', 'helvetica111');
   height: 25%;
   display: flex;
   align-items: flex-end;
@@ -205,7 +205,7 @@
   }
 
   ._colorTitle {
-    @include font('techeadFreeLight', 'techead25');
+    @include font('helveticaLight', 'helvetica25');
     display: flex;
     align-items: flex-end;
   }

@@ -39,8 +39,7 @@
 
 ._title {
   color: $charade;
-  font-family: $techeadFreeLight;
-  font-size: $techead62;
+  @include font('helveticaLight', 'helvetica62');
 }
 
 ._buttonContainer {
@@ -55,7 +54,7 @@
   }
 
   ._title {
-    @include font('techeadFreeLight', 'techead13');
+    @include font('helveticaLight', 'helvetica13');
     margin-bottom: 0.3rem;
   }
 
