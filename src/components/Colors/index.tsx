@@ -1,6 +1,8 @@
+import { memo } from 'react'
 import { GeneralButton } from '@components'
-import { memo, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { selectOption, selectPalette } from '@store/actions'
+import { useDispatch, useSelector } from 'react-redux'
+import { palettes, colorsBlue } from '@utils/tmpPalettes'
 import { Palette } from './elements'
 import styles from './styles.module.scss'
 
@@ -33,14 +35,23 @@ const caterories = [
 ]
 
 const Colors = () => {
-  const [category, setCategory] = useState(caterories[0])
-  const [brand, setBrand] = useState('')
-  const [colorSelected, setColorSelected] = useState('#3CBC3C')
+  const {
+    palette: { currentType },
+    colors: { category, brand, colorSelected }
+  } = useSelector((state: any) => state)
 
-  const currentType = useSelector((state: any) => state.palette.currentType)
+  const dispatch = useDispatch()
 
-  const changeCategory = index => {
-    if (category != caterories[index]) setCategory(caterories[index])
+  const changeCategory = (index, type, elements) => {
+    if (category != caterories[index])
+      dispatch(selectOption('category', caterories[index]))
+      changePalette(type, elements)
+
+      if (index) dispatch(selectOption('brand', ''))
+  }
+
+  const changePalette = (type, elements) => {
+    dispatch(selectPalette(type, elements))
   }
 
   return (
@@ -56,9 +67,9 @@ const Colors = () => {
                 className={`${styles._palette} ${styles._paletteTransition}`}
                 key={index}
                 onClick={() => {
-                  changeCategory(1)
+                  changeCategory(1, 'colors', colorsBlue)
                   if (colorSelected != color.background)
-                    setColorSelected(color.background)
+                    dispatch(selectOption('colorSelected', color.background))
                 }}
               >
                 <style jsx>{`
@@ -99,7 +110,7 @@ const Colors = () => {
               backgroundColor={category == caterories[0] ? '#262833' : '#E6E8E6'}
               textColor={category == caterories[0] ? '#FFFFFF' : '#262833'}
               adjustWidth
-              method={() => changeCategory(0)}
+              method={() => changeCategory(0, 'palettes', palettes)}
             >
               <p>Colores por marcas</p>
             </GeneralButton>
@@ -109,10 +120,7 @@ const Colors = () => {
               backgroundColor={category == caterories[1] ? '#262833' : '#E6E8E6'}
               textColor={category == caterories[1] ? '#FFFFFF' : '#262833'}
               adjustWidth
-              method={() => {
-                changeCategory(1)
-                setBrand('')
-              }}
+              method={() => changeCategory(1, 'colors', colorsBlue)}
             >
               <p>Crea tus colores</p>
             </GeneralButton>
@@ -132,7 +140,7 @@ const Colors = () => {
                         textColor={'#fff'}
                         large="2.2rem"
                         adjustWidth
-                        method={() => setBrand(name)}
+                        method={() => dispatch(selectOption('brand', name))}
                       >
                         <p className={styles._buttonText}>{name}</p>
                       </GeneralButton>
@@ -144,7 +152,7 @@ const Colors = () => {
           )
         }
         {
-          brand && <Palette />
+          (brand || currentType == 'colors') && <Palette />
         }
       </div>
     </div>

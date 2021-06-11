@@ -6,6 +6,7 @@ import setColor from './exploreColor/reducer'
 import product from './product/reducer'
 import user from './user/reducer'
 import palette from './palette/reducer'
+import colors from './colors/reducer'
 
 const reducers = combineReducers({
   page,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
   setColor,
   product,
   user,
-  palette
+  palette,
+  colors
 })
 
 export default reducers
