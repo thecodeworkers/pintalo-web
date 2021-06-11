@@ -29,11 +29,10 @@ const Layout = ({ children }) => {
               <form className={styles._formContainer}>
                 <div className={styles._inputContainerRow}>
                   <input placeholder='Nombre' className={styles._inputRow} />
-                  <input placeholder='Cargo' className={styles._input} />
+                  <input placeholder='Apellido' className={styles._input} />
                 </div>
 
                 <div className={styles._inputContainerColumn}>
-                  <input placeholder='Apellido' className={styles._input} />
                   <input placeholder='Correo' className={styles._input} />
                 </div>
 

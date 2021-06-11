@@ -41,7 +41,7 @@
   border-radius:20px;
   padding: 0.8rem;
   width: 100%;
-  height: 8rem;
+  height: 13rem;
   &::placeholder {
     color: $silverChalice;
     @include font('helvetica', 'helvetica15');
@@ -52,6 +52,9 @@
   display: flex;
   flex-direction: column;
   margin-bottom: 2rem;
+  & input {
+    width: 30rem;
+  }
 }
 
 ._buttonContainer {
@@ -71,6 +74,12 @@
 
   ._inputContainerRow {
     flex-direction: column;
+  }
+
+  ._inputContainerColumn {
+    & input {
+      width: 100%;
+    }
   }
 
   ._inputRow {
