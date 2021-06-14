@@ -41,7 +41,7 @@ const Footer = () => {
 
               <div className={styles._linksContainer}>
                 <p className={styles._link} onClick={() => navigation('/inspo')}>Inspirate</p>
-                <p className={styles._link} onClick={() => navigation('/about-us')}>Pintalo</p>
+                <p className={styles._link} onClick={() => navigation('/about-us')}>Píntalo</p>
                 <p className={styles._link} onClick={() => navigation('/painters')}>Pintores</p>
                 <p className={styles._link}>Promociones</p>
               </div>

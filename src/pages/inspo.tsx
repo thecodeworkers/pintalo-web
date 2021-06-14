@@ -1,5 +1,6 @@
 import React from 'react'
 import wrapper from '@store'
+import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { getInspoPage } from '@store/actions'
 import { Inspo } from '@components'
@@ -9,7 +10,12 @@ const InspoPage = () => {
   const content = useSelector((state: any) => state?.page?.inspoPage)
 
   return (
-    <Inspo content={content} />
+    <>
+      <Head>
+        <title>Inspiración</title>
+      </Head>
+      <Inspo content={content} />
+    </>
   )
 }
 

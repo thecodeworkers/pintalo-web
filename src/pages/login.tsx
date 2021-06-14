@@ -1,5 +1,6 @@
 import React from 'react'
 import wrapper from '@store'
+import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { Login } from '@components'
 import { getPage } from '@store/actions'
@@ -9,7 +10,12 @@ const LoginPage = () => {
   const back = useSelector((state: any) => state?.page?.loginPage?.back)
 
   return (
-    <Login content={back} />
+    <>
+      <Head>
+        <title>Inicio de sesión</title>
+      </Head>
+      <Login content={back} />
+    </>
   )
 }
 

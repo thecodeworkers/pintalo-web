@@ -14,7 +14,7 @@ const DesktopMenu = ({ navigation, closeMenu }) => (
         <ul className={styles._list}>
           <li> Menú </li>
           <li onClick={() => navigation('/')}> Home </li>
-          <li onClick={() => navigation('/about-us')}> Pintalo </li>
+          <li onClick={() => navigation('/about-us')}> Píntalo </li>
           <li onClick={() => navigation('/shop')}> Shop </li>
           <li onClick={() => navigation('/inspo')}> Inspirate </li>
           <li onClick={() => navigation('/painters')}> Pintores </li>
@@ -68,7 +68,7 @@ const MobileMenu = ({ navigation, closeMenu }) => {
           <li onClick={() => navigation('/')}>Home</li>
           <hr className={styles._separator}></hr>
 
-          <li onClick={() => navigation('/about-us')}>Pintalo</li>
+          <li onClick={() => navigation('/about-us')}>Píntalo</li>
           <hr className={styles._separator}></hr>
 
           <li onClick={() => navigation('/shop')}>Shop</li>

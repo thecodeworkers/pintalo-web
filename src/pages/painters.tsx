@@ -1,5 +1,6 @@
 import React from 'react'
 import wrapper from '@store'
+import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { Painter } from '@components'
 import { getPage } from '@store/actions'
@@ -9,7 +10,12 @@ const PaintersPage = () => {
   const { page: { painterPage: { painters } } } = useSelector((state: any) => state)
 
   return (
-    <Painter content={painters} />
+    <>
+      <Head>
+        <title>Pintores</title>
+      </Head>
+      <Painter content={painters} />
+    </>
   )
 }
 

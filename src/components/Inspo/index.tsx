@@ -1,4 +1,3 @@
-import Head from 'next/head'
 import { Hero, Blog } from './elements'
 
 const Inspo = ({ content }) => {
@@ -12,9 +11,6 @@ const Inspo = ({ content }) => {
 
   return (
     <div>
-      <Head>
-        <title>Inspiración</title>
-      </Head>
       <Hero title={page?.inspo?.title} subtitle={page?.inspo?.subtitle} bannerImage={mediaItemUrl} />
       <Blog title={page?.inspo?.postTitle} posts={entries} />
     </div>

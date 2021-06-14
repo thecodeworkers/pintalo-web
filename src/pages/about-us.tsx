@@ -1,5 +1,6 @@
 import React from 'react'
 import wrapper from '@store'
+import Head from 'next/head'
 import { useSelector } from 'react-redux'
 import { getPage } from '@store/actions'
 import { About } from '@components'
@@ -9,7 +10,12 @@ const AboutUs = () => {
   const { page: { aboutPage: { about } } } = useSelector((state: any) => state)
 
   return (
-    <About content={about} />
+    <>
+      <Head>
+        <title>Sobre Nosotros</title>
+      </Head>
+      <About content={about} />
+    </>
   )
 }
 
