@@ -44,7 +44,7 @@ const RegisterView = ({ data }) => {
             <div className={styles._rightSection}>
               <div className={styles._formParent}>
                 <div className={styles._header}>
-                  <p>Ingresar</p>
+                  <p>Regitrarse</p>
                 </div>
 
                 <div className={styles._content}>

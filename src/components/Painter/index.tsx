@@ -6,8 +6,8 @@ const Painters = ({ content }) => {
       {
         content && (
           <>
-          <Hero data={content?.mainBanner} />
-          <List data={content?.painters}  />
+            <Hero data={content?.mainBanner} />
+            <List data={content?.painters}  />
           </>
         )
       }

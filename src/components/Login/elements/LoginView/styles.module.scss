@@ -71,7 +71,7 @@
 
 ._forgot {
   font-family: $helvetica;
-  font-size: $helvetica14;
+  font-size: 0.7rem;
   text-align: center;
 
   & a {
@@ -110,12 +110,12 @@
 ._info {
   margin-top: 2rem;
   & p {
-    @include font('helvetica', 'helvetica12');
+    @include font('helvetica', 'helvetica13');
     margin-left: 2rem;
   }
 
   & p:first-child {
-    @include font('helveticaBold', 'helvetica12');
+    @include font('helveticaBold', 'helvetica13');
   }
 }
 
