@@ -54,8 +54,7 @@
 
 ._buttonTitle {
   color: $charade;
-  font-family: $helvetica;
-  font-size: $helvetica16;
+  @include font('helvetica', 'helvetica20');
   margin: 1rem 0 1rem 0;
 }
 

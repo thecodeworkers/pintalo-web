@@ -1,5 +1,7 @@
 @import '@styles/index.scss';
 
+$substractFont: .5rem;
+
 ._sliderBackground {
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -34,7 +36,9 @@
 
 ._title {
   color: $charade;
-  @include font('helveticaLight', 'helvetica62');
+  // @include font('helveticaLight', 'helvetica62');
+  font-family: $helvetica;
+  font-size: $helvetica62 - $substractFont;
 }
 
 ._buttonContainer {
