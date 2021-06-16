@@ -1,0 +1,31 @@
+@import '@styles/index.scss';
+
+@mixin commonInputStyles {
+  width: 85%;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+._input {
+  @include input($cello, $cello, $alto);
+  @include commonInputStyles;
+}
+
+._inputError {
+  @include input($cello, red, $alto);
+  @include commonInputStyles;
+}
+
+._inputPasswordContainer {
+  position: relative;
+}
+
+._imageParent {
+  position: absolute;
+  cursor: pointer;
+  right: 2.6rem;
+  top: .8rem;
+}

@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { HalfBanner, GeneralButton } from '@components'
+import { HalfBanner, GeneralButton, InputPassword } from '@components'
 import { setFooterShow } from '@store/actions'
 import { useDispatch } from 'react-redux'
 import { useSelector } from 'react-redux'
@@ -84,26 +84,16 @@ const RegisterView = ({ data }) => {
                       value={formik.values.email}
                     />
 
-                    <input
-                      id="password"
+                    <InputPassword
+                      formik={formik}
                       name="password"
-                      type="password"
-                      placeholder='Contraseña'
-                      className={errors.password && touched.password ? styles._inputError : styles._input}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.password}
+                      placeholder="Contraseña"
                     />
 
-                    <input
-                      id="confirmPassword"
+                    <InputPassword
+                      formik={formik}
                       name="confirmPassword"
-                      type="password"
-                      placeholder='Confirmar Contraseña'
-                      className={errors.confirmPassword && touched.confirmPassword ? styles._inputError : styles._input}
-                      onChange={formik.handleChange}
-                      onBlur={formik.handleBlur}
-                      value={formik.values.confirmPassword}
+                      placeholder="Confirmar Contraseña"
                     />
 
                     <div className={styles._joinUsParent}>

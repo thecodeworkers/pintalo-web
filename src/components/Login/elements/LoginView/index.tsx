@@ -8,7 +8,8 @@ import {
   GeneralButton,
   HalfBanner,
   RedirectPage,
-  GeneralModal
+  GeneralModal,
+  InputPassword
 } from '@components'
 import styles from './styles.module.scss'
 
@@ -75,15 +76,10 @@ const LoginView = ({ data }) => {
                         value={formik.values.email}
                       />
 
-                      <input
-                        id="password"
+                      <InputPassword
+                        formik={formik}
                         name="password"
-                        type="password"
-                        placeholder='Contraseña'
-                        className={formik.errors.password && formik.touched.password ? styles._inputError : styles._input}
-                        onChange={formik.handleChange}
-                        onBlur={formik.handleBlur}
-                        value={formik.values.password}
+                        placeholder="Contraseña"
                       />
 
                       <p className={styles._forgot} onClick={() => dispatch(showModal('sendEmail', true))}>¿Olvidaste tu contraseña? <a> Recuperar Contraseña </a></p>
