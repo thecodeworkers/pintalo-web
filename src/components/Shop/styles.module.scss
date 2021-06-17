@@ -1,0 +1,18 @@
+@import '@styles/index.scss';
+
+._container {
+  width: 85%;
+  margin: 0 auto;
+  display: flex;
+  min-height: 100vh;
+}
+
+._filtersContainer {
+  background-color: blue;
+  width: 30%;
+}
+
+._productsContainer {
+  background-color: coral;
+  width: 70%;
+}

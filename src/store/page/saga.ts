@@ -23,7 +23,7 @@ const getPageByName = (name) => {
     loginPage: loginPageQuery,
     aboutPage: aboutPageQuery,
     painterPage: painterPageQuery,
-    'shopPage': shopPageQuery,
+    shopPage: shopPageQuery
   }
 
   const query = `

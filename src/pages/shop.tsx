@@ -1,9 +1,27 @@
-function Shop() {
+import { useSelector } from 'react-redux'
+import { getPage } from '@store/actions'
+import { mapProps } from '@utils'
+import { Shop } from '@components'
+import wrapper from '@store'
+import Head from 'next/head'
+
+function ShopPage() {
+  const { shopPage: { shop } } = useSelector((state: any) => state.page)
+
   return (
-    <div>
-      Shop
-    </div>
+    <>
+      <Head>
+        <title>Shop</title>
+      </Head>
+      <Shop content={shop} />
+    </>
   )
 }
 
-export default Shop
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }) => {
+    await mapProps(store, getPage('shopPage'))
+  }
+)
+
+export default ShopPage

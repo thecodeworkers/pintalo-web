@@ -4,6 +4,7 @@ query Page {
     id
     name
     slug
+    description
     ... on SimpleProduct {
       price
       stockQuantity
