@@ -1,0 +1,60 @@
+@import '@styles/index.scss';
+
+._titleContainer {
+  width: 75%;
+  margin-bottom: 2rem;
+
+  & h1 {
+    margin-left: 2rem;
+    @include font('helvetica', 'helvetica45');
+    font-weight: 400;
+  }
+}
+
+._inputContainer {
+  width: 70%;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+._input {
+  @include input($cello, $cello, $alto);
+  width: 100%;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  display: block;
+}
+
+._iconParent {
+  position: absolute;
+  cursor: pointer;
+  right: 1.3rem;
+  top: .8rem;
+}
+
+._filterLabelContainer {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+}
+
+._filterLabel {
+  height: 2.2rem;
+  background-color: $brightSun;
+  width: 12rem;
+  border-radius: 1.875rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  margin: 0 3rem 1rem 0;
+
+  & p:nth-child(1) {
+    @include font('helvetica', 'helvetica18');
+    color: $charade;
+  }
+
+  & :nth-child(2) {
+    cursor: pointer;
+  }
+}

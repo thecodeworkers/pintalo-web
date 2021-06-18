@@ -1,0 +1,17 @@
+@import '@styles/index.scss';
+
+._lineOne {
+  height: 18px;
+  width: 2px;
+  background-color: $charade;
+  transform: rotate(45deg);
+  z-index: 1;
+}
+
+._lineTwo {
+  height: 18px;
+  width: 2px;
+  background-color: $charade;
+  transform: rotate(90deg);
+  z-index: 2;
+}

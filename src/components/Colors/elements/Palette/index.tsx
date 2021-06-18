@@ -25,6 +25,8 @@ const Palette = () => {
     dispatch(selectPalette(type, elements))
   }
 
+  const navigation = (route: string) => router.push(route)
+
   return (
     <>
       <div className={styles._cardsContainer}>
@@ -38,7 +40,7 @@ const Palette = () => {
                     setPage(1)
                   }
 
-                  if (currentType == 'colors') router.push('/color/cHJvZHVjdDoxOTc=')
+                  if (currentType == 'colors') navigation('/color/cHJvZHVjdDoxOTc=')
                 }}>
                   <div className={styles._cartContainer}>
                     <img src="/images/icons/bx-cart.svg" alt={element.name} />
@@ -77,6 +79,7 @@ const Palette = () => {
             backgroundColor={'#262833'}
             textColor={'#fff'}
             bold={false}
+            method={() => navigation('/shop')}
           >
             Ir a shop
           </GeneralButton>
@@ -104,6 +107,7 @@ const Palette = () => {
             textColor={'#fff'}
             adjustWidth
             bold={false}
+            method={() => navigation('/shop')}
           >
             <p>Ir a shop</p>
           </GeneralButton>

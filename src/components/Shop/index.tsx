@@ -1,4 +1,4 @@
-import { Hero } from './elements'
+import { Hero, Products } from './elements'
 import styles from './styles.module.scss'
 
 const brands = [
@@ -66,84 +66,39 @@ const colors = [
   'Sistema de tinteo'
 ]
 
-const products = [
+const options = [
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'brands',
+    filters: brands
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'categories',
+    filters: categories
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'bases',
+    filters: bases
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'types',
+    filters: types
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'uses',
+    filters: uses
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'presentations',
+    filters: presentations
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
+    name: 'classes',
+    filters: classes
   },
   {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
-  },
-  {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
-  },
-  {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
-  },
-  {
-    name: 'Nombre/Producto',
-    color: 'Azul Rey',
-    quantity: 3,
-    type: 'Satinado',
-    productImg: 'https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png'
-  },
+    name: 'classes',
+    filters: colors
+  }
 ]
 
 const Shop = ({ content }) => {
@@ -157,9 +112,7 @@ const Shop = ({ content }) => {
         <div className={styles._filtersContainer}>
 
         </div>
-        <div className={styles._productsContainer}>
-
-        </div>
+        <Products/>
       </div>
     </>
   )

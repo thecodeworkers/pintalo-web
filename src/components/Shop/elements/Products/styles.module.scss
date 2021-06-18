@@ -1,0 +1,120 @@
+@import '@styles/index.scss';
+
+._productsContainer {
+  background-color: blue;
+  width: 70%;
+}
+
+._cardsArea {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem 8rem;
+  min-height: 100vh;
+}
+
+._productCard {
+  background-color: $wildSand;
+  height: 25rem;
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+  border-radius: .7rem;
+}
+
+._cartContainer {
+  height: 10%;
+  align-self: flex-end;
+}
+
+._cart {
+  background-color: $white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._productImageContainer {
+  height: 55%;
+  display: flex;
+  align-items: center;
+}
+
+._informationContainer {
+  height: 35%;
+}
+
+._titleContainer {
+  height: 40%;
+  display: flex;
+  align-items: center;
+
+  & h1 {
+    @include font('helvetica', 'helvetica22');
+    color: $charade;
+    font-weight: 400;
+  }
+}
+
+._productDetail {
+  height: 60%;
+  display: flex;
+}
+
+._detailsContainer {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+
+  & p {
+    @include font('helvetica', 'helvetica12');
+    color: $charade;
+  }
+
+  p:nth-child(2n) {
+    margin: .3rem 0 .3rem 0;
+  }
+}
+
+._buttonContainer {
+  width: 50%;
+  display: flex;
+  align-items: flex-end;
+
+  & p {
+    @include font('helvetica', 'helvetica12');
+  }
+}
+
+._paginationContainer {
+  margin: 4rem 0 3rem 0;
+  display: flex;
+  justify-content: center;
+  position: relative;
+}
+
+._bigButton {
+  position: absolute;
+  right: 0
+}
+
+@include responsive(xxxl) {
+  ._cardsArea {
+    gap: 2rem 7rem;
+  }
+}
+
+@include responsive(xxl) {
+  ._cardsArea {
+    gap: 2rem 5rem;
+  }
+}
+
+@include responsive(xl) {
+  ._cardsArea {
+    gap: 2rem 3rem;
+  }
+}

@@ -18,7 +18,7 @@ const InputPassword = ({ formik, name, placeholder }) => {
       />
 
       <div className={styles._imageParent} onClick={() => setShow(show => !show)}>
-        <img src={show ? 'images/icons/hide-password.svg' : 'images/icons/show-password.svg'}  width='18px' height='18px' />
+        <img src={show ? '/images/icons/hide-password.svg' : '/images/icons/show-password.svg'}  width='18px' height='18px' />
       </div>
     </div>
   )
