@@ -1,0 +1,80 @@
+@import '@styles/index.scss';
+
+._filtersContainer {
+  width: 30%;
+}
+
+._filtersPanel {
+  min-height: 40rem;
+  background-color: $wildSand;
+  width: 85%;
+  border-radius: .7rem;
+}
+
+._filtersTitle {
+  background-color: $cello;
+  padding: .6rem;
+  border-radius: .7rem;
+
+  & h1 {
+    @include font('helvetica', 'helvetica24');
+    font-weight: 400;
+    color: $white;
+  }
+}
+
+._filtersOptionContainer {
+  width: 90%;
+  margin: 1.2rem auto 0 auto;
+}
+
+._filtersOptionContainer:last-child {
+  padding-bottom: 2rem;
+}
+
+._optionsTitle {
+  background-color: $charade;
+  padding: .6rem;
+  border-radius: 1.875rem;
+
+  & h1 {
+    @include font('helvetica', 'helvetica20');
+    font-weight: 400;
+    color: $white;
+    margin-left: .4rem;
+  }
+}
+
+._optionsContainer {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  width: 94%;
+  margin: 0 auto 0 auto;
+}
+
+._options {
+  margin-top: 1rem;
+  width: 100%;
+  display: flex;
+  overflow: hidden;
+
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $charade;
+    margin-left: .5rem;
+    margin-top: 2px;
+  }
+}
+
+._checkbox {
+  appearance: none;
+  background-color: $pinkSwan;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: $grayNurse solid .3rem;
+}
+
+._checkbox:checked {
+  background-color: $cello;
+}
