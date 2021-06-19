@@ -8,7 +8,7 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem 8rem;
-  min-height: 100vh;
+  min-height: 150vh;
 }
 
 ._productCard {
@@ -39,6 +39,7 @@
   height: 55%;
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 ._informationContainer {

@@ -1,6 +1,7 @@
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 import { GeneralButton, Pagination } from '@components'
 import { paginate } from '@utils'
-import { useState } from 'react'
 import Filter from './Filter'
 import styles from './styles.module.scss'
 
@@ -102,6 +103,9 @@ const perPage = 12
 
 const Products = () => {
   const [page, setPage] = useState(1)
+  const router = useRouter()
+
+  const navigation = (route: string) => router.push(route)
 
   return (
     <div className={styles._productsContainer}>
@@ -116,7 +120,10 @@ const Products = () => {
                   <img src="/images/icons/bx-cart.svg" alt="cart" />
                 </div>
               </div>
-              <div className={styles._productImageContainer}>
+              <div
+                className={styles._productImageContainer}
+                onClick={() => navigation('/color/cHJvZHVjdDoxOTc=')}
+              >
                 <img src={product.productImg} alt={product.name} width="100%" height="90%" />
               </div>
               <div className={styles._informationContainer}>
