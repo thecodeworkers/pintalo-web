@@ -1,3 +1,5 @@
+import { setFilter } from '@store/actions'
+import { useDispatch } from 'react-redux'
 import styles from './styles.module.scss'
 
 const brands = [
@@ -101,6 +103,10 @@ const options = [
 ]
 
 const Filters = () => {
+  const dispatch = useDispatch()
+
+  const selectFilter = (e) => dispatch(setFilter(e.target.value))
+
   return (
     <div className={styles._filtersContainer}>
       <div className={styles._filtersPanel}>
@@ -118,7 +124,12 @@ const Filters = () => {
                   option.filters.map((filter, index) => (
                     <div key={index} className={styles._options}>
                       <div className={styles._checkboxContainer}>
-                        <input type="checkbox" className={styles._checkbox} />
+                        <input
+                          type="checkbox"
+                          className={styles._checkbox}
+                          value={filter}
+                          onChange={selectFilter}
+                        />
                       </div>
                       <p>{filter}</p>
                     </div>

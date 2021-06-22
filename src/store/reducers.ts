@@ -7,6 +7,7 @@ import product from './product/reducer'
 import user from './user/reducer'
 import palette from './palette/reducer'
 import colors from './colors/reducer'
+import shop from './shop/reducer'
 
 const reducers = combineReducers({
   page,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   product,
   user,
   palette,
-  colors
+  colors,
+  shop
 })
 
 export default reducers
