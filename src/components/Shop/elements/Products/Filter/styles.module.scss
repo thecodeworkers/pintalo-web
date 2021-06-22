@@ -7,6 +7,7 @@
   & h1 {
     margin-left: 2rem;
     @include font('helvetica', 'helvetica45');
+    color: $charade;
     font-weight: 400;
   }
 }
@@ -56,5 +57,74 @@
 
   & :nth-child(2) {
     cursor: pointer;
+  }
+}
+
+._filterButtonContainer {
+  display: none;
+}
+
+@include responsive(lg) {
+  ._filterLabelContainer {
+    display: none;
+  }
+
+  ._filterButtonContainer {
+    display: block;
+    width: 70%;
+    margin-bottom: 2rem;
+  }
+
+  ._filterButton {
+    background-color: $brightSun;
+    border-radius: 30px;
+    padding: .8rem;
+    @include font('helvetica', 'helvetica20');
+    color: $charade;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  ._filterBadge {
+    display: flex;
+    align-items: center;
+  }
+
+  ._badge {
+    background-color: $wildSand;
+    width: 1.5rem;
+    height: 1.5rem;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    @include font('helvetica', 'helvetica13');
+    color: $charade;
+    margin-left: 1rem;
+  }
+}
+
+@include responsive(md) {
+  ._titleContainer {
+    width: 60%;
+    margin: 0 auto 1.5rem auto;
+
+    & h1 {
+      margin: 0;
+      @include font('helvetica', 'helvetica24');
+      color: $charade;
+      text-align: center;
+    }
+  }
+
+  ._inputContainer {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
+
+  ._filterButtonContainer {
+    width: 100%;
   }
 }

@@ -27,6 +27,17 @@ const Filter = ({ quantity }) => (
       <FilterLabel />
       <FilterLabel />
     </div>
+    <div className={styles._filterButtonContainer}>
+      <div className={styles._filterButton}>
+        <div className={styles._filterBadge}>
+          <p>filtros</p>
+          <div className={styles._badge}>
+            1
+          </div>
+        </div>
+        <img src="/images/icons/bx-abacus.svg" alt="search" width="18px" height="18px" />
+      </div>
+    </div>
   </>
 )
 

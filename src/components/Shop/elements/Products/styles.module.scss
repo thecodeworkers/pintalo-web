@@ -101,6 +101,10 @@
   right: 0
 }
 
+._bigButtonMobile {
+  display: none;
+}
+
 @include responsive(xxxl) {
   ._cardsArea {
     gap: 2rem 7rem;
@@ -116,5 +120,68 @@
 @include responsive(xl) {
   ._cardsArea {
     gap: 2rem 3rem;
+  }
+}
+
+@include responsive(lg) {
+  ._productsContainer {
+    width: 100%;
+  }
+}
+
+@include responsive(md) {
+  ._cardsArea {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem 1rem;
+    min-height: 100vh;
+  }
+
+  ._bigButton {
+    display: none;
+  }
+
+  ._bigButtonMobile {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+  }
+
+  ._productCard {
+    height: 20rem;
+  }
+
+  ._cartContainer {
+    height: 12%;
+  }
+
+  ._productImageContainer {
+    height: 38%;
+
+    & img {
+      height: 60%;
+    }
+  }
+
+  ._informationContainer {
+    height: 50%
+  }
+
+  ._titleContainer {
+    height: 30%;
+    justify-content: center;
+
+    & h1 {
+      @include font('helvetica', 'helvetica12');
+    }
+  }
+
+  ._productDetail {
+    flex-direction: column;
+    height: 70%;
+    justify-content: space-between;
+  }
+
+  ._buttonContainer {
+    width: 100%;
   }
 }

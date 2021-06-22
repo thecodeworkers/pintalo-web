@@ -171,6 +171,19 @@ const Products = () => {
           )
         }
       </div>
+      {
+        true && (
+          <div className={styles._bigButtonMobile}>
+            <GeneralButton
+              backgroundColor="#262833"
+              textColor="#FFFFFF"
+              adjustWidth
+            >
+              Finalizar compra
+            </GeneralButton>
+          </div>
+        )
+      }
     </div>
   )
 }

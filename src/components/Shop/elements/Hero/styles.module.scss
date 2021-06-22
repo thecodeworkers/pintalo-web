@@ -19,3 +19,14 @@
     font-weight: 400;
   }
 }
+
+@include responsive(md) {
+  ._hero {
+    background-size: cover;
+    height: 30vh;
+
+    & h1 {
+      @include font('helveticaLight', 'helvetica25');
+    }
+  }
+}

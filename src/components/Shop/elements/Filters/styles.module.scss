@@ -77,3 +77,9 @@
 ._checkbox:checked {
   background-color: $cello;
 }
+
+@include responsive(lg) {
+  ._filtersContainer {
+    display: none;
+  }
+}
