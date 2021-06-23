@@ -1,8 +1,10 @@
 import { AnyAction } from 'redux'
-import { SET_FILTER_ASYNC } from './action-types'
+import { CHANGE_PAGE, SET_FILTER_ASYNC } from './action-types'
 
 const initialState = {
-  filters: []
+  filters: [],
+  prevPage: 0,
+  page: 1
 }
 
 const shopReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -14,6 +16,8 @@ const shopReducer = (state = initialState, { type, payload }: AnyAction) => {
           ...payload
         ]
       }
+    case CHANGE_PAGE:
+      return { ...state, ...payload }
     default:
       return state
   }

@@ -1,5 +1,5 @@
 import { CrossSymbol } from '@components'
-import { setFilter } from '@store/actions'
+import { search, setFilter } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
@@ -16,6 +16,9 @@ const FilterLabel = ({ name }) => {
 
 const Filter = ({ quantity }) => {
   const filters = useSelector((state: any) => state.shop?.filters)
+  const dispatch = useDispatch()
+
+  const searchProducts = e => dispatch(search(e.target.value))
 
   return (
     <>
@@ -26,6 +29,7 @@ const Filter = ({ quantity }) => {
         <input
           type="text"
           className={styles._input}
+          onChange={searchProducts}
         />
         <div className={styles._iconParent}>
           <img src="/images/icons/bx-search.svg" alt="search" width="18px" height="18px" />

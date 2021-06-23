@@ -18,8 +18,7 @@ const categories = [
   'Herramienta',
   'Industrial',
   'Madera',
-  'Automotriz',
-  'Otro'
+  'Automotriz'
 ]
 
 const bases = [

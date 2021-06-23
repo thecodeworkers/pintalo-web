@@ -1,7 +1,7 @@
-import { useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { GeneralButton, Pagination } from '@components'
+import { changePage } from '@store/actions'
 import { paginate } from '@utils'
 import Filter from './Filter'
 import styles from './styles.module.scss'
@@ -9,10 +9,13 @@ import styles from './styles.module.scss'
 const perPage = 12
 
 const Products = () => {
-  const [page, setPage] = useState(1)
-
+  const dispatch = useDispatch()
   const router = useRouter()
-  const products = useSelector((state: any) => state.product?.products)
+
+  const {
+    product: { products },
+    shop: { page }
+  } = useSelector((state: any) => state)
 
   const navigation = (route: string) => router.push(route)
 
@@ -64,7 +67,12 @@ const Products = () => {
       <div className={styles._paginationContainer}>
         {
           products.length && (
-            <Pagination currentPage={page} items={products} perPage={perPage} changePage={setPage}/>
+            <Pagination
+              currentPage={page}
+              items={products}
+              perPage={perPage}
+              changePage={page => dispatch(changePage(page))}
+            />
           )
         }
         {
