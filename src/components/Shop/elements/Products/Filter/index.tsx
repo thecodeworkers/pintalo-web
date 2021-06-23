@@ -1,15 +1,15 @@
 import { CrossSymbol } from '@components'
-import { removeFilter } from '@store/actions'
+import { setFilter } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
-const FilterLabel = ({ name, index }) => {
+const FilterLabel = ({ name }) => {
   const dispatch = useDispatch()
 
   return (
     <div className={styles._filterLabel}>
       <p>{name}</p>
-      <div onClick={() => dispatch(removeFilter(index))}><CrossSymbol /></div>
+      <div onClick={() => dispatch(setFilter(name))}><CrossSymbol /></div>
     </div>
   )
 }
@@ -34,7 +34,7 @@ const Filter = ({ quantity }) => {
       <div className={styles._filterLabelContainer}>
         {
           filters.map((filter, index) => (
-            <FilterLabel key={index} index={index} name={filter} />
+            <FilterLabel key={index} name={filter} />
           ))
         }
       </div>

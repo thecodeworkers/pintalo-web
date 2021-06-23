@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { REMOVE_FILTER_ASYNC, SET_FILTER_ASYNC } from './action-types'
+import { SET_FILTER_ASYNC } from './action-types'
 
 const initialState = {
   filters: []
@@ -8,13 +8,6 @@ const initialState = {
 const shopReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
     case SET_FILTER_ASYNC:
-      return {
-        ...state,
-        filters: [
-          ...payload
-        ]
-      }
-    case REMOVE_FILTER_ASYNC:
       return {
         ...state,
         filters: [

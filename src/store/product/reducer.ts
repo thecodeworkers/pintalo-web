@@ -1,13 +1,17 @@
+import { products } from '@utils/tmpProducts'
 import { AnyAction } from 'redux'
-import { GET_PRODUCT_ASYNC } from './action-types'
+import { FILTER_PRODUCTS, GET_PRODUCT_ASYNC } from './action-types'
 
 const initialState = {
-  detail: {}
+  detail: {},
+  products
 }
 
 const productReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
     case GET_PRODUCT_ASYNC:
+      return { ...state, ...payload }
+    case FILTER_PRODUCTS:
       return { ...state, ...payload }
     default:
       return state

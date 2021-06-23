@@ -1,5 +1,5 @@
 import { setFilter } from '@store/actions'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
 const brands = [
@@ -103,6 +103,7 @@ const options = [
 ]
 
 const Filters = () => {
+  const filters = useSelector((state: any) => state.shop?.filters)
   const dispatch = useDispatch()
 
   const selectFilter = (e) => dispatch(setFilter(e.target.value))
@@ -129,6 +130,7 @@ const Filters = () => {
                           className={styles._checkbox}
                           value={filter}
                           onChange={selectFilter}
+                          checked={filters.some(f => f == filter) ? true : false}
                         />
                       </div>
                       <p>{filter}</p>
