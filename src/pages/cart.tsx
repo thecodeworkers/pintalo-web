@@ -1,9 +1,13 @@
-function Cart() {
-  return (
-    <div>
-      Cart
-    </div>
-  )
-}
+import { Cart } from '@components'
+import Head from 'next/head'
 
-export default Cart
+const CartPage = () => (
+  <>
+    <Head>
+      <title>Carrito</title>
+    </Head>
+    <Cart />
+  </>
+)
+
+export default CartPage

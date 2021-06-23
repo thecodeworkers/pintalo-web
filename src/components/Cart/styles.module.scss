@@ -1,0 +1,40 @@
+@import '@styles/index.scss';
+
+._container {
+  min-height: 100vh;
+  width: 85%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & h1 {
+    @include font('helvetica', 'helvetica97');
+    color: $charade;
+    font-weight: 400;
+    margin: 6.5rem 0 2rem 0;
+    margin-bottom: 2rem;
+    text-align: center;
+  }
+}
+
+._panelContainer {
+  height: 50rem;
+  width: 90%;
+  background-color: red;
+  border-radius: .7rem;
+  margin-bottom: 2rem;
+}
+
+._header {
+  height: 2rem;
+  border-radius: .7rem;
+  background-color: $charade;
+}
+
+._buttonsContainer {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin-bottom: 3rem;
+}
