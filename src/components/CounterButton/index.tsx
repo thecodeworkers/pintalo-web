@@ -1,17 +1,24 @@
 import { FC } from 'react'
-import styles from './styles.module.scss'
 import { CounterButtonProps } from './types'
 
-const CounterButton: FC<CounterButtonProps> = ({ direction, size, onPress }) => {
+const CounterButton: FC<CounterButtonProps> = ({
+  direction,
+  size,
+  onPress,
+  backgroundColor = '#FDCA40',
+  arrowColor = '#262833',
+  arrowSize = '5px',
+  arrowWidth = '4px'
+ }) => {
   return (
     <>
       <div className="_container" onClick={() => onPress(direction == '_left' ? -1 : 1)}>
-        <i className={`${styles._arrow} ${direction}`}></i>
+        <i className={`_arrow ${direction}`}></i>
       </div>
 
       <style jsx>{`
         ._container {
-          background-color: #FDCA40;
+          background-color: ${backgroundColor};
           width: ${size};
           height: ${size};
           border-radius: 50%;
@@ -19,6 +26,13 @@ const CounterButton: FC<CounterButtonProps> = ({ direction, size, onPress }) => 
           justify-content: center;
           align-items: center;
           cursor: pointer;
+        }
+
+        ._arrow {
+          border: solid ${arrowColor};
+          border-width: 0 ${arrowWidth} ${arrowWidth} 0;
+          display: inline-block;
+          padding: ${arrowSize};
         }
       `}</style>
     </>

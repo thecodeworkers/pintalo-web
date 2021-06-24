@@ -2,11 +2,14 @@ import { useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { showModal } from '@store/actions'
 import { isRetina } from '@utils'
-import { CounterButton, Calculator } from './elements'
-import ColorBackground from '../ColorBackground'
-import GeneralButton from '../GeneralButton'
-import BlackDropDown from '../BlackDropdown'
-import GeneralModal from '../GeneralModal'
+import { Calculator } from './elements'
+import {
+  ColorBackground,
+  CounterButton,
+  GeneralButton,
+  BlackDropDown,
+  GeneralModal
+} from '@components'
 import styles from './styles.module.scss'
 
 const Color = ({ detail }) => {
