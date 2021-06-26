@@ -82,4 +82,18 @@
   ._filtersContainer {
     display: none;
   }
+
+  ._filtersContainerMobile {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    top: -16.2rem;
+    left: 0;
+    z-index: 1;
+    margin: 0;
+  }
+
+  ._filtersPanelMobile {
+    width: 100%;
+  }
 }

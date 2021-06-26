@@ -101,6 +101,8 @@ const options = [
   }
 ]
 
+const showFilters = false
+
 const Filters = () => {
   const filters = useSelector((state: any) => state.shop?.filters)
   const dispatch = useDispatch()
@@ -108,8 +110,20 @@ const Filters = () => {
   const selectFilter = (e) => dispatch(setFilter(e.target.value))
 
   return (
-    <div className={styles._filtersContainer}>
-      <div className={styles._filtersPanel}>
+    <div className={
+      `${styles._filtersContainer} ${
+        showFilters
+          ? styles._filtersContainerMobile
+          : ''
+      }`
+    }>
+      <div className={
+        `${styles._filtersPanel} ${
+          showFilters
+            ? styles._filtersPanelMobile
+            : ''
+        }`
+      }>
         <div className={styles._filtersTitle}>
           <h1>Filtros</h1>
         </div>
