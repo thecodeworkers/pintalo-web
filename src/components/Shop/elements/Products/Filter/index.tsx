@@ -1,5 +1,5 @@
 import { CrossSymbol } from '@components'
-import { search, setFilter } from '@store/actions'
+import { search, setFilter, setShowFilters } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
@@ -43,12 +43,19 @@ const Filter = ({ quantity }) => {
         }
       </div>
       <div className={styles._filterButtonContainer}>
-        <div className={styles._filterButton}>
+        <div
+          className={styles._filterButton}
+          onClick={() => dispatch(setShowFilters(true))}
+        >
           <div className={styles._filterBadge}>
             <p>filtros</p>
-            <div className={styles._badge}>
-              1
-            </div>
+            {
+              filters.length ? (
+                <div className={styles._badge}>
+                  {filters.length}
+                </div>
+              ) : null
+            }
           </div>
           <img src="/images/icons/bx-abacus.svg" alt="search" width="18px" height="18px" />
         </div>

@@ -1,5 +1,6 @@
-import { setFilter } from '@store/actions'
+import { setFilter, setShowFilters } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
+import { CrossSymbol } from '@components'
 import styles from './styles.module.scss'
 
 const brands = [
@@ -101,10 +102,12 @@ const options = [
   }
 ]
 
-const showFilters = false
-
 const Filters = () => {
-  const filters = useSelector((state: any) => state.shop?.filters)
+  const {
+    shop: { filters },
+    intermitence: { showFilters }
+  } = useSelector((state: any) => state)
+
   const dispatch = useDispatch()
 
   const selectFilter = (e) => dispatch(setFilter(e.target.value))
@@ -126,6 +129,11 @@ const Filters = () => {
       }>
         <div className={styles._filtersTitle}>
           <h1>Filtros</h1>
+          <div className={styles._crossButton}
+            onClick={() => dispatch(setShowFilters(false))}
+          >
+            <CrossSymbol backgroundColor="#FFFFFF" />
+          </div>
         </div>
         {
           options.map((option, index) => (

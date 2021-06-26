@@ -4,7 +4,8 @@ import {
   FOOTER_SHOW,
   SHOW_MODAL,
   SHOW_LOADER,
-  SHOW_TOAST
+  SHOW_TOAST,
+  SET_SHOW_FILTERS
 } from './action-types'
 
 const initialState = {
@@ -20,7 +21,8 @@ const initialState = {
     contact: false,
     sendEmail: false,
     calculator: false
-  }
+  },
+  showFilters: false
 }
 
  const setIntermitenceReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -44,6 +46,9 @@ const initialState = {
       return { ...state, ...payload }
 
     case SHOW_MODAL:
+      return { ...state, ...payload }
+
+    case SET_SHOW_FILTERS:
       return { ...state, ...payload }
 
     default:

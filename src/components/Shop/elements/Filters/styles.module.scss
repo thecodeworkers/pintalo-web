@@ -78,6 +78,10 @@
   background-color: $cello;
 }
 
+._crossButton {
+  display: none;
+}
+
 @include responsive(lg) {
   ._filtersContainer {
     display: none;
@@ -95,5 +99,27 @@
 
   ._filtersPanelMobile {
     width: 100%;
+  }
+}
+
+@include responsive(md) {
+  ._filtersTitle {
+    display: flex;
+    justify-content: space-between;
+    & h1 {
+      @include font('helvetica', 'helvetica16');
+    }
+  }
+
+  ._options {
+    & p {
+      @include font('helvetica', 'helvetica11');
+    }
+  }
+
+  ._crossButton {
+    display: flex;
+    width: 10%;
+    justify-content: center;
   }
 }
