@@ -19,7 +19,6 @@
 }
 
 ._panelContainer {
-  min-height: 50rem;
   width: 90%;
   background-color: $wildSand;
   border-radius: .7rem;
@@ -39,149 +38,50 @@
   margin-bottom: 3rem;
 }
 
-._itemContainer {
-  height: 15rem;
-  display: flex;
-  padding: 3rem 4rem 0 4rem;
-}
-
-._productCardContainer {
-  width: 20%;
-}
-
-._productCard {
-  width: 70%;
-  height: 100%;
-  background-color: $grayNurse;
-  border-radius: .4rem;
-  padding: .5rem;
-}
-
-._crossContainer {
-  background-color: $white;
-  width: 2rem;
-  height: 2rem;
-  border-radius: 50%;
+._notFound {
+  height: 45rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin-left: auto;
-  cursor: pointer;
-}
 
-._imageContainer {
-  height: 70%;
-}
-
-._descriptionContainer {
-  width: 25%;
-
-  p:nth-child(1n) {
-    @include font('helvetica', 'helvetica22');
+  & h1 {
+    @include font('helvetica', 'helvetica24');
     color: $charade;
-    margin-bottom: 1rem;
-  }
-
-  p:nth-child(3) {
-    @include font('helvetica', 'helvetica14');
-    color: $charade;
-  }
-}
-
-._priceContainer {
-  width: 20%;
-
-  p:nth-child(1) {
-    @include font('helvetica', 'helvetica22');
-    color: $charade;
-    margin-bottom: 1rem;
-    margin-left: 30%;
-  }
-
-  p:nth-child(2) {
-    @include font('helvetica', 'helvetica12');
-    color: $charade;
-    margin-left: 30%;
-  }
-}
-
-._quantityContainer {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-
-  & p:nth-child(1) {
-    @include font('helvetica', 'helvetica22');
-    color: $charade;
-    margin-bottom: 1rem;
-  }
-}
-
-._inputQuantity {
-  @include input($doveGray, $charade, $doveGray);
-  width: 40%;
-  height: 2.5rem;
-  text-align: center;
-  margin-bottom: .8rem;
-}
-
-._arrowContainer {
-  display: flex;
-  width: 30%;
-  justify-content: space-between;
-}
-
-._totalContainer {
-  width: 15%;
-
-  p:nth-child(1) {
-    @include font('helvetica', 'helvetica22');
-    color: $charade;
-    margin-bottom: 1rem;
-    margin-left: 40%;
-  }
-
-  p:nth-child(2) {
-    @include font('helvetica', 'helvetica12');
-    color: $charade;
-    margin-left: 40%;
-  }
-}
-
-._separator {
-  width: 95%;
-  height: 1px;
-  background-color: $silver;
-  margin: 2rem auto 0 auto;
-}
-
-._totalAmount {
-  display: flex;
-  margin-top: 1.5rem;
-
-  & p {
-    @include font('helveticaBold', 'helvetica22');
-    color: $charade;
-  }
-}
-
-._totalWord {
-  width: 85%;
-  & p {
-    text-align: right;
-  }
-}
-
-._totalNumber {
-  width: 15%;
-  & p {
-    margin-left: 8%;
+    font-weight: 400;
   }
 }
 
 ._paginationContainer {
-  display: flex;
-  justify-content: center;
-  margin: 4rem 0 3rem 0;
+  display: none;
+}
+
+@include responsive(md) {
+  ._container {
+    & h1 {
+      @include font('helvetica', 'helvetica28');
+    }
+  }
+
+  ._panelContainer {
+    width: 100%;
+  }
+
+  ._buttonsContainer {
+    width: 100%;
+
+    :nth-child(1) {
+      display: none;
+    }
+
+    :nth-child(2) {
+      width: 100% !important;
+    }
+  }
+
+  ._paginationContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin: 1rem 0 3rem 0;
+  }
 }

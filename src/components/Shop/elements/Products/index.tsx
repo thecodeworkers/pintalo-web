@@ -21,11 +21,11 @@ const Products = () => {
 
   return (
     <div className={styles._productsContainer}>
-      <Filter quantity={products.length} />
+      <Filter quantity={(products || []).length} />
 
       <div className={styles._cardsArea}>
         {
-          paginate(products, page, perPage).map((product, index) => (
+          paginate((products || []), page, perPage).map((product, index) => (
             <div key={index} className={styles._productCard}>
               <div className={styles._cartContainer}>
                 <div className={styles._cart}>
@@ -53,6 +53,7 @@ const Products = () => {
                       adjustWidth
                       backgroundColor="#FDCA40"
                       textColor="#262833"
+                      method={() => navigation('/color/cHJvZHVjdDoxOTc=')}
                     >
                       <p>Comprar</p>
                     </GeneralButton>
@@ -66,7 +67,7 @@ const Products = () => {
 
       <div className={styles._paginationContainer}>
         {
-          products.length && (
+          (products || []).length && (
             <Pagination
               currentPage={page}
               items={products}

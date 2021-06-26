@@ -1,0 +1,253 @@
+@import '@styles/index.scss';
+
+._itemContainer {
+  min-height: 15rem;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 3rem 4rem 0 4rem;
+}
+
+._productCardContainer {
+  width: 20%;
+}
+
+._productCard {
+  width: 70%;
+  height: 100%;
+  background-color: $grayNurse;
+  border-radius: .4rem;
+  padding: .5rem;
+}
+
+._crossContainer {
+  background-color: $white;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  cursor: pointer;
+}
+
+._imageContainer {
+  height: 70%;
+}
+
+._descriptionContainer {
+  width: 25%;
+
+  p:nth-child(1n) {
+    @include font('helvetica', 'helvetica22');
+    color: $charade;
+    margin-bottom: 1rem;
+  }
+
+  p:nth-child(3) {
+    @include font('helvetica', 'helvetica14');
+    color: $charade;
+  }
+}
+
+._priceContainer {
+  width: 20%;
+
+  p:nth-child(1) {
+    @include font('helvetica', 'helvetica22');
+    color: $charade;
+    margin-bottom: 1rem;
+    margin-left: 30%;
+  }
+
+  p:nth-child(2) {
+    @include font('helvetica', 'helvetica12');
+    color: $charade;
+    margin-left: 30%;
+  }
+}
+
+._quantityContainer {
+  width: 20%;
+}
+
+._quantitySubContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  & p:nth-child(1) {
+    @include font('helvetica', 'helvetica22');
+    color: $charade;
+    margin-bottom: 1rem;
+  }
+}
+
+._inputQuantity {
+  @include input($doveGray, $charade, $doveGray);
+  width: 40%;
+  height: 2.5rem;
+  text-align: center;
+  margin-bottom: .8rem;
+}
+
+._arrowContainer {
+  display: flex;
+  width: 35%;
+  justify-content: space-between;
+}
+
+._totalContainer {
+  width: 15%;
+
+  p:nth-child(1) {
+    @include font('helvetica', 'helvetica22');
+    color: $charade;
+    margin-bottom: 1rem;
+    margin-left: 40%;
+  }
+
+  p:nth-child(2) {
+    @include font('helvetica', 'helvetica12');
+    color: $charade;
+    margin-left: 40%;
+  }
+}
+
+._separator {
+  width: 95%;
+  height: 1px;
+  background-color: $silver;
+  margin: 2rem auto 0 auto;
+}
+
+._totalAmount {
+  display: flex;
+  margin-top: 1.5rem;
+
+  & p {
+    @include font('helveticaBold', 'helvetica22');
+    color: $charade;
+  }
+}
+
+._totalWord {
+  width: 85%;
+  & p {
+    text-align: right;
+  }
+}
+
+._totalNumber {
+  width: 15%;
+  & p {
+    margin-left: 8%;
+  }
+}
+
+._paginationContainer {
+  display: flex;
+  justify-content: center;
+  margin: 4rem 0 3rem 0;
+}
+
+._totalsContainerMobile {
+  display: none;
+}
+
+@include responsive(md) {
+  ._itemContainer {
+    padding: 1.5rem 1rem 0 1rem;
+    min-height: 20rem;
+  }
+
+  ._productCardContainer {
+    width: 50%;
+  }
+
+  ._productCard {
+    height: 85%;
+    width: 85%;
+  }
+
+  ._descriptionContainer {
+    width: 50%;
+
+    p:nth-child(1n) {
+      @include font('helvetica', 'helvetica15');
+      color: $charade;
+      margin-bottom: 1rem;
+    }
+
+    p:nth-child(3) {
+      @include font('helvetica', 'helvetica11');
+      color: $charade;
+    }
+  }
+
+  ._priceContainer {
+    display: none;
+  }
+
+  ._totalContainer {
+    display: none;
+  }
+
+  ._quantityContainer {
+    width: 50%;
+  }
+
+  ._quantitySubContainer {
+    width: 85%;
+
+    & p:nth-child(1) {
+      @include font('helveticaBold', 'helvetica11');
+    }
+  }
+
+  ._inputQuantity {
+    width: 90%;
+  }
+
+  ._arrowContainer {
+    width: 75%;
+  }
+
+  ._totalsContainerMobile {
+    display: flex;
+    flex-direction: column;
+    width: 45%;
+
+    p:nth-child(1) {
+      @include font('helveticaBold', 'helvetica11');
+      color: $charade;
+      margin-bottom: .3rem;
+    }
+
+    p:nth-child(2) {
+      @include font('helvetica', 'helvetica12');
+      color: $charade;
+    }
+  }
+
+  ._priceMobile {
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ._totalMobile {
+    height: 50%;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  ._totalAmount {
+    display: none;
+  }
+
+  ._paginationContainer {
+    display: none;
+  }
+}
