@@ -1,44 +1,14 @@
 import { GeneralButton, Pagination } from '@components'
 import { useState } from 'react'
+import { useSelector } from 'react-redux'
 import Items from './Items'
 import styles from './styles.module.scss'
-
-const products = [
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-  {},
-]
 
 const perPage = 4
 
 const CartPage = () => {
   const [page, setPage] = useState(1)
+  const { items } = useSelector((state: any) => state.cart)
 
   return (
     <div className={styles._container}>
@@ -46,9 +16,9 @@ const CartPage = () => {
       <div className={styles._panelContainer}>
         <div className={styles._header}></div>
         {
-          products.length ? (
+          items.length ? (
             <Items
-              products={products}
+              products={items}
               page={page}
               perPage={perPage}
               setPage={setPage}
@@ -62,10 +32,10 @@ const CartPage = () => {
       </div>
       <div className={styles._paginationContainer}>
         {
-          products.length && (
+          items.length && (
             <Pagination
               currentPage={page}
-              items={products}
+              items={items}
               perPage={perPage}
               changePage={setPage}
             />

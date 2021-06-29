@@ -11,7 +11,7 @@ const Shop = ({ content }) => {
     <>
       <Hero
         title={content?.title}
-        background={content?.banner?.mediaItemUrl}
+        background={content?.banner?.mediaItemUrl || ''}
       />
       <div
         className={

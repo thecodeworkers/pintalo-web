@@ -8,6 +8,7 @@ import user from './user/reducer'
 import palette from './palette/reducer'
 import colors from './colors/reducer'
 import shop from './shop/reducer'
+import cart from './cart/reducer'
 
 const reducers = combineReducers({
   page,
@@ -18,7 +19,8 @@ const reducers = combineReducers({
   user,
   palette,
   colors,
-  shop
+  shop,
+  cart
 })
 
 export default reducers

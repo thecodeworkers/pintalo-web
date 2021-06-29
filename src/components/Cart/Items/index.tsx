@@ -1,3 +1,6 @@
+import { memo } from 'react'
+import { useDispatch } from 'react-redux'
+import { setItem } from '@store/actions'
 import { paginate } from '@utils'
 import {
   CrossSymbol,
@@ -7,11 +10,24 @@ import {
 import styles from './styles.module.scss'
 
 const Items = ({ products, page, perPage, setPage }) => {
+  const dispatch = useDispatch()
+
+  const calculateItems = (product, operator) => {
+    const result = products.map(pr => {
+      if (pr.id == product.id) {
+        pr.quantitySelected = pr.quantitySelected + operator
+      }
+
+      return pr
+    })
+
+    dispatch(setItem(result))
+  }
 
   return (
     <>
       {
-        paginate(products, page, perPage).map((_, index) => (
+        paginate(products, page, perPage).map((product, index) => (
           <div key={index}>
             <div className={styles._itemContainer}>
               <div className={styles._productCardContainer}>
@@ -44,7 +60,12 @@ const Items = ({ products, page, perPage, setPage }) => {
               <div className={styles._quantityContainer}>
                 <div className={styles._quantitySubContainer}>
                   <p>Cantidad</p>
-                  <input type="text" className={`${styles._inputQuantity}`} value={0} disabled />
+                  <input
+                    type="text"
+                    className={`${styles._inputQuantity}`}
+                    value={product.quantitySelected}
+                    disabled
+                  />
                   <div className={styles._arrowContainer}>
                     <CounterButton
                       direction="_left"
@@ -54,7 +75,8 @@ const Items = ({ products, page, perPage, setPage }) => {
                       arrowSize="3px"
                       arrowWidth="2px"
                       onPress={(minus: number) => {
-
+                        if (product.quantitySelected > 1)
+                          calculateItems(product, minus)
                       }}
                     />
                     <CounterButton
@@ -65,7 +87,8 @@ const Items = ({ products, page, perPage, setPage }) => {
                       arrowSize="3px"
                       arrowWidth="2px"
                       onPress={(plus: number) => {
-
+                        if (product.quantitySelected < product.stockQuantity)
+                          calculateItems(product, plus)
                       }}
                     />
                   </div>
@@ -118,4 +141,4 @@ const Items = ({ products, page, perPage, setPage }) => {
   )
 }
 
-export default Items
+export default memo(Items)

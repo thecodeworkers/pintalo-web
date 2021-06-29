@@ -6,7 +6,7 @@ query Page {
     slug
     description
     ... on SimpleProduct {
-      price
+      price(format: RAW)
       stockQuantity
       stockStatus
     }

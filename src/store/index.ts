@@ -51,7 +51,8 @@ const makeStore: any = ({ isServer }) => {
     storage,
     blacklist: [
       'intermitence',
-      'page'
+      'page',
+      'product'
     ]
   }
 

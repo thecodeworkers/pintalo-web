@@ -1,7 +1,6 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { showModal } from '@store/actions'
-import { isRetina } from '@utils'
+import { addedItem, setItem, showModal } from '@store/actions'
 import { Calculator } from './elements'
 import {
   ColorBackground,
@@ -17,17 +16,31 @@ const Color = ({ detail }) => {
   const [quantity, setQuantity] = useState(1)
   const dispatch = useDispatch()
 
+  const { items } = useSelector((state: any) => state.cart)
+
   const {
     modal: { calculator }
   } = useSelector((state: any) => state.intermitence)
 
-  // useEffect(() => {
-  //   if (isRetina()) setRetina(true)
+  const createCart = () => {
+    detail['quantitySelected'] = quantity
+    let itemToCart = []
 
-  //   return () => {
-  //     setRetina(false)
-  //   }
-  // }, [])
+    const currentIndex = items.findIndex(item => item.id == detail.id)
+
+    if (currentIndex > -1) {
+      items[currentIndex]['quantitySelected'] = quantity
+      itemToCart = items
+    } else {
+      itemToCart = [
+        ...items,
+        ...[detail]
+      ]
+    }
+
+    dispatch(setItem(itemToCart))
+    dispatch(addedItem())
+  }
 
   return (
     <>
@@ -112,7 +125,13 @@ const Color = ({ detail }) => {
           </div>
           <div className={styles._buttonContainer}>
             <div className={styles._buttonBox}>
-              <GeneralButton backgroundColor="#262833" textColor="#FFFFFF" adjustWidth large={retina ? '3.3rem' : '2.5rem'}>
+              <GeneralButton
+                backgroundColor="#262833"
+                textColor="#FFFFFF"
+                adjustWidth
+                large={retina ? '3.3rem' : '2.5rem'}
+                method={createCart}
+              >
                 Añadir al carrito
               </GeneralButton>
             </div>
