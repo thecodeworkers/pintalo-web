@@ -44,12 +44,20 @@
     cursor: pointer;
   }
 
+  & img:nth-child(2) {
+    margin-left: .3rem;
+  }
+
   & a {
     font-family: $helvetica;
     font-size: $helvetica20;
     margin-left: 2rem;
     cursor: pointer;
     margin-right: 2rem;
+  }
+
+  & p {
+    @include font('helvetica', 'helvetica18')
   }
 }
 

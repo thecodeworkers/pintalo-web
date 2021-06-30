@@ -4,11 +4,13 @@ import { useSelector, useDispatch } from 'react-redux'
 import { logout, setMenuShow } from '@store/actions'
 import { useRouter } from 'next/router'
 import { Menu } from '@components'
+import { memo } from 'react'
 
 const Navbar = () => {
   const {
     intermitence: { showMenu },
-    user: { isAuth }
+    user: { isAuth },
+    cart: { items }
   }  = useSelector((state: any) => state)
 
   const router = useRouter()
@@ -43,6 +45,9 @@ const Navbar = () => {
           </div>
 
           <div className={styles._linksParent}>
+            {
+              items.length ? (<p>({items.length})</p>) : (<p></p>)
+            }
             <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
             <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
             { !isAuth && <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} /> }
@@ -66,4 +71,4 @@ const Navbar = () => {
   )
 }
 
-export default Navbar
+export default memo(Navbar)

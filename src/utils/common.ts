@@ -52,3 +52,5 @@ export const mapProps = async (store, action) => {
   store.dispatch(END)
   await store.sagaTask.toPromise();
 }
+
+export const roundNumber = (number) => Math.round(number * 100) / 100
