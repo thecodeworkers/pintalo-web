@@ -1,4 +1,5 @@
 import { GeneralButton, Pagination } from '@components'
+import { useRouter } from 'next/router'
 import { useState } from 'react'
 import { useSelector } from 'react-redux'
 import Items from './Items'
@@ -9,6 +10,10 @@ const perPage = 4
 const CartPage = () => {
   const [page, setPage] = useState(1)
   const { items } = useSelector((state: any) => state.cart)
+
+  const router = useRouter()
+
+  const navigation = route => router.push(route)
 
   return (
     <div className={styles._container}>
@@ -32,29 +37,34 @@ const CartPage = () => {
       </div>
       <div className={styles._paginationContainer}>
         {
-          items.length && (
+          items.length ? (
             <Pagination
               currentPage={page}
               items={items}
               perPage={perPage}
               changePage={setPage}
             />
-          )
+          ) : null
         }
       </div>
       <div className={styles._buttonsContainer}>
         <GeneralButton
           backgroundColor="#FDCA40"
           textColor="#262833"
+          method={() => navigation('/shop')}
         >
           Volver a shop
         </GeneralButton>
-        <GeneralButton
-          backgroundColor="#FDCA40"
-          textColor="#262833"
-        >
-          Confirmar
-        </GeneralButton>
+        {
+          items.length ? (
+            <GeneralButton
+              backgroundColor="#FDCA40"
+              textColor="#262833"
+            >
+              Confirmar
+            </GeneralButton>
+          ) : null
+        }
       </div>
     </div>
   )

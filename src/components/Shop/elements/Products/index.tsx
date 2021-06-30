@@ -67,14 +67,14 @@ const Products = () => {
 
       <div className={styles._paginationContainer}>
         {
-          (products || []).length && (
+          (products || []).length ? (
             <Pagination
               currentPage={page}
               items={products}
               perPage={perPage}
               changePage={page => dispatch(changePage(page))}
             />
-          )
+          ) : null
         }
         {
           true && (
@@ -82,6 +82,7 @@ const Products = () => {
               <GeneralButton
                 backgroundColor="#262833"
                 textColor="#FFFFFF"
+                method={() => navigation('/cart')}
               >
                 Finalizar compra
               </GeneralButton>
@@ -96,6 +97,7 @@ const Products = () => {
               backgroundColor="#262833"
               textColor="#FFFFFF"
               adjustWidth
+              method={() => navigation('/cart')}
             >
               Finalizar compra
             </GeneralButton>

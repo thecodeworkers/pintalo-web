@@ -84,4 +84,11 @@
     justify-content: center;
     margin: 1rem 0 3rem 0;
   }
+
+  ._notFound {
+    height: 35rem;
+    & h1 {
+      @include font('helvetica', 'helvetica18');
+    }
+  }
 }
