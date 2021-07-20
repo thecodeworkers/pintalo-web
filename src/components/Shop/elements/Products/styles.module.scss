@@ -13,7 +13,7 @@
 
 ._productCard {
   background-color: $wildSand;
-  height: 25rem;
+  height: 23rem;
   display: flex;
   flex-direction: column;
   padding: 1rem;
@@ -27,8 +27,8 @@
 
 ._cart {
   background-color: $white;
-  width: 2rem;
-  height: 2rem;
+  width: 2.7rem;
+  height: 2.7rem;
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -70,7 +70,7 @@
   justify-content: flex-end;
 
   & p {
-    @include font('helvetica', 'helvetica12');
+    @include font('helvetica', 'helvetica13');
     color: $charade;
   }
 
@@ -85,7 +85,8 @@
   align-items: flex-end;
 
   & p {
-    @include font('helvetica', 'helvetica12');
+    font-family: $helvetica;
+    font-size: 0.7rem;
   }
 }
 
