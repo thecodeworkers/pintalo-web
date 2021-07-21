@@ -1,4 +1,93 @@
+@import '@styles/index.scss';
 
-.container {
+._container {
   min-height: 100vh;
+  display: flex;
+}
+
+._leftContainer {
+  width: 50%;
+  background-color: coral;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}
+
+._paymentProcess {
+  background-color: $wildSand;
+  height: 700px;
+  width: 95%;
+}
+
+._rightContainer {
+  width: 50%;
+  background-color: green;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+._paymentSteps {
+  background-color: $wildSand;
+  height: 819px;
+  width: 95%;
+}
+
+._processContainer {
+  display: flex;
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+._checkboxContainer {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._checkboxActive {
+  appearance: none;
+  background-color: $pinkSwan;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: $grayNurse solid .3rem;
+}
+
+._checkboxActive:checked {
+  background-color: $cello;
+}
+
+._checkboxDesactive {
+  @extend ._checkboxActive
+}
+
+._checkboxDesactive:checked {
+  background-color: $grey;
+}
+
+._processActive {
+  background-color: $brightSun;
+  padding: .6rem;
+  border-radius: 1.875rem;
+  width: 80%;
+  cursor: pointer;
+
+  & h1 {
+    @include font('helvetica', 'helvetica20');
+    font-weight: 400;
+    color: $charade;
+    margin-left: .4rem;
+  }
+}
+
+._processDesactive {
+  @extend ._processActive;
+  background-color: $grayNurse;
+}
+
+._buttonContainer {
+  margin-top: 5rem;
 }
