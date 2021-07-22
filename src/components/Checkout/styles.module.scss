@@ -1,8 +1,10 @@
 @import '@styles/index.scss';
 
 ._container {
-  min-height: 100vh;
   display: flex;
+  width: 85%;
+  margin: 0 auto;
+  height: 62rem;
 }
 
 ._leftContainer {
@@ -11,12 +13,6 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-
-._paymentProcess {
-  background-color: $wildSand;
-  height: 700px;
-  width: 95%;
 }
 
 ._rightContainer {
@@ -30,64 +26,80 @@
 
 ._paymentSteps {
   background-color: $wildSand;
+  border-radius: 10px;
   height: 819px;
   width: 95%;
 }
 
-._processContainer {
-  display: flex;
+._paymentSteps_header {
   width: 100%;
-  margin-bottom: 1rem;
-}
+  padding: 0.4rem;
+  background-color: $charade;
+  border-radius: 5px;
 
-._checkboxContainer {
-  width: 10%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-._checkboxActive {
-  appearance: none;
-  background-color: $pinkSwan;
-  width: 1.3rem;
-  height: 1.3rem;
-  border-radius: 50%;
-  border: $grayNurse solid .3rem;
-}
-
-._checkboxActive:checked {
-  background-color: $cello;
-}
-
-._checkboxDesactive {
-  @extend ._checkboxActive
-}
-
-._checkboxDesactive:checked {
-  background-color: $grey;
-}
-
-._processActive {
-  background-color: $brightSun;
-  padding: .6rem;
-  border-radius: 1.875rem;
-  width: 80%;
-  cursor: pointer;
-
-  & h1 {
-    @include font('helvetica', 'helvetica20');
-    font-weight: 400;
-    color: $charade;
-    margin-left: .4rem;
+  & p {
+    color: $white;
+    font-family: $helvetica;
+    font-size: $helvetica18;
   }
 }
 
-._processDesactive {
-  @extend ._processActive;
-  background-color: $grayNurse;
+._paymentSteps_content {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  height: 100%;
 }
 
-._buttonContainer {
-  margin-top: 5rem;
+._formContent {
+  height: 90%;
+}
+
+._formButtonContainer {
+  height: 10%;
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-end;
+}
+
+._formContainer {
+  padding: 6rem;
+}
+
+._inputContainerRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1.5rem;
+}
+
+._largeInputContainerRow {
+  @extend ._formItem;
+  margin-bottom: 1rem;
+  width: 100% !important;
+}
+
+._input {
+  @include input ($silverChalice, $doveGray, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._caption {
+  @include font('helvetica', 'helvetica12');
+  margin-left: .4rem;
+}
+
+._formItem {
+  width: 47%;
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    @include font('helvetica', 'helvetica15');
+    color: $doveGray;
+    margin-left: .5rem;
+  }
 }
