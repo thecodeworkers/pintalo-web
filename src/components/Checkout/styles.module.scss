@@ -9,7 +9,6 @@
 
 ._leftContainer {
   width: 50%;
-  background-color: coral;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -17,89 +16,40 @@
 
 ._rightContainer {
   width: 50%;
-  background-color: green;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
   align-items: flex-end;
 }
 
-._paymentSteps {
-  background-color: $wildSand;
-  border-radius: 10px;
-  height: 819px;
-  width: 95%;
+._buttonMobileContainer {
+  display: none;
 }
 
-._paymentSteps_header {
-  width: 100%;
-  padding: 0.4rem;
-  background-color: $charade;
-  border-radius: 5px;
-
-  & p {
-    color: $white;
-    font-family: $helvetica;
-    font-size: $helvetica18;
+@include responsive(md) {
+  ._container {
+    flex-direction: column;
+    height: 100%;
   }
-}
 
-._paymentSteps_content {
-  display: flex;
-  flex-direction: column;
-  width: 100%;
-  height: 100%;
-}
+  ._leftContainer {
+    width: 100%;
+  }
 
-._formContent {
-  height: 90%;
-}
+  ._rightContainer {
+    width: 100%;
+  }
 
-._formButtonContainer {
-  height: 10%;
-  padding: 1rem;
-  display: flex;
-  justify-content: flex-end;
-  align-items: flex-end;
-}
+  ._buttonMobileContainer {
+    display: flex;
+    flex-direction: column;
 
-._formContainer {
-  padding: 6rem;
-}
+    :nth-child(2n + 1) {
+      margin-bottom: 1rem;
+    }
 
-._inputContainerRow {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-._largeInputContainerRow {
-  @extend ._formItem;
-  margin-bottom: 1rem;
-  width: 100% !important;
-}
-
-._input {
-  @include input ($silverChalice, $doveGray, $silverChalice);
-  margin-bottom: 2rem;
-  margin: .5rem 0;
-  padding: 0.6rem;
-  width: 100%
-}
-
-._caption {
-  @include font('helvetica', 'helvetica12');
-  margin-left: .4rem;
-}
-
-._formItem {
-  width: 47%;
-  display: flex;
-  flex-direction: column;
-
-  & label {
-    @include font('helvetica', 'helvetica15');
-    color: $doveGray;
-    margin-left: .5rem;
+    :nth-child(2n + 2) {
+      margin-bottom: 2rem;
+    }
   }
 }

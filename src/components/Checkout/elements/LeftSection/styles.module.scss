@@ -53,7 +53,7 @@
 
 ._processActive {
   background-color: $brightSun;
-  padding: .6rem;
+  padding: .8rem;
   border-radius: 1.875rem;
   width: 93%;
   cursor: pointer;
@@ -86,5 +86,45 @@
 
   & p {
     @include font('helveticaBold', 'helvetica22');
+  }
+}
+
+
+@include responsive(xxxl) {
+  ._paymentProcess {
+    padding: 6rem 4rem 0 4rem;
+  }
+}
+
+@include responsive(xxl) {
+  ._paymentProcess {
+    padding: 6rem 3rem 0 3rem;
+  }
+}
+
+@include responsive(xl) {
+  ._paymentProcess {
+    padding: 6rem 1rem 0 1rem;
+  }
+}
+
+@include responsive(md) {
+  ._paymentProcess {
+    width: 100%;
+    margin: 6rem 0 2.5rem 0;
+    padding: 2rem;
+    height: 100%;
+  }
+
+  ._buttonContainer {
+    display: none;
+  }
+
+  ._totalContainer {
+    justify-content: space-between;
+  }
+
+  ._checkboxContainer {
+    width: 20%;
   }
 }
