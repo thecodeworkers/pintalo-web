@@ -40,47 +40,6 @@
   align-items: flex-end;
 }
 
-._formContainer {
-  padding: 6rem;
-}
-
-._inputContainerRow {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 1.5rem;
-}
-
-._largeInputContainerRow {
-  @extend ._formItem;
-  margin-bottom: 1rem;
-  width: 100% !important;
-}
-
-._input {
-  @include input ($silverChalice, $doveGray, $silverChalice);
-  margin-bottom: 2rem;
-  margin: .5rem 0;
-  padding: 0.6rem;
-  width: 100%
-}
-
-._caption {
-  @include font('helvetica', 'helvetica12');
-  margin-left: .4rem;
-}
-
-._formItem {
-  width: 47%;
-  display: flex;
-  flex-direction: column;
-
-  & label {
-    @include font('helvetica', 'helvetica15');
-    color: $doveGray;
-    margin-left: .5rem;
-  }
-}
-
 @include responsive(md) {
   ._formButtonContainer {
     display: none;
