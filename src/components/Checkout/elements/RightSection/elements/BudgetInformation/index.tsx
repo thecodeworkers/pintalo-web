@@ -1,27 +1,9 @@
-import styles from './styles.module.scss'
 import { BlackDropDown } from '@components'
+import styles from './styles.module.scss'
 
-const AddressInformation = () => {
+const BudgetInformation = () => {
   return (
     <form className={styles._formContainer}>
-      <div className={styles._inputContainerRow}>
-        <div className={styles._formItem}>
-          <BlackDropDown
-            height="2.5rem"
-            title="00/00/00"
-          />
-        </div>
-        <div className={styles._formItem}>
-          <BlackDropDown
-            height="2.5rem"
-            title="00:00 PM"
-            specialAlign
-          />
-        </div>
-        <div className={styles._formItem}>
-
-        </div>
-      </div>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
           <label htmlFor="Nombre">Nombre</label>
@@ -82,4 +64,4 @@ const AddressInformation = () => {
   )
 }
 
-export default AddressInformation
+export default BudgetInformation

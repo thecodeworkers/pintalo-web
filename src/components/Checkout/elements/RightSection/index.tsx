@@ -1,6 +1,16 @@
 import { GeneralButton } from '@components'
-import { BasicInformation, AddressInformation } from './elements'
+import { BasicInformation, AddressInformation, BudgetInformation } from './elements'
 import styles from './styles.module.scss'
+
+const title = {
+  basicInformation: 'Tus datos',
+  addressInformation: 'Delivery'
+}
+
+enum buttonTitle {
+  'Siguiente',
+  'Finalizar'
+}
 
 const RightSection = () => {
   return (
@@ -8,17 +18,18 @@ const RightSection = () => {
       <div className={styles._paymentSteps_content}>
         <div className={styles._formContent}>
           <div className={styles._paymentSteps_header}>
-            <p>Tus datos</p>
+            <p>{title.addressInformation}</p>
           </div>
           {/* <BasicInformation /> */}
-          <AddressInformation />
+          {/* <AddressInformation /> */}
+          <BudgetInformation />
         </div>
         <div className={styles._formButtonContainer}>
           <GeneralButton
             backgroundColor="#FDCA40"
             textColor="#262833"
           >
-            Siguiente
+            {buttonTitle[1]}
           </GeneralButton>
         </div>
       </div>

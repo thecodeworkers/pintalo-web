@@ -1,69 +1,52 @@
 import { GeneralButton } from '@components'
 import styles from './styles.module.scss'
 
+const options = [
+  {
+    checkboxClass: '_checkboxActive',
+    labelClass: '_processActive',
+    title: 'Tus datos'
+  },
+  {
+    checkboxClass: '_checkboxActive',
+    labelClass: '_processActive',
+    title: 'Forma de entrega'
+  },
+  {
+    checkboxClass: '_checkboxDesactive',
+    labelClass: '_processDesactive',
+    title: 'Forma de pago'
+  },
+  {
+    checkboxClass: '_checkboxDesactive',
+    labelClass: '_processDesactive',
+    title: 'Factura'
+  },
+]
+
 const LeftSection = () => {
   return (
     <>
       <div className={styles._paymentProcess}>
         <h1>Proceso de pago</h1>
         <p>Llena los siguiente parametros para realizar tu compra</p>
-
-        <div className={styles._processContainer}>
-          <div className={styles._checkboxContainer}>
-            <input
-              type="checkbox"
-              className={styles._checkboxActive}
-              onChange={() => {}}
-              checked={true}
-            />
-          </div>
-          <div className={styles._processActive}>
-            <h1>Tus datos</h1>
-          </div>
-        </div>
-
-        <div className={styles._processContainer}>
-          <div className={styles._checkboxContainer}>
-            <input
-              type="checkbox"
-              className={styles._checkboxDesactive}
-              onChange={() => {}}
-              checked={true}
-            />
-          </div>
-          <div className={styles._processDesactive}>
-            <h1>Forma de entrega</h1>
-          </div>
-        </div>
-
-        <div className={styles._processContainer}>
-          <div className={styles._checkboxContainer}>
-            <input
-              type="checkbox"
-              className={styles._checkboxDesactive}
-              onChange={() => {}}
-              checked={true}
-            />
-          </div>
-          <div className={styles._processDesactive}>
-            <h1>Forma de pago</h1>
-          </div>
-        </div>
-
-        <div className={styles._processContainer}>
-          <div className={styles._checkboxContainer}>
-            <input
-              type="checkbox"
-              className={styles._checkboxDesactive}
-              onChange={() => {}}
-              checked={true}
-            />
-          </div>
-          <div className={styles._processDesactive}>
-            <h1>Factura</h1>
-          </div>
-        </div>
-
+        {
+          options.map((option, index) => (
+            <div key={index} className={styles._processContainer}>
+              <div className={styles._checkboxContainer}>
+                <input
+                  type="checkbox"
+                  className={styles[option.checkboxClass]}
+                  onChange={() => {}}
+                  checked={true}
+                />
+              </div>
+              <div className={styles[option.labelClass]}>
+                <h1>{option.title}</h1>
+              </div>
+            </div>
+          ))
+        }
         <div className={styles._totalContainer}>
           <div>
             <p>Total</p>

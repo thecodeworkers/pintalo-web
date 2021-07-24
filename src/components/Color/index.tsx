@@ -11,6 +11,18 @@ import {
 } from '@components'
 import styles from './styles.module.scss'
 
+const sizes = [
+  {
+    label: '6 L'
+  },
+  {
+    label: '3 L'
+  },
+  {
+    label: '1.5 L'
+  }
+]
+
 const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
   const [quantity, setQuantity] = useState(1)
@@ -61,7 +73,11 @@ const Color = ({ detail }) => {
                 <div className={styles._colorOptions_row}>
                   <div className={styles._lengthArea}>
                     <div className={styles._lengthSelect}>
-                      <BlackDropDown height={retina ? '3.3rem' : '2.5rem'} />
+                      <BlackDropDown
+                        height={retina ? '3.3rem' : '2.5rem'}
+                        items={sizes}
+                        title="Tamaño"
+                      />
                     </div>
                   </div>
                   <div className={styles._calculatorMobileArea}>

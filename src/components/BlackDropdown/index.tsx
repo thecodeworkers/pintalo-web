@@ -1,19 +1,35 @@
 import { memo, useState } from 'react'
 import styles from './styles.module.scss'
 
-const BlackDropDown = ({ height }) => {
+const BlackDropDown = ({
+  height,
+  items = [],
+  title,
+  specialAlign = false,
+  showValue = false
+}) => {
   const [show, setShow] = useState(false)
 
   return (
     <>
       <div className={styles._dropdown}>
-        <button className={styles._dropbtn} onClick={() => setShow(show => !show)}>
-          Tamaño<i className={`${styles._arrow} _down`}></i>
+        <button
+          className={styles._dropbtn}
+          onClick={(event) => {
+            event.preventDefault()
+            setShow(show => !show)
+          }}
+        >
+          {title}
+          {showValue && <span className={styles._test}>$0.00</span>}
+          <i className={`${styles._arrow} _down`}></i>
         </button>
         <div className={styles._dropdown_content}>
-          <a className={styles._dropdown_items} href="#">6 L</a>
-          <a className={styles._dropdown_items} href="#">3 L</a>
-          <a className={`${styles._dropdown_items} ${styles._not_border}`} href="#">1.5 L</a>
+          {
+            items.map((item, index) => (
+              <a key={index} href="#">{item.label}</a>
+            ))
+          }
         </div>
       </div>
 
@@ -27,6 +43,12 @@ const BlackDropDown = ({ height }) => {
             border-bottom-left-radius: 30px;
             border-bottom-right-radius: 30px;
           ` : ''}
+        }
+        .${styles._dropbtn} {
+          ${specialAlign ? `
+            text-align: left;
+            padding-left: 1rem;
+          `: ''}
         }
       `}</style>
     </>
