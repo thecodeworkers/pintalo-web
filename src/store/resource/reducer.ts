@@ -3,13 +3,15 @@ import { GET_RESOURCES_ASYNC } from './action-types'
 
 const initialState = {
   categories: [],
-  types: [],
   products: [],
-  bases: [],
-  brands: [],
-  inspo: [],
-  painterEntry: [],
-  brandEntry: []
+  attributes: {
+    uses: [],
+    types: [],
+    presentations: [],
+    bases: [],
+    colors: [],
+    classes: [],
+  }
 }
 
 const resourceReducer = (state = initialState, { type, payload }: AnyAction) => {

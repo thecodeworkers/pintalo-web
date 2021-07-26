@@ -4,7 +4,7 @@ import { watchSignIn, watchSignUp, watchForgotPassword } from './user/saga'
 import { watchGetProduct } from './product/saga'
 import { watchSetFilter, watchSearch } from './shop/saga'
 import { watchAddedItem } from './cart/saga'
-
+import { watchGetResources } from './resource/saga'
 function* sagas() {
   yield all([
     fork(watchGetPages),
@@ -15,7 +15,8 @@ function* sagas() {
     fork(watchGetProduct),
     fork(watchSetFilter),
     fork(watchSearch),
-    fork(watchAddedItem)
+    fork(watchAddedItem),
+    fork(watchGetResources)
   ])
 }
 

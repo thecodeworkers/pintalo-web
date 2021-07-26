@@ -3,71 +3,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { CrossSymbol } from '@components'
 import styles from './styles.module.scss'
 
-const brands = [
-  'Pineco',
-  'Alpha',
-  'VP',
-  'Reinco',
-  'Manpica',
-  'Cebra',
-  'Butler tools',
-  'Otro'
-]
 
-const categories = [
-  'Arquitectonico',
-  'Herramienta',
-  'Industrial',
-  'Madera',
-  'Automotriz'
-]
-
-const bases = [
-  'Caucho',
-  'Esmalte',
-  'Fondo'
-]
-
-const types = [
-  'Mate',
-  'Masillas',
-  'Satinado',
-  'Impermeabilizantes',
-  'Brillante',
-  'Aditivos',
-  'Texturizado',
-  'Grafeado',
-  'Tratamiento superficies'
-]
-
-const uses = [
-  'Interior',
-  'Exterior',
-  'Interior-Exterior'
-]
-
-const presentations = [
-  'Cuarto de galon',
-  'Cunete',
-  'Galon',
-  'Paila'
-]
-
-const classes = [
-  'A',
-  'B',
-  'C',
-  'N/A'
-]
-
-const colors = [
-  'Blanco',
-  'Catalogo',
-  'Negro',
-  'Sistema de tinteo'
-]
-
-const options = [
+const options = ({ brands, categories, bases, types, uses, presentations, classes, colors }) => [
   {
     name: 'Brands',
     filters: brands
@@ -103,28 +40,28 @@ const options = [
 ]
 
 const Filters = () => {
-  const {
-    shop: { filters },
-    intermitence: { showFilters }
-  } = useSelector((state: any) => state)
+  const { shop: { filters }, intermitence: { showFilters }, resource: { attributes = {}, categories } } = useSelector((state: any) => state)
 
   const dispatch = useDispatch()
 
-  const selectFilter = (e) => dispatch(setFilter(e.target.value))
+  const selectFilter = (e) => {
+    const id = e.currentTarget.id.split('.')[0]
+    dispatch(setFilter(e.target.value, id))
+  }
+
+  const data = options({ ...attributes, categories: categories })
 
   return (
     <div className={
-      `${styles._filtersContainer} ${
-        showFilters
-          ? styles._filtersContainerMobile
-          : ''
+      `${styles._filtersContainer} ${showFilters
+        ? styles._filtersContainerMobile
+        : ''
       }`
     }>
       <div className={
-        `${styles._filtersPanel} ${
-          showFilters
-            ? styles._filtersPanelMobile
-            : ''
+        `${styles._filtersPanel} ${showFilters
+          ? styles._filtersPanelMobile
+          : ''
         }`
       }>
         <div className={styles._filtersTitle}>
@@ -136,27 +73,31 @@ const Filters = () => {
           </div>
         </div>
         {
-          options.map((option, index) => (
+          data.map((option, index) => (
             <div key={index} className={styles._filtersOptionContainer}>
               <div className={styles._optionsTitle}>
                 <h1>{option.name}</h1>
               </div>
               <div className={styles._optionsContainer}>
                 {
-                  option.filters.map((filter, index) => (
-                    <div key={index} className={styles._options}>
-                      <div className={styles._checkboxContainer}>
-                        <input
-                          type="checkbox"
-                          className={styles._checkbox}
-                          value={filter}
-                          onChange={selectFilter}
-                          checked={filters.some(f => f == filter) ? true : false}
-                        />
+                  option.filters?.map((filter, fIndex) => {
+                    const type = (option.name === 'Categories') ? 'categories' : `attributes`
+                    return (
+                      <div key={fIndex} className={styles._options}>
+                        <div className={styles._checkboxContainer}>
+                          <input
+                            type="checkbox"
+                            className={styles._checkbox}
+                            value={filter?.name}
+                            id={type + '.' + fIndex}
+                            onChange={selectFilter}
+                            checked={filters[type]?.some(f => f == filter?.name) ? true : false}
+                          />
+                        </div>
+                        <p>{filter?.name}</p>
                       </div>
-                      <p>{filter}</p>
-                    </div>
-                  ))
+                    )
+                  })
                 }
               </div>
             </div>

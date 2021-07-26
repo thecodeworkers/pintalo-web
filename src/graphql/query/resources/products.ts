@@ -1,6 +1,6 @@
-const product = (id: string) => (`
-query Page {
-  product(id: "${id}") {
+const products = `
+products(first: 1000000) {
+  nodes {
     id
     databaseId
     slug
@@ -70,6 +70,6 @@ query Page {
     }
   }
 }
-`)
+`
 
-export default product
+export default products

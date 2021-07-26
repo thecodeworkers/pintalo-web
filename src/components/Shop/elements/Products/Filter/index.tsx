@@ -3,13 +3,13 @@ import { search, setFilter, setShowFilters } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import styles from './styles.module.scss'
 
-const FilterLabel = ({ name }) => {
+const FilterLabel = ({ name, type }) => {
   const dispatch = useDispatch()
 
   return (
     <div className={styles._filterLabel}>
       <p>{name}</p>
-      <div onClick={() => dispatch(setFilter(name))}><CrossSymbol /></div>
+      <div onClick={() => dispatch(setFilter(name, type))}><CrossSymbol /></div>
     </div>
   )
 }
@@ -19,7 +19,6 @@ const Filter = ({ quantity }) => {
   const dispatch = useDispatch()
 
   const searchProducts = e => dispatch(search(e.target.value))
-
   return (
     <>
       <div className={styles._titleContainer}>
@@ -37,8 +36,13 @@ const Filter = ({ quantity }) => {
       </div>
       <div className={styles._filterLabelContainer}>
         {
-          filters.map((filter, index) => (
-            <FilterLabel key={index} name={filter} />
+          filters['categories'].map((filter, index) => (
+            <FilterLabel key={index} name={filter} type={'categories'} />
+          ))
+        }
+        {
+          filters['attributes'].map((filter, index) => (
+            <FilterLabel key={index} name={filter} type={'attributes'} />
           ))
         }
       </div>

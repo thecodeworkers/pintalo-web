@@ -30,9 +30,7 @@ const Color = ({ detail }) => {
 
   const { items } = useSelector((state: any) => state.cart)
 
-  const {
-    modal: { calculator }
-  } = useSelector((state: any) => state.intermitence)
+  const { modal: { calculator } } = useSelector((state: any) => state.intermitence)
 
   const createCart = () => {
     detail['quantitySelected'] = quantity
@@ -53,7 +51,7 @@ const Color = ({ detail }) => {
     dispatch(setItem(itemToCart))
     dispatch(addedItem())
   }
-
+  console.log(detail)
   return (
     <>
       <div className={styles._container}>
@@ -75,7 +73,7 @@ const Color = ({ detail }) => {
                     <div className={styles._lengthSelect}>
                       <BlackDropDown
                         height={retina ? '3.3rem' : '2.5rem'}
-                        items={sizes}
+                        items={detail?.attributes?.nodes?.filter((att)=> att.name === "Presentaciones")[0].options}
                         title="Tamaño"
                       />
                     </div>

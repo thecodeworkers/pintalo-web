@@ -1,22 +1,21 @@
 import { AnyAction } from 'redux'
 import { takeLatest, call, put, select } from 'redux-saga/effects'
 import { CHANGE_PAGE, SEARCH, SET_FILTER, SET_FILTER_ASYNC } from './action-types'
-import { actionObject, showDialog } from '@utils'
-import { products } from '@utils/tmpProducts'
+import { actionObject, productFilter, showDialog } from '@utils'
 import { FILTER_PRODUCTS } from '../product/action-types'
 import { getShop } from '../selectors'
 
 const searchRecords = (record: any, searchValue: string) => {
   const keys = Object.keys(record)
 
-  for(let key of keys) {
+  for (let key of keys) {
     const match = String(record[key]).toLocaleLowerCase().search(searchValue)
-    if(match > -1) return record
+    if (match > -1) return record
   }
 }
 
 const searchResults = (phrase: string, records: Array<any>) => {
-  if(phrase) {
+  if (phrase) {
     const results = records.filter((record) => searchRecords(record, phrase))
     return results
   }
@@ -24,30 +23,19 @@ const searchResults = (phrase: string, records: Array<any>) => {
   return records
 }
 
-const filterResults = (filters) => (
-  products.filter(p => {
-    for (let f of filters) {
-      if (p.type == f) return true
-    }
-    return false
-  })
-)
-
 function* setFilterAsync({ payload }: AnyAction) {
   try {
-    const { filters, page, prevPage } = yield select(getShop)
+    const { shop: { filters, page, prevPage }, resource: { products } } = yield select(state => state)
 
-    const index = filters.indexOf(payload)
-    index > -1 ? filters.splice(index, 1) : filters.push(payload)
+    const index = filters[payload?.type].indexOf(payload?.value)
+    index > -1 ? filters[payload?.type].splice(index, 1) : filters[payload?.type].push(payload?.value)
 
-    const productFilters = filterResults(filters)
-
+    const productFilters = productFilter(products, filters, 'name')
     let productArray = products
     let pagination = {}
 
-    if (filters.length) {
+    if (filters['categories'].length || filters['attributes'].length) {
       productArray = productFilters
-
       if (page > 1) {
         pagination = {
           page: 1,
@@ -65,22 +53,18 @@ function* setFilterAsync({ payload }: AnyAction) {
 
     yield put(actionObject(CHANGE_PAGE, pagination))
     yield put(actionObject(SET_FILTER_ASYNC, filters))
-
-    yield put(actionObject(FILTER_PRODUCTS, {
-      products: productArray
-    }))
-
-  } catch {
+    yield put(actionObject(FILTER_PRODUCTS, { products: productArray }))
+  } catch (err) {
     yield call(showDialog, 'Ha ocurrido un error.', 'error')
   }
 }
 
 function* searchAsync({ payload }: AnyAction) {
   try {
-    const { page, prevPage, filters } = yield select(getShop)
+    const { page, prevPage, filters, resource: { products } } = yield select(getShop)
 
     let allProducts = products
-    if (filters.length) allProducts = filterResults(filters)
+    if (filters.length) allProducts = productFilter(products, filters, 'name')
 
     const results = searchResults(payload.toLocaleLowerCase(), allProducts)
 

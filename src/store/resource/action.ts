@@ -1,4 +1,4 @@
 import { GET_RESOURCES, } from './action-types'
 import { actionObject } from '@utils'
 
-export const getResources: any = () => actionObject(GET_RESOURCES)
+export const getResources: any = (payload) => actionObject(GET_RESOURCES, payload)

@@ -27,7 +27,7 @@ const BlackDropDown = ({
         <div className={styles._dropdown_content}>
           {
             items.map((item, index) => (
-              <a key={index} href="#">{item.label}</a>
+              <a key={index} href="#">{item.label || item}</a>
             ))
           }
         </div>
