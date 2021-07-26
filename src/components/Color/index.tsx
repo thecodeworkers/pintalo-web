@@ -51,7 +51,6 @@ const Color = ({ detail }) => {
     dispatch(setItem(itemToCart))
     dispatch(addedItem())
   }
-  console.log(detail)
   return (
     <>
       <div className={styles._container}>

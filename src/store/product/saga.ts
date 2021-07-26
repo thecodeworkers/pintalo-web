@@ -6,11 +6,8 @@ import { product } from '@graphql/query'
 
 function* getProductAsync({ payload }: any) {
   try {
-    console.log(payload)
     let response = yield call(GraphQlClient, product(payload))
-    console.log(response)
     response = validateFetch(response)
-    console.log(response)
     yield put(actionObject(GET_PRODUCT_ASYNC, { detail: response.product }))
 
   } catch (err) {
