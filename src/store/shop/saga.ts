@@ -23,9 +23,11 @@ const searchResults = (phrase: string, records: Array<any>) => {
   return records
 }
 
+
+
 function* setFilterAsync({ payload }: AnyAction) {
   try {
-    const { shop: { filters, page, prevPage }, resource: { products } } = yield select(state => state)
+    const { shop: { filters, page, prevPage }, product: { allProducts: products } } = yield select(state => state)
 
     const index = filters[payload?.type].indexOf(payload?.value)
     index > -1 ? filters[payload?.type].splice(index, 1) : filters[payload?.type].push(payload?.value)
@@ -61,7 +63,7 @@ function* setFilterAsync({ payload }: AnyAction) {
 
 function* searchAsync({ payload }: AnyAction) {
   try {
-    const { page, prevPage, filters, resource: { products } } = yield select(getShop)
+    const { shop: { page, prevPage, filters }, product: { allProducts: products } } = yield select(state => state)
 
     let allProducts = products
     if (filters.length) allProducts = productFilter(products, filters, 'name')

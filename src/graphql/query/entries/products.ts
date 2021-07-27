@@ -8,6 +8,26 @@ products(first: 1000000) {
     sku
     totalSales
     type
+    productCategories {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    ... on SimpleProduct {
+      id
+      name
+      databaseId
+      description
+      status
+      slug
+      stockQuantity
+      stockStatus
+      image {
+        mediaItemUrl
+      }
+    }
     ... on VariableProduct {
       name
       attributes(first: 1000000) {

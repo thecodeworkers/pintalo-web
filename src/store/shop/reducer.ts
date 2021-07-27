@@ -7,7 +7,7 @@ const initialState = {
     attributes: []
   },
   prevPage: 0,
-  page: 1
+  page: 1,
 }
 
 const shopReducer = (state = initialState, { type, payload }: AnyAction) => {

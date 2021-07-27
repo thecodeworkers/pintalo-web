@@ -40,7 +40,7 @@ const options = ({ brands, categories, bases, types, uses, presentations, classe
 ]
 
 const Filters = () => {
-  const { shop: { filters }, intermitence: { showFilters }, resource: { attributes = {}, categories } } = useSelector((state: any) => state)
+  const { shop: { filters }, product: { attributes = {}, categories }, intermitence: { showFilters } } = useSelector((state: any) => state)
 
   const dispatch = useDispatch()
 

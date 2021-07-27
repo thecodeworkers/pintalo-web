@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux'
-import { getResources } from '@store/actions'
+import { getShop } from '@store/actions'
 import { mapProps } from '@utils'
 import { Shop } from '@components'
 import wrapper from '@store'
@@ -20,7 +20,7 @@ function ShopPage() {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
-    await mapProps(store, getResources('shopPage'))
+    await mapProps(store, getShop())
   }
 )
 

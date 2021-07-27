@@ -1,10 +1,10 @@
 import { all, fork } from 'redux-saga/effects'
 import { watchGetInspoPage, watchGetPages } from './page/saga'
 import { watchSignIn, watchSignUp, watchForgotPassword } from './user/saga'
-import { watchGetProduct } from './product/saga'
+import { watchGetProduct, watchGetShop } from './product/saga'
 import { watchSetFilter, watchSearch } from './shop/saga'
 import { watchAddedItem } from './cart/saga'
-import { watchGetResources } from './resource/saga'
+
 function* sagas() {
   yield all([
     fork(watchGetPages),
@@ -16,7 +16,7 @@ function* sagas() {
     fork(watchSetFilter),
     fork(watchSearch),
     fork(watchAddedItem),
-    fork(watchGetResources)
+    fork(watchGetShop)
   ])
 }
 

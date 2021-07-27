@@ -4,7 +4,16 @@ import { FILTER_PRODUCTS, GET_PRODUCT_ASYNC } from './action-types'
 
 const initialState = {
   detail: {},
-  products: []
+  products: [],
+  categories: [],
+  attributes: {
+    uses: [],
+    types: [],
+    presentations: [],
+    bases: [],
+    colors: [],
+    classes: [],
+  }
 }
 
 const productReducer = (state = initialState, { type, payload }: AnyAction) => {
