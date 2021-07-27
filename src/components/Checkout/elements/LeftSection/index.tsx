@@ -13,8 +13,8 @@ const options = [
     title: 'Forma de entrega'
   },
   {
-    checkboxClass: '_checkboxDesactive',
-    labelClass: '_processDesactive',
+    checkboxClass: '_checkboxActive',
+    labelClass: '_processActive',
     title: 'Forma de pago'
   },
   {

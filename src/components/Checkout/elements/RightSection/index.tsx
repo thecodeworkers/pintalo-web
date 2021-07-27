@@ -22,7 +22,7 @@ const RightSection = () => {
           </div>
           {/* <BasicInformation /> */}
           {/* <AddressInformation /> */}
-          <BudgetInformation />
+          {/* <BudgetInformation /> */}
         </div>
         <div className={styles._formButtonContainer}>
           <GeneralButton

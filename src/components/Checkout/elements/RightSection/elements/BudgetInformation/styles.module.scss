@@ -50,6 +50,58 @@
   margin-top: .5rem;
 }
 
+._selectionTitle {
+  @include font('helveticaBold', 'helvetica18');
+  margin-bottom: 1rem;
+}
+
+._selectionContainer {
+  display: flex;
+  margin-bottom: 2rem;
+}
+
+._optionContainer {
+  display: flex;
+  width: 50%;
+  align-items: center;
+
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $charade;
+  }
+}
+
+._checkboxContainer {
+  width: 10%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+._textContainer {
+  width: 90%;
+}
+
+._optionContainerDisabled {
+  @extend ._optionContainer;
+  & p {
+    color: $nobel;
+  }
+}
+
+._checkboxActive {
+  appearance: none;
+  background-color: $pinkSwan;
+  width: 1.3rem;
+  height: 1.3rem;
+  border-radius: 50%;
+  border: $grayNurse solid .3rem;
+}
+
+._checkboxActive:checked {
+  background-color: $cello;
+}
+
 @include responsive(md) {
   ._formContainer {
     padding: 2rem;
@@ -63,5 +115,21 @@
   ._formItem {
     width: 100%;
     margin-bottom: 1.2rem;
+  }
+
+  ._selectionContainer {
+    flex-direction: column;
+  }
+
+  ._optionContainer {
+    width: 100%;
+  }
+
+  ._checkboxContainer {
+    width: 20%;
+  }
+
+  ._textContainer {
+    width: 80%;
   }
 }

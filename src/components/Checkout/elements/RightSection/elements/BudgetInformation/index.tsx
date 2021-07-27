@@ -4,6 +4,36 @@ import styles from './styles.module.scss'
 const BudgetInformation = () => {
   return (
     <form className={styles._formContainer}>
+      <h1 className={styles._selectionTitle}>Seleccione una opción</h1>
+      <div className={styles._selectionContainer}>
+        <div className={styles._optionContainerDisabled}>
+          <div className={styles._checkboxContainer}>
+            <input
+              type="checkbox"
+              className={styles._checkboxActive}
+              onChange={() => {}}
+              checked={false}
+            />
+          </div>
+          <div className={styles._textContainer}>
+            <p>Utilizar los mismos datos de delivery</p>
+          </div>
+        </div>
+
+        <div className={styles._optionContainer}>
+          <div className={styles._checkboxContainer}>
+            <input
+              type="checkbox"
+              className={styles._checkboxActive}
+              onChange={() => {}}
+              checked={true}
+            />
+          </div>
+          <div className={styles._textContainer}>
+            <p>Ingresar otros datos</p>
+          </div>
+        </div>
+      </div>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
           <label htmlFor="Nombre">Nombre</label>
