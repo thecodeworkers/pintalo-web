@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pintalo-dev-web
+  namespace: pintalo
+  labels:
+    app: pintalo-dev-web
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pintalo-dev-web
+  template:
+    metadata:
+      labels:
+        app: pintalo-dev-web
+    spec:
+      imagePullSecrets:
+      - name: regcred
+      containers:
+        - name: pintalo-dev-web
+          imagePullPolicy: Always
+          image: registry.thecodeworkers.com/pintalo-dev-web:latest
+          ports:
+            - name: http-port
+              containerPort: 3000
