@@ -34,9 +34,9 @@ const Products = () => {
               </div>
               <div
                 className={styles._productImageContainer}
-                onClick={() => navigation('/color/cHJvZHVjdDoxOTc=')}
+                onClick={() => navigation(`/color/${product.id}`)}
               >
-                <img src={product.productImg} alt={product.name} width="100%" height="90%" />
+                <img src={product.image?.mediaItemUrl} alt={product.name} width="100%" height="90%" />
               </div>
               <div className={styles._informationContainer}>
                 <div className={styles._titleContainer}>
@@ -44,16 +44,16 @@ const Products = () => {
                 </div>
                 <div className={styles._productDetail}>
                   <div className={styles._detailsContainer}>
-                    <p>{product.color}</p>
-                    <p>{`${product.quantity} unidades`}</p>
-                    <p>{product.type}</p>
+                    <p>{product.attributes?.nodes?.filter(att => att.name === 'Color')[0].options[0]}</p>
+                    <p>{`${product.stockQuantity || 0} unidades`}</p>
+                    <p>{product.attributes?.nodes?.filter(att => att.name === 'Tipos')[0].options[0]}</p>
                   </div>
                   <div className={styles._buttonContainer}>
                     <GeneralButton
                       adjustWidth
                       backgroundColor="#FDCA40"
                       textColor="#262833"
-                      method={() => navigation('/color/cHJvZHVjdDoxOTc=')}
+                      method={() => navigation(`/color/${product.id}`)}
                     >
                       <p>Comprar</p>
                     </GeneralButton>
