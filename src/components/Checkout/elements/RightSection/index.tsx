@@ -1,5 +1,5 @@
 import { GeneralButton } from '@components'
-import { BasicInformation, AddressInformation, BudgetInformation } from './elements'
+import { BasicInformation, AddressInformation, PaymentMethods, BudgetInformation } from './elements'
 import styles from './styles.module.scss'
 
 const title = {
@@ -22,6 +22,7 @@ const RightSection = () => {
           </div>
           {/* <BasicInformation /> */}
           {/* <AddressInformation /> */}
+          <PaymentMethods />
           {/* <BudgetInformation /> */}
         </div>
         <div className={styles._formButtonContainer}>
