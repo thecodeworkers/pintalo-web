@@ -98,15 +98,12 @@
 @include responsive(md) {
   ._nav {
     height: 3.5rem;
+    padding-right: 2.5rem;
   }
 
   ._linksParent {
     & a {
       display: none;
-    }
-
-    & img:nth-child(3) {
-      margin-right: 2.5rem;
     }
   }
 }

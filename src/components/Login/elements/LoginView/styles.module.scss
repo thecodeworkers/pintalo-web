@@ -119,6 +119,22 @@
   }
 }
 
+._caption {
+  & h1 {
+    margin-bottom: 1rem;
+  }
+
+  & p {
+    text-align: center;
+    font-family: $helvetica;
+    font-size: 0.7rem;
+  }
+
+  :last-child {
+    margin-bottom: 2rem;
+  }
+}
+
 @include responsive(xl) {
   ._modalBody {
     width: 40%;
@@ -126,6 +142,10 @@
 }
 
 @include responsive(md) {
+  ._content {
+    padding: 2.5rem 0 1.5rem 0;
+  }
+
   ._rightSection {
     width: 100%;
   }

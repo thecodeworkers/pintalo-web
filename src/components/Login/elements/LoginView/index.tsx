@@ -51,7 +51,6 @@ const LoginView = ({ data }) => {
           <RedirectPage />
         ) : (
           <>
-
             <section className={styles._main}>
               <HalfBanner url={data?.image?.mediaItemUrl} />
 
@@ -96,13 +95,16 @@ const LoginView = ({ data }) => {
                 </div>
               </div>
             </section>
-
             {
               sendEmail ? (
-                <GeneralModal title={'Recuperar contraseña'} className={styles._modalBody}>
+                <GeneralModal title="" className={styles._modalBody}>
                   <div className={styles._content}>
+                    <div className={styles._caption}>
+                      <h1>Olvidó contraseña</h1>
+                      <p>Ingrese la dirección de su correo electrónico.</p>
+                      <p>Le enviaremos un enlace para restablecer su contraseña.</p>
+                    </div>
                     <form className={styles._form} onSubmit={formik2.handleSubmit}>
-                      <label htmlFor="password">Correo electrónico</label>
                       <input
                         id="r-email"
                         name="email"
@@ -113,13 +115,6 @@ const LoginView = ({ data }) => {
                         value={formik2.values.email}
                         placeholder="Correo"
                       />
-
-                      <div className={styles._info}>
-                        <p>Importante</p>
-                        <p>Enviaremos un correo electrónico</p>
-                        <p>con las intrucciones para recuperar su contraseña</p>
-                      </div>
-
                       <div className={styles._parentBtn}>
                         <GeneralButton backgroundColor='#FDCA40' textColor='#262833' large="2.2rem" bold type='submit' showLoader={showLoader}>
                           Recuperar

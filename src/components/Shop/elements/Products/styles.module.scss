@@ -8,7 +8,6 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem 8rem;
-  min-height: 150vh;
 }
 
 ._productCard {
@@ -99,7 +98,11 @@
 
 ._bigButton {
   position: absolute;
-  right: 0
+  right: 0;
+
+  :first-child {
+    width: 10rem !important;
+  }
 }
 
 ._bigButtonMobile {
