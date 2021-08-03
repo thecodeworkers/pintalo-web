@@ -10,6 +10,8 @@ const CounterButton: FC<CounterButtonProps> = ({
   arrowSize = '5px',
   arrowWidth = '4px'
  }) => {
+  const orientation = direction.replace('_', '-')
+
   return (
     <>
       <div className="_container" onClick={() => onPress(direction == '_left' ? -1 : 1)}>
@@ -22,10 +24,10 @@ const CounterButton: FC<CounterButtonProps> = ({
           width: ${size};
           height: ${size};
           border-radius: 50%;
+          cursor: pointer;
           display: flex;
           justify-content: center;
           align-items: center;
-          cursor: pointer;
         }
 
         ._arrow {
@@ -33,6 +35,7 @@ const CounterButton: FC<CounterButtonProps> = ({
           border-width: 0 ${arrowWidth} ${arrowWidth} 0;
           display: inline-block;
           padding: ${arrowSize};
+          margin${orientation}: 4px;
         }
       `}</style>
     </>
