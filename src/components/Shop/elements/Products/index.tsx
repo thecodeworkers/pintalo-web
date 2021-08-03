@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { GeneralButton, Pagination } from '@components'
-import { changePage } from '@store/actions'
+import { changePage, setItem, addedItem } from '@store/actions'
 import { paginate } from '@utils'
 import Filter from './Filter'
 import styles from './styles.module.scss'
@@ -14,10 +14,31 @@ const Products = () => {
 
   const {
     product: { products },
-    shop: { page }
+    shop: { page },
+    cart: { items }
   } = useSelector((state: any) => state)
 
   const navigation = (route: string) => router.push(route)
+
+  const addToCart = (product) => {
+    product['quantitySelected'] = 1
+    let itemToCart = []
+
+    const currentIndex = items.findIndex(item => item.id == product.id)
+
+    if (currentIndex > -1) {
+      items[currentIndex]['quantitySelected'] = 1
+      itemToCart = items
+    } else {
+      itemToCart = [
+        ...items,
+        ...[product]
+      ]
+    }
+
+    dispatch(setItem(itemToCart))
+    dispatch(addedItem())
+  }
 
   return (
     <div className={styles._productsContainer}>
@@ -28,7 +49,7 @@ const Products = () => {
           paginate((products || []), page, perPage).map((product, index) => (
             <div key={index} className={styles._productCard}>
               <div className={styles._cartContainer}>
-                <div className={styles._cart}>
+                <div className={styles._cart} onClick={() => addToCart(product)}>
                   <img src="/images/icons/bx-cart.svg" alt="cart" />
                 </div>
               </div>
