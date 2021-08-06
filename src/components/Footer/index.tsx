@@ -13,8 +13,6 @@ const Footer = () => {
 
   const navigation = (route, reference = null, key = '') => {
 
-    console.log(route, reference, key);
-
     if (router.pathname != route) {
 
       if (reference) dispatch(seletedReference({ [key]: { current: reference } }))
