@@ -1,6 +1,7 @@
 import { addToCart, removeItemsFromCart, updateItemQuantities } from '@graphql/mutation'
 import { call, takeLatest } from '@redux-saga/core/effects'
 import { SHOW_LOADER, SHOW_TOAST } from '@store/intermitence/action-types'
+import { getUser } from '@store/selectors'
 import { SIGN_UP_ASYNC } from '@store/user/action-types'
 import { actionObject, filter, GraphQlClient, manageError, reduceVariation, showDialog, validateFetch } from '@utils'
 import { put, select } from 'redux-saga/effects'
@@ -8,13 +9,11 @@ import { ADDED_ITEM, REMOVE_ITEM, SET_ITEM, UPDATE_QUANTITY } from './action-typ
 
 function* addedItemAsync({ payload }: any) {
   try {
-    const { user: { user: { sessionToken }, isAuth } } = yield select(state => state)
+    const { user: { sessionToken }, isAuth } = yield select(getUser)
 
     yield put(actionObject(SHOW_LOADER, true))
 
     const { item, quantity, variation } = payload
-
-    console.log(variation)
 
     let variationId = null
 
@@ -44,7 +43,7 @@ function* updateQuantityAsync({ payload: { product, type } }: any) {
 
     yield put(actionObject(SHOW_LOADER, true))
 
-    const { user: { user: { sessionToken } } } = yield select(state => state)
+    const { user: { sessionToken } } = yield select(getUser)
 
     const quantity = (type === 'add') ? product?.quantity + 1 : product?.quantity - 1;
     const max = product?.variation?.node?.stockQuantity || product?.product?.node?.stockQuantity
@@ -74,7 +73,7 @@ function* removeItemAsync({ payload: key }: any) {
 
     yield put(actionObject(SHOW_LOADER, true))
 
-    const { user: { user: { sessionToken } } } = yield select(state => state)
+    const { user: { sessionToken } } = yield select(getUser)
     const response = yield call(GraphQlClient, removeItemsFromCart(key), {}, sessionToken)
     const { removeItemsFromCart: { cart: newCart } } = validateFetch(response)
 

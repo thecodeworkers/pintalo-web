@@ -17,6 +17,7 @@ import {
   GET_PAGE_ASYNC
 } from './action-types'
 import { SET_ITEM } from '@store/cart/action-types'
+import { getUser } from '@store/selectors'
 
 const getPageByName = (name) => {
   const pages = {
@@ -41,7 +42,7 @@ const getPageByName = (name) => {
 function* getPageAsync({ payload }: any) {
   try {
 
-    const { user: { user: { sessionToken } } } = yield select(state => state)
+    const { user: { sessionToken } } = yield select(getUser)
     const response = yield call(GraphQlClient, getPageByName(payload), {}, sessionToken)
     const { page, cart } = validateFetch(response)
 

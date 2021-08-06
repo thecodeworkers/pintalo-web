@@ -33,7 +33,8 @@ function* signInAsync({ payload }: any) {
 
     yield put(actionObject(SIGN_UP_ASYNC, {
       user: {
-        ...{ ...response.login.user, ...response.login.customer },
+        ...response.login.user,
+        ...response.login.customer,
         authToken: response.login.authToken,
         sessionToken: response.login.sessionToken
       },
