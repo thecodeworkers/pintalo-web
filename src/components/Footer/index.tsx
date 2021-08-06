@@ -1,16 +1,35 @@
 import { useRouter } from 'next/router'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { Logo } from '../../../public/images/logos'
 import { GeneralButton } from '@components'
-import { showModal } from '@store/actions'
+import { showModal, seletedReference } from '@store/actions'
 import styles from './styles.module.scss'
 
 const Footer = () => {
   const router = useRouter()
   const dispatch = useDispatch()
 
-  const navigation = (route) => {
-    if (router.pathname != route) router.push(route)
+  const { scrollReference } = useSelector((state: any) => state)
+
+  const navigation = (route, reference = null, key = '') => {
+
+    console.log(route, reference, key);
+
+    if (router.pathname != route) {
+
+      if (reference) dispatch(seletedReference({ [key]: { current: reference } }))
+      router.push(route)
+    }
+
+    if (reference) {
+
+      dispatch(seletedReference({
+        [key]: {
+          current: reference,
+          [reference]: !scrollReference.homeReference[reference]
+        }
+      }))
+    }
   }
 
   return (
@@ -43,7 +62,7 @@ const Footer = () => {
                 <p className={styles._link} onClick={() => navigation('/inspo')}>Inspirate</p>
                 <p className={styles._link} onClick={() => navigation('/about-us')}>Píntalo</p>
                 <p className={styles._link} onClick={() => navigation('/painters')}>Pintores</p>
-                <p className={styles._link}>Promociones</p>
+                <p className={styles._link} onClick={() => navigation('/', 'promotions', 'homeReference')}>Promociones</p>
               </div>
 
               <div className={styles._buttonContainer}>
@@ -67,11 +86,11 @@ const Footer = () => {
               <p className={styles._speechTitle}>Política de privacidad</p>
               <p className={styles._speechText}>
                 Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-              sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
+                sed do eiusmod tempor incididunt ut labore et dolore magna aliqua</p>
               <p className={styles._speechTitle}>Términos y condiciones </p>
               <p className={styles._speechText}>Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit, sed do eiusmod
-              tempor incididunt ut labore et dolore magna aliqua</p>
+                consectetur adipiscing elit, sed do eiusmod
+                tempor incididunt ut labore et dolore magna aliqua</p>
 
               <div className={styles._copyrightContainer}>
                 <div className={styles._logos}>

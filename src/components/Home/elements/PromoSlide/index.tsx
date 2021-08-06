@@ -9,7 +9,7 @@ const items = [
   { className: styles._hidden, id: '3', component: <ThirdBanner /> }
 ]
 
-const PromoSlide = () => {
+const PromoSlide = ({ reference }) => {
   const [currentIndex, setcurrentIndex] = useState(0)
   const [stepperIndex, setStepperIndex] = useState(0)
 
@@ -35,7 +35,7 @@ const PromoSlide = () => {
   }
 
   return (
-    <div className={styles._content}>
+    <div className={styles._content} ref={reference}>
       <div className={styles._main}>
         {
           items.map((res, index) => {
