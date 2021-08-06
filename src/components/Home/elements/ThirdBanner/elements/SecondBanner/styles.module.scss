@@ -119,6 +119,10 @@
   margin-top: 1rem;
 }
 
+._buttonLastContainer{
+  margin: 0 1rem;
+}
+
 ._avatarBackground {
   background-repeat: no-repeat;
   background-size: 100% 100%;
@@ -200,6 +204,9 @@
   ._buttonContainer {
     margin-bottom: 7%;
   }
+  ._buttonLastContainer {
+    margin-bottom: 7%;
+  }
 
   ._buttonText {
     @include font('helvetica', 'helvetica12');
@@ -226,7 +233,7 @@
   }
 
   ._modalBody {
-    & ._buttonContainer {
+    & ._buttonContainer &._buttonLastContainer{
       align-self: center;
     }
   }
