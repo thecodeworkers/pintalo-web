@@ -6,7 +6,7 @@ import { actionObject, filter, GraphQlClient, manageError, reduceVariation, show
 import { put, select } from 'redux-saga/effects'
 import { ADDED_ITEM, REMOVE_ITEM, SET_ITEM, UPDATE_QUANTITY } from './action-types'
 
-function* addedItemAsync({ payload }) {
+function* addedItemAsync({ payload }: any) {
   try {
     const { user: { user: { sessionToken }, isAuth } } = yield select(state => state)
 
@@ -39,7 +39,7 @@ function* addedItemAsync({ payload }) {
 }
 
 
-function* updateQuantityAsync({ payload: { product, type } }) {
+function* updateQuantityAsync({ payload: { product, type } }: any) {
   try {
 
     yield put(actionObject(SHOW_LOADER, true))
@@ -68,7 +68,7 @@ function* updateQuantityAsync({ payload: { product, type } }) {
   }
 }
 
-function* removeItemAsync({ payload: key }) {
+function* removeItemAsync({ payload: key }: any) {
 
   try {
 
