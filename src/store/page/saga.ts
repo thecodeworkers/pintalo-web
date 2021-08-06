@@ -1,4 +1,4 @@
-import { takeLatest, call, put } from 'redux-saga/effects'
+import { takeLatest, call, put, select } from 'redux-saga/effects'
 import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
 import { SHOW_TOAST } from '../intermitence/action-types'
 import {
@@ -8,13 +8,15 @@ import {
   aboutPageQuery,
   painterPageQuery,
   shopPageQuery,
-  inspoPageQuery
+  inspoPageQuery,
+  cartQuery
 } from '@graphql/query'
 import {
   GET_INSPO_PAGE,
   GET_PAGE,
   GET_PAGE_ASYNC
 } from './action-types'
+import { SET_ITEM } from '@store/cart/action-types'
 
 const getPageByName = (name) => {
   const pages = {
@@ -29,6 +31,7 @@ const getPageByName = (name) => {
   const query = `
     query Page {
       ${pages[name]}
+      ${cartQuery}
     }
   `
 
@@ -37,9 +40,12 @@ const getPageByName = (name) => {
 
 function* getPageAsync({ payload }: any) {
   try {
-    const response = yield call(GraphQlClient, getPageByName(payload))
-    const { page } = validateFetch(response)
 
+    const { user: { user: { sessionToken } } } = yield select(state => state)
+    const response = yield call(GraphQlClient, getPageByName(payload), {}, sessionToken)
+    const { page, cart } = validateFetch(response)
+
+    yield put(actionObject(SET_ITEM, { cart: cart }))
     yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }));
 
   } catch (err) {

@@ -2,15 +2,14 @@ import { AnyAction } from 'redux'
 import { SET_ITEM } from './action-types'
 
 const initialState = {
-  items: []
+  items: [],
+  cart: {}
 }
 
 const cartReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
     case SET_ITEM:
-      return {
-        ...state, ...payload
-      }
+      return { ...state, ...payload }
     default:
       return state
   }

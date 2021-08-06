@@ -105,9 +105,10 @@ export const reduceVariation = (nodes, variation) => {
       if (valid) return prev
     }
     for (let attr of next.attributes.nodes) {
-      for (let variant in variation)
+      for (let variant in variation) {
         if (attr.name.includes(variant))
           valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+      }
     }
     return (valid) ? next : prev
   }

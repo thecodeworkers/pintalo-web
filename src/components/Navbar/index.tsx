@@ -10,25 +10,25 @@ const Navbar = () => {
   const {
     intermitence: { showMenu },
     user: { isAuth },
-    cart: { items }
-  }  = useSelector((state: any) => state)
+    cart: { cart }
+  } = useSelector((state: any) => state)
 
   const router = useRouter()
   const dispatch = useDispatch()
 
   const deployMenu = () => {
-    if(showMenu === 1) return dispatch(setMenuShow({ showMenu: 2 }))
+    if (showMenu === 1) return dispatch(setMenuShow({ showMenu: 2 }))
     dispatch(setMenuShow({ showMenu: 1 }))
   }
 
   const returnStyles = () => {
-    if(showMenu === 0) return styles._staticParent
-    if(showMenu === 1) return styles._parentPush
-    if(showMenu === 2) return styles._parent
+    if (showMenu === 0) return styles._staticParent
+    if (showMenu === 1) return styles._parentPush
+    if (showMenu === 2) return styles._parent
   }
 
   const navigation = (route) => {
-    if(router.pathname != route) router.push(route)
+    if (router.pathname != route) router.push(route)
     dispatch(setMenuShow({ showMenu: 0 }))
   }
 
@@ -45,12 +45,10 @@ const Navbar = () => {
           </div>
 
           <div className={styles._linksParent}>
-            {
-              items.length ? (<p>({items.length})</p>) : (<p></p>)
-            }
-            <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')}/>
+            <p>({cart?.contents?.itemCount || 0})</p>
+            <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')} />
             <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
-            { !isAuth && <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} /> }
+            {!isAuth && <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />}
             {
               !isAuth ? (
                 <a onClick={() => navigation('/register')} > Registrar </a>

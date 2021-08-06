@@ -30,12 +30,16 @@ products(first: 1000000) {
     }
     ... on VariableProduct {
       name
+      description
       attributes(first: 1000000) {
         nodes {
           name
           options
           label
           id
+          ... on GlobalProductAttribute {
+            slug
+          }
         }
       }
       image {
@@ -48,6 +52,8 @@ products(first: 1000000) {
       stockStatus
       variations(first: 1000000) {
         nodes {
+          databaseId
+          description
           id
           image {
             mediaItemUrl

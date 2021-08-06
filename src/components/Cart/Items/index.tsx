@@ -1,7 +1,7 @@
-import { memo, useEffect, useState } from 'react'
+import React, { memo } from 'react'
 import { useDispatch } from 'react-redux'
-import { setItem } from '@store/actions'
-import { paginate, roundNumber } from '@utils'
+import { updateQuantity, removeItem } from '@store/actions'
+import { paginate } from '@utils'
 import {
   CrossSymbol,
   CounterButton,
@@ -9,57 +9,17 @@ import {
 } from '@components'
 import styles from './styles.module.scss'
 
-const Items = ({ products, page, perPage, setPage }) => {
-  const [total, setTotal] = useState(0)
-  const [flag, setFlag] = useState('')
+const Items = ({ products, page, perPage, setPage, cart }) => {
 
   const dispatch = useDispatch()
-
-  useEffect(() => {
-    let total = 0
-
-    products.forEach(product => {
-      const quantity = product.quantitySelected
-      const price = Number(product.price)
-      let totalPrice = price * quantity
-      totalPrice = roundNumber(totalPrice)
-
-      total += totalPrice
-    })
-
-    setTotal(roundNumber(total))
-  }, [flag])
-
-  const calculateItems = (product, operator) => {
-    const result = products.map(pr => {
-      if (pr.id == product.id) {
-        pr.quantitySelected = pr.quantitySelected + operator
-      }
-
-      return pr
-    })
-
-    dispatch(setItem(result))
-    setFlag(`${product.slug}${product.quantitySelected}`)
-  }
-
-  const removeItem = (item) => {
-    const index = products.findIndex(product => product.id == item.id)
-    products.splice(index, 1)
-
-    dispatch(setItem(products))
-    setFlag(`${item.id}${item.quantitySelected}`)
-  }
+  const calculateItems = (product, operator) => dispatch(updateQuantity(product, operator))
+  const removeProduct = (item) => dispatch(removeItem(item))
 
   return (
     <>
       {
-        paginate(products, page, perPage).map((product, index) => {
-          const quantity = product.quantitySelected
-          const price = Number(product.price)
-          let totalPrice = price * quantity
-          totalPrice = roundNumber(totalPrice)
-
+        paginate(products, page, perPage).map((item, index) => {
+          const product = item?.variation?.node || item?.product?.node
           return (
             <div key={index}>
               <div className={styles._itemContainer}>
@@ -67,7 +27,7 @@ const Items = ({ products, page, perPage, setPage }) => {
                   <div className={styles._productCard}>
                     <div
                       className={styles._crossContainer}
-                      onClick={() => removeItem(product)}
+                      onClick={() => removeProduct(item?.key)}
                     >
                       <CrossSymbol
                         width="2.4px"
@@ -76,7 +36,7 @@ const Items = ({ products, page, perPage, setPage }) => {
                     </div>
                     <div className={styles._imageContainer}>
                       <img
-                        src="https://pintalo-dev-admin.thecodeworkers.com/wp-content/uploads/2021/04/Paint-Packaging-Mockup.png"
+                        src={product?.image?.mediaItemUrl}
                         alt="name"
                         width="100%"
                         height="100%"
@@ -85,13 +45,13 @@ const Items = ({ products, page, perPage, setPage }) => {
                   </div>
                 </div>
                 <div className={styles._descriptionContainer}>
-                  <p>Nombre/Producto</p>
+                  <p>{product?.name}</p>
                   <p>Tamaño</p>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
+                  <p>{product?.description}</p>
                 </div>
                 <div className={styles._priceContainer}>
                   <p>Precio</p>
-                  <p>${price}</p>
+                  <p>{product.price}</p>
                 </div>
                 <div className={styles._quantityContainer}>
                   <div className={styles._quantitySubContainer}>
@@ -99,7 +59,7 @@ const Items = ({ products, page, perPage, setPage }) => {
                     <input
                       type="text"
                       className={`${styles._inputQuantity}`}
-                      value={product.quantitySelected}
+                      value={item?.quantity}
                       disabled
                     />
                     <div className={styles._arrowContainer}>
@@ -111,8 +71,7 @@ const Items = ({ products, page, perPage, setPage }) => {
                         arrowSize="3px"
                         arrowWidth="2px"
                         onPress={(minus: number) => {
-                          if (quantity > 1)
-                            calculateItems(product, minus)
+                          calculateItems(item, 'reduce')
                         }}
                       />
                       <CounterButton
@@ -122,29 +81,26 @@ const Items = ({ products, page, perPage, setPage }) => {
                         arrowColor="#FFFFFF"
                         arrowSize="3px"
                         arrowWidth="2px"
-                        onPress={(plus: number) => {
-                          if (quantity < product.stockQuantity)
-                            calculateItems(product, plus)
-                        }}
+                        onPress={(plus: number) => { calculateItems(item, 'add') }}
                       />
                     </div>
                   </div>
                 </div>
                 <div className={styles._totalContainer}>
                   <p>Total</p>
-                  <p>${totalPrice}</p>
+                  <p>{item?.total}</p>
                 </div>
                 <div className={styles._totalsContainerMobile}>
                   <div className={styles._priceMobile}>
                     <div>
                       <p>Precio</p>
-                      <p>${price}</p>
+                      <p>{product?.price}</p>
                     </div>
                   </div>
                   <div className={styles._totalMobile}>
                     <div>
                       <p>Total</p>
-                      <p>${totalPrice}</p>
+                      <p>{item?.total}</p>
                     </div>
                   </div>
                 </div>
@@ -159,7 +115,7 @@ const Items = ({ products, page, perPage, setPage }) => {
           <p>Total</p>
         </div>
         <div className={styles._totalNumber}>
-          <p>${total}</p>
+          <p>{cart.total}</p>
         </div>
       </div>
       <div className={styles._paginationContainer}>
