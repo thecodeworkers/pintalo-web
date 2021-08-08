@@ -25,6 +25,7 @@ function* signUpAsync({ payload }: any) {
 
 function* signInAsync({ payload }: any) {
   try {
+
     yield put(actionObject(SHOW_LOADER, true))
 
     let response = yield call(GraphQlClient, loginUser(payload))
@@ -33,7 +34,9 @@ function* signInAsync({ payload }: any) {
     yield put(actionObject(SIGN_UP_ASYNC, {
       user: {
         ...response.login.user,
-        authToken: response.login.authToken
+        ...response.login.customer,
+        authToken: response.login.authToken,
+        sessionToken: response.login.sessionToken
       },
       isAuth: true
     }));

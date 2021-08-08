@@ -8,6 +8,7 @@ import palette from './palette/reducer'
 import colors from './colors/reducer'
 import shop from './shop/reducer'
 import cart from './cart/reducer'
+import scrollReference from './scrollReference/reducer'
 
 const reducers = combineReducers({
   page,
@@ -18,7 +19,8 @@ const reducers = combineReducers({
   palette,
   colors,
   shop,
-  cart
+  cart,
+  scrollReference
 })
 
 export default reducers

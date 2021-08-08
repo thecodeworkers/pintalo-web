@@ -1,5 +1,8 @@
+import { cartQuery } from "./entries"
+
 const product = (id: string) => (`
 query Page {
+  ${cartQuery}
   product(id: "${id}") {
     id
     databaseId
@@ -30,12 +33,16 @@ query Page {
     }
     ... on VariableProduct {
       name
+      description
       attributes(first: 1000000) {
         nodes {
           name
           options
           label
           id
+          ... on GlobalProductAttribute {
+            slug
+          }
         }
       }
       image {
@@ -48,6 +55,7 @@ query Page {
       stockStatus
       variations(first: 1000000) {
         nodes {
+          databaseId
           id
           image {
             mediaItemUrl

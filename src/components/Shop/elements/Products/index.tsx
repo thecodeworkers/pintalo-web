@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux'
 import { useRouter } from 'next/router'
 import { GeneralButton, Pagination } from '@components'
-import { changePage, setItem, addedItem } from '@store/actions'
+import { changePage, addedItem } from '@store/actions'
 import { paginate } from '@utils'
 import Filter from './Filter'
 import styles from './styles.module.scss'
@@ -14,31 +14,22 @@ const Products = () => {
 
   const {
     product: { products },
-    shop: { page },
-    cart: { items }
+    shop: { page }
   } = useSelector((state: any) => state)
 
   const navigation = (route: string) => router.push(route)
 
-  const addToCart = (product) => {
-    product['quantitySelected'] = 1
-    let itemToCart = []
-
-    const currentIndex = items.findIndex(item => item.id == product.id)
-
-    if (currentIndex > -1) {
-      items[currentIndex]['quantitySelected'] = 1
-      itemToCart = items
-    } else {
-      itemToCart = [
-        ...items,
-        ...[product]
-      ]
+  const setFirstVariation = (product) => {
+    let data = {}
+    if (product?.attributes?.nodes) {
+      for (let attr of product?.attributes?.nodes) {
+        data[attr.slug] = attr.options[0]
+      }
+      return data
     }
-
-    dispatch(setItem(itemToCart))
-    dispatch(addedItem())
   }
+
+  const addToCart = (product) => dispatch(addedItem(product, 1, setFirstVariation(product)))
 
   return (
     <div className={styles._productsContainer}>

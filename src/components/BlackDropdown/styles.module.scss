@@ -29,12 +29,14 @@
   z-index: 1;
   padding: 0 5% 5%;
 
-  & a {
+  & p {
     border-bottom: 1px solid #707070;
     padding-left: 3% !important;
+    color: $wildSand;
+    cursor: pointer;
   }
 
-  & a:last-child {
+  & p:last-child {
     border-bottom: none;
   }
 }

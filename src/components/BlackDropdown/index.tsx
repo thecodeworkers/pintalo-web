@@ -6,9 +6,16 @@ const BlackDropDown = ({
   items = [],
   title,
   specialAlign = false,
-  showValue = false
+  showValue = false,
+  onSet = null
 }) => {
   const [show, setShow] = useState(false)
+  const [value, setValue] = useState('')
+
+  const setNewValue = (value) => {
+    setValue(value)
+    if (onSet) onSet(value)
+  }
 
   return (
     <>
@@ -20,14 +27,14 @@ const BlackDropDown = ({
             setShow(show => !show)
           }}
         >
-          {title}
+          {value || title}
           {showValue && <span className={styles._test}>$0.00</span>}
           <i className={`${styles._arrow} _down`}></i>
         </button>
         <div className={styles._dropdown_content}>
           {
             items.map((item, index) => (
-              <a key={index} href="#">{item.label}</a>
+              <p key={index} onClick={() => setNewValue(item.label || item)}>{item.label || item}</p>
             ))
           }
         </div>

@@ -9,7 +9,7 @@ const perPage = 4
 
 const CartPage = () => {
   const [page, setPage] = useState(1)
-  const { items } = useSelector((state: any) => state.cart)
+  const { items, cart } = useSelector((state: any) => state.cart)
 
   const router = useRouter()
 
@@ -21,12 +21,13 @@ const CartPage = () => {
       <div className={styles._panelContainer}>
         <div className={styles._header}></div>
         {
-          items.length ? (
+          cart?.contents?.nodes?.length ? (
             <Items
-              products={items}
+              products={cart?.contents?.nodes}
               page={page}
               perPage={perPage}
               setPage={setPage}
+              cart={cart}
             />
           ) : (
             <div className={styles._notFound}>
