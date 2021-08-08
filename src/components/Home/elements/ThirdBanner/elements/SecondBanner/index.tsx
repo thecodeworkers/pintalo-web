@@ -31,7 +31,7 @@ const ThirdBanner = ({ data }) => {
                 </div>
               </div>
               <div className={styles._rightDownContainer}>
-                <div className={styles._buttonContainer}>
+                <div className={styles._buttonLastContainer}>
                   <GeneralButton backgroundColor={'#262833'} textColor={'#fff'} bold={false} method={() => navigation('/painters')}>
                     {data?.lowButton?.text}
                   </GeneralButton>
