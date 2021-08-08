@@ -2,15 +2,17 @@ import { call, put, takeLatest } from '@redux-saga/core/effects'
 import { actionObject, GraphQlClient, manageError, normalizedArray, showDialog, validateFetch } from '@utils'
 import { GET_PRODUCT, GET_PRODUCT_ASYNC, GET_SHOP } from './action-types'
 import { SHOW_TOAST } from '@store/intermitence/action-types'
-import { attributesQuery, categoriesQuery, product, productsQuery, shopPageQuery } from '@graphql/query'
+import { attributesQuery, cartQuery, categoriesQuery, product, productsQuery, shopPageQuery } from '@graphql/query'
 import { GET_PAGE_ASYNC } from '@store/page/action-types'
+import { SET_ITEM } from '@store/cart/action-types'
+import { select } from 'redux-saga/effects'
 
 function* getProductAsync({ payload }: any) {
   try {
     let response = yield call(GraphQlClient, product(payload))
     response = validateFetch(response)
     yield put(actionObject(GET_PRODUCT_ASYNC, { detail: response.product }))
-
+    yield put(actionObject(SET_ITEM, { cart: response.cart }))
   } catch (err) {
     yield call(manageError, err, SHOW_TOAST)
   }
@@ -23,13 +25,16 @@ const constructShopQuery = () => (
     ${categoriesQuery}
     ${productsQuery}
     ${shopPageQuery}
+    ${cartQuery}
   }`
 )
 
 function* getShopAsync() {
   try {
-    const response = yield call(GraphQlClient, constructShopQuery())
-    const { page, products, allPaUses, allPaTypes, allPaPresentations, allPaBases, paColors, paClasses, allPaMarcas, productCategories } = validateFetch(response)
+
+    const { user: { user: { sessionToken } } } = yield select(state => state)
+    const response = yield call(GraphQlClient, constructShopQuery(), {}, sessionToken)
+    const { page, products, allPaUses, allPaTypes, allPaPresentations, allPaBases, paColors, paClasses, allPaMarcas, productCategories, cart } = validateFetch(response)
 
     const data = {
       products: normalizedArray(products?.nodes),
@@ -45,6 +50,8 @@ function* getShopAsync() {
         brands: normalizedArray(allPaMarcas?.nodes)
       }
     }
+
+    yield put(actionObject(SET_ITEM, { cart: cart }))
     yield put(actionObject(GET_PAGE_ASYNC, { 'shopPage': page }))
     yield put(actionObject(GET_PRODUCT_ASYNC, data))
   } catch (err) {

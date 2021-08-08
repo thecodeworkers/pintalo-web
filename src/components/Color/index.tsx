@@ -1,6 +1,6 @@
-import { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { addedItem, setItem, showModal } from '@store/actions'
+import { addedItem, showModal } from '@store/actions'
 import { Calculator } from './elements'
 import {
   ColorBackground,
@@ -10,47 +10,32 @@ import {
   GeneralModal
 } from '@components'
 import styles from './styles.module.scss'
-
-const sizes = [
-  {
-    label: '6 L'
-  },
-  {
-    label: '3 L'
-  },
-  {
-    label: '1.5 L'
-  }
-]
+import { createMarkup } from '@utils'
 
 const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
   const [quantity, setQuantity] = useState(1)
+  const [variation, setVariaton] = useState({})
   const dispatch = useDispatch()
 
-  const { items } = useSelector((state: any) => state.cart)
+  const setFirstVariation = () => {
+    let data = {}
+    if (detail?.attributes?.nodes) {
+      for (let attr of detail?.attributes?.nodes) {
+        data[attr.slug] = attr.options[0]
+      }
+      setVariaton(data)
+    }
+  }
+
+  useEffect(() => {
+    setFirstVariation()
+  }, [detail?.attributes?.nodes])
 
   const { modal: { calculator } } = useSelector((state: any) => state.intermitence)
 
-  const createCart = () => {
-    detail['quantitySelected'] = quantity
-    let itemToCart = []
-
-    const currentIndex = items.findIndex(item => item.id == detail.id)
-
-    if (currentIndex > -1) {
-      items[currentIndex]['quantitySelected'] = quantity
-      itemToCart = items
-    } else {
-      itemToCart = [
-        ...items,
-        ...[detail]
-      ]
-    }
-
-    dispatch(setItem(itemToCart))
-    dispatch(addedItem())
-  }
+  const createCart = () => dispatch(addedItem(detail, quantity, variation))
+  const setVar = (value) => setVariaton((oldVar) => ({ ...oldVar, pa_presentations: value }))
 
   return (
     <>
@@ -58,8 +43,7 @@ const Color = ({ detail }) => {
         <div className={styles._imageContainer}>
           <ColorBackground color={`#${detail.slug}`} />
         </div>
-        <div className={styles._descriptionMobileContainer}>
-          <p className={styles._description}>Este tono, amable y nada agresivo a la vista, es “un potenciador de armonía, serenidad y creatividad” según los psicólogos, y que muy pronto podremos ver presente en todo tipo de disciplinas, desde moda, arte y diseño, hasta hogar y tecnología.</p>
+        <div className={styles._descriptionMobileContainer} dangerouslySetInnerHTML={createMarkup(detail?.description)}>
         </div>
         <div className={styles._contentContainer}>
           <div className={styles._optionsContainer}>
@@ -73,8 +57,9 @@ const Color = ({ detail }) => {
                     <div className={styles._lengthSelect}>
                       <BlackDropDown
                         height={retina ? '3.3rem' : '2.5rem'}
-                        items={detail?.attributes?.nodes?.filter((att)=> att.name === "Presentaciones")[0].options}
+                        items={detail?.attributes?.nodes?.filter((att) => att.name.toLowerCase() === "presentaciones")[0]?.options}
                         title="Tamaño"
+                        onSet={setVar}
                       />
                     </div>
                   </div>
@@ -132,8 +117,7 @@ const Color = ({ detail }) => {
                   </div>
                 </div>
               </div>
-              <div className={styles._descriptionContainer}>
-                <p className={styles._description}>Este tono, amable y nada agresivo a la vista, es “un potenciador de armonía, serenidad y creatividad” según los psicólogos, y que muy pronto podremos ver presente en todo tipo de disciplinas, desde moda, arte y diseño, hasta hogar y tecnología.</p>
+              <div className={styles._descriptionContainer} dangerouslySetInnerHTML={createMarkup(detail?.description)}>
               </div>
             </div>
           </div>
