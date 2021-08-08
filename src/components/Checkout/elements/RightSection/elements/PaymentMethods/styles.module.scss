@@ -67,3 +67,49 @@
   width: 50%;
   background-color: greenyellow;
 }
+
+._textContainer {
+  & > p:nth-child(1) {
+    @include font('helvetica', 'helvetica15');
+    color: $charade;
+    margin-bottom: 8px;
+  }
+
+  & > p:nth-child(2) {
+    @include font('helveticaBold', 'helvetica15');
+    line-height: 18px;
+    margin-bottom: 8px;
+  }
+}
+
+._textQuote {
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $nobel;
+    line-height: 18px;
+  }
+}
+
+._formContainer {
+  margin-top: 1rem;
+}
+
+._input {
+  @include input($silverChalice, $doveGray, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._formItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    @include font('helvetica', 'helvetica15');
+    color: $doveGray;
+    margin-left: .5rem;
+  }
+}
