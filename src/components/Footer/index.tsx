@@ -101,7 +101,7 @@ const Footer = () => {
                     <img src='/images/logos/banana-logo.svg' />
                   </div>
                 </div>
-                <p className={styles._speechTitle}>©CopyrightPintalo.C.A</p>
+                <p className={styles._copyrightTitle}>©CopyrightPintalo.C.A</p>
               </div>
             </div>
           </div>
