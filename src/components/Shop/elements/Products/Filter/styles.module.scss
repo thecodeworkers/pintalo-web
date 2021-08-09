@@ -14,7 +14,9 @@
 ._inputContainer {
   width: 70%;
   margin-bottom: 2rem;
-  position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 ._input {
@@ -28,8 +30,10 @@
 ._iconParent {
   position: absolute;
   cursor: pointer;
-  right: 1.3rem;
-  top: .5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 1rem;
 }
 
 ._filterLabelContainer {
@@ -127,3 +131,5 @@
     width: 100%;
   }
 }
+
+
