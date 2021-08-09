@@ -1,3 +1,6 @@
 export { default as registerUser } from './registerUser'
 export { default as loginUser } from './loginUser'
 export { default as sendPasswordResetEmail } from './sendPasswordResetEmail'
+export { default as addToCart } from './addToCar'
+export { default as updateItemQuantities } from './updateItemQuantities'
+export { default as removeItemsFromCart } from './removeItemsFromCart'

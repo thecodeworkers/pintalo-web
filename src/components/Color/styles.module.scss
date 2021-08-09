@@ -35,9 +35,13 @@
 
 ._descriptionMobileContainer {
   display: none;
-  background-color: #F5F5F5;
+  background-color: #f5f5f5;
   padding: 0 8% 0 8%;
   height: 25%;
+  p {
+    @include font('helvetica', 'helvetica14');
+    color: $doveGray;
+  }
 }
 
 ._colorTitle {
@@ -48,12 +52,11 @@
 }
 
 ._descriptionContainer {
-  height: 25%
-}
-
-._description {
-  @include font('helvetica', 'helvetica14');
-  color: $doveGray;
+  height: 25%;
+  p {
+    @include font('helvetica', 'helvetica14');
+    color: $doveGray;
+  }
 }
 
 ._optionsContainer {
@@ -191,11 +194,13 @@
     height: 20%;
   }
 
-  ._buttonBox, ._quantityInputContainer {
+  ._buttonBox,
+  ._quantityInputContainer {
     width: 100%;
   }
 
-  ._descriptionContainer, ._calculatorArea {
+  ._descriptionContainer,
+  ._calculatorArea {
     display: none;
   }
 
@@ -218,7 +223,8 @@
     width: 50%;
   }
 
-  ._lengthSelect, ._calculatorButton {
+  ._lengthSelect,
+  ._calculatorButton {
     width: 90%;
   }
 

@@ -11,18 +11,15 @@ export const paginate = (items: Array<any>, page_number: number = 1, page_size: 
   return items.slice((page_number - 1) * page_size, page_number * page_size);
 }
 
-export const scrolling = (reference) => {
-  if(reference) {
-    const target = reference.current;
-    window.scrollTo({ top: target.offsetTop, behavior: 'smooth' });
-  }
+export const scrollTo = (ref: any, offset = 0) => {
+  window.scrollTo({ top: ref.offsetTop - offset, behavior: 'smooth' });
 }
 
-export const createMarkup = (text) => { return {__html: text}; }
+export const createMarkup = (text) => { return { __html: text }; }
 
 export const validateFetch = ({ errors, data }) => {
   if (errors) throw errors[0].message
-  if (typeof(data) == 'undefined') throw 'Cannot connect'
+  if (typeof (data) == 'undefined') throw 'Cannot connect'
 
   return data
 }
@@ -40,7 +37,6 @@ export function* showDialog(message, type = 'success', toast = 'SHOW_TOAST') {
     status: 2
   }))
 }
-
 
 export function* manageError(error, toast = 'SHOW_TOAST', loader = 'SHOW_LOADER') {
   yield put(actionObject(loader, false))
