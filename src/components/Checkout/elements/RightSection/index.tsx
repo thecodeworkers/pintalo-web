@@ -4,7 +4,9 @@ import styles from './styles.module.scss'
 
 const title = {
   basicInformation: 'Tus datos',
-  addressInformation: 'Delivery'
+  addressInformation: 'Delivery',
+  paymentMethods: 'Metodos de pago',
+  budgetInformation: 'Datos de factura'
 }
 
 enum buttonTitle {
@@ -18,11 +20,11 @@ const RightSection = () => {
       <div className={styles._paymentSteps_content}>
         <div className={styles._formContent}>
           <div className={styles._paymentSteps_header}>
-            <p>{title.addressInformation}</p>
+            <p>{title.basicInformation}</p>
           </div>
-          {/* <BasicInformation /> */}
+          <BasicInformation />
           {/* <AddressInformation /> */}
-          <PaymentMethods />
+          {/* <PaymentMethods /> */}
           {/* <BudgetInformation /> */}
         </div>
         <div className={styles._formButtonContainer}>
@@ -30,7 +32,7 @@ const RightSection = () => {
             backgroundColor="#FDCA40"
             textColor="#262833"
           >
-            {buttonTitle[1]}
+            {buttonTitle[0]}
           </GeneralButton>
         </div>
       </div>
