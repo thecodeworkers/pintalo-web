@@ -59,16 +59,19 @@
   width: 70%;
   justify-content: space-between;
   margin-bottom: 1rem;
+
 }
 
 ._bigButton {
   width: 400px;
+  margin: 0 .5rem;
 }
 
 ._buttonsContainer {
   display: flex;
   justify-content: center;
   margin-top: 1rem;
+  margin-bottom: 0.5rem;
   flex-wrap: wrap;
   width: 65%;
 }

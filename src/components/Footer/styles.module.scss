@@ -77,6 +77,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: -0.3rem;
 }
 
 ._logo {
@@ -89,6 +90,12 @@
   justify-content: space-between;
   align-items: baseline;
   margin-top: 0.3rem;
+}
+
+._copyrightTitle {
+  font-family: $helvetica;
+  font-size: $helvetica14;
+  color: $wildSand;
 }
 
 ._buttonContainer {

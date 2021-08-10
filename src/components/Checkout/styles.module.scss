@@ -26,6 +26,11 @@
   display: none;
 }
 
+._modalBody {
+  width: 35%;
+  background-color: $white;
+}
+
 @include responsive(md) {
   ._container {
     flex-direction: column;

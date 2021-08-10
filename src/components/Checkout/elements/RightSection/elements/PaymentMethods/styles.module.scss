@@ -28,6 +28,7 @@
   height: 1rem;
   border-radius: 50%;
   border: $grayNurse solid .3rem;
+  cursor: pointer;
 }
 
 ._optionContainer {
@@ -45,14 +46,6 @@
   background-color: $cello;
 }
 
-._checkboxDesactive {
-  @extend ._checkboxActive
-}
-
-._checkboxDesactive:checked {
-  background-color: $grey;
-}
-
 ._informationContainer {
   height: 55%;
   display: flex;
@@ -60,10 +53,132 @@
 
 ._receiptInfoContainer {
   width: 50%;
-  background-color: hotpink;
 }
 
 ._receiptImgContainer {
   width: 50%;
-  background-color: greenyellow;
+}
+
+._textContainer {
+  & > p:nth-child(1) {
+    @include font('helvetica', 'helvetica15');
+    color: $charade;
+    margin-bottom: 8px;
+  }
+
+  & > p:nth-child(2) {
+    @include font('helveticaBold', 'helvetica15');
+    line-height: 18px;
+    margin-bottom: 8px;
+  }
+}
+
+._textQuote {
+  margin-top: 1rem;
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $nobel;
+    line-height: 18px;
+  }
+}
+
+._formContainer {
+  margin-top: 1rem;
+}
+
+._input {
+  @include input($silverChalice, $doveGray, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._formItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+
+  & label {
+    @include font('helvetica', 'helvetica15');
+    color: $doveGray;
+    margin-left: .5rem;
+  }
+}
+
+._inputRow {
+  display: flex;
+  justify-content: space-between;
+  & > div {
+    width: 48%;
+  }
+}
+
+._cardLogoContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
+}
+
+._methodsSubcontainer {
+  display: flex;
+}
+
+._methods {
+  width: 50%;
+}
+
+._importantCaption {
+  width: 50%;
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $nobel;
+  }
+}
+
+._paymentDetail {
+  margin-top: 1rem;
+  & > p:first-child {
+    color: $charade;
+  }
+}
+
+@include responsive(md) {
+  ._titleContainer {
+    margin-bottom: 1rem;
+    & > img {
+      display: none;
+    }
+  }
+
+  ._informationContainer {
+    flex-direction: column;
+  }
+
+  ._receiptInfoContainer {
+    width: 100%;
+  }
+
+  ._cardLogoContainer {
+    display: none;
+  }
+
+  ._textContainer {
+    & > p:nth-child(2) {
+      @include font('helvetica', 'helvetica15');
+      color: $nobel;
+    }
+  }
+
+  ._methodsSubcontainer {
+    flex-direction: column;
+  }
+
+  ._methods {
+    width: 100%;
+  }
+
+  ._importantCaption {
+    display: none;
+  }
 }
