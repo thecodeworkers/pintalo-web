@@ -28,6 +28,7 @@
   height: 1rem;
   border-radius: 50%;
   border: $grayNurse solid .3rem;
+  cursor: pointer;
 }
 
 ._optionContainer {
@@ -45,14 +46,6 @@
   background-color: $cello;
 }
 
-._checkboxDesactive {
-  @extend ._checkboxActive
-}
-
-._checkboxDesactive:checked {
-  background-color: $grey;
-}
-
 ._informationContainer {
   height: 55%;
   display: flex;
@@ -60,12 +53,10 @@
 
 ._receiptInfoContainer {
   width: 50%;
-  background-color: hotpink;
 }
 
 ._receiptImgContainer {
   width: 50%;
-  background-color: greenyellow;
 }
 
 ._textContainer {
@@ -112,4 +103,18 @@
     color: $doveGray;
     margin-left: .5rem;
   }
+}
+
+._inputRow {
+  display: flex;
+  justify-content: space-between;
+  & > div {
+    width: 48%;
+  }
+}
+
+._cardLogoContainer {
+  display: flex;
+  justify-content: space-evenly;
+  width: 50%;
 }
