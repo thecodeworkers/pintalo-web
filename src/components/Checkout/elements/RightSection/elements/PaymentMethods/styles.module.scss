@@ -74,6 +74,7 @@
 }
 
 ._textQuote {
+  margin-top: 1rem;
   & p {
     @include font('helvetica', 'helvetica15');
     color: $nobel;
@@ -117,4 +118,67 @@
   display: flex;
   justify-content: space-evenly;
   width: 50%;
+}
+
+._methodsSubcontainer {
+  display: flex;
+}
+
+._methods {
+  width: 50%;
+}
+
+._importantCaption {
+  width: 50%;
+  & p {
+    @include font('helvetica', 'helvetica15');
+    color: $nobel;
+  }
+}
+
+._paymentDetail {
+  margin-top: 1rem;
+  & > p:first-child {
+    color: $charade;
+  }
+}
+
+@include responsive(md) {
+  ._titleContainer {
+    margin-bottom: 1rem;
+    & > img {
+      display: none;
+    }
+  }
+
+  ._informationContainer {
+    flex-direction: column;
+  }
+
+  ._receiptInfoContainer {
+    width: 100%;
+  }
+
+  ._cardLogoContainer {
+    display: none;
+  }
+
+  ._textContainer {
+    & > p:nth-child(2) {
+      @include font('helvetica', 'helvetica15');
+      color: $nobel;
+    }
+  }
+
+  ._methodsSubcontainer {
+    flex-direction: column;
+  }
+
+  ._methods {
+    width: 100%;
+  }
+
+  ._importantCaption {
+    display: none;
+  }
 }

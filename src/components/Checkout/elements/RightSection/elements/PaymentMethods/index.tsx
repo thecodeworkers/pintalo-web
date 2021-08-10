@@ -62,25 +62,41 @@ const PaymentMethods = () => {
               ))
             }
           </div>
-          {
-            paymentMethods.map((method, index) => (
-              <div key={index} className={styles._optionContainer}>
-                <input
-                  type="checkbox"
-                  className={styles._checkboxActive}
-                  onChange={(e) => setOption(e.target.value)}
-                  checked={option == method.value ? true : false}
-                  value={method.value}
-                />
-                <p className="_methodTitle">{method.title}</p>
-                <style jsx>{`
-                  ._methodTitle {
-                    color: ${option == method.value ? '#262833' : '#9B9B9B'};
-                  }
-                `}</style>
+          <div className={styles._methodsSubcontainer}>
+            <div className={styles._methods}>
+              {
+                paymentMethods.map((method, index) => (
+                  <div key={index} className={styles._optionContainer}>
+                    <input
+                      type="checkbox"
+                      className={styles._checkboxActive}
+                      onChange={(e) => setOption(e.target.value)}
+                      checked={option == method.value ? true : false}
+                      value={method.value}
+                    />
+                    <p className="_methodTitle">{method.title}</p>
+                    <style jsx>{`
+                      ._methodTitle {
+                        color: ${option == method.value ? '#262833' : '#9B9B9B'};
+                      }
+                    `}</style>
+                  </div>
+                ))
+              }
+            </div>
+            <div className={styles._importantCaption}>
+              <p>Enviar comprobante de pago a nuestro correo</p>
+              <p>Pintalo@gmail.com</p>
+              <div className={styles._paymentDetail}>
+                <p>-Pago movil, transferencia, Zelle:</p>
+                <p>Debe verse legible el numero de confirmacion y banco</p>
               </div>
-            ))
-          }
+              <div className={styles._paymentDetail}>
+                <p>-Efectivo:</p>
+                <p>Debe verse legible el numero de serie del billete</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles._informationContainer}>
