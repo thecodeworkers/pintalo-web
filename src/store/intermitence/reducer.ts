@@ -20,7 +20,8 @@ const initialState = {
   modal: {
     contact: false,
     sendEmail: false,
-    calculator: false
+    calculator: false,
+    paymentProcessing: false
   },
   showFilters: false
 }

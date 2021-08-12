@@ -1,6 +1,8 @@
-import { GeneralButton } from '@components'
+import { GeneralButton, GeneralModal } from '@components'
 import { BasicInformation, AddressInformation, PaymentMethods, BudgetInformation } from './elements'
 import styles from './styles.module.scss'
+import { showModal } from '@store/actions'
+import { useDispatch, useSelector } from 'react-redux'
 
 const title = {
   basicInformation: 'Tus datos',
@@ -15,6 +17,12 @@ enum buttonTitle {
 }
 
 const RightSection = () => {
+
+  const dispatch = useDispatch()
+
+  const { modal: { paymentProcessing } } = useSelector((state: any) => state.intermitence)
+
+
   return (
     <div className={styles._paymentSteps}>
       <div className={styles._paymentSteps_content}>
@@ -22,19 +30,41 @@ const RightSection = () => {
           <div className={styles._paymentSteps_header}>
             <p>{title.basicInformation}</p>
           </div>
-          <BasicInformation />
+          {/* <BasicInformation /> */}
           {/* <AddressInformation /> */}
           {/* <PaymentMethods /> */}
-          {/* <BudgetInformation /> */}
+          <BudgetInformation />
         </div>
         <div className={styles._formButtonContainer}>
           <GeneralButton
             backgroundColor="#FDCA40"
             textColor="#262833"
+            method={() => dispatch(showModal('paymentProcessing', true))}
           >
             {buttonTitle[0]}
           </GeneralButton>
         </div>
+
+        {
+          paymentProcessing ? (
+            <GeneralModal title='' className={styles._modalBody}>
+              <div className={styles._modalHeight}>
+                <div className={styles._modalContent}>
+                  <div className={styles._imgContainer}>
+                    <img src="/images/icons/payment-process.svg" alt="payment" width={'40%'} />
+                  </div>
+                  <div className={styles._titleContainer}>
+                    <p className={styles._title}>Su pago está siendo confirmado</p>
+                  </div>
+                  <div className={styles._subtitleContainer}>
+                    <p className={styles._subtitle}>en minutos tendrá en su correo la información de la compra</p>
+                  </div>
+                </div>
+
+              </div>
+            </GeneralModal>
+          ) : null
+        }
       </div>
     </div>
   )
