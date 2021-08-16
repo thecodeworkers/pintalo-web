@@ -92,7 +92,7 @@
 }
 
 ._pattern{
-  @include font('helveticaregular', 'helvetica16');
+  @include font('helvetica', 'helvetica16');
   color: $charade;
   margin-left: 2.5rem;
 }
