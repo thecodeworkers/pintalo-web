@@ -1,0 +1,115 @@
+@import '@styles/index.scss';
+
+@mixin commonInputStyles {
+  width: 85%;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  display: block;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+._main {
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+
+._rightSection {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+._input {
+  @include input($cello, $cello, $alto);
+  @include commonInputStyles;
+}
+
+._inputError {
+  @include input($cello, red, $alto);
+  @include commonInputStyles;
+}
+
+._formParent {
+  background-color: $wildSand;
+  width: 25%;
+  min-width: 20rem;
+  border-radius: 10px;
+}
+
+._header {
+  width: 100%;
+  padding: 0.4rem;
+  background-color: $charade;
+  border-radius: 5px;
+
+  & p {
+    color: $white;
+    font-family: $helvetica;
+    font-size: $helvetica18;
+  }
+}
+
+._content {
+  margin-top: 1rem;
+  padding: 2.5rem 0 1.5rem 0;
+}
+
+._parentBtn {
+  display: flex;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+  margin-top: 6.5rem;
+  margin-bottom: 0.5rem;
+  justify-content: center;
+}
+
+._modalBody {
+  width: 25%;
+  background-color: $wildSand;
+}
+
+._form {
+  & label {
+    @include font('helvetica', 'helvetica18');
+   margin-left: 2.5rem;
+  }
+
+  ._parentBtn {
+    margin-top: 4.5rem;
+  }
+}
+
+._advice{
+  @include font('helveticaBold', 'helvetica16');
+  color: $charade;
+  margin-left: 2.5rem;
+}
+
+._pattern{
+  @include font('helvetica', 'helvetica16');
+  color: $charade;
+  margin-left: 2.5rem;
+}
+
+@include responsive(xl) {
+  ._modalBody {
+    width: 40%;
+  }
+}
+
+@include responsive(md) {
+
+  ._rightSection {
+    width: 100%;
+  }
+
+  ._modalBody {
+    width: 90%;
+  }
+}
