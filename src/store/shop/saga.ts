@@ -32,7 +32,6 @@ function* setFilterAsync({ payload }: AnyAction) {
     const index = filters[payload?.type].indexOf(payload?.value)
     index > -1 ? filters[payload?.type].splice(index, 1) : filters[payload?.type].push(payload?.value)
 
-    console.log(filters)
     const productFilters = productFilter(products, filters, 'name')
     let productArray = products
     let pagination = {}
@@ -63,7 +62,6 @@ function* setFilterAsync({ payload }: AnyAction) {
     yield put(actionObject(SET_FILTER_ASYNC, filters))
     yield put(actionObject(FILTER_PRODUCTS, { products: productArray }))
   } catch (err) {
-    console.log(err)
     yield call(showDialog, 'Ha ocurrido un error.', 'error')
   }
 }

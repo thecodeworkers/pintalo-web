@@ -63,20 +63,13 @@ export const simplifyArray = (array) => {
 }
 
 export const productFilter = (nodes: Array<any>, comparison, key) => {
-  console.log(comparison)
   const nodeFilter = (node) => {
     let validation = true
     let validFilter = false
-    console.log(comparison)
     for (let type of Object.keys(comparison)) {
       let select = getData(node, type)
-      console.log(type)
-      console.log(select)
       for (let value of select) {
         if (type !== 'attributes') {
-
-          console.log(comparison[type])
-          console.log(value[key])
           for (let compare of comparison[type]) {
             if (value[key] === compare) {
               validFilter = true
