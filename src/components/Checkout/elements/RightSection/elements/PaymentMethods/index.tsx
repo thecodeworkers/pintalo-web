@@ -1,4 +1,6 @@
 import styles from './styles.module.scss'
+import Methods from './Methods'
+import { useState } from 'react'
 
 const paymentMethods = [
   {
@@ -18,10 +20,12 @@ const paymentMethods = [
     value: 'venmo'
   },
   {
-    title: 'Efectivo euro/cash'
+    title: 'Efectivo euro/cash',
+    value: 'cash'
   },
   {
-    title: 'TDC'
+    title: 'TDC',
+    value: 'tdc'
   }
 ]
 
@@ -43,80 +47,9 @@ const logos = [
   }
 ]
 
-const RenderMethod = ({ value }) => {
-  switch (value) {
-    case 'zelle':
-      return (
-        <>
-          <p>Zelle</p>
-          <div>
-            <p>Banco</p>
-            <p>Arianna Perez</p>
-            <p>arianna.plp@gmail.com</p>
-          </div>
-        </>
-      )
-
-    case 'mobilePayment':
-      return (
-        <>
-          <p>Pago Movil</p>
-          <div>
-            <p>Banplus</p>
-            <p>J409000303</p>
-            <p>0414-0180382</p>
-          </div>
-        </>
-      )
-
-    case 'transfer':
-      return (
-        <>
-          <p>Tranferencia</p>
-          <div>
-            <p>Píntalo</p>
-            <p>J000000000</p>
-            <p>Banco</p>
-            <p>0000 0000000000000000</p>
-            <p>email@gmail.com</p>
-          </div>
-        </>
-      )
-
-    case 'venmo':
-      return (
-        <>
-          <p>Venmo</p>
-          <div>
-            <p>Arianna Perez</p>
-            <p>arianna.plp@gmail.com</p>
-          </div>
-        </>
-      )
-
-    case 'cash':
-      return (
-        <>
-          <p>Efectivo</p>
-          <p>En caso de no disponer del monto exacto en efectivo, te ofrecemos las siguientes opciones:</p>
-          <div>
-            <p>1- Recibir vuelto en efectivo, sujeto a nuestra disponibilidad.</p>
-            <p>2- Completar el restante de tu pago en Bolívares a la tasa del día</p>
-          </div>
-        </>
-      )
-
-    case 'tdc':
-      return (
-        <div></div>
-      )
-
-    default:
-      return null
-  }
-}
-
 const PaymentMethods = () => {
+  const [option, setOption] = useState('zelle')
+
   return (
     <div className={styles._container}>
       <div className={styles._methodsContainer}>
@@ -129,24 +62,46 @@ const PaymentMethods = () => {
               ))
             }
           </div>
-          {
-            paymentMethods.map((method, index) => (
-              <div key={index} className={styles._optionContainer}>
-                <input
-                  type="checkbox"
-                  className={styles._checkboxActive}
-                  onChange={() => {}}
-                  checked={true}
-                />
-                <p>{method.title}</p>
+          <div className={styles._methodsSubcontainer}>
+            <div className={styles._methods}>
+              {
+                paymentMethods.map((method, index) => (
+                  <div key={index} className={styles._optionContainer}>
+                    <input
+                      type="checkbox"
+                      className={styles._checkboxActive}
+                      onChange={(e) => setOption(e.target.value)}
+                      checked={option == method.value ? true : false}
+                      value={method.value}
+                    />
+                    <p className="_methodTitle">{method.title}</p>
+                    <style jsx>{`
+                      ._methodTitle {
+                        color: ${option == method.value ? '#262833' : '#9B9B9B'};
+                      }
+                    `}</style>
+                  </div>
+                ))
+              }
+            </div>
+            <div className={styles._importantCaption}>
+              <p>Enviar comprobante de pago a nuestro correo</p>
+              <p>Pintalo@gmail.com</p>
+              <div className={styles._paymentDetail}>
+                <p>-Pago movil, transferencia, Zelle:</p>
+                <p>Debe verse legible el numero de confirmacion y banco</p>
               </div>
-            ))
-          }
+              <div className={styles._paymentDetail}>
+                <p>-Efectivo:</p>
+                <p>Debe verse legible el numero de serie del billete</p>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
       <div className={styles._informationContainer}>
         <div className={styles._receiptInfoContainer}>
-          <RenderMethod value="cash" />
+          <Methods value={option} />
         </div>
         <div className={styles._receiptImgContainer}>
 
