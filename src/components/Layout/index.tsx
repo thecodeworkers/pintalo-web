@@ -7,13 +7,12 @@ import Navbar from '../Navbar'
 import Footer from '../Footer'
 import Toast from '../Toast'
 import styles from './styles.module.scss'
+import { formikContact } from './formik'
 
 const Layout = ({ children }) => {
   const { showFooter, modal: { contact } } = useSelector((state: any) => state.intermitence)
-  const [form, setForm] = useState({ name: '', lastname: '', email: '', message: '' })
   const dispatch = useDispatch()
-
-  const setFieldForm = (name, field) => setForm((oldForm) => ({ ...oldForm, [name]: field }))
+  const formik = formikContact(dispatch)
 
   return (
     <>
@@ -25,20 +24,30 @@ const Layout = ({ children }) => {
         contact ? (
           <GeneralModal title={'Contacto'} className={styles._modalBody}>
             <div className={styles._body}>
-              <form className={styles._formContainer}>
+              <form className={styles._formContainer} onSubmit={formik.handleSubmit}>
                 <div className={styles._inputContainerRow}>
-                  <input placeholder='Nombre' value={form?.name} onChange={(event) => setFieldForm(event.currentTarget.name, event.currentTarget.value)} className={styles._inputRow} name='name' />
-                  <input placeholder='Apellido' value={form?.lastname} onChange={(event) => setFieldForm(event.currentTarget.name, event.currentTarget.value)} className={styles._input} name='lastname' />
+                  <input placeholder='Nombre' onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.name}
+                    className={formik.errors.name && formik.touched.name ? styles._inputError : styles._inputRow}
+                    name='name' />
+                  <input placeholder='Apellido' onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.lastname} className={formik.errors.lastname && formik.touched.lastname ? styles._inputError : styles._input} name='lastname' />
                 </div>
 
                 <div className={styles._inputContainerColumn}>
-                  <input placeholder='Correo' value={form?.email} onChange={(event) => setFieldForm(event.currentTarget.name, event.currentTarget.value)} className={styles._input} name='email' />
+                  <input placeholder='Correo'  onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.email}  className={formik.errors.email && formik.touched.email ? styles._inputError : styles._input} name='email' />
                 </div>
 
-                <textarea placeholder='Descripción' value={form?.message} onChange={(event) => setFieldForm(event.currentTarget.name, event.currentTarget.value)} className={styles._textArea} name='message' />
+                <textarea placeholder='Descripción' onChange={formik.handleChange}
+                    onBlur={formik.handleBlur}
+                    value={formik.values.message} className={styles._textArea}   name='message' />
 
                 <div className={styles._buttonContainer}>
-                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} method={() => dispatch(submitForm(form))}>
+                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} type='submit'>
                     Enviar
                   </GeneralButton>
                 </div>

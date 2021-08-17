@@ -34,6 +34,14 @@
   width: 14rem;
 }
 
+._inputError {
+  @include input($cello, red, $alto);
+  margin-bottom: 2rem;
+  margin: 1rem 0;
+  padding: 0.6rem;
+  width: 14rem;
+}
+
 ._textArea {
   background: transparent;
   color: $silverChalice;
