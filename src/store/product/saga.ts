@@ -34,20 +34,20 @@ function* getShopAsync() {
 
     const { user: { user: { sessionToken } } } = yield select(state => state)
     const response = yield call(GraphQlClient, constructShopQuery(), {}, sessionToken)
-    const { page, products, allPaUses, allPaTypes, allPaPresentations, allPaBases, paColors, paClasses, allPaMarcas, productCategories, cart } = validateFetch(response)
+    const { page, products, uses, customTypes, allPaPresentations, bases, colors, clases, brands, productCategories, cart } = validateFetch(response)
 
     const data = {
       products: normalizedArray(products?.nodes),
       allProducts: normalizedArray(products?.nodes),
       categories: normalizedArray(productCategories?.nodes),
       attributes: {
-        uses: normalizedArray(allPaUses?.nodes),
-        types: normalizedArray(allPaTypes?.nodes),
+        uses: normalizedArray(uses?.nodes),
+        customTypes: normalizedArray(customTypes?.nodes),
         presentations: normalizedArray(allPaPresentations?.nodes),
-        bases: normalizedArray(allPaBases?.nodes),
-        colors: normalizedArray(paColors?.nodes),
-        classes: normalizedArray(paClasses?.nodes),
-        brands: normalizedArray(allPaMarcas?.nodes)
+        bases: normalizedArray(bases?.nodes),
+        colors: normalizedArray(colors?.nodes),
+        classes: normalizedArray(clases?.nodes),
+        brands: normalizedArray(brands?.nodes)
       }
     }
 

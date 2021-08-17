@@ -8,11 +8,12 @@ const initialState = {
   categories: [],
   attributes: {
     uses: [],
-    types: [],
+    customTypes: [],
     presentations: [],
     bases: [],
     colors: [],
     classes: [],
+    brands: []
   }
 }
 

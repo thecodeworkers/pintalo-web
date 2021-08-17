@@ -27,16 +27,22 @@ const searchResults = (phrase: string, records: Array<any>) => {
 
 function* setFilterAsync({ payload }: AnyAction) {
   try {
-    const { shop: { filters, page, prevPage }, product: { allProducts: products } } = yield select(state => state)
 
+    const { shop: { filters, page, prevPage }, product: { allProducts: products } } = yield select(state => state)
     const index = filters[payload?.type].indexOf(payload?.value)
     index > -1 ? filters[payload?.type].splice(index, 1) : filters[payload?.type].push(payload?.value)
 
+    console.log(filters)
     const productFilters = productFilter(products, filters, 'name')
     let productArray = products
     let pagination = {}
 
-    if (filters['categories'].length || filters['attributes'].length) {
+    const length = Object.keys(filters).reduce((prev, next) => {
+      if (filters[next].length) return true
+      return prev
+    }, false)
+
+    if (length) {
       productArray = productFilters
       if (page > 1) {
         pagination = {
@@ -57,6 +63,7 @@ function* setFilterAsync({ payload }: AnyAction) {
     yield put(actionObject(SET_FILTER_ASYNC, filters))
     yield put(actionObject(FILTER_PRODUCTS, { products: productArray }))
   } catch (err) {
+    console.log(err)
     yield call(showDialog, 'Ha ocurrido un error.', 'error')
   }
 }

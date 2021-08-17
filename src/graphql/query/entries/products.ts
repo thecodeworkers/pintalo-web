@@ -8,6 +8,48 @@ products(first: 1000000) {
     sku
     totalSales
     type
+    clases {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    colors {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    brands {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    bases {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    uses {
+      nodes {
+        id
+        name
+        slug
+      }
+    }
+    customTypes{
+      nodes {
+        id
+        name
+        slug
+      }
+    }
     productCategories {
       nodes {
         id
