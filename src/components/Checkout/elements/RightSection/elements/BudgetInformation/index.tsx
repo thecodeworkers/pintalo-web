@@ -1,12 +1,16 @@
 import { BlackDropDown } from '@components'
 import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
   const formik = formikBudgetInfo(dispatch)
+
+  const state = useSelector((state: any) => state.checkout)
+
+  console.log('CHECKOOOOOOOUT', state)
 
   return (
     <form className={styles._formContainer} onSubmit={formik.handleSubmit}>

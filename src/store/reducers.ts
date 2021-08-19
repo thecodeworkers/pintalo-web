@@ -9,6 +9,7 @@ import colors from './colors/reducer'
 import shop from './shop/reducer'
 import cart from './cart/reducer'
 import scrollReference from './scrollReference/reducer'
+import checkout from './checkout/reducer'
 
 const reducers = combineReducers({
   page,
@@ -20,7 +21,8 @@ const reducers = combineReducers({
   colors,
   shop,
   cart,
-  scrollReference
+  scrollReference,
+  checkout
 })
 
 export default reducers

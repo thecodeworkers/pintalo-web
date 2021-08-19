@@ -1,6 +1,12 @@
 import styles from './styles.module.scss'
+import { formikBasicData } from './formik'
+import { useDispatch } from 'react-redux'
 
 const BasicInformation = () => {
+
+  const dispatch = useDispatch()
+  const formik = formikBasicData(dispatch)
+
   return (
     <form className={styles._formContainer}>
       <div className={styles._inputContainerRow}>

@@ -1,19 +1,14 @@
 import { useFormik } from 'formik'
 import { emailRegex, passwordRegex } from '@utils/regex'
-import { setCheckoutData } from '@store/actions'
 import * as Yup from 'yup'
 
-export const formikBudgetInfo = dispatch => (useFormik({
+export const formikBasicData = dispatch => (useFormik({
   initialValues: {
     name: '',
     lastname: '',
+    document: '',
     phone: '',
-    address: '',
-    country: '',
-    city: '',
-    postalCode: '',
-    referencePoint: '',
-    municipality: ''
+    email: ''
   },
 
   // validationSchema: Yup.object({
@@ -28,6 +23,6 @@ export const formikBudgetInfo = dispatch => (useFormik({
   // }),
 
   onSubmit: values => {
-    dispatch(setCheckoutData({ budget: values }))
+    console.log(values)
   }
 }))
