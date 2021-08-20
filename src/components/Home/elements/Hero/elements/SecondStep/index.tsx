@@ -7,37 +7,25 @@ import styles from './styles.module.scss'
 const SecondStep = ({ data }) => {
   const [active, setActive] = useState(false)
 
-  const slide = useSelector((state: any) => state)
+  const { setColor: { step }, product: { categories } } = useSelector((state: any) => state)
   const dispatch = useDispatch()
 
-  const currentStep = slide.setColor.step
+  const currentStep = step
 
   const setState = (category) => {
     setActive(true)
     dispatch(setColor({ category: category, step: currentStep + 1 }))
   }
-
-  const category = [
-    { name: 'Arquitectónico' },
-    { name: 'Industrial' },
-    { name: 'Automotriz' },
-    { name: 'Herramientas' },
-    { name: 'Madera' },
-    { name: 'Solventes' },
-    { name: 'Mantenimiento bajo' },
-    { name: 'Mantenimiento alto' },
-  ]
-
   return (
     <div className={styles._heroContainer}>
       <div className={styles._container}>
         <p className={styles._title}>Por categoría</p>
         <div className={styles._buttonContainer}>
           {
-            category.map((res, index) => {
+            categories.map((res, index) => {
               return (
                 <div className={styles._content} key={index}>
-                  <GeneralButton backgroundColor={active ? '#FDCA40' : '#262833'} textColor={'#fff'} method={() => setState(res.name)} large="2.2rem" adjustWidth>
+                  <GeneralButton backgroundColor={active ? '#FDCA40' : '#262833'} textColor={'#fff'} method={() => setState(res.slug)} large="2.2rem" adjustWidth>
                     <p className={styles._buttonText}>{res.name}</p>
                   </GeneralButton>
                 </div>
