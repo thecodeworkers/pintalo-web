@@ -8,7 +8,7 @@ const FourthStep = ({ data }) => {
   const dispatch = useDispatch()
   const router = useRouter()
 
-  const { product: { attributes: { customTypes: types } } } = useSelector((state: any) => state)
+  const { product: { attributes: { customTypes: types } }, setColor: colorData } = useSelector((state: any) => state)
 
   const navigation = (route) => {
     if (router.pathname != route) router.push(route)
@@ -16,7 +16,7 @@ const FourthStep = ({ data }) => {
 
   const setState = (type) => {
     dispatch(setColor({ type: type }))
-    navigation('/shop')
+    navigation(`/shop?type=${type}&category=${colorData.category}&base=${colorData.base}`)
   }
 
 
