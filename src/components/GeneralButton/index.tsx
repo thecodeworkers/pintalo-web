@@ -14,10 +14,11 @@ const GeneralButton: FC<Button> = ({
   large = '2.5rem',
   type = 'button',
   showLoader = false,
-  adjustWidth = false
+  adjustWidth = false,
+  formId = ''
 }) => (
   <>
-    <button className="_button" onClick={method ? method : null} type={type} disabled={showLoader ? true : false}>
+    <button className="_button" onClick={method ? method : null} type={type} disabled={showLoader ? true : false} form={formId}>
       {
         showLoader ? (
           <ActivityIndicator/>

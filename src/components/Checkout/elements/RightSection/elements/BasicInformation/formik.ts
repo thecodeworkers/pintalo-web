@@ -1,6 +1,7 @@
 import { useFormik } from 'formik'
-import { emailRegex, passwordRegex } from '@utils/regex'
+import { emailRegex, onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
 import * as Yup from 'yup'
+import { setCheckoutData } from '@store/actions'
 
 export const formikBasicData = dispatch => (useFormik({
   initialValues: {
@@ -11,18 +12,35 @@ export const formikBasicData = dispatch => (useFormik({
     email: ''
   },
 
-  // validationSchema: Yup.object({
-  //   email: Yup.string()
-  //     .required()
-  //     .matches(emailRegex),
+  validationSchema: Yup.object({
+    name: Yup.string()
+      .min(2)
+      .required()
+      .matches(onlyLettersRegex),
 
-  //   password: Yup.string()
-  //     .min(8)
-  //     .required()
-  //     .matches(passwordRegex)
-  // }),
+    lastname: Yup.string()
+      .min(2)
+      .required()
+      .matches(onlyLettersRegex),
+
+    document: Yup.string()
+      .min(6)
+      .max(8)
+      .required()
+      .matches(onlyNumbersRegex),
+
+      phone: Yup.string()
+      .min(9)
+      .max(11)
+      .required()
+      .matches(onlyNumbersRegex),
+
+      email: Yup.string()
+      .required()
+      .matches(emailRegex),
+  }),
 
   onSubmit: values => {
-    console.log(values)
+    dispatch(setCheckoutData({ basic: values }))
   }
 }))

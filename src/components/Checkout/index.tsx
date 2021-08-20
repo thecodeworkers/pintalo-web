@@ -41,6 +41,7 @@ const Checkout = () => {
           backgroundColor="#FDCA40"
           textColor="#262833"
           adjustWidth
+          type='submit'
         >
           Volver al carrito
         </GeneralButton>

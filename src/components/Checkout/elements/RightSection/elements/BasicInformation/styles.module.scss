@@ -24,9 +24,25 @@
   width: 100%
 }
 
+._inputError {
+  @include input($cello, red, $alto);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
 ._caption {
   @include font('helvetica', 'helvetica12');
   margin-left: .4rem;
+}
+
+._errorMsg {
+  @include font('helvetica', 'helvetica12');
+  margin-left: .4rem;
+  margin-top: .8rem;
+  font-weight: bold;
+  color: red;
 }
 
 ._formItem {

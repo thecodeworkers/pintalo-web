@@ -50,3 +50,8 @@ export const mapProps = async (store, action) => {
 }
 
 export const roundNumber = (number) => Math.round(number * 100) / 100
+
+export const elementId = (id: string) => {
+  const element = document.querySelector(id)
+  return element.id
+}

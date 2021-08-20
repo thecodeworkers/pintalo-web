@@ -1,17 +1,22 @@
 import { AnyAction } from 'redux'
-import { CHECKOUT_DATA } from './action-types'
+import { CHECKOUT_DATA, CURRENT_FORM } from './action-types'
 
 const initialState = {
   basic: null,
   address: null,
   budget: null,
-  payment: null
+  payment: null,
+  reference: null
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {
   switch (type) {
     case CHECKOUT_DATA:
       return { ...state, ...payload }
+
+    case CURRENT_FORM:
+      return { ...state, ...payload }
+
     default:
       return state
   }

@@ -21,7 +21,8 @@ const RightSection = () => {
   const dispatch = useDispatch()
 
   const { modal: { paymentProcessing } } = useSelector((state: any) => state.intermitence)
-
+  const { checkout } = useSelector((state: any) => state)
+  const { reference } = checkout
 
   return (
     <div className={styles._paymentSteps}>
@@ -30,16 +31,18 @@ const RightSection = () => {
           <div className={styles._paymentSteps_header}>
             <p>{title.basicInformation}</p>
           </div>
-          {/* <BasicInformation /> */}
+          <BasicInformation />
           {/* <AddressInformation /> */}
           {/* <PaymentMethods /> */}
-          <BudgetInformation />
+          {/* <BudgetInformation /> */}
         </div>
         <div className={styles._formButtonContainer}>
           <GeneralButton
             backgroundColor="#FDCA40"
             textColor="#262833"
-            method={() => dispatch(showModal('paymentProcessing', true))}
+            type='submit'
+            formId={reference}
+            // method={() => dispatch(showModal('paymentProcessing', true))}
           >
             {buttonTitle[0]}
           </GeneralButton>
