@@ -12,13 +12,8 @@ export const formikContact = dispatch => (useFormik({
   },
 
   validationSchema: Yup.object({
-    name: Yup.string()
-      .required()
-      .matches(onlyLettersRegex),
-
-    lastname: Yup.string()
-      .required()
-      .matches(onlyLettersRegex),
+    name: Yup.string().required().matches(onlyLettersRegex),
+    lastname: Yup.string().required().matches(onlyLettersRegex),
     email: Yup.string().required().matches(emailRegex),
     message: Yup.string().required()
   }),

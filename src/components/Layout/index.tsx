@@ -10,7 +10,7 @@ import styles from './styles.module.scss'
 import { formikContact } from './formik'
 
 const Layout = ({ children }) => {
-  const { showFooter, modal: { contact } } = useSelector((state: any) => state.intermitence)
+  const { showFooter, modal: { contact }, showLoader } = useSelector((state: any) => state.intermitence)
   const dispatch = useDispatch()
   const formik = formikContact(dispatch)
 
@@ -29,7 +29,7 @@ const Layout = ({ children }) => {
                   <input placeholder='Nombre' onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
                     value={formik.values.name}
-                    className={formik.errors.name && formik.touched.name ? styles._inputError : styles._inputRow}
+                    className={formik.errors.name && formik.touched.name ? styles._inputErrorRow : styles._inputRow}
                     name='name' />
                   <input placeholder='Apellido' onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
@@ -47,7 +47,7 @@ const Layout = ({ children }) => {
                     value={formik.values.message} className={styles._textArea}   name='message' />
 
                 <div className={styles._buttonContainer}>
-                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} type='submit'>
+                  <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} type='submit' showLoader={showLoader}>
                     Enviar
                   </GeneralButton>
                 </div>

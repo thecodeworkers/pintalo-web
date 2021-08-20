@@ -26,6 +26,14 @@
   margin-right: 2rem;
 }
 
+._inputErrorRow{
+  @include input($cello, red, $alto);
+  margin: 1rem 0;
+  padding: 0.6rem;
+  width: 14rem;
+  margin-right: 2rem;
+}
+
 ._input {
   @include input ($silverChalice, $doveGray, $silverChalice);
   margin-bottom: 2rem;
