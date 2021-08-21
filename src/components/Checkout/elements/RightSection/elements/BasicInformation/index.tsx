@@ -15,9 +15,6 @@ const BasicInformation = () => {
     dispatch(setFormRef({ reference: id }))
   }, [])
 
-  console.log(formik)
-  console.log(Object.keys(formik.errors).length)
-
   return (
     <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='basic-form'>
       <div className={styles._inputContainerRow}>

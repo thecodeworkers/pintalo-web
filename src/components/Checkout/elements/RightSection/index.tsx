@@ -16,13 +16,32 @@ enum buttonTitle {
   'Finalizar'
 }
 
+const returnComponent = (status) => {
+  switch(status) {
+    case 1:
+    return <BasicInformation />
+
+    case 2:
+    return <AddressInformation />
+
+    case 3:
+    return <PaymentMethods />
+
+    case 4:
+      return <BudgetInformation />
+
+    default:
+      return <BasicInformation />
+  }
+}
+
 const RightSection = () => {
 
   const dispatch = useDispatch()
 
   const { modal: { paymentProcessing } } = useSelector((state: any) => state.intermitence)
   const { checkout } = useSelector((state: any) => state)
-  const { reference } = checkout
+  const { reference, step } = checkout
 
   return (
     <div className={styles._paymentSteps}>
@@ -31,7 +50,9 @@ const RightSection = () => {
           <div className={styles._paymentSteps_header}>
             <p>{title.basicInformation}</p>
           </div>
-          <BasicInformation />
+
+          {returnComponent(step)}
+          {/* <BasicInformation /> */}
           {/* <AddressInformation /> */}
           {/* <PaymentMethods /> */}
           {/* <BudgetInformation /> */}
