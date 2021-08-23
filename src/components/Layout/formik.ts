@@ -15,7 +15,7 @@ export const formikContact = dispatch => (useFormik({
     name: Yup.string().required().matches(onlyLettersRegex),
     lastname: Yup.string().required().matches(onlyLettersRegex),
     email: Yup.string().required().matches(emailRegex),
-    message: Yup.string().required()
+    message: Yup.string()
   }),
 
   onSubmit: values => {
