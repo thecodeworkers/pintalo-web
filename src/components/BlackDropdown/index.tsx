@@ -7,7 +7,8 @@ const BlackDropDown = ({
   title,
   specialAlign = false,
   showValue = false,
-  onSet = null
+  onSet = null,
+  method = null
 }) => {
   const [show, setShow] = useState(false)
   const [value, setValue] = useState('')
@@ -17,15 +18,18 @@ const BlackDropDown = ({
     if (onSet) onSet(value)
   }
 
+  const showOptions = (event: any) => {
+    event.preventDefault()
+    if (!method) setShow(show => !show)
+    if (method) method()
+  }
+
   return (
     <>
       <div className={styles._dropdown}>
         <button
           className={styles._dropbtn}
-          onClick={(event) => {
-            event.preventDefault()
-            setShow(show => !show)
-          }}
+          onClick={showOptions}
         >
           {value || title}
           {showValue && <span className={styles._test}>$0.00</span>}
