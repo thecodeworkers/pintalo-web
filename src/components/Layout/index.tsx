@@ -1,4 +1,4 @@
-import React, { memo, useState } from 'react'
+import React, { memo, useEffect } from 'react'
 import { useSelector, useDispatch } from 'react-redux'
 import { submitForm } from '@store/actions'
 import GeneralButton from '../GeneralButton'
@@ -13,6 +13,13 @@ const Layout = ({ children }) => {
   const { showFooter, modal: { contact }, showLoader } = useSelector((state: any) => state.intermitence)
   const dispatch = useDispatch()
   const formik = formikContact(dispatch)
+
+  useEffect(() => {
+    formik.setFieldValue('name', '')
+    formik.setFieldValue('lastname', '')
+    formik.setFieldValue('email', '')
+    formik.setFieldValue('message', '')
+  }, [contact])
 
   return (
     <>
@@ -37,14 +44,14 @@ const Layout = ({ children }) => {
                 </div>
 
                 <div className={styles._inputContainerColumn}>
-                  <input placeholder='Correo'  onChange={formik.handleChange}
+                  <input placeholder='Correo' onChange={formik.handleChange}
                     onBlur={formik.handleBlur}
-                    value={formik.values.email}  className={formik.errors.email && formik.touched.email ? styles._inputError : styles._input} name='email' />
+                    value={formik.values.email} className={formik.errors.email && formik.touched.email ? styles._inputError : styles._input} name='email' />
                 </div>
 
                 <textarea placeholder='Descripción' onChange={formik.handleChange}
-                    onBlur={formik.handleBlur}
-                    value={formik.values.message} className={styles._textArea}   name='message' />
+                  onBlur={formik.handleBlur}
+                  value={formik.values.message} className={styles._textArea} name='message' />
 
                 <div className={styles._buttonContainer}>
                   <GeneralButton backgroundColor={'#FDCA40'} textColor={'#262833'} bold={true} type='submit' showLoader={showLoader}>
