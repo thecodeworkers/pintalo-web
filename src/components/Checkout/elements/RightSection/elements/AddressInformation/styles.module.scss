@@ -57,6 +57,13 @@
   z-index: 3;
 }
 
+._hoursParent {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  z-index: 3;
+}
+
 ._dropParent {
   position: relative;
 }
@@ -74,5 +81,6 @@
   ._formItem {
     width: 100%;
     margin-bottom: 1.2rem;
+    position: relative;
   }
 }

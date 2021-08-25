@@ -2,20 +2,51 @@ import { useState, useRef, useEffect } from 'react'
 import styles from './styles.module.scss'
 import { BlackDropDown } from '@components'
 import DatePicker from 'react-datepicker'
-import "react-datepicker/dist/react-datepicker.css";
+import 'react-datepicker/dist/react-datepicker.css'
+import { useDispatch } from 'react-redux'
+import { elementId } from '@utils/common'
+import { setFormRef } from '@store/actions'
 
 const countries = ['Venezuela', 'Colombia', 'Argentina']
 const cities = ['Caracas', 'Bogota', 'Buenos Aires']
 
 const AddressInformation = () => {
 
+  const dispatch = useDispatch()
   const [inputType, setInputType] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
+  const [hour, setHour] = useState(new Date())
+  const [showHour, setShowHour] = useState(false)
 
-  const openDate = () => setInputType((inputType: any) => !inputType)
+  const openDate = () => setInputType((inputType: boolean) => !inputType)
+  const openHour = () => setShowHour((showHour: boolean) => !showHour)
+
+  const parseDate = () => {
+    const year = startDate.getFullYear()
+    const month = startDate.getMonth() + 1
+    const day = startDate.getDate()
+
+    return `${day}/${month}/${year}`
+  }
+
+  const getHour = (data) => {
+    const date = new Date(data)
+    let minutes = date.getMinutes()
+    let hour = date.getHours()
+    hour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+    hour = hour < 10 ? `0${hour}` : hour
+    minutes = minutes < 10 ? `0${minutes}` : minutes
+    const afternoon = date.getHours() > 11 ? 'PM' : 'AM'
+    return `${hour}:${minutes} ${afternoon}`
+  }
+
+  useEffect(() => {
+    const id = elementId('#address-form')
+    dispatch(setFormRef({ reference: id }))
+  }, [])
 
   return (
-    <form className={styles._formContainer}>
+    <form className={styles._formContainer} id='address-form'>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
 
@@ -23,9 +54,8 @@ const AddressInformation = () => {
             <BlackDropDown
               height="2.5rem"
               method={openDate}
-              title={startDate.toDateString()}
+              title={parseDate()}
             />
-
             {
               inputType
               &&
@@ -33,8 +63,8 @@ const AddressInformation = () => {
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
+                  minDate={new Date()}
                   inline
-
                 />
               </div>
             }
@@ -42,11 +72,30 @@ const AddressInformation = () => {
 
         </div>
         <div className={styles._formItem}>
-          <BlackDropDown
-            height="2.5rem"
-            title="00:00 PM"
-            specialAlign
-          />
+          <div className={styles._dropParent}>
+            <BlackDropDown
+              height="2.5rem"
+              title={getHour(hour)}
+              method={openHour}
+              specialAlign
+            />
+
+            {
+              showHour &&
+              <div className={styles._hoursParent}>
+                <DatePicker
+                  onChange={(date) => setHour(date)}
+                  showTimeSelect
+                  showTimeSelectOnly
+                  timeIntervals={15}
+                  timeCaption='Time'
+                  dateFormat="h:mm aa"
+                  inline
+                />
+              </div>
+            }
+
+          </div>
         </div>
         <div className={styles._formItem}>
 
