@@ -1,30 +1,39 @@
 import { GeneralButton } from '@components'
+import { useDispatch, useSelector } from 'react-redux'
+import { changeStep } from '@store/actions'
 import styles from './styles.module.scss'
 
 const options = [
   {
     checkboxClass: '_checkboxActive',
     labelClass: '_processActive',
-    title: 'Tus datos'
+    title: 'Tus datos',
+    step: 1,
   },
   {
     checkboxClass: '_checkboxDesactive',
     labelClass: '_processDesactive',
-    title: 'Forma de entrega'
+    title: 'Forma de entrega',
+    step: 2,
   },
   {
     checkboxClass: '_checkboxDesactive',
     labelClass: '_processDesactive',
-    title: 'Forma de pago'
+    title: 'Forma de pago',
+    step: 3,
   },
   {
     checkboxClass: '_checkboxDesactive',
     labelClass: '_processDesactive',
-    title: 'Factura'
+    title: 'Factura',
+    step: 4,
   },
 ]
 
 const LeftSection = () => {
+  // const { step } = useSelector((state: any) => state.checkout);
+  const dispatch = useDispatch()
+
   return (
     <>
       <div className={styles._paymentProcess}>
@@ -32,7 +41,13 @@ const LeftSection = () => {
         <p>Llena los siguiente parametros para realizar tu compra</p>
         {
           options.map((option, index) => (
-            <div key={index} className={styles._processContainer}>
+            <div
+              key={index}
+              className={styles._processContainer}
+              onClick={() => {
+                dispatch(changeStep(option.step))
+              }}
+            >
               <div className={styles._checkboxContainer}>
                 <input
                   type="checkbox"
