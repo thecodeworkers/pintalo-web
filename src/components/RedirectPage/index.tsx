@@ -12,7 +12,6 @@ const RedirectPage = () => (
         </div>
         <p className={styles._title}>Redirecting...</p>
       </div>
-
     </div>
   </div>
 )
