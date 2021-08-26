@@ -3,36 +3,32 @@ import { useDispatch, useSelector } from 'react-redux'
 import { changeStep } from '@store/actions'
 import styles from './styles.module.scss'
 
-const options = [
-  {
-    checkboxClass: '_checkboxActive',
-    labelClass: '_processActive',
-    title: 'Tus datos',
-    step: 1,
-  },
-  {
-    checkboxClass: '_checkboxDesactive',
-    labelClass: '_processDesactive',
-    title: 'Forma de entrega',
-    step: 2,
-  },
-  {
-    checkboxClass: '_checkboxDesactive',
-    labelClass: '_processDesactive',
-    title: 'Forma de pago',
-    step: 3,
-  },
-  {
-    checkboxClass: '_checkboxDesactive',
-    labelClass: '_processDesactive',
-    title: 'Factura',
-    step: 4,
-  },
-]
-
 const LeftSection = () => {
-  // const { step } = useSelector((state: any) => state.checkout);
+  const { step, currentStep } = useSelector((state: any) => state.checkout);
   const dispatch = useDispatch()
+
+  const options = [
+    {
+      title: 'Tus datos',
+      step: 1,
+      isEnabled: (step >= 1 || currentStep >= 1) ? true : false
+    },
+    {
+      title: 'Forma de entrega',
+      step: 2,
+      isEnabled: (step >= 2 || currentStep >= 2) ? true : false
+    },
+    {
+      title: 'Forma de pago',
+      step: 3,
+      isEnabled: (step >= 3 || currentStep >= 3) ? true : false
+    },
+    {
+      title: 'Factura',
+      step: 4,
+      isEnabled: (step >= 4 || currentStep >= 4) ? true : false
+    },
+  ]
 
   return (
     <>
@@ -45,18 +41,25 @@ const LeftSection = () => {
               key={index}
               className={styles._processContainer}
               onClick={() => {
-                dispatch(changeStep(option.step))
+                if (option.isEnabled) {
+                  if (!currentStep || step > currentStep) {
+                    dispatch(changeStep({ step: option.step, currentStep: step }))
+                    return
+                  }
+
+                  dispatch(changeStep({ step: option.step }))
+                }
               }}
             >
               <div className={styles._checkboxContainer}>
                 <input
                   type="checkbox"
-                  className={styles[option.checkboxClass]}
+                  className={styles[option.isEnabled ? '_checkboxActive' : '_checkboxDesactive']}
                   onChange={() => {}}
                   checked={true}
                 />
               </div>
-              <div className={styles[option.labelClass]}>
+              <div className={styles[option.isEnabled ? '_processActive' : '_processDesactive']}>
                 <h1>{option.title}</h1>
               </div>
             </div>
