@@ -7,7 +7,8 @@ const initialState = {
   budget: null,
   payment: null,
   reference: null,
-  step: 1
+  step: 1,
+  currentStep: 0
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {
