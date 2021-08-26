@@ -6,30 +6,23 @@ import 'react-datepicker/dist/react-datepicker.css'
 import { useDispatch } from 'react-redux'
 import { elementId } from '@utils/common'
 import { setFormRef } from '@store/actions'
+import { formikAddresInfo } from './formik'
 
 const countries = ['Venezuela', 'Colombia', 'Argentina']
 const cities = ['Caracas', 'Bogota', 'Buenos Aires']
 
 const AddressInformation = () => {
 
-  const dispatch = useDispatch()
-  const [inputType, setInputType] = useState(false)
-  const [startDate, setStartDate] = useState(new Date());
-  const [hour, setHour] = useState(new Date())
-  const [showHour, setShowHour] = useState(false)
 
-  const openDate = () => setInputType((inputType: boolean) => !inputType)
-  const openHour = () => setShowHour((showHour: boolean) => !showHour)
-
-  const parseDate = () => {
-    const year = startDate.getFullYear()
-    const month = startDate.getMonth() + 1
-    const day = startDate.getDate()
+  const parseDate = (currentDate) => {
+    const year = currentDate.getFullYear()
+    const month = currentDate.getMonth() + 1
+    const day = currentDate.getDate()
 
     return `${day}/${month}/${year}`
   }
 
-  const getHour = (data) => {
+  const parseHour = (data) => {
     const date = new Date(data)
     let minutes = date.getMinutes()
     let hour = date.getHours()
@@ -40,13 +33,31 @@ const AddressInformation = () => {
     return `${hour}:${minutes} ${afternoon}`
   }
 
+  const dispatch = useDispatch()
+  const [inputType, setInputType] = useState(false)
+  const [startDate, setStartDate] = useState(new Date());
+  const [hour, setHour] = useState(new Date())
+  const [showHour, setShowHour] = useState(false)
+
+  const data: any = {
+    date: parseDate(startDate),
+    hour: parseHour(hour),
+    country: 'Venezuela',
+    municipality: 'Chacao'
+  }
+
+  const formik = formikAddresInfo(dispatch, data)
+  const openDate = () => setInputType((inputType: boolean) => !inputType)
+  const openHour = () => setShowHour((showHour: boolean) => !showHour)
+
+
   useEffect(() => {
     const id = elementId('#address-form')
     dispatch(setFormRef({ reference: id }))
   }, [])
 
   return (
-    <form className={styles._formContainer} id='address-form'>
+    <form className={styles._formContainer} id='address-form' onSubmit={formik.handleSubmit}>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
 
@@ -54,7 +65,7 @@ const AddressInformation = () => {
             <BlackDropDown
               height="2.5rem"
               method={openDate}
-              title={parseDate()}
+              title={parseDate(startDate)}
             />
             {
               inputType
@@ -75,7 +86,7 @@ const AddressInformation = () => {
           <div className={styles._dropParent}>
             <BlackDropDown
               height="2.5rem"
-              title={getHour(hour)}
+              title={parseHour(hour)}
               method={openHour}
               specialAlign
             />
@@ -104,20 +115,48 @@ const AddressInformation = () => {
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
           <label htmlFor="Nombre">Nombre</label>
-          <input placeholder='Nombre' className={styles._input} />
+          <input
+            placeholder='Nombre'
+            className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
+            name='name'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.name}
+            />
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Apellido">Apellido</label>
-          <input placeholder='Apellido' className={styles._input} />
+          <input
+            placeholder='Apellido'
+            className={formik.errors.lastname && formik.touched.lastname ? styles._inputError : styles._input}
+            name='lastname'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.lastname}
+          />
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Telefono">Telefono</label>
-          <input placeholder='Telefono' className={styles._input} />
+          <input
+            placeholder='Telefono'
+            className={formik.errors.phone && formik.touched.phone ? styles._inputError : styles._input}
+            name='phone'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.phone}
+          />
         </div>
       </div>
       <div className={styles._largeInputContainerRow}>
         <label htmlFor="Direccion">Dirección (zona/urbanización, calle, casa/edificio)</label>
-        <input placeholder='Dirección' className={styles._input} />
+        <input
+          placeholder='Dirección'
+          className={formik.errors.address && formik.touched.address ? styles._inputError : styles._input}
+          name='address'
+          onChange={formik.handleChange}
+          onBlur={formik.handleBlur}
+          value={formik.values.address}
+        />
       </div>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
@@ -133,17 +172,38 @@ const AddressInformation = () => {
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Ciudad">Ciudad</label>
-          <input placeholder='Ciudad' className={styles._input} />
+          <input
+            placeholder='Ciudad'
+            className={formik.errors.city && formik.touched.city ? styles._inputError : styles._input}
+            name='city'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.city}
+          />
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Codigo Postal">Código Postal</label>
-          <input placeholder='Código Postal' className={styles._input} />
+          <input
+            placeholder='Código Postal'
+            className={formik.errors.postalCode && formik.touched.postalCode ? styles._inputError : styles._input}
+            name='postalCode'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.postalCode}
+            />
         </div>
       </div>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
           <label htmlFor="Punto de referencia">Punto de referencia</label>
-          <input placeholder='Punto de referencia' className={styles._input} />
+          <input
+            placeholder='Punto de referencia'
+            className={formik.errors.referencePoint && formik.touched.referencePoint ? styles._inputError : styles._input}
+            name='referencePoint'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.referencePoint}
+          />
         </div>
         <div className={styles._formLargeItem}>
           <label htmlFor="Municipio">Municipio</label>

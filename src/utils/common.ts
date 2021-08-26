@@ -55,3 +55,22 @@ export const elementId = (id: string) => {
   const element = document.querySelector(id)
   return element.id
 }
+
+export const parseDate = (currentDate) => {
+  const year = currentDate.getFullYear()
+  const month = currentDate.getMonth() + 1
+  const day = currentDate.getDate()
+
+  return `${day}/${month}/${year}`
+}
+
+export const parseHour = (data) => {
+  const date = new Date(data)
+  let minutes: any = date.getMinutes()
+  let hour: any = date.getHours()
+  hour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+  hour = hour < 10 ? `0${hour}` : hour
+  minutes = minutes < 10 ? `0${minutes}` : minutes
+  const afternoon = date.getHours() > 11 ? 'PM' : 'AM'
+  return `${hour}:${minutes} ${afternoon}`
+}
