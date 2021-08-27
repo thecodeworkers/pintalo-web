@@ -7,49 +7,31 @@ import { useDispatch } from 'react-redux'
 import { elementId } from '@utils/common'
 import { setFormRef } from '@store/actions'
 import { formikAddresInfo } from './formik'
+import { parseDate, parseHour } from '@utils/common'
 
 const countries = ['Venezuela', 'Colombia', 'Argentina']
-const cities = ['Caracas', 'Bogota', 'Buenos Aires']
+const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
 
 const AddressInformation = () => {
-
-
-  const parseDate = (currentDate) => {
-    const year = currentDate.getFullYear()
-    const month = currentDate.getMonth() + 1
-    const day = currentDate.getDate()
-
-    return `${day}/${month}/${year}`
-  }
-
-  const parseHour = (data) => {
-    const date = new Date(data)
-    let minutes = date.getMinutes()
-    let hour = date.getHours()
-    hour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
-    hour = hour < 10 ? `0${hour}` : hour
-    minutes = minutes < 10 ? `0${minutes}` : minutes
-    const afternoon = date.getHours() > 11 ? 'PM' : 'AM'
-    return `${hour}:${minutes} ${afternoon}`
-  }
 
   const dispatch = useDispatch()
   const [inputType, setInputType] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
   const [hour, setHour] = useState(new Date())
   const [showHour, setShowHour] = useState(false)
+  const [country, setCountry] = useState('')
+  const [municipality, setMunicipality] = useState('')
 
   const data: any = {
     date: parseDate(startDate),
     hour: parseHour(hour),
-    country: 'Venezuela',
-    municipality: 'Chacao'
+    country,
+    municipality
   }
 
   const formik = formikAddresInfo(dispatch, data)
   const openDate = () => setInputType((inputType: boolean) => !inputType)
   const openHour = () => setShowHour((showHour: boolean) => !showHour)
-
 
   useEffect(() => {
     const id = elementId('#address-form')
@@ -66,6 +48,7 @@ const AddressInformation = () => {
               height="2.5rem"
               method={openDate}
               title={parseDate(startDate)}
+
             />
             {
               inputType
@@ -167,6 +150,7 @@ const AddressInformation = () => {
               title="Seleccione país"
               specialAlign
               items={countries}
+              returnValue={(country) => setCountry(country)}
             />
           </div>
         </div>
@@ -213,12 +197,14 @@ const AddressInformation = () => {
               title="Chacao"
               specialAlign
               showValue
-              items={cities}
+              items={municipalities}
+              returnValue={(municipality) => setMunicipality(municipality)}
             />
           </div>
         </div>
       </div>
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
+      { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
     </form>
   )
 }

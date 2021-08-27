@@ -8,13 +8,15 @@ const BlackDropDown = ({
   specialAlign = false,
   showValue = false,
   onSet = null,
-  method = null
+  method = null,
+  returnValue = null
 }) => {
   const [show, setShow] = useState(false)
   const [value, setValue] = useState('')
 
   const setNewValue = (value) => {
     setValue(value)
+    if(returnValue) returnValue(value)
     if (onSet) onSet(value)
   }
 

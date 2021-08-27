@@ -52,6 +52,13 @@ export const formikAddresInfo = (dispatch: any, data: any) => (useFormik({
 
   onSubmit: values => {
     const newValues = { ...values, ...data }
+    // for (const property in newValues) {
+    //   if (newValues[property] == '') return console.log('valid')
+    // }
+
+    // return console.log('invalid')
+
+    // return console.log(newValues)
     dispatch(setCheckoutData({ budget: newValues, step: 3 }))
     dispatch(setMenuShow({ toast: settings }))
 
