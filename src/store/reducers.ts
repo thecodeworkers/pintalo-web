@@ -10,6 +10,7 @@ import shop from './shop/reducer'
 import cart from './cart/reducer'
 import scrollReference from './scrollReference/reducer'
 import checkout from './checkout/reducer'
+import contact from './contact/reducer'
 
 const reducers = combineReducers({
   page,
@@ -22,7 +23,8 @@ const reducers = combineReducers({
   shop,
   cart,
   scrollReference,
-  checkout
+  checkout,
+  contact
 })
 
 export default reducers
