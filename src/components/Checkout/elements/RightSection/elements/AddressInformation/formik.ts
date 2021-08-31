@@ -1,12 +1,20 @@
 import { useFormik } from 'formik'
 import { onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
-import { setCheckoutData, setMenuShow} from '@store/actions'
+import { setCheckoutData } from '@store/actions'
+import { showToast } from '@utils/common'
+
 import * as Yup from 'yup'
 
-const settings = {
+const settings: any = {
   status: 1,
   message: 'message',
   type: 'success'
+}
+
+const errorSettings: any = {
+  status: 1,
+  message: 'error',
+  type: 'error'
 }
 
 export const formikAddresInfo = (dispatch: any, data: any) => (useFormik({
@@ -52,18 +60,12 @@ export const formikAddresInfo = (dispatch: any, data: any) => (useFormik({
 
   onSubmit: values => {
     const newValues = { ...values, ...data }
-    // for (const property in newValues) {
-    //   if (newValues[property] == '') return console.log('valid')
-    // }
+    const dataArray = Object.values(newValues)
+    const notValid = dataArray.some((item: string) => item == '')
 
-    // return console.log('invalid')
+    if(notValid) return showToast(dispatch, errorSettings)
 
-    // return console.log(newValues)
-    dispatch(setCheckoutData({ budget: newValues, step: 3 }))
-    dispatch(setMenuShow({ toast: settings }))
-
-    setTimeout(() => {
-      dispatch(setMenuShow({ toast: { ...settings, status: 2 }}))
-    }, 2000);
+    showToast(dispatch, settings)
+    dispatch(setCheckoutData({ address: newValues, step: 4 }))
   }
 }))

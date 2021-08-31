@@ -7,7 +7,7 @@ const initialState = {
   budget: null,
   payment: null,
   reference: null,
-  step: 1,
+  step: 2,
   currentStep: 0
 }
 

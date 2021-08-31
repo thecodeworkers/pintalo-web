@@ -1,19 +1,49 @@
+import { useEffect, useState} from 'react'
 import { BlackDropDown } from '@components'
 import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
+import { elementId } from '@utils/common'
+import { setFormRef } from '@store/actions'
 
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const formik = formikBudgetInfo(dispatch)
+  const formik = formikBudgetInfo(dispatch, {})
 
-  const state = useSelector((state: any) => state.checkout)
+  const checkout = useSelector((state: any) => state.checkout)
 
-  console.log('CHECKOOOOOOOUT', state)
+  const deliveryData = checkout?.address || {}
+
+  const countries = ['Venezuela', 'Colombia', 'Argentina']
+  const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
+  const [currentCheckbox, setCurrentCheckbox] = useState(2)
+
+  useEffect(() => {
+    const id = elementId('#budget-form')
+    dispatch(setFormRef({ reference: id }))
+  }, [])
+
+  const checkboxAction = (current: number) => {
+    setCurrentCheckbox(current)
+    if(current == 1) return fillFields()
+    if(current == 2) return resetFields()
+  }
+
+  const fillFields = () => {
+    for (const key in deliveryData) {
+      formik.setFieldValue(key, deliveryData[key])
+    }
+  }
+
+  const resetFields = () => {
+    for (const key in deliveryData) {
+      formik.setFieldValue(key, '')
+    }
+  }
 
   return (
-    <form className={styles._formContainer} onSubmit={formik.handleSubmit}>
+    <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='budget-form'>
       <h1 className={styles._selectionTitle}>Seleccione una opción</h1>
       <div className={styles._selectionContainer}>
         <div className={styles._optionContainerDisabled}>
@@ -21,8 +51,8 @@ const BudgetInformation = () => {
             <input
               type="checkbox"
               className={styles._checkboxActive}
-              onChange={() => {}}
-              checked={false}
+              onChange={() => checkboxAction(1)}
+              checked={currentCheckbox == 1 ? true : false}
             />
           </div>
           <div className={styles._textContainer}>
@@ -35,8 +65,8 @@ const BudgetInformation = () => {
             <input
               type="checkbox"
               className={styles._checkboxActive}
-              onChange={() => {}}
-              checked={true}
+              onChange={() => checkboxAction(2)}
+              checked={currentCheckbox == 2 ? true : false}
             />
           </div>
           <div className={styles._textContainer}>
@@ -49,7 +79,7 @@ const BudgetInformation = () => {
           <label htmlFor="Nombre">Nombre</label>
           <input
             placeholder='Nombre'
-            className={styles._input}
+            className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
             name='name'
             type='text'
             onChange={formik.handleChange}
@@ -61,7 +91,7 @@ const BudgetInformation = () => {
           <label htmlFor="Apellido">Apellido</label>
           <input
             placeholder='Apellido'
-            className={styles._input}
+            className={formik.errors.lastname && formik.touched.lastname ? styles._inputError : styles._input}
             name='lastname'
             type='text'
             onChange={formik.handleChange}
@@ -73,7 +103,7 @@ const BudgetInformation = () => {
           <label htmlFor="Telefono">Telefono</label>
           <input
             placeholder='Telefono'
-            className={styles._input}
+            className={formik.errors.phone && formik.touched.phone ? styles._inputError : styles._input}
             name='phone'
             type='text'
             onChange={formik.handleChange}
@@ -86,7 +116,7 @@ const BudgetInformation = () => {
         <label htmlFor="Direccion">Dirección (zona/urbanización, calle, casa/edificio)</label>
         <input
           placeholder='Dirección'
-          className={styles._input}
+          className={formik.errors.address && formik.touched.address ? styles._inputError : styles._input}
           name='address'
           type='text'
           onChange={formik.handleChange}
@@ -102,6 +132,7 @@ const BudgetInformation = () => {
               height="2.5rem"
               title="Seleccione país"
               specialAlign
+              items={countries}
             />
           </div>
         </div>
@@ -109,7 +140,7 @@ const BudgetInformation = () => {
           <label htmlFor="Ciudad">Ciudad</label>
           <input
             placeholder='Ciudad'
-            className={styles._input}
+            className={formik.errors.city && formik.touched.city ? styles._inputError : styles._input}
             name='city'
             type='text'
             onChange={formik.handleChange}
@@ -121,7 +152,7 @@ const BudgetInformation = () => {
           <label htmlFor="Codigo Postal">Código Postal</label>
           <input
             placeholder='Código Postal'
-            className={styles._input}
+            className={formik.errors.postalCode && formik.touched.postalCode ? styles._inputError : styles._input}
             name='postalCode'
             type='text'
             onChange={formik.handleChange}
@@ -135,7 +166,7 @@ const BudgetInformation = () => {
           <label htmlFor="Punto de referencia">Punto de referencia</label>
           <input
             placeholder='Punto de referencia'
-            className={styles._input}
+            className={formik.errors.referencePoint && formik.touched.referencePoint ? styles._inputError : styles._input}
             name='referencePoint'
             type='text'
             onChange={formik.handleChange}
@@ -149,6 +180,7 @@ const BudgetInformation = () => {
             <BlackDropDown
               height="2.5rem"
               title="Chacao"
+              items={municipalities}
               specialAlign
               showValue
             />
@@ -156,8 +188,8 @@ const BudgetInformation = () => {
         </div>
       </div>
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
+      { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
 
-      <button type='submit'> click!</button>
     </form>
   )
 }

@@ -1,9 +1,23 @@
 import { useFormik } from 'formik'
-import { emailRegex, passwordRegex } from '@utils/regex'
+import { onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
 import { setCheckoutData } from '@store/actions'
+import { showToast } from '@utils/common'
+
 import * as Yup from 'yup'
 
-export const formikBudgetInfo = dispatch => (useFormik({
+const settings: any = {
+  status: 1,
+  message: 'message',
+  type: 'success'
+}
+
+const errorSettings: any = {
+  status: 1,
+  message: 'error',
+  type: 'error'
+}
+
+export const formikBudgetInfo = (dispatch: any, data: any) => (useFormik({
   initialValues: {
     name: '',
     lastname: '',
@@ -11,23 +25,45 @@ export const formikBudgetInfo = dispatch => (useFormik({
     address: '',
     country: '',
     city: '',
-    postalCode: '',
     referencePoint: '',
-    municipality: ''
+    postalCode: ''
   },
 
-  // validationSchema: Yup.object({
-  //   email: Yup.string()
-  //     .required()
-  //     .matches(emailRegex),
+  validationSchema: Yup.object({
+    name: Yup.string()
+      .min(2)
+      .required()
+      .matches(onlyLettersRegex),
 
-  //   password: Yup.string()
-  //     .min(8)
-  //     .required()
-  //     .matches(passwordRegex)
-  // }),
+    lastname: Yup.string()
+      .min(2)
+      .required()
+      .matches(onlyLettersRegex),
+
+    phone: Yup.string()
+      .min(9)
+      .max(11)
+      .required()
+      .matches(onlyNumbersRegex),
+
+    address: Yup.string()
+      .required()
+      .max(200),
+
+    postalCode: Yup.string()
+      .required()
+      .max(4)
+      .matches(onlyNumbersRegex)
+  }),
 
   onSubmit: values => {
-    dispatch(setCheckoutData({ budget: values }))
+    const newValues = { ...values, ...data }
+    const dataArray = Object.values(newValues)
+    const notValid = dataArray.some((item: string) => item == '')
+
+    if(notValid) return showToast(dispatch, errorSettings)
+
+    showToast(dispatch, settings)
+    dispatch(setCheckoutData({ budget: newValues, step: 3 }))
   }
 }))

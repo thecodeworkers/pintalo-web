@@ -1,5 +1,6 @@
 import { call, delay, put } from '@redux-saga/core/effects'
 import { END } from '@redux-saga/core'
+import { setMenuShow } from '@store/actions'
 
 export const normalizedArray = response => response ? response : []
 
@@ -73,4 +74,12 @@ export const parseHour = (data) => {
   minutes = minutes < 10 ? `0${minutes}` : minutes
   const afternoon = date.getHours() > 11 ? 'PM' : 'AM'
   return `${hour}:${minutes} ${afternoon}`
+}
+
+export const showToast = (dispatch: any, settings) => {
+  dispatch(setMenuShow({ toast: settings }))
+
+  setTimeout(() => {
+    dispatch(setMenuShow({ toast: { ...settings, status: 2 }}))
+  }, 2000);
 }

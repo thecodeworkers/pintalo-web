@@ -2,8 +2,9 @@ import { useFormik } from 'formik'
 import { emailRegex, onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
 import * as Yup from 'yup'
 import { setCheckoutData, setMenuShow } from '@store/actions'
+import { showToast } from '@utils/common'
 
-const settings = {
+const settings: any = {
   status: 1,
   message: 'message',
   type: 'success'
@@ -48,10 +49,6 @@ export const formikBasicData = dispatch => (useFormik({
 
   onSubmit: values => {
     dispatch(setCheckoutData({ basic: values, step: 2 }))
-    dispatch(setMenuShow({ toast: settings }))
-
-    setTimeout(() => {
-      dispatch(setMenuShow({ toast: { ...settings, status: 2 }}))
-    }, 2000);
+    showToast(dispatch, settings)
   }
 }))
