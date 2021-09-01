@@ -9,8 +9,15 @@ import { setFormRef } from '@store/actions'
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const formik = formikBudgetInfo(dispatch, {})
+  const [country, setCountry] = useState('')
+  const [municipality, setMunicipality] = useState('')
 
+  const data: any = {
+    country,
+    municipality
+  }
+
+  const formik = formikBudgetInfo(dispatch, data)
   const checkout = useSelector((state: any) => state.checkout)
 
   const deliveryData = checkout?.address || {}
@@ -27,19 +34,25 @@ const BudgetInformation = () => {
   const checkboxAction = (current: number) => {
     setCurrentCheckbox(current)
     if(current == 1) return fillFields()
-    if(current == 2) return resetFields()
+    resetFields()
   }
 
   const fillFields = () => {
     for (const key in deliveryData) {
       formik.setFieldValue(key, deliveryData[key])
     }
-  }
 
+    setCountry(deliveryData?.country)
+    setMunicipality(deliveryData?.municipality)
+  }
+``
   const resetFields = () => {
     for (const key in deliveryData) {
       formik.setFieldValue(key, '')
     }
+
+    setCountry('')
+    setMunicipality('')
   }
 
   return (
@@ -130,9 +143,10 @@ const BudgetInformation = () => {
           <div className={styles._dropDownSeparation}>
             <BlackDropDown
               height="2.5rem"
-              title="Seleccione país"
+              title={!country ? 'Seleccione país' : country}
               specialAlign
               items={countries}
+              returnValue={(country) => setCountry(country)}
             />
           </div>
         </div>
@@ -179,8 +193,9 @@ const BudgetInformation = () => {
           <div className={styles._dropDownSeparation}>
             <BlackDropDown
               height="2.5rem"
-              title="Chacao"
               items={municipalities}
+              title={!municipality ? 'Seleccione municipio' : municipality}
+              returnValue={(municipality) => setMunicipality(municipality)}
               specialAlign
               showValue
             />

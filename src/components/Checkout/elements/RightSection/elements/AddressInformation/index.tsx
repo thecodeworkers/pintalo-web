@@ -48,7 +48,6 @@ const AddressInformation = () => {
               height="2.5rem"
               method={openDate}
               title={parseDate(startDate)}
-
             />
             {
               inputType
