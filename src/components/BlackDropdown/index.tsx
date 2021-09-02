@@ -34,7 +34,10 @@ const BlackDropDown = ({
         <div className={styles._dropdown_content}>
           {
             items.map((item, index) => (
-              <p key={index} onClick={() => setNewValue(item.label || item)}>{item.label || item}</p>
+              <p key={index} onClick={() => {
+                setNewValue(item.label || item)
+                setShow(show => !show)
+              }}>{item.label || item}</p>
             ))
           }
         </div>

@@ -150,6 +150,26 @@
   height: 30rem;
 }
 
+._backButton{
+  @include font('helvetica', 'helvetica20');
+  display: block;
+  position: absolute;
+  z-index: 10;
+  top: 100px;
+  right: 10px;
+  background-color: $brightSun;
+  padding: 0.6rem 1.5rem;
+  border-radius: 3rem;
+  color: $charade;
+  cursor: pointer;
+  transition: all 0.5s;
+  text-align: center;
+  &:hover{
+    color: $white;
+    background-color: $charade;
+  }
+}
+
 @include responsive(xxl) {
   ._modalBody {
     width: 40%;
@@ -166,6 +186,14 @@
   ._container {
     height: 100vh;
     flex-direction: column;
+  }
+  ._backButton{
+    width: 80%;
+    position: relative;
+    top:0px;
+    right: 0px;
+    margin: 0 auto;
+    margin-bottom: 2rem;
   }
 
   ._imageContainer {

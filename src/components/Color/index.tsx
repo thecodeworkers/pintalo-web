@@ -11,12 +11,14 @@ import {
 } from '@components'
 import styles from './styles.module.scss'
 import { createMarkup } from '@utils'
+import { useRouter } from 'next/router'
 
 const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
   const [quantity, setQuantity] = useState(1)
   const [variation, setVariaton] = useState({})
   const dispatch = useDispatch()
+  const router = useRouter()
 
   const setFirstVariation = () => {
     let data = {}
@@ -134,6 +136,9 @@ const Color = ({ detail }) => {
               </GeneralButton>
             </div>
           </div>
+        </div>
+        <div className={styles._backButton} onClick={() => router.back()}>
+          Volver
         </div>
       </div>
 
