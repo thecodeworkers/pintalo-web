@@ -19,7 +19,7 @@ const getData = (data, type) => {
       return data['productCategories']['nodes']
     default:
       let newData = _getDeep(data, type)
-      if('nodes' in newData) return newData.nodes
+      if ('nodes' in newData) return newData.nodes
       return newData
   }
 }
@@ -100,15 +100,19 @@ export const reduceVariation = (nodes, variation) => {
     let valid = true
     if (index === 1) {
       for (let attr of prev.attributes.nodes)
-        for (let variant in variation)
-          if (attr.name.includes(variant))
+        for (let variant in variation) {
+          if (attr.name.includes(variant)) {
             valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+          }
+        }
       if (valid) return prev
     }
     for (let attr of next.attributes.nodes) {
       for (let variant in variation) {
-        if (attr.name.includes(variant))
-          valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+        if (attr.name.includes(variant)) {
+          const validResult = attr.value.toLowerCase() === variation[variant].toLowerCase()
+          valid = (index === 1) ? validResult : valid && validResult
+        }
       }
     }
     return (valid) ? next : prev

@@ -11,7 +11,6 @@ const BlackDropDown = ({
 }) => {
   const [show, setShow] = useState(false)
   const [value, setValue] = useState('')
-
   const setNewValue = (value) => {
     setValue(value)
     if (onSet) onSet(value)
@@ -35,9 +34,9 @@ const BlackDropDown = ({
           {
             items.map((item, index) => (
               <p key={index} onClick={() => {
-                setNewValue(item.label || item)
+                setNewValue(item.label || item.name || item)
                 setShow(show => !show)
-              }}>{item.label || item}</p>
+              }}>{item.label || item.name || item}</p>
             ))
           }
         </div>
