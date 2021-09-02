@@ -3,7 +3,7 @@ import styles from './styles.module.scss'
 import { BlackDropDown } from '@components'
 import DatePicker from 'react-datepicker'
 import 'react-datepicker/dist/react-datepicker.css'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { elementId } from '@utils/common'
 import { setFormRef } from '@store/actions'
 import { formikAddresInfo } from './formik'
@@ -15,12 +15,14 @@ const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
 const AddressInformation = () => {
 
   const dispatch = useDispatch()
+  const { checkout: { address } } = useSelector((state: any) => state)
+
   const [inputType, setInputType] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
   const [hour, setHour] = useState(new Date())
   const [showHour, setShowHour] = useState(false)
-  const [country, setCountry] = useState('')
-  const [municipality, setMunicipality] = useState('')
+  const [country, setCountry] = useState(address?.country ?? '')
+  const [municipality, setMunicipality] = useState(address?.municipality ?? '')
 
   const data: any = {
     date: parseDate(startDate),
@@ -29,7 +31,7 @@ const AddressInformation = () => {
     municipality
   }
 
-  const formik = formikAddresInfo(dispatch, data)
+  const formik = formikAddresInfo(dispatch, data, address)
   const openDate = () => setInputType((inputType: boolean) => !inputType)
   const openHour = () => setShowHour((showHour: boolean) => !showHour)
 
@@ -146,7 +148,7 @@ const AddressInformation = () => {
           <div className={styles._dropDownSeparation}>
             <BlackDropDown
               height="2.5rem"
-              title="Seleccione país"
+              title={!country ? 'Seleccione país' : country}
               specialAlign
               items={countries}
               returnValue={(country) => setCountry(country)}
@@ -193,7 +195,7 @@ const AddressInformation = () => {
           <div className={styles._dropDownSeparation}>
             <BlackDropDown
               height="2.5rem"
-              title="Chacao"
+              title={!municipality ? 'Seleccione municipio' : municipality}
               specialAlign
               showValue
               items={municipalities}

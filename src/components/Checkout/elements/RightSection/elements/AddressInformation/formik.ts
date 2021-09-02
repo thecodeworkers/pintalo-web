@@ -17,18 +17,18 @@ const errorSettings: any = {
   type: 'error'
 }
 
-export const formikAddresInfo = (dispatch: any, data: any) => (useFormik({
+export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) => (useFormik({
   initialValues: {
-    date: '',
-    hour: '',
-    name: '',
-    lastname: '',
-    phone: '',
-    address: '',
-    country: '',
-    city: '',
-    referencePoint: '',
-    postalCode: ''
+    date: defaultValues?.date ?? '',
+    hour: defaultValues?.hour ?? '',
+    name: defaultValues?.name ?? '',
+    lastname: defaultValues?.lastname ?? '',
+    phone: defaultValues?.phone ??  '',
+    address: defaultValues?.address ?? '',
+    country: defaultValues?.country ?? '',
+    city: defaultValues?.city ?? '',
+    referencePoint: defaultValues?.referencePoint ?? '',
+    postalCode: defaultValues?.postalCode ?? ''
   },
 
   validationSchema: Yup.object({

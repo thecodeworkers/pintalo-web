@@ -4,27 +4,30 @@ import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { elementId } from '@utils/common'
-import { setFormRef } from '@store/actions'
+import { setFormRef, setCheckoutData } from '@store/actions'
 
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const [country, setCountry] = useState('')
-  const [municipality, setMunicipality] = useState('')
+  const checkout = useSelector((state: any) => state.checkout)
+  const { budget } = checkout
+
+  const [currentCheckbox, setCurrentCheckbox] = useState(budget ? 1 : 2)
+  const [country, setCountry] = useState(budget?.country ?? '')
+  const [municipality, setMunicipality] = useState(budget?.municipality ?? '')
 
   const data: any = {
     country,
     municipality
   }
 
-  const formik = formikBudgetInfo(dispatch, data)
-  const checkout = useSelector((state: any) => state.checkout)
+  const formik = formikBudgetInfo(dispatch, data, budget, currentCheckbox)
 
   const deliveryData = checkout?.address || {}
 
   const countries = ['Venezuela', 'Colombia', 'Argentina']
   const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
-  const [currentCheckbox, setCurrentCheckbox] = useState(2)
+
 
   useEffect(() => {
     const id = elementId('#budget-form')
@@ -33,7 +36,13 @@ const BudgetInformation = () => {
 
   const checkboxAction = (current: number) => {
     setCurrentCheckbox(current)
-    if(current == 1) return fillFields()
+    if(current == 1) {
+      fillFields()
+      dispatch(setCheckoutData({ budget: deliveryData }))
+      return
+    }
+
+    dispatch(setCheckoutData({ budget: null }))
     resetFields()
   }
 

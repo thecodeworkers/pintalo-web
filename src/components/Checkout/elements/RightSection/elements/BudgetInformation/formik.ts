@@ -17,16 +17,16 @@ const errorSettings: any = {
   type: 'error'
 }
 
-export const formikBudgetInfo = (dispatch: any, data: any) => (useFormik({
+export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, status: number) => (useFormik({
   initialValues: {
-    name: '',
-    lastname: '',
-    phone: '',
-    address: '',
-    country: '',
-    city: '',
-    referencePoint: '',
-    postalCode: ''
+    name: defaultValues?.name && status == 1 ? defaultValues?.name : '',
+    lastname: defaultValues?.lastname && status == 1 ? defaultValues?.lastname  : '',
+    phone: defaultValues?.phone && status == 1 ? defaultValues?.phone : '',
+    address: defaultValues?.address && status == 1 ? defaultValues?.address : '',
+    country: defaultValues?.country && status == 1 ? defaultValues?.country : '',
+    city: defaultValues?.city && status == 1 ? defaultValues?.city : '',
+    referencePoint: defaultValues?.referencePoint && status == 1 ? defaultValues?.referencePoint : '',
+    postalCode: defaultValues?.postalCode && status == 1 ? defaultValues?.postalCode : ''
   },
 
   validationSchema: Yup.object({

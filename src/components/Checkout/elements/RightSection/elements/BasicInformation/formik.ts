@@ -10,13 +10,13 @@ const settings: any = {
   type: 'success'
 }
 
-export const formikBasicData = dispatch => (useFormik({
+export const formikBasicData = (dispatch, defaultValues) => (useFormik({
   initialValues: {
-    name: '',
-    lastname: '',
-    document: '',
-    phone: '',
-    email: ''
+    name: defaultValues?.name ?? '',
+    lastname: defaultValues?.lastname ?? '',
+    document: defaultValues?.document ?? '',
+    phone: defaultValues?.phone ?? '',
+    email: defaultValues?.email ??  ''
   },
 
   validationSchema: Yup.object({

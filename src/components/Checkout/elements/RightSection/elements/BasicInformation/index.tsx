@@ -4,11 +4,15 @@ import { formikBasicData } from './formik'
 import { useDispatch } from 'react-redux'
 import { setFormRef } from '@store/actions'
 import { elementId } from '@utils/common'
+import { useFormikContext } from 'formik'
+import { useSelector } from 'react-redux'
 
 const BasicInformation = () => {
 
+  const { checkout } = useSelector((state: any) => state)
+
   const dispatch = useDispatch()
-  const formik = formikBasicData(dispatch)
+  const formik = formikBasicData(dispatch, checkout?.basic)
 
   useEffect(() => {
     const id = elementId('#basic-form')
