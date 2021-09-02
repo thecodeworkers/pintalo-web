@@ -5,29 +5,8 @@ import { useDispatch, useSelector } from 'react-redux'
 import { palettes, colorsBlue } from '@utils/tmpPalettes'
 import { Palette } from './elements'
 import styles from './styles.module.scss'
-
-const colors: any = [
-  { background: '#DF2935' },
-  { background: '#FFB521' },
-  { background: '#FFF700' },
-  { background: '#3EFC3E' },
-  { background: '#3CBC3C' },
-  { background: '#3CBC99' },
-  { background: '#7B8ECE' },
-  { background: '#8D70A2' },
-  { background: '#B7B7B7' },
-  { background: '#C8B99C' }
-]
-
-const types = [
-  { name: 'Pineco' },
-  { name: 'VP' },
-  { name: 'Manpica' },
-  { name: 'Butler tools' },
-  { name: 'Alpha' },
-  { name: 'Reinco' },
-  { name: 'Cebra' }
-]
+import { filter } from '@utils'
+import { buildPallete } from './functions'
 
 const caterories = [
   'colorOfBrand',
@@ -37,17 +16,18 @@ const caterories = [
 const Colors = () => {
   const {
     palette: { currentType },
-    colors: { category, brand, colorSelected }
+    colors: { category, brand, colorSelected }, product: { attributes: { colors, brands }, products }
   } = useSelector((state: any) => state)
 
   const dispatch = useDispatch()
 
-  const changeCategory = (index, type, elements) => {
+  const changeCategory = (index, type, element) => {
+    const filterProducts = (type === 'colors') ? filter(products, element, 'slug', ['colors', 'nodes']) : buildPallete(products, type, element)
     if (category != caterories[index])
       dispatch(selectOption('category', caterories[index]))
-      changePalette(type, elements)
+    changePalette(type, filterProducts)
 
-      if (index) dispatch(selectOption('brand', ''))
+    if (index) dispatch(selectOption('brand', ''))
   }
 
   const changePalette = (type, elements) => {
@@ -67,33 +47,31 @@ const Colors = () => {
                 className={`${styles._palette} ${styles._paletteTransition}`}
                 key={index}
                 onClick={() => {
-                  changeCategory(1, 'colors', colorsBlue)
-                  if (colorSelected != color.background)
-                    dispatch(selectOption('colorSelected', color.background))
+                  changeCategory(1, 'colors', color.slug)
+                  if (colorSelected != color.slug)
+                    dispatch(selectOption('colorSelected', color.slug))
                 }}
               >
                 <style jsx>{`
                   .${styles._palette} {
-                    background-color: ${color.background};
+                    background-color: #${color.slug};
                     width: calc(100% / ${colors.length + 2});
-                    ${
-                      (category == caterories[1] && colorSelected == color.background) ? (
-                        `
+                    ${(category == caterories[1] && colorSelected == color.slug) ? (
+                    `
                           transform: skew(-20deg) scale(1.1);
                           z-index: 20;
                         `
-                      ) : ''
-                    }
+                  ) : ''
+                  }
                   }
 
                   @media (max-width: 768px) {
                     .${styles._palette} {
                       width: 100%;
-                      ${
-                        (category == caterories[1] && colorSelected == color.background) ? (
-                          `transform: scale(1.1);`
-                        ) : ''
-                      }
+                      ${(category == caterories[1] && colorSelected == color.background) ? (
+                    `transform: scale(1.1);`
+                  ) : ''
+                  }
                     }
                   }
                 `}</style>
@@ -110,7 +88,10 @@ const Colors = () => {
               backgroundColor={category == caterories[0] ? '#262833' : '#E6E8E6'}
               textColor={category == caterories[0] ? '#FFFFFF' : '#262833'}
               adjustWidth
-              method={() => changeCategory(0, 'palettes', palettes)}
+              method={() => {
+                changeCategory(0, 'palettes', palettes)
+                dispatch(selectOption('brand', ''))
+              }}
             >
               <p>Colores por marcas</p>
             </GeneralButton>
@@ -120,7 +101,11 @@ const Colors = () => {
               backgroundColor={category == caterories[1] ? '#262833' : '#E6E8E6'}
               textColor={category == caterories[1] ? '#FFFFFF' : '#262833'}
               adjustWidth
-              method={() => changeCategory(1, 'colors', colorsBlue)}
+              method={() => {
+                changeCategory(1, 'colors', colors[0]?.slug)
+                if (colorSelected != colors[0]?.slug)
+                  dispatch(selectOption('colorSelected', colors[0]?.slug))
+              }}
             >
               <p>Crea tus colores</p>
             </GeneralButton>
@@ -130,7 +115,7 @@ const Colors = () => {
           (category == caterories[0] && currentType == 'palettes') && (
             <div className={styles._buttonsContainer}>
               {
-                types.map((type, index) => {
+                brands.map((type, index) => {
                   const name = type.name
 
                   return (
@@ -140,7 +125,10 @@ const Colors = () => {
                         textColor={'#fff'}
                         large="2.2rem"
                         adjustWidth
-                        method={() => dispatch(selectOption('brand', name))}
+                        method={() => {
+                          changeCategory(0, 'palettes', type.slug)
+                          dispatch(selectOption('brand', name))
+                        }}
                       >
                         <p className={styles._buttonText}>{name}</p>
                       </GeneralButton>

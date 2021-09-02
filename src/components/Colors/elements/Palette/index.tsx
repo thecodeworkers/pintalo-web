@@ -40,7 +40,7 @@ const Palette = () => {
                     setPage(1)
                   }
 
-                  if (currentType == 'colors') navigation('/color/cHJvZHVjdDoxOTc=')
+                  if (currentType == 'colors') navigation(`/color/${element.id}`)
                 }}>
                   <div className={styles._cartContainer}>
                     <img src="/images/icons/bx-cart.svg" alt={element.name} />
@@ -49,7 +49,7 @@ const Palette = () => {
 
                   <style jsx>{`
                     .${styles._card} {
-                      ${paintBackground(currentType, element, element?.color)}
+                      ${paintBackground(currentType, element, `#${element?.slug}`)}
                     }
                   `}</style>
                 </div>
@@ -72,7 +72,7 @@ const Palette = () => {
           </GeneralButton>
           {
             currentElements.length ? (
-              <Pagination currentPage={page} items={currentElements} perPage={perPage} changePage={setPage}/>
+              <Pagination currentPage={page} items={currentElements} perPage={perPage} changePage={setPage} />
             ) : null
           }
           <GeneralButton

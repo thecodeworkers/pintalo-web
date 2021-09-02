@@ -11,6 +11,12 @@ const _getDeep = (data, deep) => {
   return data
 }
 
+const _compareArray = (data, comparison, key) =>{
+  for(let item of data){
+    if(item[key] === comparison) return true
+  }
+}
+
 const getData = (data, type) => {
   switch (type) {
     case 'attributes':
@@ -42,9 +48,11 @@ export const filter = (nodes: Array<any>, comparison, key, deep = null) => {
   const nodeFilter = (node) => {
     let validation = true
     let validFilter = false
-    let select = _getDeep(node, deep)[key]
+    let deeps = _getDeep(node, deep)
+    let select = deeps[key]
     validFilter = select === comparison
     if (typeof select === 'string') validFilter = select.toLowerCase().includes(comparison.toLowerCase())
+    if (Array.isArray(deeps)) validFilter = _compareArray(deeps, comparison, key)
     return validation && validFilter
   }
 

@@ -10,42 +10,42 @@ export const paintBackground = (type, palette, color = '') => {
 
     if (colorsLength == 1) {
       fill = `
-        ${colors[0].color} 0%,
-        ${colors[0].color} 100%
+        #${colors[0].slug} 0%,
+        #${colors[0].slug} 100%
       `
-      fontColor = `${colors[0].color}`
+      fontColor = `${colors[0].slug}`
     }
 
     if (colorsLength == 2) {
       fill = `
-        ${colors[1].color}  50%,
-        ${colors[0].color}  50%
+        #${colors[1].slug}  50%,
+        #${colors[0].slug}  50%
       `
-      fontColor = `${colors[1].color}`
+      fontColor = `${colors[1].slug}`
     }
 
     if (colorsLength == 3) {
       fill = `
-        ${colors[2].color}  33.33%,
-        ${colors[1].color}  33.33%,
-        ${colors[1].color}  66.66%,
-        ${colors[0].color}  66.66%,
-        ${colors[0].color}  100%
+        #${colors[2].slug}  33.33%,
+        #${colors[1].slug}  33.33%,
+        #${colors[1].slug}  66.66%,
+        #${colors[0].slug}  66.66%,
+        #${colors[0].slug}  100%
       `
-      fontColor = `${colors[2].color}`
+      fontColor = `${colors[2].slug}`
     }
 
     if (colorsLength >= 4) {
       fill = `
-        ${colors[3].color}  25%,
-        ${colors[2].color}  25%,
-        ${colors[2].color}  50%,
-        ${colors[1].color}  50%,
-        ${colors[1].color}  75%,
-        ${colors[0].color}  75%,
-        ${colors[0].color}  100%
+        #${colors[3].slug}  25%,
+        #${colors[2].slug}  25%,
+        #${colors[2].slug}  50%,
+        #${colors[1].slug}  50%,
+        #${colors[1].slug}  75%,
+        #${colors[0].slug}  75%,
+        #${colors[0].slug}  100%
       `
-      fontColor = `${colors[3].color}`
+      fontColor = `${colors[3].slug}`
     }
 
     return `
