@@ -24,6 +24,9 @@ const home = `
           mediaItemUrl
           slug
         }
+        titleStepTwo
+        titleStepThree
+        titleStepFour
       }
       secondBanner {
         firstBanner {

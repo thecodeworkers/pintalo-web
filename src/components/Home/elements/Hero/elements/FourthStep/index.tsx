@@ -24,7 +24,7 @@ const FourthStep = ({ data }) => {
   return (
     <div className={styles._heroContainer}>
       <div className={styles._container}>
-        <p className={styles._title}>Por tipo</p>
+        <p className={styles._title}>{data.titleStepFour}</p>
         <div className={styles._buttonContainer}>
           {
             types.map((res, index) => {

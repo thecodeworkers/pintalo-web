@@ -16,7 +16,7 @@ const ThirdStep = ({ data }) => {
   return (
     <div className={styles._heroContainer}>
       <div className={styles._container}>
-        <p className={styles._title}>Por base</p>
+        <p className={styles._title}>{data.titleStepThree}</p>
         <div className={styles._buttonContainer}>
 
           {
