@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Colors } from '@components'
 import { mapProps } from '@utils'
-import { getShop } from '@store/actions'
+import { getColorsPage } from '@store/actions'
 import wrapper from '@store'
 
 function ColorsPage() {
@@ -16,7 +16,7 @@ function ColorsPage() {
 }
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }) => {
-    await mapProps(store, getShop())
+    await mapProps(store, getColorsPage())
   }
 )
 

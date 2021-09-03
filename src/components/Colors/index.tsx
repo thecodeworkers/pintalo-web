@@ -16,8 +16,11 @@ const caterories = [
 const Colors = () => {
   const {
     palette: { currentType },
-    colors: { category, brand, colorSelected }, product: { attributes: { colors, brands }, products }
+    colors: { category, brand, colorSelected }, product: { attributes: { colors, brands }, products },
+    page: { colorsPage = {} }
   } = useSelector((state: any) => state)
+
+  const { colors: data } = colorsPage
 
   const dispatch = useDispatch()
 
@@ -38,7 +41,7 @@ const Colors = () => {
     <div className={styles._container}>
       <div className={styles._firstSection}>
         <div className={styles._titleContainer}>
-          <p className={styles._title}>Imagina un color y encuéntralo aquí</p>
+          <p className={styles._title}>{data?.title}</p>
         </div>
         <div className={styles._paletteContainer}>
           {
@@ -81,7 +84,7 @@ const Colors = () => {
         </div>
       </div>
       <div className={styles._secondSection}>
-        <p className={styles._subTitle}>¿Ya sabes con cuál color y marca vas a pintar? Búscalo aquí.</p>
+        <p className={styles._subTitle}>{data?.subtitle}</p>
         <div className={styles._bigButtonContainer}>
           <div className={styles._bigButton}>
             <GeneralButton
@@ -93,7 +96,7 @@ const Colors = () => {
                 dispatch(selectOption('brand', ''))
               }}
             >
-              <p>Colores por marcas</p>
+              <p>{data?.buttonBrand}</p>
             </GeneralButton>
           </div>
           <div className={styles._bigButton}>
@@ -107,7 +110,7 @@ const Colors = () => {
                   dispatch(selectOption('colorSelected', colors[0]?.slug))
               }}
             >
-              <p>Crea tus colores</p>
+              <p>{data?.buttonColors}</p>
             </GeneralButton>
           </div>
         </div>
