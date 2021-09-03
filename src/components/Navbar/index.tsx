@@ -45,7 +45,7 @@ const Navbar = () => {
           </div>
 
           <div className={styles._linksParent}>
-            <p>({cart?.contents?.itemCount || 0})</p>
+            <p>({cart?.contents?.nodes?.length || 0})</p>
             <img src='/images/icons/cart.svg' alt='cart' width='16px' onClick={() => navigation('/cart')} />
             <img src='/images/icons/search.svg' alt='search' width='16px' onClick={() => navigation('/shop')} />
             {!isAuth && <img src='/images/icons/user.svg' alt='user' width='16px' onClick={() => navigation('/login')} />}

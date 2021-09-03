@@ -4,9 +4,10 @@ import { CrossSymbol } from '@components'
 import styles from './styles.module.scss'
 
 
-const options = ({ brands, categories, bases, types, uses, presentations, classes, colors }) => [
+const options = ({ brands, categories, bases, customTypes: types, uses, presentations, classes, colors }) => [
   {
     name: 'Brands',
+    type: 'brands',
     filters: brands
   },
   {
@@ -15,14 +16,17 @@ const options = ({ brands, categories, bases, types, uses, presentations, classe
   },
   {
     name: 'Bases',
+    type: 'bases',
     filters: bases
   },
   {
     name: 'Types',
+    type: 'customTypes',
     filters: types
   },
   {
     name: 'Uses',
+    type: 'uses',
     filters: uses
   },
   {
@@ -31,10 +35,12 @@ const options = ({ brands, categories, bases, types, uses, presentations, classe
   },
   {
     name: 'Classes',
+    type: 'clases',
     filters: classes
   },
   {
     name: 'Colors',
+    type: 'colors',
     filters: colors
   }
 ]
@@ -81,7 +87,8 @@ const Filters = () => {
               <div className={styles._optionsContainer}>
                 {
                   option.filters?.map((filter, fIndex) => {
-                    const type = (option.name === 'Categories') ? 'categories' : `attributes`
+                    let type = (option.name === 'Categories') ? 'categories' : `attributes`
+                    type = option.type ? option.type : type
                     return (
                       <div key={fIndex} className={styles._options}>
                         <div className={styles._checkboxContainer}>

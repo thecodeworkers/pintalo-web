@@ -1,20 +1,4 @@
 const attributes = `
-allPaUses(first: 1000000) {
-  nodes {
-    id
-    name
-    slug
-    count
-  }
-}
-allPaTypes(first: 1000000) {
-  nodes {
-    id
-    name
-    slug
-    count
-  }
-}
 allPaPresentations(first: 1000000) {
   nodes {
     id
@@ -23,36 +7,46 @@ allPaPresentations(first: 1000000) {
     count
   }
 }
-allPaBases(first: 1000000) {
+clases {
   nodes {
     id
     name
     slug
-    count
   }
 }
-paColors {
+colors {
   nodes {
     id
-    slug
     name
-    count
+    slug
   }
 }
-paClasses {
+brands {
   nodes {
+    id
     name
     slug
-    id
-    count
   }
 }
-allPaMarcas {
+bases {
   nodes {
     id
     name
     slug
-    count
+  }
+}
+uses {
+  nodes {
+    id
+    name
+    slug
+  }
+}
+customTypes{
+  nodes {
+    id
+    name
+    slug
   }
 }
 `

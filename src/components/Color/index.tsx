@@ -11,29 +11,16 @@ import {
 } from '@components'
 import styles from './styles.module.scss'
 import { createMarkup } from '@utils'
+import { useRouter } from 'next/router'
 
 const Color = ({ detail }) => {
   const [retina, setRetina] = useState(false)
   const [quantity, setQuantity] = useState(1)
-  const [variation, setVariaton] = useState({})
+  const [variation, setVariaton] = useState(null)
   const dispatch = useDispatch()
-
-  const setFirstVariation = () => {
-    let data = {}
-    if (detail?.attributes?.nodes) {
-      for (let attr of detail?.attributes?.nodes) {
-        data[attr.slug] = attr.options[0]
-      }
-      setVariaton(data)
-    }
-  }
-
-  useEffect(() => {
-    setFirstVariation()
-  }, [detail?.attributes?.nodes])
+  const router = useRouter()
 
   const { modal: { calculator } } = useSelector((state: any) => state.intermitence)
-
   const createCart = () => dispatch(addedItem(detail, quantity, variation))
   const setVar = (value) => setVariaton((oldVar) => ({ ...oldVar, pa_presentations: value }))
 
@@ -57,7 +44,7 @@ const Color = ({ detail }) => {
                     <div className={styles._lengthSelect}>
                       <BlackDropDown
                         height={retina ? '3.3rem' : '2.5rem'}
-                        items={detail?.attributes?.nodes?.filter((att) => att.name.toLowerCase() === "presentaciones")[0]?.options}
+                        items={detail?.attributes?.nodes?.filter((att) => att.name.toLowerCase() === "presentaciones")[0]?.terms?.nodes}
                         title="Tamaño"
                         onSet={setVar}
                       />
@@ -129,11 +116,15 @@ const Color = ({ detail }) => {
                 adjustWidth
                 large={retina ? '3.3rem' : '2.5rem'}
                 method={createCart}
+                disabled={!variation}
               >
                 Añadir al carrito
               </GeneralButton>
             </div>
           </div>
+        </div>
+        <div className={styles._backButton} onClick={() => router.back()}>
+          Volver
         </div>
       </div>
 

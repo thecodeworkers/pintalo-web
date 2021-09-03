@@ -18,7 +18,9 @@ const getData = (data, type) => {
     case 'categories':
       return data['productCategories']['nodes']
     default:
-      return _getDeep(data, type)
+      let newData = _getDeep(data, type)
+      if ('nodes' in newData) return newData.nodes
+      return newData
   }
 }
 
@@ -61,14 +63,13 @@ export const simplifyArray = (array) => {
 }
 
 export const productFilter = (nodes: Array<any>, comparison, key) => {
-
   const nodeFilter = (node) => {
     let validation = true
     let validFilter = false
     for (let type of Object.keys(comparison)) {
       let select = getData(node, type)
       for (let value of select) {
-        if (type === 'categories') {
+        if (type !== 'attributes') {
           for (let compare of comparison[type]) {
             if (value[key] === compare) {
               validFilter = true
@@ -90,7 +91,7 @@ export const productFilter = (nodes: Array<any>, comparison, key) => {
     }
     return validation && validFilter
   }
-  return (comparison.attributes.length || comparison.categories.length) ? nodes.filter(nodeFilter) : nodes
+  return (nodes.length > 1) ? nodes.filter(nodeFilter) : nodes
 }
 
 export const reduceVariation = (nodes, variation) => {
@@ -99,15 +100,19 @@ export const reduceVariation = (nodes, variation) => {
     let valid = true
     if (index === 1) {
       for (let attr of prev.attributes.nodes)
-        for (let variant in variation)
-          if (attr.name.includes(variant))
+        for (let variant in variation) {
+          if (attr.name.includes(variant)) {
             valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+          }
+        }
       if (valid) return prev
     }
     for (let attr of next.attributes.nodes) {
       for (let variant in variation) {
-        if (attr.name.includes(variant))
-          valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+        if (attr.name.includes(variant)) {
+          const validResult = attr.value.toLowerCase() === variation[variant].toLowerCase()
+          valid = (index === 1) ? validResult : valid && validResult
+        }
       }
     }
     return (valid) ? next : prev
