@@ -1,0 +1,63 @@
+@import '@styles/index.scss';
+
+._content{
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+._title{
+  font-size: 1rem;
+  @include font('helvetica', 'helvetica17');
+  margin-top: 1.5rem;
+  text-align: center;
+}
+
+._spinnerContainer{
+  align-self: center;
+}
+
+._spinner {
+  margin: 100px auto 0;
+  display: flex;
+  justify-content: space-between;
+  width: 5.5rem;
+  text-align: center;
+  & > div {
+    width: 18px;
+    height: 18px;
+    background-color: $brightSun;
+    border-radius: 100%;
+    display: inline-block;
+    -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+    animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  }
+}
+
+._spinner ._bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+  background-color: $alizarinCrimson;
+}
+
+._spinner ._bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+  background-color: $dodgerBlue;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% { -webkit-transform: scale(0) }
+  40% { -webkit-transform: scale(1.0) }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  } 40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}

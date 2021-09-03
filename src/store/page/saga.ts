@@ -11,7 +11,8 @@ import {
   inspoPageQuery,
   cartQuery,
   attributesQuery,
-  categoriesQuery
+  categoriesQuery,
+  formQuery
 } from '@graphql/query'
 import {
   GET_INSPO_PAGE,
@@ -21,6 +22,7 @@ import {
 import { SET_ITEM } from '@store/cart/action-types'
 import { getUser } from '@store/selectors'
 import { GET_PRODUCT_ASYNC } from '@store/product/action-types'
+import { SET_FORM } from '@store/contact/action-types'
 
 const getPageByName = (name) => {
   const pages = {
@@ -41,6 +43,7 @@ const getPageByName = (name) => {
       ${pages[name]}
       ${optional}
       ${cartQuery}
+      ${formQuery}
     }
   `
 
@@ -52,7 +55,7 @@ function* getPageAsync({ payload }: any) {
 
     const { user: { sessionToken } } = yield select(getUser)
     const response = yield call(GraphQlClient, getPageByName(payload), {}, sessionToken)
-    const { page, cart, productCategories, bases, customTypes } = validateFetch(response)
+    const { page, cart, productCategories, bases, customTypes, form } = validateFetch(response)
 
     if (payload === 'homePage') {
       const categories = normalizedArray(productCategories?.nodes)
@@ -68,7 +71,8 @@ function* getPageAsync({ payload }: any) {
     }
 
     yield put(actionObject(SET_ITEM, { cart: cart }))
-    yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }));
+    yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }))
+    yield put(actionObject(SET_FORM, form?.fields?.nodes))
 
   } catch (err) {
     yield call(manageError, err)

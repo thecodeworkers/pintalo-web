@@ -42,6 +42,12 @@ query Page {
           id
           ... on GlobalProductAttribute {
             slug
+            terms {
+              nodes {
+                name
+                slug
+              }
+            }
           }
         }
       }

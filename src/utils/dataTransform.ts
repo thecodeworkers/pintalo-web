@@ -11,6 +11,12 @@ const _getDeep = (data, deep) => {
   return data
 }
 
+const _compareArray = (data, comparison, key) =>{
+  for(let item of data){
+    if(item[key] === comparison) return true
+  }
+}
+
 const getData = (data, type) => {
   switch (type) {
     case 'attributes':
@@ -19,7 +25,7 @@ const getData = (data, type) => {
       return data['productCategories']['nodes']
     default:
       let newData = _getDeep(data, type)
-      if('nodes' in newData) return newData.nodes
+      if ('nodes' in newData) return newData.nodes
       return newData
   }
 }
@@ -42,9 +48,11 @@ export const filter = (nodes: Array<any>, comparison, key, deep = null) => {
   const nodeFilter = (node) => {
     let validation = true
     let validFilter = false
-    let select = _getDeep(node, deep)[key]
+    let deeps = _getDeep(node, deep)
+    let select = deeps[key]
     validFilter = select === comparison
     if (typeof select === 'string') validFilter = select.toLowerCase().includes(comparison.toLowerCase())
+    if (Array.isArray(deeps)) validFilter = _compareArray(deeps, comparison, key)
     return validation && validFilter
   }
 
@@ -100,15 +108,19 @@ export const reduceVariation = (nodes, variation) => {
     let valid = true
     if (index === 1) {
       for (let attr of prev.attributes.nodes)
-        for (let variant in variation)
-          if (attr.name.includes(variant))
+        for (let variant in variation) {
+          if (attr.name.includes(variant)) {
             valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+          }
+        }
       if (valid) return prev
     }
     for (let attr of next.attributes.nodes) {
       for (let variant in variation) {
-        if (attr.name.includes(variant))
-          valid = valid && attr.value.toLowerCase() === variation[variant].toLowerCase()
+        if (attr.name.includes(variant)) {
+          const validResult = attr.value.toLowerCase() === variation[variant].toLowerCase()
+          valid = (index === 1) ? validResult : valid && validResult
+        }
       }
     }
     return (valid) ? next : prev

@@ -1,4 +1,3 @@
-import { products } from '@utils/tmpProducts'
 import { AnyAction } from 'redux'
 import { FILTER_PRODUCTS, GET_PRODUCT_ASYNC } from './action-types'
 
