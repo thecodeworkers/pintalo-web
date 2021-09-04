@@ -1,5 +1,5 @@
 import { takeLatest, call, put, select } from 'redux-saga/effects'
-import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
+import { actionObject, GraphQlClient, manageError, normalizedArray, validateFetch } from '@utils'
 import { SHOW_TOAST } from '../intermitence/action-types'
 import {
   homePageQuery,
@@ -10,6 +10,8 @@ import {
   shopPageQuery,
   inspoPageQuery,
   cartQuery,
+  attributesQuery,
+  categoriesQuery,
   formQuery
 } from '@graphql/query'
 import {
@@ -19,6 +21,7 @@ import {
 } from './action-types'
 import { SET_ITEM } from '@store/cart/action-types'
 import { getUser } from '@store/selectors'
+import { GET_PRODUCT_ASYNC } from '@store/product/action-types'
 import { SET_FORM } from '@store/contact/action-types'
 
 const getPageByName = (name) => {
@@ -31,9 +34,14 @@ const getPageByName = (name) => {
     shopPage: shopPageQuery
   }
 
+  const optional = (name === 'homePage') ? `
+  ${attributesQuery}
+  ${categoriesQuery}
+  ` : ''
   const query = `
     query Page {
       ${pages[name]}
+      ${optional}
       ${cartQuery}
       ${formQuery}
     }
@@ -47,7 +55,20 @@ function* getPageAsync({ payload }: any) {
 
     const { user: { sessionToken } } = yield select(getUser)
     const response = yield call(GraphQlClient, getPageByName(payload), {}, sessionToken)
-    const { page, cart, form } = validateFetch(response)
+    const { page, cart, productCategories, bases, customTypes, form } = validateFetch(response)
+
+    if (payload === 'homePage') {
+      const categories = normalizedArray(productCategories?.nodes)
+      categories.splice(categories.findIndex((data) => data.name === 'Uncategorized'), 1)
+      const optional = {
+        categories: categories,
+        attributes: {
+          customTypes: normalizedArray(customTypes?.nodes),
+          bases: normalizedArray(bases?.nodes)
+        }
+      }
+      yield put(actionObject(GET_PRODUCT_ASYNC, optional))
+    }
 
     yield put(actionObject(SET_ITEM, { cart: cart }))
     yield put(actionObject(GET_PAGE_ASYNC, { [payload]: page }))
