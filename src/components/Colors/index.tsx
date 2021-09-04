@@ -45,7 +45,7 @@ const Colors = () => {
         </div>
         <div className={styles._paletteContainer}>
           {
-            colors.map((color, index) => (
+            colors?.map((color, index) => (
               <div
                 className={`${styles._palette} ${styles._paletteTransition}`}
                 key={index}
@@ -118,7 +118,7 @@ const Colors = () => {
           (category == caterories[0] && currentType == 'palettes') && (
             <div className={styles._buttonsContainer}>
               {
-                brands.map((type, index) => {
+                brands?.map((type, index) => {
                   const name = type.name
 
                   return (
