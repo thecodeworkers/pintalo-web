@@ -116,7 +116,6 @@ const Color = ({ detail }) => {
                 adjustWidth
                 large={retina ? '3.3rem' : '2.5rem'}
                 method={createCart}
-                disabled={!variation}
               >
                 Añadir al carrito
               </GeneralButton>

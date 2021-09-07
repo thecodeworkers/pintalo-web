@@ -15,6 +15,12 @@ function* addedItemAsync({ payload }: any) {
 
     const { item, quantity, variation } = payload
 
+    if (!variation) {
+      yield put(actionObject(SHOW_LOADER, false))
+      yield call(showDialog, 'Por favor seleccione un tamaño', 'error')
+      return
+    }
+
     let variationId = null
 
     if (item.variations) {
