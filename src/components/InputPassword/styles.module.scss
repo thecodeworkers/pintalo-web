@@ -22,16 +22,13 @@
 ._inputPasswordContainer {
   position: relative;
   display: flex;
-    justify-content: flex-end;
-    align-items: center;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 ._imageParent {
   position: absolute;
   cursor: pointer;
-
-  margin-right: 1rem;
-  margin-top: .1rem;
-  right: 1.4rem;
-  top: 1.4rem;
+  display: flex;
+  right: 2.5rem;
 }
