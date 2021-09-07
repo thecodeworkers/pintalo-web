@@ -18,6 +18,7 @@ function* addedItemAsync({ payload }: any) {
     if (!variation) {
       yield put(actionObject(SHOW_LOADER, false))
       yield call(showDialog, 'Por favor seleccione un tamaño', 'error')
+      return
     }
 
     let variationId = null
