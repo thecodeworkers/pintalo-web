@@ -4,7 +4,13 @@ import { CHANGE_PAGE, SET_FILTER_ASYNC } from './action-types'
 const initialState = {
   filters: {
     categories: [],
-    attributes: []
+    attributes: [],
+    uses: [],
+    customTypes: [],
+    bases: [],
+    colors: [],
+    clases: [],
+    brands: []
   },
   prevPage: 0,
   page: 1,

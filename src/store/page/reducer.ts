@@ -8,7 +8,8 @@ const initialState = {
   aboutPage: {},
   painterPage: {},
   shopPage: {},
-  inspoPage: {}
+  inspoPage: {},
+  contactForm: []
 }
 
 const pageReducer = (state = initialState, { type, payload }: AnyAction) => {

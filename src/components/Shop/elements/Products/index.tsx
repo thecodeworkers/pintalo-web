@@ -56,9 +56,9 @@ const Products = () => {
                 </div>
                 <div className={styles._productDetail}>
                   <div className={styles._detailsContainer}>
-                    <p>{product.attributes?.nodes?.filter(att => att.name === 'Color')[0].options[0]}</p>
+                    <p>{product.colors?.nodes[0]?.name}</p>
                     <p>{`${product.stockQuantity || 0} unidades`}</p>
-                    <p>{product.attributes?.nodes?.filter(att => att.name === 'Tipos')[0].options[0]}</p>
+                    <p>{product.customTypes?.nodes[0]?.name}</p>
                   </div>
                   <div className={styles._buttonContainer}>
                     <GeneralButton
