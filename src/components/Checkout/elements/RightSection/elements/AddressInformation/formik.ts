@@ -7,13 +7,13 @@ import * as Yup from 'yup'
 
 const settings: any = {
   status: 1,
-  message: 'message',
+  message: 'Datos guardados exitosamente',
   type: 'success'
 }
 
 const errorSettings: any = {
   status: 1,
-  message: 'error',
+  message: 'Todos los campos son requeridos',
   type: 'error'
 }
 
@@ -51,6 +51,16 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
     address: Yup.string()
       .required()
       .max(200),
+
+    city: Yup.string()
+    .min(2)
+    .required()
+    .matches(onlyLettersRegex),
+
+    referencePoint: Yup.string()
+    .min(2)
+    .required()
+    .matches(onlyLettersRegex),
 
     postalCode: Yup.string()
       .required()

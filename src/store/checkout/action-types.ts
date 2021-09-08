@@ -1,3 +1,5 @@
 export const CHECKOUT_DATA: string = 'CHECKOUT_DATA'
 export const CURRENT_FORM: string = 'CURRENT_FORM'
-export const CHANGE_STEP = 'CHANGE_STEP'
+export const CHANGE_STEP: string = 'CHANGE_STEP'
+export const GET_COUNTRY: string = 'GET_COUNTRY'
+export const GET_COUNTRY_ASYNC: string = 'GET_COUNTRY_ASYNC'

@@ -1,5 +1,8 @@
 import Head from 'next/head'
 import { Checkout } from '@components'
+import { mapProps } from '@utils'
+import { getCountry } from '@store/actions'
+import wrapper from '@store'
 
 function CheckoutPage() {
   return (
@@ -11,5 +14,11 @@ function CheckoutPage() {
     </>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+  async ({ store }: any) => {
+    await mapProps(store, getCountry())
+  }
+)
 
 export default CheckoutPage

@@ -9,13 +9,10 @@ import { setFormRef } from '@store/actions'
 import { formikAddresInfo } from './formik'
 import { parseDate, parseHour } from '@utils/common'
 
-const countries = ['Venezuela', 'Colombia', 'Argentina']
-const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
-
 const AddressInformation = () => {
 
   const dispatch = useDispatch()
-  const { checkout: { address } } = useSelector((state: any) => state)
+  const { checkout: { address, countries, municipalities } } = useSelector((state: any) => state)
 
   const [inputType, setInputType] = useState(false)
   const [startDate, setStartDate] = useState(new Date());

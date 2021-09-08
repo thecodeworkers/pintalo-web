@@ -1,5 +1,5 @@
 import { AnyAction } from 'redux'
-import { CHECKOUT_DATA, CURRENT_FORM, CHANGE_STEP } from './action-types'
+import { CHECKOUT_DATA, CURRENT_FORM, CHANGE_STEP, GET_COUNTRY_ASYNC } from './action-types'
 
 const initialState = {
   basic: null,
@@ -8,7 +8,9 @@ const initialState = {
   payment: null,
   reference: null,
   step: 2,
-  currentStep: 0
+  currentStep: 0,
+  countries: [],
+  municipalities: []
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -20,6 +22,9 @@ const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => 
       return { ...state, ...payload }
 
     case CHANGE_STEP:
+      return { ...state, ...payload }
+
+    case GET_COUNTRY_ASYNC:
       return { ...state, ...payload }
 
     default:

@@ -6,7 +6,7 @@ import { showToast } from '@utils/common'
 
 const settings: any = {
   status: 1,
-  message: 'message',
+  message: 'Datos guardados exitosamente',
   type: 'success'
 }
 

@@ -9,8 +9,7 @@ import { setFormRef, setCheckoutData } from '@store/actions'
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const checkout = useSelector((state: any) => state.checkout)
-  const { budget } = checkout
+  const { checkout: { countries, municipalities, budget, address } } = useSelector((state: any) => state)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(budget ? 1 : 2)
   const [country, setCountry] = useState(budget?.country ?? '')
@@ -23,10 +22,7 @@ const BudgetInformation = () => {
 
   const formik = formikBudgetInfo(dispatch, data, budget, currentCheckbox)
 
-  const deliveryData = checkout?.address || {}
-
-  const countries = ['Venezuela', 'Colombia', 'Argentina']
-  const municipalities = ['Caracas', 'Bogota', 'Buenos Aires']
+  const deliveryData = address || {}
 
 
   useEffect(() => {
@@ -54,7 +50,7 @@ const BudgetInformation = () => {
     setCountry(deliveryData?.country)
     setMunicipality(deliveryData?.municipality)
   }
-``
+
   const resetFields = () => {
     for (const key in deliveryData) {
       formik.setFieldValue(key, '')
