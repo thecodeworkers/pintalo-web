@@ -1,39 +1,28 @@
 import { call, put, takeLatest } from '@redux-saga/core/effects'
-import { actionObject, GraphQlClient, manageError, normalizedArray, showDialog, validateFetch } from '@utils'
-import { GET_PRODUCT, GET_PRODUCT_ASYNC, GET_SHOP } from './action-types'
-import { SHOW_TOAST } from '@store/intermitence/action-types'
-import { attributesQuery, cartQuery, categoriesQuery, product, productsQuery, shopPageQuery } from '@graphql/query'
+import { actionObject, GraphQlClient, normalizedArray, showDialog, validateFetch } from '@utils'
+import { GET_PRODUCT_ASYNC } from '../product/action-types'
+import { attributesQuery, cartQuery, categoriesQuery, productsQuery, colorPageQuery } from '@graphql/query'
 import { GET_PAGE_ASYNC } from '@store/page/action-types'
 import { SET_ITEM } from '@store/cart/action-types'
 import { select } from 'redux-saga/effects'
+import { GET_COLORS } from './action-types'
 
-function* getProductAsync({ payload }: any) {
-  try {
-    let response = yield call(GraphQlClient, product(payload))
-    response = validateFetch(response)
-    yield put(actionObject(GET_PRODUCT_ASYNC, { detail: response.product }))
-    yield put(actionObject(SET_ITEM, { cart: response.cart }))
-  } catch (err) {
-    yield call(manageError, err, SHOW_TOAST)
-  }
-}
-
-
-const constructShopQuery = () => (
+const constructColorQuery = () => (
   `query shopQuery {
     ${attributesQuery}
     ${categoriesQuery}
     ${productsQuery}
-    ${shopPageQuery}
+    ${colorPageQuery}
     ${cartQuery}
   }`
 )
 
-function* getShopAsync() {
+function* getColorAsync() {
   try {
 
     const { user: { user: { sessionToken } } } = yield select(state => state)
-    const response = yield call(GraphQlClient, constructShopQuery(), {}, sessionToken)
+    const response = yield call(GraphQlClient, constructColorQuery(), {}, sessionToken)
+
     const { page, products, uses, customTypes, allPaPresentations, bases, colors, clases, brands, productCategories, cart } = validateFetch(response)
 
     const data = {
@@ -52,17 +41,14 @@ function* getShopAsync() {
     }
 
     yield put(actionObject(SET_ITEM, { cart: cart }))
-    yield put(actionObject(GET_PAGE_ASYNC, { 'shopPage': page }))
+    yield put(actionObject(GET_PAGE_ASYNC, { 'colorsPage': page }))
     yield put(actionObject(GET_PRODUCT_ASYNC, data))
   } catch (err) {
     yield call(showDialog, 'Ha ocurrido un error.', 'error')
   }
 }
 
-export function* watchGetProduct() {
-  yield takeLatest(GET_PRODUCT, getProductAsync)
-}
 
-export function* watchGetShop() {
-  yield takeLatest(GET_SHOP, getShopAsync)
+export function* watchGetColor() {
+  yield takeLatest(GET_COLORS, getColorAsync)
 }

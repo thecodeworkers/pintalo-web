@@ -1,12 +1,24 @@
+
+import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { Hero, Products, Filters } from './elements'
-import { setShowFilters } from '@store/actions'
+import { setFilter, setShowFilters } from '@store/actions'
 import styles from './styles.module.scss'
+import { useRouter } from 'next/router'
 
 const Shop = ({ content }) => {
-  const { showFilters } = useSelector((state: any) => state.intermitence)
+  const { intermitence: { showFilters }, product: { allProducts } } = useSelector((state: any) => state)
   const dispatch = useDispatch()
+  const router = useRouter()
+  const { category, type, base }: any = router.query
 
+  useEffect(() => {
+    if (allProducts.length) {
+      if (category) dispatch(setFilter(category, 'categories'))
+      if (base) dispatch(setFilter(base, 'bases'))
+      if (type) dispatch(setFilter(type, 'customTypes'))
+    }
+  }, [router.query, allProducts.length])
   return (
     <>
       <Hero
@@ -19,7 +31,7 @@ const Shop = ({ content }) => {
             ? styles._noInteractionSection
             : ''
         }
-        onClick={() =>{
+        onClick={() => {
           if (showFilters) dispatch(setShowFilters(false))
         }}
       >

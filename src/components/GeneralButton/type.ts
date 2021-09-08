@@ -9,6 +9,7 @@ export type Button = {
   type?: any
   children: ReactChild
   showLoader?: boolean
-  adjustWidth?: boolean,
+  adjustWidth?: boolean
+  disabled?: boolean,
   formId?: string
 }

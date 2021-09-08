@@ -9,6 +9,7 @@ const initialState = {
   painterPage: {},
   shopPage: {},
   inspoPage: {},
+  colorsPage: {},
   contactForm: []
 }
 

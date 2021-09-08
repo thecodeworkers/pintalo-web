@@ -12,7 +12,7 @@ const FirstStep = ({ data }) => {
   const currentStep = slide.setColor.step
 
   const setState = () => {
-    dispatch(setColor({ category: 'aceite', step: currentStep + 1 }))
+    dispatch(setColor({ step: currentStep + 1 }))
   }
 
   const navigation = (route) => {

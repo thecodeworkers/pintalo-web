@@ -6,6 +6,7 @@ import { watchSetFilter, watchSearch } from './shop/saga'
 import { watchAddedItem, watchRemoveItem, watchUpdateItemQuantities } from './cart/saga'
 import { watchSubmitForm } from './contact/saga'
 import { watchGetCountry } from './checkout/saga'
+import { watchGetColor } from './colors/saga'
 
 function* sagas() {
   yield all([
@@ -22,7 +23,8 @@ function* sagas() {
     fork(watchUpdateItemQuantities),
     fork(watchRemoveItem),
     fork(watchSubmitForm),
-    fork(watchGetCountry)
+    fork(watchGetCountry),
+    fork(watchGetColor)
   ])
 }
 

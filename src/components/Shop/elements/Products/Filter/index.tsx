@@ -35,16 +35,9 @@ const Filter = ({ quantity }) => {
         </div>
       </div>
       <div className={styles._filterLabelContainer}>
-        {
-          filters['categories'].map((filter, index) => (
-            <FilterLabel key={index} name={filter} type={'categories'} />
-          ))
-        }
-        {
-          filters['attributes'].map((filter, index) => (
-            <FilterLabel key={index} name={filter} type={'attributes'} />
-          ))
-        }
+        {Object.keys(filters).map((data) => filters[data].map((filter, index) => (
+          <FilterLabel key={index} name={filter} type={data} />
+        )))}
       </div>
       <div className={styles._filterButtonContainer}>
         <div

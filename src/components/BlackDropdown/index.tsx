@@ -13,7 +13,6 @@ const BlackDropDown = ({
 }) => {
   const [show, setShow] = useState(false)
   const [value, setValue] = useState('')
-
   const setNewValue = (value) => {
     setValue(value)
     if(returnValue) returnValue(value)
@@ -40,7 +39,10 @@ const BlackDropDown = ({
         <div className={styles._dropdown_content}>
           {
             items.map((item, index) => (
-              <p key={index} onClick={() => setNewValue(item.label || item)}>{item.label || item}</p>
+              <p key={index} onClick={() => {
+                setNewValue(item.label || item.name || item)
+                setShow(show => !show)
+              }}>{item.label || item.name || item}</p>
             ))
           }
         </div>

@@ -21,11 +21,14 @@
 
 ._inputPasswordContainer {
   position: relative;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
 }
 
 ._imageParent {
   position: absolute;
   cursor: pointer;
-  right: 2.6rem;
-  top: .8rem;
+  display: flex;
+  right: 2.5rem;
 }
