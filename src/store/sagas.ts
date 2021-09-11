@@ -5,7 +5,7 @@ import { watchGetProduct, watchGetShop } from './product/saga'
 import { watchSetFilter, watchSearch } from './shop/saga'
 import { watchAddedItem, watchRemoveItem, watchUpdateItemQuantities } from './cart/saga'
 import { watchSubmitForm } from './contact/saga'
-import { watchGetCountry } from './checkout/saga'
+import { watchGetCountry, watchSendCheckoutForm } from './checkout/saga'
 import { watchGetColor } from './colors/saga'
 
 function* sagas() {
@@ -24,7 +24,8 @@ function* sagas() {
     fork(watchRemoveItem),
     fork(watchSubmitForm),
     fork(watchGetCountry),
-    fork(watchGetColor)
+    fork(watchGetColor),
+    fork(watchSendCheckoutForm)
   ])
 }
 

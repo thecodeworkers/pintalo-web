@@ -2,9 +2,8 @@ import { useEffect, useRef  } from 'react'
 import styles from './styles.module.scss'
 import { formikBasicData } from './formik'
 import { useDispatch } from 'react-redux'
-import { setFormRef } from '@store/actions'
+import { sendCheckoutForm, setFormRef } from '@store/actions'
 import { elementId } from '@utils/common'
-import { useFormikContext } from 'formik'
 import { useSelector } from 'react-redux'
 
 const BasicInformation = () => {
@@ -82,6 +81,8 @@ const BasicInformation = () => {
       </div>
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
       { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
+
+      <button onClick={() => dispatch(sendCheckoutForm({}))}>click me!</button>
     </form>
   )
 }

@@ -1,13 +1,15 @@
+import { RESET_STATE } from '@store/scrollReference/action-types'
 import { AnyAction } from 'redux'
 import { CHECKOUT_DATA, CURRENT_FORM, CHANGE_STEP, GET_COUNTRY_ASYNC } from './action-types'
 
-const initialState = {
+const initialState: any = {
   basic: null,
   address: null,
   budget: null,
-  payment: null,
+  paymentData: null,
+  paymentMethod: 'zelle',
   reference: null,
-  step: 2,
+  step: 1,
   currentStep: 0,
   countries: [],
   municipalities: []
@@ -26,6 +28,9 @@ const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => 
 
     case GET_COUNTRY_ASYNC:
       return { ...state, ...payload }
+
+    case RESET_STATE:
+      return initialState
 
     default:
       return state

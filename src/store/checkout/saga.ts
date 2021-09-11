@@ -1,8 +1,9 @@
 import { call, put, takeLatest } from '@redux-saga/core/effects'
-import { actionObject, GraphQlClient, manageError, normalizedArray, showDialog, validateFetch } from '@utils'
-import { GET_COUNTRY, GET_COUNTRY_ASYNC } from './action-types'
+import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
+import { GET_COUNTRY, GET_COUNTRY_ASYNC, SEND_CHECKOUT_FORM } from './action-types'
 import { SHOW_TOAST } from '@store/intermitence/action-types'
 import { countriesQuery } from '@graphql/query'
+import { checkoutForm } from '@graphql/mutation'
 
 function* getCountryAsync() {
   try {
@@ -30,6 +31,22 @@ function* getCountryAsync() {
   }
 }
 
+
+function* sendCheckoutFormAsync() {
+
+  console.log('ENTEEER IN THIS BETA')
+  try {
+    console.log(checkoutForm({}, {}, {}, {}, {}))
+  }
+  catch (err){
+    yield call(manageError, err, SHOW_TOAST)
+  }
+}
+
 export function* watchGetCountry() {
   yield takeLatest(GET_COUNTRY, getCountryAsync)
+}
+
+export function* watchSendCheckoutForm() {
+  yield takeLatest(SEND_CHECKOUT_FORM, sendCheckoutFormAsync)
 }

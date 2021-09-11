@@ -50,12 +50,7 @@ const RightSection = () => {
           <div className={styles._paymentSteps_header}>
             <p>{title.basicInformation}</p>
           </div>
-
           {returnComponent(step)}
-          {/* <BasicInformation /> */}
-          {/* <AddressInformation /> */}
-          {/* <PaymentMethods /> */}
-          {/* <BudgetInformation /> */}
         </div>
         <div className={styles._formButtonContainer}>
           <GeneralButton

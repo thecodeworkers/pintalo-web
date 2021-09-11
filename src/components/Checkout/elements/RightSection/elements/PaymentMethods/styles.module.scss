@@ -94,6 +94,14 @@
   width: 100%
 }
 
+._inputError {
+  @include input($cello, red, $alto);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
 ._formItem {
   width: 100%;
   display: flex;

@@ -1,6 +1,20 @@
+import { useEffect } from 'react'
 import styles from './styles.module.scss'
+import { bankTransferInfo } from './formik'
+import {  useDispatch } from 'react-redux'
+import { setFormRef } from '@store/actions'
 
 const Methods = ({ value }) => {
+
+  const dispatch = useDispatch()
+  const formik = bankTransferInfo(dispatch)
+
+  useEffect(() => {
+    if(value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
+    if(value == 'mobilePayment') return dispatch(setFormRef({ reference: 'mobilepay-form' }))
+    dispatch(setFormRef({ reference: null }))
+  }, [value])
+
   switch (value) {
     case 'zelle':
       return (
@@ -25,18 +39,39 @@ const Methods = ({ value }) => {
               <p>0414-0180382</p>
             </div>
           </div>
-          <form className={styles._formContainer}>
+          <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='mobilepay-form'>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Nombre completo</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
+                name='name'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+                />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Número'
+                className={formik.errors.referenceNumber && formik.touched.referenceNumber ? styles._inputError : styles._input}
+                name='referenceNumber'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.referenceNumber}
+                />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.bank && formik.touched.bank ? styles._inputError : styles._input}
+                name='bank'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.bank}
+                />
             </div>
           </form>
         </>
@@ -55,18 +90,39 @@ const Methods = ({ value }) => {
               <p>email@gmail.com</p>
             </div>
           </div>
-          <form className={styles._formContainer}>
+          <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='transferpay-form'>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Nombre completo</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
+                name='name'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+                />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Número'
+                className={formik.errors.referenceNumber && formik.touched.referenceNumber ? styles._inputError : styles._input}
+                name='referenceNumber'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.referenceNumber}
+                />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.bank && formik.touched.bank ? styles._inputError : styles._input}
+                name='bank'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.bank}
+                />
             </div>
           </form>
         </>

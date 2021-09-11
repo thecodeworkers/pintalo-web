@@ -1,6 +1,8 @@
 import styles from './styles.module.scss'
 import Methods from './Methods'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import { useDispatch, useSelector} from 'react-redux'
+import { setCheckoutData } from '@store/actions'
 
 const paymentMethods = [
   {
@@ -48,7 +50,9 @@ const logos = [
 ]
 
 const PaymentMethods = () => {
-  const [option, setOption] = useState('zelle')
+
+  const dispatch = useDispatch()
+  const { checkout: { paymentMethod } } = useSelector((state: any) => state)
 
   return (
     <div className={styles._container}>
@@ -70,14 +74,14 @@ const PaymentMethods = () => {
                     <input
                       type="checkbox"
                       className={styles._checkboxActive}
-                      onChange={(e) => setOption(e.target.value)}
-                      checked={option == method.value ? true : false}
+                      onChange={(e) => dispatch(setCheckoutData({ paymentMethod: e.target.value }))}
+                      checked={paymentMethod == method.value ? true : false}
                       value={method.value}
                     />
                     <p className="_methodTitle">{method.title}</p>
                     <style jsx>{`
                       ._methodTitle {
-                        color: ${option == method.value ? '#262833' : '#9B9B9B'};
+                        color: ${paymentMethod == method.value ? '#262833' : '#9B9B9B'};
                       }
                     `}</style>
                   </div>
@@ -101,7 +105,7 @@ const PaymentMethods = () => {
       </div>
       <div className={styles._informationContainer}>
         <div className={styles._receiptInfoContainer}>
-          <Methods value={option} />
+          <Methods value={paymentMethod} />
         </div>
         <div className={styles._receiptImgContainer}>
 

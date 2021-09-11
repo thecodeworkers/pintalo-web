@@ -4,7 +4,8 @@ import { changeStep } from '@store/actions'
 import styles from './styles.module.scss'
 
 const LeftSection = () => {
-  const { step, currentStep } = useSelector((state: any) => state.checkout);
+
+  const { checkout: { step, currentStep }, cart } = useSelector((state: any) => state)
   const dispatch = useDispatch()
 
   const options = [
@@ -70,7 +71,7 @@ const LeftSection = () => {
             <p>Total</p>
           </div>
           <div>
-            <p>$1,000.00</p>
+            <p>{cart?.cart?.total || '$0.00'}</p>
           </div>
         </div>
       </div>
