@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { elementId } from '@utils/common'
-import { setFormRef, setCheckoutData } from '@store/actions'
+import { setFormRef, setCheckoutData, sendCheckoutForm } from '@store/actions'
 
 const BudgetInformation = () => {
 
@@ -209,6 +209,8 @@ const BudgetInformation = () => {
       </div>
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
       { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
+
+      <button onClick={() => dispatch(sendCheckoutForm({}))}>click me!</button>
 
     </form>
   )
