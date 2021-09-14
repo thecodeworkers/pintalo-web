@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import { Checkout } from '@components'
 import { mapProps } from '@utils'
-import { getCountry } from '@store/actions'
+import { getCheckoutData } from '@store/actions'
 import wrapper from '@store'
 
 function CheckoutPage() {
@@ -17,7 +17,7 @@ function CheckoutPage() {
 
 export const getServerSideProps = wrapper.getServerSideProps(
   async ({ store }: any) => {
-    await mapProps(store, getCountry())
+    await mapProps(store, getCheckoutData())
   }
 )
 

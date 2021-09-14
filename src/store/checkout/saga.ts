@@ -1,14 +1,14 @@
 import { call, put, takeLatest, select } from '@redux-saga/core/effects'
 import { actionObject, GraphQlClient, manageError, validateFetch } from '@utils'
-import { GET_COUNTRY, GET_COUNTRY_ASYNC, SEND_CHECKOUT_FORM } from './action-types'
+import { GET_CHECKOUT_DATA, GET_COUNTRY_DATA_ASYNC, SEND_CHECKOUT_FORM } from './action-types'
 import { SHOW_TOAST } from '@store/intermitence/action-types'
-import { countriesQuery } from '@graphql/query'
+import { checkoutQuery } from '@graphql/query'
 import { checkoutForm } from '@graphql/mutation'
 import { getCheckout } from '@store/selectors'
 
-function* getCountryAsync() {
+function* getCheckoutDataAsync() {
   try {
-    let response = yield call(GraphQlClient, countriesQuery)
+    let response = yield call(GraphQlClient, checkoutQuery)
     response = validateFetch(response)
 
     const buildSimpleArray = (array: any, key: string): Array<any> => {
@@ -20,10 +20,11 @@ function* getCountryAsync() {
       return newArray
     }
 
-    yield put(actionObject(GET_COUNTRY_ASYNC,
+    yield put(actionObject(GET_COUNTRY_DATA_ASYNC,
       {
         countries: buildSimpleArray(response?.countries?.nodes, 'title'),
-        municipalities: buildSimpleArray(response?.municipalities?.nodes, 'name')
+        municipalities: buildSimpleArray(response?.municipalities?.nodes, 'name'),
+        paymentMethods: response?.paymentGateways
        }
     ))
 
@@ -45,8 +46,8 @@ function* sendCheckoutFormAsync() {
   }
 }
 
-export function* watchGetCountry() {
-  yield takeLatest(GET_COUNTRY, getCountryAsync)
+export function* watchGetCheckoutData() {
+  yield takeLatest(GET_CHECKOUT_DATA, getCheckoutDataAsync)
 }
 
 export function* watchSendCheckoutForm() {

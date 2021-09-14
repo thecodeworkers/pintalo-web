@@ -1,6 +1,6 @@
 import { RESET_STATE } from '@store/scrollReference/action-types'
 import { AnyAction } from 'redux'
-import { CHECKOUT_DATA, CURRENT_FORM, CHANGE_STEP, GET_COUNTRY_ASYNC } from './action-types'
+import { CHECKOUT_DATA, CURRENT_FORM, CHANGE_STEP, GET_COUNTRY_DATA_ASYNC } from './action-types'
 
 const initialState: any = {
   basic: null,
@@ -9,10 +9,11 @@ const initialState: any = {
   paymentData: null,
   paymentMethod: 'zelle',
   reference: null,
-  step: 1,
+  step: 3,
   currentStep: 0,
   countries: [],
-  municipalities: []
+  municipalities: [],
+  paymentMethods: []
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -26,7 +27,7 @@ const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => 
     case CHANGE_STEP:
       return { ...state, ...payload }
 
-    case GET_COUNTRY_ASYNC:
+    case GET_COUNTRY_DATA_ASYNC:
       return { ...state, ...payload }
 
     case RESET_STATE:

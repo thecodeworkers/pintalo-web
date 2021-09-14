@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import styles from './styles.module.scss'
 import { bankTransferInfo } from './formik'
-import {  useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { setFormRef } from '@store/actions'
 
 const Methods = ({ value }) => {
@@ -10,20 +10,31 @@ const Methods = ({ value }) => {
   const formik = bankTransferInfo(dispatch)
 
   useEffect(() => {
-    if(value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
-    if(value == 'mobilePayment') return dispatch(setFormRef({ reference: 'mobilepay-form' }))
+    if (value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
+    if (value == 'mobilePayment') return dispatch(setFormRef({ reference: 'mobilepay-form' }))
     dispatch(setFormRef({ reference: null }))
   }, [value])
+
+  const { checkout: { paymentMethods } } = useSelector((state: any) => state)
+
+  const data = paymentMethods?.nodes ?? []
+
+  const returnDataArray = () => {
+    const dataSplit = data[1]?.description.split('/')
+    return dataSplit ?? []
+  }
 
   switch (value) {
     case 'zelle':
       return (
         <div className={styles._textContainer}>
-          <p>Zelle</p>
+          <p>{data[1]?.title}</p>
           <div className={styles._textQuote}>
-            <p>Banco</p>
-            <p>Arianna Perez</p>
-            <p>arianna.plp@gmail.com</p>
+            {
+              returnDataArray().map((item: string, index: number) => {
+                return <p key={index}>{item}</p>
+              })
+            }
           </div>
         </div>
       )
@@ -49,7 +60,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
-                />
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
@@ -60,7 +71,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.referenceNumber}
-                />
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
@@ -71,7 +82,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.bank}
-                />
+              />
             </div>
           </form>
         </>
@@ -100,7 +111,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.name}
-                />
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
@@ -111,7 +122,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.referenceNumber}
-                />
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
@@ -122,7 +133,7 @@ const Methods = ({ value }) => {
                 onChange={formik.handleChange}
                 onBlur={formik.handleBlur}
                 value={formik.values.bank}
-                />
+              />
             </div>
           </form>
         </>
