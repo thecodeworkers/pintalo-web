@@ -3,17 +3,19 @@ import { BlackDropDown } from '@components'
 import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
-import { elementId } from '@utils/common'
+import { elementId, buildSimpleArray } from '@utils/common'
 import { setFormRef, setCheckoutData, sendCheckoutForm } from '@store/actions'
 
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const { checkout: { countries, municipalities, budget, address } } = useSelector((state: any) => state)
+  const { checkout: { countries, budget, address } } = useSelector((state: any) => state)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(budget ? 1 : 2)
   const [country, setCountry] = useState(budget?.country ?? '')
   const [municipality, setMunicipality] = useState(budget?.municipality ?? '')
+  const [localCountries] = useState(buildSimpleArray(countries?.nodes, 'title') ?? [])
+  const [localTownships, setLocalTownships] = useState([])
 
   const data: any = {
     country,
@@ -23,7 +25,6 @@ const BudgetInformation = () => {
   const formik = formikBudgetInfo(dispatch, data, budget, currentCheckbox)
 
   const deliveryData = address || {}
-
 
   useEffect(() => {
     const id = elementId('#budget-form')
@@ -58,6 +59,15 @@ const BudgetInformation = () => {
 
     setCountry('')
     setMunicipality('')
+  }
+
+  const countryAction = (country) => {
+    setCountry(country)
+    const result = countries?.nodes?.find((element: any) => element?.title == country)
+    if(result) {
+      const townships = buildSimpleArray(result?.townships?.content, 'name')
+      setLocalTownships(townships)
+    }
   }
 
   return (
@@ -150,8 +160,8 @@ const BudgetInformation = () => {
               height="2.5rem"
               title={!country ? 'Seleccione país' : country}
               specialAlign
-              items={countries}
-              returnValue={(country) => setCountry(country)}
+              items={localCountries}
+              returnValue={(country) => countryAction(country)}
             />
           </div>
         </div>
@@ -198,7 +208,7 @@ const BudgetInformation = () => {
           <div className={styles._dropDownSeparation}>
             <BlackDropDown
               height="2.5rem"
-              items={municipalities}
+              items={localTownships}
               title={!municipality ? 'Seleccione municipio' : municipality}
               returnValue={(municipality) => setMunicipality(municipality)}
               specialAlign

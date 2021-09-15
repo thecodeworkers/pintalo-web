@@ -9,10 +9,9 @@ const initialState: any = {
   paymentData: null,
   paymentMethod: 'zelle',
   reference: null,
-  step: 3,
+  step: 1,
   currentStep: 0,
   countries: [],
-  municipalities: [],
   paymentMethods: []
 }
 

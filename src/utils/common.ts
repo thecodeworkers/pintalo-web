@@ -83,3 +83,12 @@ export const showToast = (dispatch: any, settings) => {
     dispatch(setMenuShow({ toast: { ...settings, status: 2 }}))
   }, 2000);
 }
+
+export const buildSimpleArray = (array: any = [], key: string): Array<any> => {
+  let newArray = []
+  array.forEach((item: any, index: number) => {
+    newArray[index] = item[key]
+  })
+
+  return newArray
+}

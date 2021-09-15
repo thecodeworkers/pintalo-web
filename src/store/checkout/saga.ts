@@ -11,19 +11,9 @@ function* getCheckoutDataAsync() {
     let response = yield call(GraphQlClient, checkoutQuery)
     response = validateFetch(response)
 
-    const buildSimpleArray = (array: any, key: string): Array<any> => {
-      let newArray = []
-      array.forEach((item: any, index: number) => {
-        newArray[index] = item[key]
-      })
-
-      return newArray
-    }
-
     yield put(actionObject(GET_COUNTRY_DATA_ASYNC,
       {
-        countries: buildSimpleArray(response?.countries?.nodes, 'title'),
-        municipalities: buildSimpleArray(response?.municipalities?.nodes, 'name'),
+        countries: response?.countries,
         paymentMethods: response?.paymentGateways
        }
     ))
@@ -32,7 +22,6 @@ function* getCheckoutDataAsync() {
     yield call(manageError, err, SHOW_TOAST)
   }
 }
-
 
 function* sendCheckoutFormAsync() {
 

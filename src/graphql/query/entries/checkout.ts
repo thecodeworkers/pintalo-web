@@ -2,16 +2,14 @@ const checkout = `
 query GetCheckoutRecources {
   countries {
     nodes {
-      id
-      slug
-      status
       title
-    }
-  }
-  municipalities {
-    nodes {
-      name
       slug
+      townships {
+        content {
+          name
+          key
+        }
+      }
     }
   }
   paymentGateways {

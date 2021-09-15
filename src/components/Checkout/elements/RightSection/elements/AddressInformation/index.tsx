@@ -7,12 +7,12 @@ import { useDispatch, useSelector } from 'react-redux'
 import { elementId } from '@utils/common'
 import { setFormRef } from '@store/actions'
 import { formikAddresInfo } from './formik'
-import { parseDate, parseHour } from '@utils/common'
+import { parseDate, parseHour, buildSimpleArray } from '@utils/common'
 
 const AddressInformation = () => {
 
   const dispatch = useDispatch()
-  const { checkout: { address, countries, municipalities } } = useSelector((state: any) => state)
+  const { checkout: { address, countries } } = useSelector((state: any) => state)
 
   const [inputType, setInputType] = useState(false)
   const [startDate, setStartDate] = useState(new Date());
@@ -20,6 +20,8 @@ const AddressInformation = () => {
   const [showHour, setShowHour] = useState(false)
   const [country, setCountry] = useState(address?.country ?? '')
   const [municipality, setMunicipality] = useState(address?.municipality ?? '')
+  const [localCountries] = useState(buildSimpleArray(countries?.nodes, 'title') ?? [])
+  const [localTownships, setLocalTownships] = useState([])
 
   const data: any = {
     date: parseDate(startDate),
@@ -36,6 +38,15 @@ const AddressInformation = () => {
     const id = elementId('#address-form')
     dispatch(setFormRef({ reference: id }))
   }, [])
+
+  const countryAction = (country) => {
+    setCountry(country)
+    const result = countries?.nodes?.find((element: any) => element?.title == country)
+    if(result) {
+      const townships = buildSimpleArray(result?.townships?.content, 'name')
+      setLocalTownships(townships)
+    }
+  }
 
   return (
     <form className={styles._formContainer} id='address-form' onSubmit={formik.handleSubmit}>
@@ -147,8 +158,8 @@ const AddressInformation = () => {
               height="2.5rem"
               title={!country ? 'Seleccione país' : country}
               specialAlign
-              items={countries}
-              returnValue={(country) => setCountry(country)}
+              items={localCountries ?? []}
+              returnValue={(country) => countryAction(country)}
             />
           </div>
         </div>
@@ -195,7 +206,7 @@ const AddressInformation = () => {
               title={!municipality ? 'Seleccione municipio' : municipality}
               specialAlign
               showValue
-              items={municipalities}
+              items={localTownships ?? []}
               returnValue={(municipality) => setMunicipality(municipality)}
             />
           </div>
