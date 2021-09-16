@@ -29,6 +29,6 @@ export const bankTransferInfo = (dispatch: any) => (useFormik({
   }),
 
   onSubmit: values => {
-    dispatch(setCheckoutData({ paymentData: values }))
+    dispatch(setCheckoutData({ paymentData: values, step: 4 }))
   }
 }))

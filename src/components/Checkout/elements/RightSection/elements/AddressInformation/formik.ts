@@ -76,6 +76,6 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
     if(notValid) return showToast(dispatch, errorSettings)
 
     showToast(dispatch, settings)
-    dispatch(setCheckoutData({ address: newValues, step: 4 }))
+    dispatch(setCheckoutData({ address: newValues, step: 3 }))
   }
 }))

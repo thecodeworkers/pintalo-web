@@ -32,7 +32,7 @@ export function* showDialog(message, type = 'success', toast = 'SHOW_TOAST') {
     type
   }))
 
-  yield delay(600)
+  yield delay(3000)
 
   yield put(actionObject(toast, {
     status: 2

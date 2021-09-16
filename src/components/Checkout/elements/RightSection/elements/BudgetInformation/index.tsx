@@ -220,7 +220,7 @@ const BudgetInformation = () => {
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
       { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
 
-      <button onClick={() => dispatch(sendCheckoutForm({}))}>click me!</button>
+      <button onClick={() => dispatch(sendCheckoutForm({}))} type='submit'>click me!</button>
 
     </form>
   )

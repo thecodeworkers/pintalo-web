@@ -7,40 +7,39 @@ const checkoutMutation = (user, billing, shipping, paymentMethod) => {
   mutation Checkout {
     checkout(input: {
       billing: {
-        address1: "${billing?.address_1}",
+        address1: "${billing?.address}",
         city: "${billing?.city}",
-        country: ${billing?.country},
+        country: AD,
         email: "${user?.email}",
         firstName: "${billing?.name}",
         lastName: "${billing?.lastname}"
         overwrite: true,
         phone: "${billing?.phone}",
-        postcode: "${billing?.zipcode}",
-        state: "${billing?.state}",
+        postcode: "${billing?.postalCode}",
+        state: "${billing?.municipality}",
       },
       clientMutationId: "${uuidv4()}",
       isPaid: false
-      paymentMethod: "${paymentMethod}",
+      paymentMethod: "alg_custom_gateway_1",
       shipping: {
-        address1: "${shipping?.address_1}",
-        address2: "${shipping?.address_2}",
+        address1: "${shipping?.address}",
+        address2: "${shipping?.referencePoint}",
         city: "${shipping?.city}",
-        country: ${shipping?.country},
+        country: AD,
         email: "${user?.email}",
         firstName: "${shipping?.name}",
         lastName: "${shipping?.lastname}"
         overwrite: true,
         phone: "${shipping?.phone}",
-        postcode: "${shipping?.zipcode}",
-        state: ""
-      },
-    }
+        postcode: "${shipping?.postalCode}",
+        state: "${shipping?.municipality}"
+      }
       customerNote: "${user?.name} ${user?.lastname}, Teléfono: ${user?.phone}, CI ${user?.identification}, Correo: ${user?.email}",
       shipToDifferentAddress: true,
       shippingMethod: "delivery"
     }) {
       result
-      order{
+      order {
         orderNumber
       }
     }

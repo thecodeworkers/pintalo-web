@@ -4,7 +4,7 @@ import { GET_CHECKOUT_DATA, GET_COUNTRY_DATA_ASYNC, SEND_CHECKOUT_FORM } from '.
 import { SHOW_TOAST } from '@store/intermitence/action-types'
 import { checkoutQuery } from '@graphql/query'
 import { checkoutForm } from '@graphql/mutation'
-import { getCheckout } from '@store/selectors'
+import { getCheckout, getUser } from '@store/selectors'
 
 function* getCheckoutDataAsync() {
   try {
@@ -25,10 +25,13 @@ function* getCheckoutDataAsync() {
 
 function* sendCheckoutFormAsync() {
 
-  const { basic, address, paymentMethod, budget } = yield select(getCheckout)
-
   try {
-    console.log(checkoutForm(basic, address, paymentMethod, budget))
+    const { basic, address, paymentMethod, budget } = yield select(getCheckout)
+    const { user: { sessionToken } } = yield select(getUser)
+
+    let response = yield call(GraphQlClient, checkoutForm(basic, address, budget, paymentMethod), {}, sessionToken)
+    response = validateFetch(response)
+
   }
   catch (err){
     yield call(manageError, err, SHOW_TOAST)
