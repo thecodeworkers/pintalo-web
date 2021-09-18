@@ -9,7 +9,7 @@ const checkoutMutation = (user, billing, shipping, paymentMethod) => {
       billing: {
         address1: "${billing?.address}",
         city: "${billing?.city}",
-        country: AD,
+        country: VE,
         email: "${user?.email}",
         firstName: "${billing?.name}",
         lastName: "${billing?.lastname}"
@@ -25,15 +25,15 @@ const checkoutMutation = (user, billing, shipping, paymentMethod) => {
         address1: "${shipping?.address}",
         address2: "${shipping?.referencePoint}",
         city: "${shipping?.city}",
-        country: AD,
+        country: VE,
         email: "${user?.email}",
         firstName: "${shipping?.name}",
         lastName: "${shipping?.lastname}"
-        overwrite: true,
+        overwrite: false,
         phone: "${shipping?.phone}",
         postcode: "${shipping?.postalCode}",
         state: "${shipping?.municipality}"
-      }
+      },
       customerNote: "${user?.name} ${user?.lastname}, Teléfono: ${user?.phone}, CI ${user?.identification}, Correo: ${user?.email}",
       shipToDifferentAddress: true,
       shippingMethod: "delivery"

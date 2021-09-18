@@ -57,10 +57,11 @@ const CartPage = () => {
           Volver a shop
         </GeneralButton>
         {
-          items.length ? (
+          Object.keys(cart).length ? (
             <GeneralButton
               backgroundColor="#FDCA40"
               textColor="#262833"
+              method={() => navigation('/checkout')}
             >
               Confirmar
             </GeneralButton>

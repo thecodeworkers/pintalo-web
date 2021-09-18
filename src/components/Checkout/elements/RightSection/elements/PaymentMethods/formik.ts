@@ -1,7 +1,14 @@
 import { useFormik } from 'formik'
 import { onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
 import { setCheckoutData } from '@store/actions'
+import { showToast } from '@utils/common'
 import * as Yup from 'yup'
+
+const settings: any = {
+  status: 1,
+  message: 'Metodo de pago agregado correctamente',
+  type: 'success'
+}
 
 export const bankTransferInfo = (dispatch: any) => (useFormik({
   initialValues: {
@@ -30,5 +37,6 @@ export const bankTransferInfo = (dispatch: any) => (useFormik({
 
   onSubmit: values => {
     dispatch(setCheckoutData({ paymentData: values, step: 4 }))
+    showToast(dispatch, settings)
   }
 }))

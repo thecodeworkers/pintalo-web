@@ -1,10 +1,13 @@
 import { GeneralButton } from '@components'
 import { useDispatch, useSelector } from 'react-redux'
 import { changeStep } from '@store/actions'
+import { useRouter } from 'next/router'
+
 import styles from './styles.module.scss'
 
 const LeftSection = () => {
 
+  const router = useRouter()
   const { checkout: { step, currentStep }, cart } = useSelector((state: any) => state)
   const dispatch = useDispatch()
 
@@ -30,6 +33,8 @@ const LeftSection = () => {
       isEnabled: (step >= 4 || currentStep >= 4) ? true : false
     },
   ]
+
+  const redirect = () => router.push('cart')
 
   return (
     <>
@@ -79,6 +84,8 @@ const LeftSection = () => {
         <GeneralButton
           backgroundColor="#FDCA40"
           textColor="#262833"
+          type='button'
+          method={redirect}
         >
           Volver al carrito
         </GeneralButton>

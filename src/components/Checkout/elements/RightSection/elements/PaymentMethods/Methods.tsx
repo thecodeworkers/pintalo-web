@@ -7,7 +7,6 @@ import { setFormRef } from '@store/actions'
 const Methods = ({ value }) => {
 
   const dispatch = useDispatch()
-  const formik = bankTransferInfo(dispatch)
 
   useEffect(() => {
     if (value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
@@ -17,6 +16,7 @@ const Methods = ({ value }) => {
 
   const { checkout: { paymentMethods } } = useSelector((state: any) => state)
 
+  const formik = bankTransferInfo(dispatch)
   const data = paymentMethods?.nodes ?? []
 
   const returnDataArray = () => {

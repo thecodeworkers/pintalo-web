@@ -1,5 +1,6 @@
 export { Filter } from './filter'
 export { default as GraphQlClient } from './graphqlClient'
+export { default as WooComerceClient } from './wooCommerceClient'
 export * from './common'
 export * from './appearance'
 export * from './dataTransform'

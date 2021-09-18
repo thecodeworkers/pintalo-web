@@ -8,11 +8,13 @@ const initialState: any = {
   budget: null,
   paymentData: null,
   paymentMethod: 'zelle',
-  reference: null,
+  reference: 'basic-form',
   step: 1,
   currentStep: 0,
   countries: [],
-  paymentMethods: []
+  paymentMethods: [],
+  successOrder: false,
+  paymentMethodId: ''
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {

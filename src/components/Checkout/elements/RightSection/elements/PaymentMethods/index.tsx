@@ -7,7 +7,7 @@ import { setCheckoutData } from '@store/actions'
 const paymentMethods = [
   {
     title: 'Zelle',
-    value: 'zelle'
+    value: 'zelle',
   },
   {
     title: 'Pago móvil',
@@ -74,7 +74,7 @@ const PaymentMethods = () => {
                     <input
                       type="checkbox"
                       className={styles._checkboxActive}
-                      onChange={(e) => dispatch(setCheckoutData({ paymentMethod: e.target.value }))}
+                      onChange={(e) => dispatch(setCheckoutData({ paymentMethod: e.target.value, paymentMethodId: 'alg_custom_gateway_1' }))}
                       checked={paymentMethod == method.value ? true : false}
                       value={method.value}
                     />

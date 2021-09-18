@@ -1,6 +1,6 @@
 import { useFormik } from 'formik'
 import { onlyLettersRegex, onlyNumbersRegex } from '@utils/regex'
-import { setCheckoutData } from '@store/actions'
+import { setCheckoutData, sendCheckoutForm } from '@store/actions'
 import { showToast } from '@utils/common'
 
 import * as Yup from 'yup'
@@ -73,7 +73,7 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
 
     if (notValid) return showToast(dispatch, errorSettings)
 
-    showToast(dispatch, settings)
-    dispatch(setCheckoutData({ budget: newValues, step: 3 }))
+    dispatch(setCheckoutData({ budget: newValues }))
+    dispatch(sendCheckoutForm())
   }
 }))

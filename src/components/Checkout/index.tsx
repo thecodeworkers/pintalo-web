@@ -6,6 +6,7 @@ import { LeftSection, RightSection } from './elements'
 import styles from './styles.module.scss'
 
 const Checkout = () => {
+
   const {
     intermitence: { showFooter }
   } = useSelector((state: any) => state)
@@ -41,7 +42,6 @@ const Checkout = () => {
           backgroundColor="#FDCA40"
           textColor="#262833"
           adjustWidth
-          type='submit'
         >
           Volver al carrito
         </GeneralButton>
