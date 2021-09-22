@@ -3,15 +3,20 @@ import styles from './styles.module.scss'
 import { bankTransferInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { setFormRef } from '@store/actions'
+import CreditCard from './CreditCard'
 
 const Methods = ({ value }) => {
 
   const dispatch = useDispatch()
 
-  useEffect(() => {
+  const setForm = () => {
     if (value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
     if (value == 'mobilePayment') return dispatch(setFormRef({ reference: 'mobilepay-form' }))
     dispatch(setFormRef({ reference: null }))
+  }
+
+  useEffect(() => {
+    setForm()
   }, [value])
 
   const { checkout: { paymentMethods } } = useSelector((state: any) => state)
@@ -164,33 +169,7 @@ const Methods = ({ value }) => {
 
     case 'tdc':
       return (
-        <>
-          <div className={styles._cardLogoContainer}>
-            <img src="/images/icons/bxl-mastercard.svg" alt="mastercard" />
-            <img src="/images/icons/bxl-visa.svg" alt="visa" />
-            <img src="/images/icons/a-express.svg" alt="american-express" />
-          </div>
-          <form className={styles._formContainer}>
-            <div className={styles._formItem}>
-              <label htmlFor="Nombre">Nombre de tarjeta</label>
-              <input placeholder='Nombre' className={styles._input} />
-            </div>
-            <div className={styles._formItem}>
-              <label htmlFor="Nombre">N. de tarjeta</label>
-              <input placeholder='Nombre' className={styles._input} />
-            </div>
-            <div className={styles._inputRow}>
-              <div className={styles._formItem}>
-                <label htmlFor="Nombre">CVV</label>
-                <input placeholder='Nombre' className={styles._input} />
-              </div>
-              <div className={styles._formItem}>
-                <label htmlFor="Nombre">Caducidad</label>
-                <input placeholder='Nombre' className={styles._input} />
-              </div>
-            </div>
-          </form>
-        </>
+        <CreditCard />
       )
 
     default:

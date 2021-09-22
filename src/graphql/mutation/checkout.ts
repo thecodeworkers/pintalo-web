@@ -1,4 +1,3 @@
-import { GraphQlClient } from '@utils'
 import { v4 as uuidv4 } from 'uuid';
 
 const checkoutMutation = (user, billing, shipping, paymentMethod) => {
@@ -36,7 +35,6 @@ const checkoutMutation = (user, billing, shipping, paymentMethod) => {
       },
       customerNote: "${user?.name} ${user?.lastname}, Teléfono: ${user?.phone}, CI ${user?.identification}, Correo: ${user?.email}",
       shipToDifferentAddress: true,
-      shippingMethod: "delivery"
     }) {
       result
       order {

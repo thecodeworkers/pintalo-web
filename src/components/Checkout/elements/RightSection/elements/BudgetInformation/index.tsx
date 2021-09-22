@@ -1,4 +1,4 @@
-import { useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import { BlackDropDown } from '@components'
 import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
@@ -9,13 +9,12 @@ import { setFormRef, setCheckoutData, sendCheckoutForm } from '@store/actions'
 const BudgetInformation = () => {
 
   const dispatch = useDispatch()
-  const { checkout: { countries, budget, address } } = useSelector((state: any) => state)
+  const { checkout: { budget, address, paymentCountries } } = useSelector((state: any) => state)
 
   const [currentCheckbox, setCurrentCheckbox] = useState(budget ? 1 : 2)
   const [country, setCountry] = useState(budget?.country ?? '')
   const [municipality, setMunicipality] = useState(budget?.municipality ?? '')
-  const [localCountries] = useState(buildSimpleArray(countries?.nodes, 'title') ?? [])
-  const [localTownships, setLocalTownships] = useState([])
+  const [localCountries] = useState(buildSimpleArray(paymentCountries, 'name') ?? [])
 
   const data: any = {
     country,
@@ -33,7 +32,7 @@ const BudgetInformation = () => {
 
   const checkboxAction = (current: number) => {
     setCurrentCheckbox(current)
-    if(current == 1) {
+    if (current == 1) {
       fillFields()
       dispatch(setCheckoutData({ budget: deliveryData }))
       return
@@ -63,11 +62,6 @@ const BudgetInformation = () => {
 
   const countryAction = (country) => {
     setCountry(country)
-    const result = countries?.nodes?.find((element: any) => element?.title == country)
-    if(result) {
-      const townships = buildSimpleArray(result?.townships?.content, 'name')
-      setLocalTownships(townships)
-    }
   }
 
   return (
@@ -113,7 +107,7 @@ const BudgetInformation = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.name}
-            />
+          />
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Apellido">Apellido</label>
@@ -137,7 +131,7 @@ const BudgetInformation = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.phone}
-            />
+          />
         </div>
       </div>
       <div className={styles._largeInputContainerRow}>
@@ -150,7 +144,7 @@ const BudgetInformation = () => {
           onChange={formik.handleChange}
           onBlur={formik.handleBlur}
           value={formik.values.address}
-          />
+        />
       </div>
       <div className={styles._inputContainerRow}>
         <div className={styles._formItem}>
@@ -175,7 +169,7 @@ const BudgetInformation = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.city}
-            />
+          />
         </div>
         <div className={styles._formItem}>
           <label htmlFor="Codigo Postal">Código Postal</label>
@@ -187,7 +181,7 @@ const BudgetInformation = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.postalCode}
-            />
+          />
         </div>
       </div>
       <div className={styles._inputContainerRow}>
@@ -201,24 +195,23 @@ const BudgetInformation = () => {
             onChange={formik.handleChange}
             onBlur={formik.handleBlur}
             value={formik.values.referencePoint}
-            />
+          />
         </div>
         <div className={styles._formLargeItem}>
           <label htmlFor="Municipio">Municipio</label>
-          <div className={styles._dropDownSeparation}>
-            <BlackDropDown
-              height="2.5rem"
-              items={localTownships}
-              title={!municipality ? 'Seleccione municipio' : municipality}
-              returnValue={(municipality) => setMunicipality(municipality)}
-              specialAlign
-              showValue
-            />
-          </div>
+          <input
+            placeholder='Municipio'
+            className={formik.errors.municipality && formik.touched.municipality ? styles._inputError : styles._input}
+            name='municipality'
+            type='text'
+            onChange={formik.handleChange}
+            onBlur={formik.handleBlur}
+            value={formik.values.municipality}
+          />
         </div>
       </div>
       <p className={styles._caption}><strong>Importante:</strong> Confirma que todos los datos esten correctos antes de continuar. </p>
-      { !formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p> }
+      {!formik.isValid && formik.submitCount > 0 && <p className={styles._errorMsg}>Ha ocurrido un error, verifica que todos los campos esten llenos</p>}
 
     </form>
   )

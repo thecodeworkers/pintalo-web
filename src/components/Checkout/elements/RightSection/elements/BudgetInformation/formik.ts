@@ -26,7 +26,8 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
     country: defaultValues?.country && status == 1 ? defaultValues?.country : '',
     city: defaultValues?.city && status == 1 ? defaultValues?.city : '',
     referencePoint: defaultValues?.referencePoint && status == 1 ? defaultValues?.referencePoint : '',
-    postalCode: defaultValues?.postalCode && status == 1 ? defaultValues?.postalCode : ''
+    postalCode: defaultValues?.postalCode && status == 1 ? defaultValues?.postalCode : '',
+    municipality: defaultValues?.municipality && status == 1 ? defaultValues?.municipality : '',
   },
 
   validationSchema: Yup.object({

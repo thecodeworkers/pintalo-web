@@ -30,7 +30,8 @@ const AddressInformation = () => {
     date: parseDate(startDate),
     hour: parseHour(hour),
     country,
-    municipality
+    municipality,
+    city
   }
 
   const formik = formikAddresInfo(dispatch, data, address)

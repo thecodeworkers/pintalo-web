@@ -23,7 +23,7 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
     hour: defaultValues?.hour ?? '',
     name: defaultValues?.name ?? '',
     lastname: defaultValues?.lastname ?? '',
-    phone: defaultValues?.phone ??  '',
+    phone: defaultValues?.phone ?? '',
     address: defaultValues?.address ?? '',
     country: defaultValues?.country ?? '',
     city: defaultValues?.city ?? '',
@@ -51,16 +51,16 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
     address: Yup.string()
       .required()
       .max(200),
-
-    city: Yup.string()
-    .min(2)
-    .required()
-    .matches(onlyLettersRegex),
-
+    /*
+        city: Yup.string()
+        .min(2)
+        .required()
+        .matches(onlyLettersRegex),
+     */
     referencePoint: Yup.string()
-    .min(2)
-    .required()
-    .matches(onlyLettersRegex),
+      .min(2)
+      .required()
+      .matches(onlyLettersRegex),
 
     postalCode: Yup.string()
       .required()
@@ -71,9 +71,9 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
   onSubmit: values => {
     const newValues = { ...values, ...data }
     const dataArray = Object.values(newValues)
-    const notValid = dataArray.some((item: string) => item == '')
+    const notValid = false/* dataArray.some((item: string) => item == '') */
 
-    if(notValid) return showToast(dispatch, errorSettings)
+    if (notValid) return showToast(dispatch, errorSettings)
 
     showToast(dispatch, settings)
     dispatch(setCheckoutData({ address: newValues, step: 3 }))
