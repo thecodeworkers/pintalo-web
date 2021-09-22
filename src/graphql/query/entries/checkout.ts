@@ -3,11 +3,16 @@ query GetCheckoutRecources {
   countries {
     nodes {
       title
-      slug
-      townships {
-        content {
+      cities {
+        nodes {
           name
-          key
+          slug
+          townships {
+            content {
+              name
+              key
+            }
+          }
         }
       }
     }

@@ -17,6 +17,7 @@ cart {
   availableShippingMethods {
     rates {
       id
+      cost
       label
       instanceId
       methodId

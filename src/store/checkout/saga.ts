@@ -1,9 +1,8 @@
 import { call, put, takeLatest, select } from '@redux-saga/core/effects'
 import { actionObject, GraphQlClient, manageError, validateFetch, WooComerceClient } from '@utils'
 import { GET_CHECKOUT_DATA, GET_COUNTRY_DATA_ASYNC, SEND_CHECKOUT_FORM, CHECKOUT_DATA, RESET_STATE } from './action-types'
-import { SHOW_LOADER } from '@store/intermitence/action-types'
+import { SHOW_LOADER, SHOW_TOAST } from '@store/intermitence/action-types'
 import { SET_ITEM } from '@store/cart/action-types'
-import { SHOW_TOAST } from '@store/intermitence/action-types'
 import { checkoutQuery } from '@graphql/query'
 import { checkoutForm } from '@graphql/mutation'
 import { getCheckout, getUser } from '@store/selectors'
@@ -18,8 +17,9 @@ function* getCheckoutDataAsync() {
     yield put(actionObject(GET_COUNTRY_DATA_ASYNC,
       {
         countries: response?.countries,
-        paymentMethods: response?.paymentGateways
-       }
+        paymentMethods: response?.paymentGateways,
+        paymentCountries: allCountries,
+      }
     ))
 
   } catch (err) {
@@ -37,7 +37,7 @@ function* sendCheckoutFormAsync() {
     let response = yield call(GraphQlClient, checkoutForm(basic, address, budget, paymentMethod), {}, sessionToken)
     response = validateFetch(response)
 
-    if(response) {
+    if (response) {
       yield put(actionObject(SET_ITEM, { cart: {} }))
       yield put(actionObject(CHECKOUT_DATA, { successOrder: true }))
     }
@@ -46,7 +46,7 @@ function* sendCheckoutFormAsync() {
     yield put(actionObject(RESET_STATE))
 
   }
-  catch (err){
+  catch (err) {
     yield call(manageError, err, SHOW_TOAST)
   }
 }

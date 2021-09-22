@@ -7,6 +7,7 @@ const BlackDropDown = ({
   title,
   specialAlign = false,
   showValue = false,
+  valueShow = null,
   onSet = null,
   method = null,
   returnValue = null
@@ -15,7 +16,7 @@ const BlackDropDown = ({
   const [value, setValue] = useState('')
   const setNewValue = (value) => {
     setValue(value)
-    if(returnValue) returnValue(value)
+    if (returnValue) returnValue(value)
     if (onSet) onSet(value)
   }
 
@@ -33,7 +34,7 @@ const BlackDropDown = ({
           onClick={showOptions}
         >
           {value || title}
-          {showValue && <span className={styles._test}>$0.00</span>}
+          {showValue && <span className={styles._test}>{valueShow ? valueShow : '$0.00'}</span>}
           <i className={`${styles._arrow} _down`}></i>
         </button>
         <div className={styles._dropdown_content}>
