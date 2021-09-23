@@ -99,6 +99,8 @@ const loginUser = ({ email, password }) => {
         email
         firstName
         lastName
+        jwtAuthToken
+        jwtRefreshToken
       }
     }
   }

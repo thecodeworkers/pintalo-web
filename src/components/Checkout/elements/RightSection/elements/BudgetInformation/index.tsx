@@ -4,7 +4,7 @@ import styles from './styles.module.scss'
 import { formikBudgetInfo } from './formik'
 import { useDispatch, useSelector } from 'react-redux'
 import { elementId, buildSimpleArray } from '@utils/common'
-import { setFormRef, setCheckoutData, sendCheckoutForm } from '@store/actions'
+import { setFormRef, setCheckoutData } from '@store/actions'
 
 const BudgetInformation = () => {
 
