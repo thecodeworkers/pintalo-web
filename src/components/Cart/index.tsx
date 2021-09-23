@@ -57,7 +57,7 @@ const CartPage = () => {
           Volver a shop
         </GeneralButton>
         {
-          Object.keys(cart).length ? (
+          !cart?.isEmpty && Object.keys(cart).length ? (
             <GeneralButton
               backgroundColor="#FDCA40"
               textColor="#262833"

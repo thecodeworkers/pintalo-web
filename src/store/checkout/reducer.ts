@@ -14,7 +14,9 @@ const initialState: any = {
   countries: [],
   paymentMethods: [],
   successOrder: false,
-  paymentMethodId: ''
+  paymentMethodId: '',
+  paymentCountries: [],
+
 }
 
 const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => {
@@ -32,7 +34,19 @@ const checkoutReducer = (state = initialState, { type, payload }: AnyAction) => 
       return { ...state, ...payload }
 
     case RESET_STATE:
-      return initialState
+      return {
+        ...state,
+        basic: null,
+        address: null,
+        budget: null,
+        paymentData: null,
+        paymentMethod: 'zelle',
+        reference: 'basic-form',
+        step: 1,
+        currentStep: 0,
+        successOrder: false,
+        paymentMethodId: ''
+      }
 
     default:
       return state

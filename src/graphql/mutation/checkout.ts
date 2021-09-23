@@ -1,6 +1,6 @@
 import { v4 as uuidv4 } from 'uuid';
 
-const checkoutMutation = (user, billing, shipping, paymentMethod) => {
+const checkoutMutation = (user, billing, shipping, paymentMethod, paymentData) => {
 
   return (`
   mutation Checkout {
@@ -33,7 +33,7 @@ const checkoutMutation = (user, billing, shipping, paymentMethod) => {
         postcode: "${shipping?.postalCode}",
         state: "${shipping?.municipality}"
       },
-      customerNote: "${user?.name} ${user?.lastname}, Teléfono: ${user?.phone}, CI ${user?.identification}, Correo: ${user?.email}",
+      customerNote: "${user?.name} ${user?.lastname}, Teléfono: ${user?.phone}, CI ${user?.document}, Correo: ${user?.email}, Fecha de entrega: ${billing?.date},  Hora de entrega: ${billing?.hour},  ${paymentData ? `Nombre: ${paymentData?.name}, Referencia: ${paymentData?.referenceNumber}, Banco: ${paymentData?.bank}` : "" } ",
       shipToDifferentAddress: true,
     }) {
       result

@@ -58,7 +58,6 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
 
     referencePoint: Yup.string()
       .min(2)
-      .required()
       .matches(onlyLettersRegex),
 
     postalCode: Yup.string()
@@ -69,6 +68,7 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
 
   onSubmit: values => {
     const newValues = { ...values, ...data }
+    delete newValues?.referencePoint
     const dataArray = Object.values(newValues)
     const notValid = dataArray.some((item: string) => item == '')
 

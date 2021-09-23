@@ -76,15 +76,11 @@ function* updateQuantityAsync({ payload: { product, type } }: any) {
 function* updateShippingAsync({ payload: method }: any) {
 
   try {
-
-    yield put(actionObject(SHOW_LOADER, true))
-
     const { user: { sessionToken } } = yield select(getUser)
     const response = yield call(GraphQlClient, updateShippingMethod(method), {}, sessionToken)
     const { updateShippingMethod: { cart: newCart } } = validateFetch(response)
 
     yield put(actionObject(SET_ITEM, { cart: newCart }))
-    yield put(actionObject(SHOW_LOADER, false))
     yield call(showDialog, 'Metodo de envio seleccionado')
   } catch (error) {
     yield call(manageError, error, SHOW_TOAST, SHOW_LOADER)

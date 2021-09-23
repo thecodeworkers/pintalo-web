@@ -51,15 +51,9 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
     address: Yup.string()
       .required()
       .max(200),
-    /*
-        city: Yup.string()
-        .min(2)
-        .required()
-        .matches(onlyLettersRegex),
-     */
+
     referencePoint: Yup.string()
       .min(2)
-      .required()
       .matches(onlyLettersRegex),
 
     postalCode: Yup.string()
@@ -70,9 +64,10 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
 
   onSubmit: values => {
     const newValues = { ...values, ...data }
+    delete newValues?.referencePoint
     const dataArray = Object.values(newValues)
-    const notValid = false/* dataArray.some((item: string) => item == '') */
 
+    const notValid = dataArray.some((item: string) => item == '')
     if (notValid) return showToast(dispatch, errorSettings)
 
     showToast(dispatch, settings)

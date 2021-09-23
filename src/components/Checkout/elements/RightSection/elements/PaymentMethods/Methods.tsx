@@ -8,10 +8,19 @@ import CreditCard from './CreditCard'
 const Methods = ({ value }) => {
 
   const dispatch = useDispatch()
+  const formik = bankTransferInfo(dispatch)
 
   const setForm = () => {
-    if (value == 'transfer') return dispatch(setFormRef({ reference: 'transferpay-form' }))
-    if (value == 'mobilePayment') return dispatch(setFormRef({ reference: 'mobilepay-form' }))
+    if (value == 'transfer') {
+      dispatch(setFormRef({ reference: 'transferpay-form' }))
+      formik.resetForm()
+      return
+    }
+    if (value == 'mobilePayment') {
+      formik.resetForm()
+       dispatch(setFormRef({ reference: 'mobilepay-form' }))
+       return
+    }
     dispatch(setFormRef({ reference: null }))
   }
 
@@ -21,7 +30,6 @@ const Methods = ({ value }) => {
 
   const { checkout: { paymentMethods } } = useSelector((state: any) => state)
 
-  const formik = bankTransferInfo(dispatch)
   const data = paymentMethods?.nodes ?? []
 
   const returnDataArray = () => {
