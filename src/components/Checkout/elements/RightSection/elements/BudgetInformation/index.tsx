@@ -13,12 +13,10 @@ const BudgetInformation = () => {
 
   const [currentCheckbox, setCurrentCheckbox] = useState(budget ? 1 : 2)
   const [country, setCountry] = useState(budget?.country ?? '')
-  const [municipality, setMunicipality] = useState(budget?.municipality ?? '')
   const [localCountries] = useState(buildSimpleArray(paymentCountries, 'name') ?? [])
 
   const data: any = {
     country,
-    municipality
   }
 
   const formik = formikBudgetInfo(dispatch, data, budget, currentCheckbox)
@@ -43,12 +41,13 @@ const BudgetInformation = () => {
   }
 
   const fillFields = () => {
-    for (const key in deliveryData) {
-      formik.setFieldValue(key, deliveryData[key])
-    }
+    delete deliveryData?.date
+    delete deliveryData?.hour
 
+    for (const key in deliveryData) {
+       formik.setFieldValue(key, deliveryData[key])
+    }
     setCountry(deliveryData?.country)
-    setMunicipality(deliveryData?.municipality)
   }
 
   const resetFields = () => {
@@ -57,7 +56,6 @@ const BudgetInformation = () => {
     }
 
     setCountry('')
-    setMunicipality('')
   }
 
   const countryAction = (country) => {

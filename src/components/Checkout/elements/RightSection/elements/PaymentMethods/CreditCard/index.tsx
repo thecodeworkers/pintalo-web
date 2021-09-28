@@ -62,8 +62,6 @@ const CreditCard = () => {
 
   }
 
-
-
   return (
     <>
       <div className={styles._titleParent}>
@@ -74,7 +72,7 @@ const CreditCard = () => {
         <div className={styles._list}>
           <div className={styles._formCardContainer}>
             <div className={`${styles._inputParent} ${styles._separation}`}>
-              <label>Nombre en la tarjeta</label>
+              <label className={styles._label}>Nombre en la tarjeta</label>
               <input disabled={disabled} id="name" name="name" type="text" className={errors.name && touched.name ? [styles._inputError, styles._input].join(' ') : styles._input}
                 onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} />
             </div>

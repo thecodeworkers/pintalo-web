@@ -5,6 +5,7 @@ import styles from './styles.module.scss'
 import { showModal, setCheckoutData } from '@store/actions'
 import { useDispatch, useSelector } from 'react-redux'
 import { showToast } from '@utils/common'
+import { useRouter } from 'next/router'
 
 const title = {
   basicInformation: 'Tus datos',
@@ -45,6 +46,7 @@ const returnComponent = (status) => {
 
 const RightSection = () => {
 
+  const router = useRouter()
   const dispatch = useDispatch()
 
   const { modal: { paymentProcessing }, showLoader  } = useSelector((state: any) => state.intermitence)
@@ -52,8 +54,21 @@ const RightSection = () => {
   const { reference, step, successOrder, paymentMethod } = checkout
 
   useEffect(() => {
-    if(successOrder) dispatch(showModal('paymentProcessing', true))
+    let timeout
+
+    if (successOrder) {
+      redirect(timeout)
+      dispatch(showModal('paymentProcessing', true))
+    }
+
+    return () => { clearTimeout(timeout) }
   }, [successOrder])
+
+  const redirect = (timeout: any) => {
+    timeout = setTimeout(() => {
+      router.push('/')
+    }, 3000);
+  }
 
   const paymentRedirect = () => {
     if(paymentMethod && step == 3) {

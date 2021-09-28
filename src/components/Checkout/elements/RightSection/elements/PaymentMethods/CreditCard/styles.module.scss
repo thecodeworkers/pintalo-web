@@ -1,2 +1,32 @@
 @import '@styles/index.scss';
 
+._input {
+  @include input($silverChalice, $doveGray, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._inputError {
+  @include input($cello, red, $alto);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._tdcTitle {
+  @include font('helvetica', 'helvetica17');
+  color: $charade;
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+._label {
+  @include font('helvetica', 'helvetica17');
+}
+
+._btnParent {
+  margin-top: 0.6rem;
+}

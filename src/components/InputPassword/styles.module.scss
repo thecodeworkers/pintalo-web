@@ -10,12 +10,12 @@
 }
 
 ._input {
-  @include input($cello, $cello, $alto);
+  @include input($cello, $cello, $silverChalice);
   @include commonInputStyles;
 }
 
 ._inputError {
-  @include input($cello, red, $alto);
+  @include input($cello, red, $silverChalice);
   @include commonInputStyles;
 }
 

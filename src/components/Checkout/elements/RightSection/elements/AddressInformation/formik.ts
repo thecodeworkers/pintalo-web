@@ -58,7 +58,7 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
 
     postalCode: Yup.string()
       .required()
-      .max(4)
+      .max(6)
       .matches(onlyNumbersRegex)
   }),
 

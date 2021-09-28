@@ -62,8 +62,13 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
 
     postalCode: Yup.string()
       .required()
-      .max(4)
-      .matches(onlyNumbersRegex)
+      .max(6)
+      .matches(onlyNumbersRegex),
+
+    municipality: Yup.string()
+      .required()
+      .min(2)
+      .matches(onlyLettersRegex)
   }),
 
   onSubmit: values => {

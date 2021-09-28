@@ -15,7 +15,7 @@
 }
 
 ._input {
-  @include input($cello, $cello, $alto);
+  @include input($cello, $cello, $silverChalice);
   width: 85%;
   margin: 1rem 0;
   padding: 0.6rem;
@@ -26,7 +26,7 @@
 }
 
 ._inputError {
-  @include input($cello, red, $alto);
+  @include input($cello, red, $silverChalice);
   width: 85%;
   margin: 1rem 0;
   padding: 0.6rem;
