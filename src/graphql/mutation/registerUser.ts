@@ -12,11 +12,15 @@ const registerUser = ({ email, password, name, lastname }) => {
           firstName: "${name}",
           lastName: "${lastname}"
         }) {
-        user {
-          jwtAuthToken
-          jwtRefreshToken
-          email
-        }
+          user {
+            email
+            firstName
+            lastName
+            jwtAuthToken
+            jwtRefreshToken
+            wooSessionToken
+            databaseId
+          }
       }
     }
   `)

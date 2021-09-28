@@ -29,6 +29,14 @@ function* getCheckoutDataAsync() {
   }
 }
 
+const getCartQuery = () => {
+  return `
+  query getCart {
+    ${cartQuery}
+  }
+  `
+}
+
 function* sendCheckoutFormAsync() {
 
   try {
@@ -60,7 +68,8 @@ function* sendCheckoutFormAsync() {
     if (response) {
       yield call(WooCommerceClient, `orders/${response?.checkout?.order?.orderNumber}`, 'PUT', { customer_id: databaseId, status: status })
 
-      const cartResponse = yield call(GraphQlClient, cartQuery)
+      let cartResponse = yield call(GraphQlClient, getCartQuery(), {}, sessionToken)
+      cartResponse = validateFetch(cartResponse)
       yield put(actionObject(SET_ITEM, { cart: cartResponse }))
 
       yield put(actionObject(CHECKOUT_DATA, { successOrder: true }))
