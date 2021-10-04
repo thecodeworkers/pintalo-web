@@ -85,7 +85,7 @@ const AddressInformation = () => {
             {
               inputType
               &&
-              <div className={styles._calendarParent}>
+              <div className={styles._calendarParent} onClick={openDate}>
                 <DatePicker
                   selected={startDate}
                   onChange={(date) => setStartDate(date)}
@@ -108,7 +108,7 @@ const AddressInformation = () => {
 
             {
               showHour &&
-              <div className={styles._hoursParent}>
+              <div className={styles._hoursParent} onClick={openHour}>
                 <DatePicker
                   onChange={(date) => setHour(date)}
                   showTimeSelect

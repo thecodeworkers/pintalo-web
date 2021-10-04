@@ -1,7 +1,7 @@
 @import '@styles/index.scss';
 
 ._input {
-  @include input($silverChalice, $doveGray, $silverChalice);
+  @include input($charade, $doveGray, $silverChalice);
   margin-bottom: 2rem;
   margin: .5rem 0;
   padding: 0.6rem;
@@ -9,7 +9,7 @@
 }
 
 ._inputError {
-  @include input($cello, red, $alto);
+  @include input($charade, red, $silverChalice);
   margin-bottom: 2rem;
   margin: .5rem 0;
   padding: 0.6rem;

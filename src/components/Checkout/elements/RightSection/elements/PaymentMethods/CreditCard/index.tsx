@@ -59,7 +59,6 @@ const CreditCard = () => {
       setShowLoader(false)
       setDisabled(!disabled)
     }
-
   }
 
   return (
@@ -76,9 +75,7 @@ const CreditCard = () => {
               <input disabled={disabled} id="name" name="name" type="text" className={errors.name && touched.name ? [styles._inputError, styles._input].join(' ') : styles._input}
                 onChange={formik.handleChange} onBlur={formik.handleBlur} value={formik.values.name} />
             </div>
-            <div className={styles._cardContainer}>
-              <CardElement options={cardOptions} />
-            </div>
+            <CardElement options={cardOptions} />
           </div>
         </div>
         <div className={styles._buttonContainer}>
