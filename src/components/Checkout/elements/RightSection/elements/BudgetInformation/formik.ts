@@ -58,7 +58,7 @@ export const formikBudgetInfo = (dispatch: any, data: any, defaultValues: any, s
 
     referencePoint: Yup.string()
       .min(2)
-      .matches(onlyLettersRegex),
+      .max(300),
 
     postalCode: Yup.string()
       .required()

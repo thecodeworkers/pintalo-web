@@ -54,7 +54,7 @@ export const formikAddresInfo = (dispatch: any, data: any, defaultValues: any) =
 
     referencePoint: Yup.string()
       .min(2)
-      .matches(onlyLettersRegex),
+      .max(300),
 
     postalCode: Yup.string()
       .required()
