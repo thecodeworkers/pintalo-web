@@ -3,8 +3,9 @@ import { watchGetInspoPage, watchGetPages } from './page/saga'
 import { watchSignIn, watchSignUp, watchForgotPassword } from './user/saga'
 import { watchGetProduct, watchGetShop } from './product/saga'
 import { watchSetFilter, watchSearch } from './shop/saga'
-import { watchAddedItem, watchRemoveItem, watchUpdateItemQuantities } from './cart/saga'
+import { watchAddedItem, watchRemoveItem, watchUpdateItemQuantities, watchUpdateShipping } from './cart/saga'
 import { watchSubmitForm } from './contact/saga'
+import { watchGetCheckoutData, watchSendCheckoutForm } from './checkout/saga'
 import { watchGetColor } from './colors/saga'
 
 function* sagas() {
@@ -22,7 +23,10 @@ function* sagas() {
     fork(watchUpdateItemQuantities),
     fork(watchRemoveItem),
     fork(watchSubmitForm),
-    fork(watchGetColor)
+    fork(watchGetCheckoutData),
+    fork(watchGetColor),
+    fork(watchSendCheckoutForm),
+    fork(watchUpdateShipping)
   ])
 }
 

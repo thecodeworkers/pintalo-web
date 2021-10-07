@@ -1,11 +1,14 @@
 import styles from './styles.module.scss'
 import Methods from './Methods'
-import { useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { setCheckoutData } from '@store/actions'
+import getStripe from '@utils/getStripe'
+import { Elements } from '@stripe/react-stripe-js'
 
 const paymentMethods = [
   {
     title: 'Zelle',
-    value: 'zelle'
+    value: 'zelle',
   },
   {
     title: 'Pago móvil',
@@ -48,66 +51,72 @@ const logos = [
 ]
 
 const PaymentMethods = () => {
-  const [option, setOption] = useState('zelle')
+
+  const stripe = getStripe()
+  const dispatch = useDispatch()
+  const { checkout: { paymentMethod } } = useSelector((state: any) => state)
 
   return (
-    <div className={styles._container}>
-      <div className={styles._methodsContainer}>
-        <div>
-          <div className={styles._titleContainer}>
-            <h1>Seleccione una opción</h1>
-            {
-              logos.map((logo, index) => (
-                <img key={index} src={`/images/icons/${logo.name}`} alt={logo.name} />
-              ))
-            }
-          </div>
-          <div className={styles._methodsSubcontainer}>
-            <div className={styles._methods}>
+
+    <Elements stripe={stripe}>
+      <div className={styles._container}>
+        <div className={styles._methodsContainer}>
+          <div>
+            <div className={styles._titleContainer}>
+              <h1>Seleccione una opción</h1>
               {
-                paymentMethods.map((method, index) => (
-                  <div key={index} className={styles._optionContainer}>
-                    <input
-                      type="checkbox"
-                      className={styles._checkboxActive}
-                      onChange={(e) => setOption(e.target.value)}
-                      checked={option == method.value ? true : false}
-                      value={method.value}
-                    />
-                    <p className="_methodTitle">{method.title}</p>
-                    <style jsx>{`
-                      ._methodTitle {
-                        color: ${option == method.value ? '#262833' : '#9B9B9B'};
-                      }
-                    `}</style>
-                  </div>
+                logos.map((logo, index) => (
+                  <img key={index} src={`/images/icons/${logo.name}`} alt={logo.name} />
                 ))
               }
             </div>
-            <div className={styles._importantCaption}>
-              <p>Enviar comprobante de pago a nuestro correo</p>
-              <p>Pintalo@gmail.com</p>
-              <div className={styles._paymentDetail}>
-                <p>-Pago movil, transferencia, Zelle:</p>
-                <p>Debe verse legible el numero de confirmacion y banco</p>
+            <div className={styles._methodsSubcontainer}>
+              <div className={styles._methods}>
+                {
+                  paymentMethods.map((method, index) => (
+                    <div key={index} className={styles._optionContainer}>
+                      <input
+                        type="checkbox"
+                        className={styles._checkboxActive}
+                        onChange={(e) => dispatch(setCheckoutData({ paymentMethod: e.target.value, paymentMethodId: 'alg_custom_gateway_1' }))}
+                        checked={paymentMethod == method.value ? true : false}
+                        value={method.value}
+                      />
+                      <p className="_methodTitle">{method.title}</p>
+                      <style jsx>{`
+                      ._methodTitle {
+                        color: ${paymentMethod == method.value ? '#262833' : '#9B9B9B'};
+                      }
+                    `}</style>
+                    </div>
+                  ))
+                }
               </div>
-              <div className={styles._paymentDetail}>
-                <p>-Efectivo:</p>
-                <p>Debe verse legible el numero de serie del billete</p>
+              <div className={styles._importantCaption}>
+                <p>Enviar comprobante de pago a nuestro correo</p>
+                <p>Pintalo@gmail.com</p>
+                <div className={styles._paymentDetail}>
+                  <p>-Pago movil, transferencia, Zelle:</p>
+                  <p>Debe verse legible el numero de confirmacion y banco</p>
+                </div>
+                <div className={styles._paymentDetail}>
+                  <p>-Efectivo:</p>
+                  <p>Debe verse legible el numero de serie del billete</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-      <div className={styles._informationContainer}>
-        <div className={styles._receiptInfoContainer}>
-          <Methods value={option} />
-        </div>
-        <div className={styles._receiptImgContainer}>
+        <div className={styles._informationContainer}>
+          <div className={styles._receiptInfoContainer}>
+            <Methods value={paymentMethod} />
+          </div>
+          <div className={styles._receiptImgContainer}>
 
+          </div>
         </div>
       </div>
-    </div>
+    </Elements>
   )
 }
 

@@ -17,7 +17,15 @@
 }
 
 ._input {
-  @include input ($silverChalice, $doveGray, $silverChalice);
+  @include input($charade, $doveGray, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._inputError {
+  @include input($charade, red, $silverChalice);
   margin-bottom: 2rem;
   margin: .5rem 0;
   padding: 0.6rem;
@@ -27,6 +35,14 @@
 ._caption {
   @include font('helvetica', 'helvetica12');
   margin-left: .4rem;
+}
+
+._errorMsg {
+  @include font('helvetica', 'helvetica12');
+  margin-left: .4rem;
+  margin-top: .8rem;
+  font-weight: bold;
+  color: red;
 }
 
 ._formItem {

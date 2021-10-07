@@ -1,5 +1,6 @@
 import { call, delay, put } from '@redux-saga/core/effects'
 import { END } from '@redux-saga/core'
+import { setMenuShow } from '@store/actions'
 
 export const normalizedArray = response => response ? response : []
 
@@ -50,3 +51,44 @@ export const mapProps = async (store, action) => {
 }
 
 export const roundNumber = (number) => Math.round(number * 100) / 100
+
+export const elementId = (id: string) => {
+  const element = document.querySelector(id)
+  return element.id
+}
+
+export const parseDate = (currentDate) => {
+  const year = currentDate.getFullYear()
+  const month = currentDate.getMonth() + 1
+  const day = currentDate.getDate()
+
+  return `${day}/${month}/${year}`
+}
+
+export const parseHour = (data) => {
+  const date = new Date(data)
+  let minutes: any = date.getMinutes()
+  let hour: any = date.getHours()
+  hour = hour > 12 ? hour - 12 : hour === 0 ? 12 : hour
+  hour = hour < 10 ? `0${hour}` : hour
+  minutes = minutes < 10 ? `0${minutes}` : minutes
+  const afternoon = date.getHours() > 11 ? 'PM' : 'AM'
+  return `${hour}:${minutes} ${afternoon}`
+}
+
+export const showToast = (dispatch: any, settings) => {
+  dispatch(setMenuShow({ toast: settings }))
+
+  setTimeout(() => {
+    dispatch(setMenuShow({ toast: { ...settings, status: 2 }}))
+  }, 2000);
+}
+
+export const buildSimpleArray = (array: any = [], key: string): Array<any> => {
+  let newArray = []
+  array.forEach((item: any, index: number) => {
+    newArray[index] = item[key]
+  })
+
+  return newArray
+}

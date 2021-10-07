@@ -9,6 +9,7 @@ import colors from './colors/reducer'
 import shop from './shop/reducer'
 import cart from './cart/reducer'
 import scrollReference from './scrollReference/reducer'
+import checkout from './checkout/reducer'
 import contact from './contact/reducer'
 
 const reducers = combineReducers({
@@ -22,6 +23,7 @@ const reducers = combineReducers({
   shop,
   cart,
   scrollReference,
+  checkout,
   contact
 })
 

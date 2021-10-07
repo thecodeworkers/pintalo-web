@@ -17,11 +17,27 @@
 }
 
 ._input {
-  @include input($silverChalice, $doveGray, $silverChalice);
+  @include input($charade, $doveGray, $silverChalice);
   margin-bottom: 2rem;
   margin: .5rem 0;
   padding: 0.6rem;
   width: 100%
+}
+
+._inputError {
+  @include input($charade, red, $silverChalice);
+  margin-bottom: 2rem;
+  margin: .5rem 0;
+  padding: 0.6rem;
+  width: 100%
+}
+
+._errorMsg {
+  @include font('helvetica', 'helvetica12');
+  margin-left: .4rem;
+  margin-top: .8rem;
+  font-weight: bold;
+  color: red;
 }
 
 ._caption {
@@ -50,6 +66,24 @@
   margin-top: .5rem;
 }
 
+._calendarParent {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  z-index: 3;
+}
+
+._hoursParent {
+  position: absolute;
+  top: 3rem;
+  right: 0;
+  z-index: 3;
+}
+
+._dropParent {
+  position: relative;
+}
+
 @include responsive(md) {
   ._formContainer {
     padding: 2rem;
@@ -63,5 +97,6 @@
   ._formItem {
     width: 100%;
     margin-bottom: 1.2rem;
+    position: relative;
   }
 }

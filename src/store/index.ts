@@ -53,6 +53,7 @@ const makeStore: any = ({ isServer }) => {
       'intermitence',
       'page',
       'product',
+      'checkout'
     ]
   }
 

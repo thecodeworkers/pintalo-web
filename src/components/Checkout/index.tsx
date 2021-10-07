@@ -6,6 +6,7 @@ import { LeftSection, RightSection } from './elements'
 import styles from './styles.module.scss'
 
 const Checkout = () => {
+
   const {
     intermitence: { showFooter }
   } = useSelector((state: any) => state)

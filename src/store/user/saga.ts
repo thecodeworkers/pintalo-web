@@ -11,8 +11,16 @@ function* signUpAsync({ payload }: any) {
     let response = yield call(GraphQlClient, registerUser(payload))
     response = validateFetch(response)
 
+    let login = yield call(GraphQlClient, loginUser(payload))
+    login = validateFetch(login)
+
     yield put(actionObject(SIGN_UP_ASYNC, {
-      ...response.registerUser,
+      user: {
+        ...login.login.user,
+        ...login.login.customer,
+        authToken: login.login.authToken,
+        sessionToken: login.login.sessionToken
+      },
       isAuth: true
     }));
 

@@ -1,0 +1,8 @@
+export const CHECKOUT_DATA: string = 'CHECKOUT_DATA'
+export const CURRENT_FORM: string = 'CURRENT_FORM'
+export const CHANGE_STEP: string = 'CHANGE_STEP'
+export const GET_CHECKOUT_DATA: string = 'GET_CHECKOUT_DATA'
+export const GET_COUNTRY_DATA_ASYNC: string = 'GET_COUNTRY_DATA_ASYNC'
+export const RESET_STATE: string = 'RESET_STATE'
+export const SEND_CHECKOUT_FORM: string = 'SEND_CHECKOUT_FORM'
+export const SEND_CHECKOUT_FORM_ASYNC: string = 'SEND_CHECKOUT_FORM_ASYNC'

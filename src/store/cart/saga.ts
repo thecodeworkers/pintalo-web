@@ -1,11 +1,11 @@
-import { addToCart, removeItemsFromCart, updateItemQuantities } from '@graphql/mutation'
+import { addToCart, removeItemsFromCart, updateItemQuantities, updateShippingMethod } from '@graphql/mutation'
 import { call, takeLatest } from '@redux-saga/core/effects'
 import { SHOW_LOADER, SHOW_TOAST } from '@store/intermitence/action-types'
 import { getUser } from '@store/selectors'
 import { SIGN_UP_ASYNC } from '@store/user/action-types'
 import { actionObject, GraphQlClient, manageError, reduceVariation, showDialog, validateFetch } from '@utils'
 import { put, select } from 'redux-saga/effects'
-import { ADDED_ITEM, REMOVE_ITEM, SET_ITEM, UPDATE_QUANTITY } from './action-types'
+import { ADDED_ITEM, REMOVE_ITEM, SET_ITEM, UPDATE_QUANTITY, UPDATE_SHIPPING } from './action-types'
 
 function* addedItemAsync({ payload }: any) {
   try {
@@ -73,6 +73,20 @@ function* updateQuantityAsync({ payload: { product, type } }: any) {
   }
 }
 
+function* updateShippingAsync({ payload: method }: any) {
+
+  try {
+    const { user: { sessionToken } } = yield select(getUser)
+    const response = yield call(GraphQlClient, updateShippingMethod(method), {}, sessionToken)
+    const { updateShippingMethod: { cart: newCart } } = validateFetch(response)
+
+    yield put(actionObject(SET_ITEM, { cart: newCart }))
+    yield call(showDialog, 'Metodo de envio seleccionado')
+  } catch (error) {
+    yield call(manageError, error, SHOW_TOAST, SHOW_LOADER)
+  }
+}
+
 function* removeItemAsync({ payload: key }: any) {
 
   try {
@@ -101,4 +115,8 @@ export function* watchUpdateItemQuantities() {
 
 export function* watchRemoveItem() {
   yield takeLatest(REMOVE_ITEM, removeItemAsync)
+}
+
+export function* watchUpdateShipping() {
+  yield takeLatest(UPDATE_SHIPPING, updateShippingAsync)
 }

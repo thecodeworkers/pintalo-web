@@ -1,15 +1,53 @@
+import { useEffect } from 'react'
 import styles from './styles.module.scss'
+import { bankTransferInfo } from './formik'
+import { useDispatch, useSelector } from 'react-redux'
+import { setFormRef } from '@store/actions'
+import CreditCard from './CreditCard'
 
 const Methods = ({ value }) => {
+
+  const dispatch = useDispatch()
+  const formik = bankTransferInfo(dispatch)
+
+  const setForm = () => {
+    if (value == 'transfer') {
+      dispatch(setFormRef({ reference: 'transferpay-form' }))
+      formik.resetForm()
+      return
+    }
+    if (value == 'mobilePayment') {
+      formik.resetForm()
+       dispatch(setFormRef({ reference: 'mobilepay-form' }))
+       return
+    }
+    dispatch(setFormRef({ reference: null }))
+  }
+
+  useEffect(() => {
+    setForm()
+  }, [value])
+
+  const { checkout: { paymentMethods } } = useSelector((state: any) => state)
+
+  const data = paymentMethods?.nodes ?? []
+
+  const returnDataArray = () => {
+    const dataSplit = data[1]?.description.split('/')
+    return dataSplit ?? []
+  }
+
   switch (value) {
     case 'zelle':
       return (
         <div className={styles._textContainer}>
-          <p>Zelle</p>
+          <p>{data[1]?.title}</p>
           <div className={styles._textQuote}>
-            <p>Banco</p>
-            <p>Arianna Perez</p>
-            <p>arianna.plp@gmail.com</p>
+            {
+              returnDataArray().map((item: string, index: number) => {
+                return <p key={index}>{item}</p>
+              })
+            }
           </div>
         </div>
       )
@@ -25,18 +63,39 @@ const Methods = ({ value }) => {
               <p>0414-0180382</p>
             </div>
           </div>
-          <form className={styles._formContainer}>
+          <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='mobilepay-form'>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Nombre completo</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
+                name='name'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Número'
+                className={formik.errors.referenceNumber && formik.touched.referenceNumber ? styles._inputError : styles._input}
+                name='referenceNumber'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.referenceNumber}
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.bank && formik.touched.bank ? styles._inputError : styles._input}
+                name='bank'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.bank}
+              />
             </div>
           </form>
         </>
@@ -55,18 +114,39 @@ const Methods = ({ value }) => {
               <p>email@gmail.com</p>
             </div>
           </div>
-          <form className={styles._formContainer}>
+          <form className={styles._formContainer} onSubmit={formik.handleSubmit} id='transferpay-form'>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Nombre completo</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.name && formik.touched.name ? styles._inputError : styles._input}
+                name='name'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.name}
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Número de comprobante</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Número'
+                className={formik.errors.referenceNumber && formik.touched.referenceNumber ? styles._inputError : styles._input}
+                name='referenceNumber'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.referenceNumber}
+              />
             </div>
             <div className={styles._formItem}>
               <label htmlFor="Nombre">Banco proveniente</label>
-              <input placeholder='Nombre' className={styles._input} />
+              <input
+                placeholder='Nombre'
+                className={formik.errors.bank && formik.touched.bank ? styles._inputError : styles._input}
+                name='bank'
+                onChange={formik.handleChange}
+                onBlur={formik.handleBlur}
+                value={formik.values.bank}
+              />
             </div>
           </form>
         </>
@@ -97,33 +177,7 @@ const Methods = ({ value }) => {
 
     case 'tdc':
       return (
-        <>
-          <div className={styles._cardLogoContainer}>
-            <img src="/images/icons/bxl-mastercard.svg" alt="mastercard" />
-            <img src="/images/icons/bxl-visa.svg" alt="visa" />
-            <img src="/images/icons/a-express.svg" alt="american-express" />
-          </div>
-          <form className={styles._formContainer}>
-            <div className={styles._formItem}>
-              <label htmlFor="Nombre">Nombre de tarjeta</label>
-              <input placeholder='Nombre' className={styles._input} />
-            </div>
-            <div className={styles._formItem}>
-              <label htmlFor="Nombre">N. de tarjeta</label>
-              <input placeholder='Nombre' className={styles._input} />
-            </div>
-            <div className={styles._inputRow}>
-              <div className={styles._formItem}>
-                <label htmlFor="Nombre">CVV</label>
-                <input placeholder='Nombre' className={styles._input} />
-              </div>
-              <div className={styles._formItem}>
-                <label htmlFor="Nombre">Caducidad</label>
-                <input placeholder='Nombre' className={styles._input} />
-              </div>
-            </div>
-          </form>
-        </>
+        <CreditCard />
       )
 
     default:
